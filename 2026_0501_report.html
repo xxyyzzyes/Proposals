@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>實體隔離系統資料萃取架構指南</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- MathJax for rendering formulas -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <!-- Mermaid.js for Flowcharts -->
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({ 
+            startOnLoad: true, 
+            theme: 'default',
+            securityLevel: 'loose',
+            flowchart: { useMaxWidth: true, htmlLabels: true, curve: 'basis' }
+        });
+    </script>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f3f4f6; }
+        .mermaid { display: flex; justify-content: center; background-color: #ffffff; padding: 1.5rem; border-radius: 0.5rem; border: 1px solid #e5e7eb; margin: 1rem 0; }
+        .pro-con-list li { position: relative; padding-left: 1.5rem; margin-bottom: 0.5rem; }
+        .pro-con-list li::before { position: absolute; left: 0; font-family: "Font Awesome 6 Free"; font-weight: 900; }
+        .pro-list li::before { content: "\f00c"; color: #10b981; } /* Check icon */
+        .con-list li::before { content: "\f00d"; color: #ef4444; } /* X icon */
+    </style>
+</head>
+<body class="text-gray-800 antialiased leading-relaxed">
+
+    <div class="max-w-5xl mx-auto px-4 py-8">
+        
+        <!-- Header Section -->
+        <header class="bg-gradient-to-r from-blue-900 to-indigo-800 text-white rounded-2xl p-8 mb-10 shadow-xl">
+            <h1 class="text-3xl md:text-4xl font-bold mb-4"><i class="fas fa-network-wired mr-3"></i>實體隔離系統資料萃取 架構指南</h1>
+            <p class="text-lg text-blue-100 opacity-90">
+                面對「絕對不能與舊系統進行軟體層面資料串接（無 API、無 DB 連線）」的硬性限制，本文件探討如何透過<strong>「旁路攔截（Bypass Interception）」</strong>實現舊廠房數位轉型（Brownfield Digitization）。
+            </p>
+        </header>
+
+        <!-- Core Objectives Section -->
+        <section class="bg-white rounded-xl shadow-md p-6 mb-10 border-l-4 border-blue-500">
+            <h2 class="text-2xl font-bold mb-4 text-gray-800"><i class="fas fa-bullseye text-blue-500 mr-2"></i>核心檢驗目標（爆震感測器）</h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="bg-blue-50 p-4 rounded-lg">
+                    <h3 class="font-bold text-lg text-blue-800 mb-2">1. 敏感度 (Sensitivity)</h3>
+                    <p class="text-gray-700">擷取畫面上的數值（如 30.664），並判斷是否落在標準範圍內：</p>
+                    <div class="text-xl font-bold text-center mt-3 bg-white p-2 rounded shadow-sm">
+                        \( 28 \pm 8 \text{ mV/g} \)
+                    </div>
+                </div>
+                <div class="bg-indigo-50 p-4 rounded-lg">
+                    <h3 class="font-bold text-lg text-indigo-800 mb-2">2. 線性 (Linearity)</h3>
+                    <p class="text-gray-700">擷取黃色頻譜曲線（FRF_Mag），分析其波動範圍是否小於指定比例且曲線平緩：</p>
+                    <div class="text-xl font-bold text-center mt-3 bg-white p-2 rounded shadow-sm">
+                        波動範圍 \( < 20\% \)
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <h2 class="text-3xl font-bold mb-6 text-center text-gray-800">非侵入式架構方案評估</h2>
+
+        <!-- Solution 1 -->
+        <section class="bg-white rounded-2xl shadow-lg overflow-hidden mb-10 border border-gray-100">
+            <div class="bg-yellow-50 border-b border-yellow-100 p-6 flex items-center justify-between">
+                <h3 class="text-2xl font-bold text-yellow-800">
+                    <i class="fas fa-video mr-2 text-yellow-600"></i>方案一：數位影像攔截 (Digital Video Interception)
+                </h3>
+                <span class="bg-yellow-500 text-white px-3 py-1 rounded-full text-sm font-bold shadow-sm">🌟 架構師首選</span>
+            </div>
+            <div class="p-6">
+                <p class="mb-4 text-gray-700">這是目前科技大廠處理舊機台最受歡迎的做法。不碰舊電腦的系統，僅「攔截」其顯示的數位畫面。</p>
+                
+                <h4 class="font-bold text-gray-800 mb-2"><i class="fas fa-project-diagram mr-2 text-gray-500"></i>系統架構與流程圖</h4>
+                <div class="mermaid">
+                    graph LR
+                        A[舊系統主機] -->|VGA/HDMI 訊號| B((硬體分接器<br>Splitter))
+                        B --> C[原機台顯示器]
+                        B -->|無失真複製| D[影像擷取卡<br>Capture Card]
+                        D --> E{Edge AI Server}
+                        E -->|1. ROI 裁切 + OCR 讀取敏感度| E
+                        E -->|2. 顏色過濾提取曲線計算線性度| E
+                        E -->|JSON 結構化數據| F[(新 Web 系統<br>FastAPI / React)]
+                        
+                        style B fill:#fde047,stroke:#ca8a04,stroke-width:2px
+                        style E fill:#bfdbfe,stroke:#2563eb,stroke-width:2px
+                        style F fill:#bbf7d0,stroke:#16a34a,stroke-width:2px
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6 mt-6">
+                    <div>
+                        <h4 class="font-bold text-green-600 mb-2">優點 (Pros)</h4>
+                        <ul class="pro-con-list pro-list text-gray-700">
+                            <li>畫面 100% 清晰無反光，不受環境光線干擾。</li>
+                            <li>OCR 與曲線分析準確率極高。</li>
+                            <li>對舊系統是「物理級」的零干擾。</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-red-500 mb-2">缺點 (Cons)</h4>
+                        <ul class="pro-con-list con-list text-gray-700">
+                            <li>需要額外採購擷取卡與邊緣運算微型主機。</li>
+                            <li>需在舊機台後方加裝硬體線材。</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Solution 2 -->
+        <section class="bg-white rounded-2xl shadow-lg overflow-hidden mb-10 border border-gray-100">
+            <div class="bg-blue-50 border-b border-blue-100 p-6">
+                <h3 class="text-2xl font-bold text-blue-800">
+                    <i class="fas fa-camera mr-2 text-blue-600"></i>方案二：視覺辨識旁路 (Computer Vision Camera)
+                </h3>
+                <p class="text-blue-600 text-sm mt-1">最低硬體侵入性（純光學解決方案）</p>
+            </div>
+            <div class="p-6">
+                <p class="mb-4 text-gray-700">如果連舊機台的螢幕線都不方便拔插，則採用安裝外部相機的方式，直接拍攝螢幕畫面進行分析。</p>
+                
+                <h4 class="font-bold text-gray-800 mb-2"><i class="fas fa-project-diagram mr-2 text-gray-500"></i>系統架構與流程圖</h4>
+                <div class="mermaid">
+                    graph LR
+                        A[舊機台螢幕] -.->|光學攝影| B((工業相機 / WebCam))
+                        B --> C{Edge AI Server}
+                        C -->|1. 透視投影轉換校正變形| C
+                        C -->|2. YOLOv8 定位數值與曲線框| C
+                        C -->|3. OCR 辨識與像素特徵提取| C
+                        C -->|JSON 結構化數據| D[(新 Web 系統)]
+
+                        style B fill:#fde047,stroke:#ca8a04,stroke-width:2px
+                        style C fill:#bfdbfe,stroke:#2563eb,stroke-width:2px
+                        style D fill:#bbf7d0,stroke:#16a34a,stroke-width:2px
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6 mt-6">
+                    <div>
+                        <h4 class="font-bold text-green-600 mb-2">優點 (Pros)</h4>
+                        <ul class="pro-con-list pro-list text-gray-700">
+                            <li>隨插即用，完全不需要動到舊系統的任何一根線材。</li>
+                            <li>部署快速，適合無法停機改裝的設備。</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-red-500 mb-2">缺點 (Cons)</h4>
+                        <ul class="pro-con-list con-list text-gray-700">
+                            <li>易受工廠環境光源變化、螢幕反光、震動影響。</li>
+                            <li>需要強大的 CV 預處理（如透視校正）來對抗環境噪聲。</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Solution 3 -->
+        <section class="bg-white rounded-2xl shadow-lg overflow-hidden mb-10 border border-gray-100">
+            <div class="bg-gray-800 border-b border-gray-700 p-6">
+                <h3 class="text-2xl font-bold text-white">
+                    <i class="fas fa-microchip mr-2 text-gray-300"></i>方案三：物理訊號直接攔截 (IoT DAQ)
+                </h3>
+                <p class="text-gray-300 text-sm mt-1">最硬派、數據最純粹（深層次資料整合）</p>
+            </div>
+            <div class="p-6">
+                <p class="mb-4 text-gray-700">繞過舊電腦的影像輸出，直接從感測器源頭讀取類比訊號，並在邊緣端自行進行訊號處理（如 FFT 轉換）。</p>
+                
+                <h4 class="font-bold text-gray-800 mb-2"><i class="fas fa-project-diagram mr-2 text-gray-500"></i>系統架構與流程圖</h4>
+                <div class="mermaid">
+                    graph LR
+                        A[爆震感測器] -->|類比訊號| B((硬體並聯分流<br>Parallel Tap))
+                        B -->|原有路徑| C[舊系統電腦]
+                        B -->|旁路訊號| D{DAQ / IoT 裝置<br>ESP32等}
+                        D -->|邊緣運算: 執行 FFT 轉換| D
+                        D -->|計算強度、相位、線性度| D
+                        D -->|MQTT / API 即時推播| E[(新 Web 儀表板<br>即時重繪現代化圖表)]
+
+                        style B fill:#fde047,stroke:#ca8a04,stroke-width:2px
+                        style D fill:#fca5a5,stroke:#dc2626,stroke-width:2px
+                        style E fill:#bbf7d0,stroke:#16a34a,stroke-width:2px
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6 mt-6">
+                    <div>
+                        <h4 class="font-bold text-green-600 mb-2">優點 (Pros)</h4>
+                        <ul class="pro-con-list pro-list text-gray-700">
+                            <li>數據精準度最高，徹底擺脫舊系統的影像解析度限制。</li>
+                            <li>掌握底層數據，可做出比舊系統更精細的進階分析與預測性維護。</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-red-500 mb-2">缺點 (Cons)</h4>
+                        <ul class="pro-con-list con-list text-gray-700">
+                            <li>需深入了解電子電路（可能需設計 OP 放大隔離電路避免干擾原機台）。</li>
+                            <li>硬體開發與訊號調校的門檻最高。</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Solution 4 -->
+        <section class="bg-white rounded-2xl shadow-lg overflow-hidden mb-10 border border-gray-100">
+            <div class="bg-teal-50 border-b border-teal-100 p-6">
+                <h3 class="text-2xl font-bold text-teal-800">
+                    <i class="fas fa-tablet-alt mr-2 text-teal-600"></i>方案四：人機協作行動端 PWA
+                </h3>
+                <p class="text-teal-600 text-sm mt-1">敏捷上線方案（Human-in-the-Loop + AI）</p>
+            </div>
+            <div class="p-6">
+                <p class="mb-4 text-gray-700">預算有限或希望極速上線的選擇。透過作業員使用平板拍照，交由雲端多模態大模型（Vision LLM）輔助判斷。</p>
+                
+                <h4 class="font-bold text-gray-800 mb-2"><i class="fas fa-project-diagram mr-2 text-gray-500"></i>系統架構與流程圖</h4>
+                <div class="mermaid">
+                    graph TD
+                        A[作業員] -->|操作平板 PWA 拍照| B(舊機台測試畫面)
+                        B --> C[上傳圖片至雲端/後端]
+                        C --> D{Vision LLM <br>多模態 AI 瞬間分析}
+                        D --> E[數值與曲線初步評分]
+                        E --> F{是否為邊緣值?}
+                        F -->|是| G[跳出紅框：強制人工二次確認]
+                        F -->|否| H[系統自動建檔]
+                        G --> H
+                        H --> I[(資料庫)]
+
+                        style A fill:#e5e7eb,stroke:#4b5563,stroke-width:2px
+                        style D fill:#cffafe,stroke:#0891b2,stroke-width:2px
+                        style G fill:#fee2e2,stroke:#ef4444,stroke-width:2px
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6 mt-6">
+                    <div>
+                        <h4 class="font-bold text-green-600 mb-2">優點 (Pros)</h4>
+                        <ul class="pro-con-list pro-list text-gray-700">
+                            <li>開發成本極低，上線時間最短。</li>
+                            <li>完全不需改裝任何廠房硬體與走線。</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-red-500 mb-2">缺點 (Cons)</h4>
+                        <ul class="pro-con-list con-list text-gray-700">
+                            <li>增加了作業員的工作步驟。</li>
+                            <li>自動化程度較低，仍需依賴人工介入。</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Summary Section -->
+        <section class="bg-gray-100 rounded-xl p-8 border border-gray-300">
+            <h2 class="text-2xl font-bold mb-4 text-gray-800"><i class="fas fa-lightbulb text-yellow-500 mr-2"></i>架構師總結與建議</h2>
+            <div class="space-y-4 text-gray-700">
+                <p>
+                    如果這是一個高產能、要求全自動化且預算合理的產線，強烈建議採用 <strong><span class="text-yellow-600 font-bold">方案一 (數位影像攔截)</span></strong>。使用 FastAPI 作為邊緣節點，處理完 OCR 和 OpenCV 曲線運算後，將乾淨的 Payload 丟給新 Web 系統，架構最優雅且最穩定。
+                </p>
+                <p>
+                    若團隊對硬體與微控制器有深入研究（具備電路改裝能力），<strong><span class="text-gray-800 font-bold">方案三 (IoT DAQ 攔截)</span></strong> 則是最具技術深度與護城河的做法，能徹底掌握底層數據，為未來的預測性維護鋪路。
+                </p>
+            </div>
+        </section>
+
+    </div>
+</body>
+</html>
