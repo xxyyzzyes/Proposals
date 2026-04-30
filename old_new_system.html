@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>爆震感測器舊機台數位轉型：四套方案可行性評估</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Noto Sans TC', sans-serif; background-color: #f8fafc; }
+        .json-block { background: #1e1e1e; color: #d4d4d4; padding: 1rem; border-radius: 0.5rem; overflow-x: auto; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+        .json-key { color: #9cdcfe; }
+        .json-string { color: #ce9178; }
+        .json-number { color: #b5cea8; }
+        .json-boolean { color: #569cd6; }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+    </style>
+</head>
+<body class="text-slate-800 antialiased py-8 px-4 md:px-8 max-w-7xl mx-auto selection:bg-blue-200">
+
+    <!-- Header -->
+    <header class="mb-10 flex flex-col md:flex-row justify-between items-start md:items-center bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-slate-200 relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-64 h-64 bg-blue-50 rounded-full mix-blend-multiply filter blur-3xl opacity-70 translate-x-20 -translate-y-20"></div>
+        <div class="relative z-10">
+            <div class="flex items-center gap-3 mb-2">
+                <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-bold tracking-wider uppercase">System Architecture Proposal</span>
+            </div>
+            <h1 class="text-3xl md:text-4xl font-black text-slate-900 tracking-tight mb-2">機台數據加控系統</h1>
+            <p class="text-lg text-slate-500 font-medium">爆震感測器 (ST19028) 檢驗標準：線性度與敏感度萃取可行性評估</p>
+        </div>
+        <div class="mt-6 md:mt-0 relative z-10">
+            <div class="px-4 py-3 bg-slate-800 text-white rounded-xl font-bold shadow-lg flex items-center gap-3">
+                <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                實體隔離 (Air-Gapped) 架構
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="space-y-8">
+
+        <!-- Solution 1 -->
+        <section class="bg-white rounded-2xl shadow-sm border-l-[12px] border-emerald-500 p-6 md:p-8 relative overflow-hidden">
+            <div class="flex flex-col md:flex-row items-start md:items-center justify-between mb-6 gap-4">
+                <h2 class="text-2xl font-bold text-slate-900 flex items-center gap-3">
+                    <div class="bg-emerald-100 text-emerald-600 p-2.5 rounded-lg">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                    </div>
+                    方案一：HDMI/VGA 數位影像攔截
+                </h2>
+                <span class="px-4 py-1.5 bg-emerald-50 text-emerald-700 rounded-full text-sm font-bold border border-emerald-200 shadow-sm">🌟 強烈推薦 / 可行性極高</span>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-lg font-bold text-slate-800 mb-4 border-b border-slate-100 pb-2">架構師優化建議</h3>
+                    <ul class="space-y-4 text-slate-600">
+                        <li class="flex items-start gap-3">
+                            <div class="mt-1 bg-blue-100 p-1 rounded-full text-blue-600 flex-shrink-0"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></div>
+                            <div>
+                                <strong class="text-slate-800">文字辨識 (OCR)：</strong>
+                                <p class="text-sm mt-1">「30.664」等浮點數建議採用 <code class="bg-slate-100 px-1.5 py-0.5 rounded text-pink-600 font-mono text-sm">PaddleOCR</code>，在繁中與工業數字環境下，準確率顯著優於 Tesseract。</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="mt-1 bg-blue-100 p-1 rounded-full text-blue-600 flex-shrink-0"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></div>
+                            <div>
+                                <strong class="text-slate-800">曲線提取：</strong>
+                                <p class="text-sm mt-1">使用 HSV 色彩空間過濾黃色曲線 <code class="bg-slate-100 px-1.5 py-0.5 rounded text-purple-600 font-mono text-sm">(H: 20-35, S: >100, V: >100)</code>，抗雜訊穩定度遠勝 BGR。</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="mt-1 bg-blue-100 p-1 rounded-full text-blue-600 flex-shrink-0"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></div>
+                            <div>
+                                <strong class="text-slate-800">線性度量化演算法：</strong>
+                                <p class="text-sm mt-1">將曲線 Y 值正規化後，計算 <code class="bg-slate-100 px-1.5 py-0.5 rounded text-indigo-600 font-bold font-mono text-sm">(max - min) / mean × 100%</code>，即可直接對應小於 20% 的檢驗標準。</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="mt-1 bg-amber-100 p-1 rounded-full text-amber-600 flex-shrink-0"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg></div>
+                            <div>
+                                <strong class="text-amber-800">潛在風險提示：</strong>
+                                <p class="text-sm mt-1">若舊系統螢幕為 VGA 類比輸出，須嚴格確認 Capture Card 是否支援其對應的特殊解析度與更新率。</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Diagram -->
+                <div class="bg-slate-50 p-6 rounded-xl border border-slate-200 flex flex-col justify-center relative">
+                    <h4 class="text-xs font-black text-slate-400 uppercase tracking-widest mb-6 text-center">Data Flow Architecture</h4>
+                    <div class="flex flex-col items-center relative z-10">
+                        <div class="px-5 py-2.5 bg-slate-800 text-white rounded-lg shadow-md text-sm font-medium w-56 text-center border border-slate-700">舊機台顯示器輸出</div>
+                        
+                        <div class="h-6 w-0.5 bg-slate-300"></div>
+                        
+                        <div class="px-5 py-2.5 bg-blue-600 text-white rounded-lg shadow-md text-sm font-medium w-56 text-center relative">
+                            HDMI / VGA Splitter
+                            <!-- Splitting lines -->
+                            <div class="absolute top-full left-1/2 w-full h-8 -translate-x-1/2">
+                                <div class="absolute top-0 left-1/2 w-0.5 h-4 bg-slate-300 -translate-x-1/2"></div>
+                                <div class="absolute top-4 left-[20%] right-[20%] h-0.5 bg-slate-300"></div>
+                                <div class="absolute top-4 left-[20%] w-0.5 h-4 bg-slate-300"></div>
+                                <div class="absolute top-4 right-[20%] w-0.5 h-4 bg-slate-300"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="h-8 w-full"></div> <!-- Spacer for lines -->
+                        
+                        <div class="flex w-full justify-between px-4 mt-2">
+                            <div class="flex flex-col items-center w-1/2">
+                                <div class="w-0.5 h-2 bg-slate-300 mb-1"></div>
+                                <svg class="w-4 h-4 text-slate-400 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+                                <div class="px-4 py-2 bg-white border border-slate-300 text-slate-600 rounded shadow-sm text-xs font-medium">原顯示器</div>
+                            </div>
+                            
+                            <div class="flex flex-col items-center w-1/2">
+                                <div class="w-0.5 h-2 bg-slate-300 mb-1"></div>
+                                <svg class="w-4 h-4 text-slate-400 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+                                <div class="px-4 py-2 border-2 border-emerald-400 bg-emerald-50 text-emerald-800 font-bold rounded shadow-sm text-xs mb-2 w-40 text-center">Capture Card</div>
+                                
+                                <svg class="w-4 h-4 text-slate-400 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+                                <div class="px-4 py-2 bg-indigo-600 text-white rounded shadow-md text-xs font-medium mb-2 w-40 text-center">Edge Server<br><span class="text-[10px] text-indigo-200">FastAPI + OpenCV</span></div>
+                                
+                                <svg class="w-4 h-4 text-slate-400 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+                                <div class="px-4 py-2 bg-cyan-600 text-white rounded shadow-md text-xs font-medium w-40 text-center">React Web 系統</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Solution 4 (Priority 2) & Solution 2 Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            
+            <!-- Solution 4 -->
+            <section class="bg-white rounded-2xl shadow-sm border-l-[12px] border-purple-500 p-6 md:p-8 relative">
+                <div class="absolute top-0 right-0 p-4 opacity-10 pointer-events-none">
+                    <svg class="w-24 h-24 text-purple-600" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
+                </div>
+                <div class="flex items-center justify-between mb-4">
+                    <h2 class="text-xl font-bold text-slate-900 flex items-center gap-3">
+                        <div class="bg-purple-100 text-purple-600 p-2 rounded-lg">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                        </div>
+                        方案四：人機協作 PWA
+                    </h2>
+                    <span class="px-3 py-1 bg-purple-50 text-purple-700 rounded-full text-xs font-bold border border-purple-200">過渡 / 備援</span>
+                </div>
+                
+                <p class="text-sm text-slate-600 mb-4 leading-relaxed">
+                    捨棄在前端 WebAssembly 跑 CV 的複雜度，直接呼叫多模態大語言模型 <strong class="text-slate-800">(如 Claude Vision API 或 GPT-4o)</strong>，讓模型看圖並直接回傳結構化資料。
+                </p>
+                
+                <div class="mt-4">
+                    <h3 class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Vision LLM JSON Payload 範例</h3>
+                    <div class="json-block text-sm shadow-inner">
+{
+  <span class="json-key">"sensitivity_value"</span>: <span class="json-number">30.664</span>,
+  <span class="json-key">"sensitivity_pass"</span>: <span class="json-boolean">true</span>,
+  <span class="json-key">"linearity_estimated_variation"</span>: <span class="json-string">"&lt; 15%"</span>,
+  <span class="json-key">"linearity_pass"</span>: <span class="json-boolean">true</span>,
+  <span class="json-key">"confidence"</span>: <span class="json-number">0.94</span>
+}</div>
+                </div>
+                <div class="mt-4 bg-purple-50 p-3 rounded-lg border border-purple-100 flex items-start gap-2">
+                    <svg class="w-5 h-5 text-purple-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    <p class="text-sm text-purple-800">開發成本極低。對「曲線平緩度」的語意判斷，AI 大模型反而比純粹的 OpenCV 演算法更具彈性與容錯率。</p>
+                </div>
+            </section>
+
+            <!-- Solution 2 -->
+            <section class="bg-white rounded-2xl shadow-sm border-l-[12px] border-amber-400 p-6 md:p-8">
+                <div class="flex items-center justify-between mb-4">
+                    <h2 class="text-xl font-bold text-slate-900 flex items-center gap-3">
+                        <div class="bg-amber-100 text-amber-600 p-2 rounded-lg">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path></svg>
+                        </div>
+                        方案二：相機視覺辨識
+                    </h2>
+                    <span class="px-3 py-1 bg-amber-50 text-amber-700 rounded-full text-xs font-bold border border-amber-200">有條件可行</span>
+                </div>
+                
+                <div class="bg-red-50 text-red-800 p-3 rounded-lg text-sm mb-5 border border-red-100 flex items-start gap-2">
+                    <svg class="w-5 h-5 text-red-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                    <div>
+                        <strong>關鍵環境風險：</strong> 圖三黃色曲線背景為深藍/黑色，工廠光源造成的螢幕反光極易導致 <strong>HSV 值漂移</strong>，造成曲線提取完全失敗。
+                    </div>
+                </div>
+                
+                <h3 class="text-sm font-bold text-slate-800 mb-3 flex items-center gap-2">
+                    <svg class="w-4 h-4 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    必須落實的防護措施
+                </h3>
+                <ul class="space-y-3 text-sm text-slate-600">
+                    <li class="flex items-start gap-2">
+                        <span class="bg-slate-200 text-slate-600 rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold mt-0.5">1</span>
+                        <span>硬體端必須安裝 <strong>遮光罩</strong> (相機標配) 隔絕環境光。</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <span class="bg-slate-200 text-slate-600 rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold mt-0.5">2</span>
+                        <span>加入 <strong>自動白平衡 (AWB) 鎖定</strong> 與 <strong>固定曝光值</strong> 設定。</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <span class="bg-slate-200 text-slate-600 rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold mt-0.5">3</span>
+                        <span>軟體演算法務必實作 <strong>Perspective Transformation (透視投影校正)</strong>，否則畫面變形會導致 Y 軸比例失真，產生系統性線性度誤差。</span>
+                    </li>
+                </ul>
+            </section>
+        </div>
+
+        <!-- Solution 3 -->
+        <section class="bg-white rounded-2xl shadow-sm border-l-[12px] border-red-500 p-6 md:p-8">
+            <div class="flex items-center justify-between mb-6">
+                <h2 class="text-2xl font-bold text-slate-900 flex items-center gap-3">
+                    <div class="bg-red-100 text-red-600 p-2.5 rounded-lg">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+                    </div>
+                    方案三：物理訊號直接攔截
+                </h2>
+                <span class="px-4 py-1.5 bg-red-50 text-red-700 rounded-full text-sm font-bold border border-red-200 shadow-sm">⚠️ 技術最純粹，但工程風險最高</span>
+            </div>
+            
+            <p class="text-slate-600 mb-6">雖然直接讀取源頭訊號在理論上數據最純粹，但在實務工程上隱藏著嚴重的陷阱，需謹慎評估。</p>
+            
+            <div class="overflow-x-auto rounded-xl border border-slate-200 mb-6 shadow-sm">
+                <table class="min-w-full divide-y divide-slate-200 text-sm">
+                    <thead class="bg-slate-50">
+                        <tr>
+                            <th scope="col" class="px-6 py-4 text-left font-bold text-slate-500 uppercase tracking-wider w-1/4">工程風險項目</th>
+                            <th scope="col" class="px-6 py-4 text-left font-bold text-slate-500 uppercase tracking-wider">影響與後果說明</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-slate-100">
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="px-6 py-4 font-bold text-slate-800">阻抗匹配問題</td>
+                            <td class="px-6 py-4 text-slate-600">並聯分流會改變訊號源的負載阻抗，可能影響舊系統的量測值，造成「新舊系統數據打架」的不一致狀況。</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="px-6 py-4 font-bold text-slate-800">接地迴路干擾</td>
+                            <td class="px-6 py-4 text-slate-600">兩台設備共地極可能產生 <strong>Ground Loop</strong>，直接注入 60Hz 工頻雜訊到微弱的感測器訊號中。</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="px-6 py-4 font-bold text-slate-800">法規/校驗失效</td>
+                            <td class="px-6 py-4 text-slate-600">若舊機台具備計量校驗認證 (Calibration)，未經原廠授權的硬體改動可能導致認證瞬間失效。</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="px-6 py-4 font-bold text-slate-800">微控制器頻寬限制</td>
+                            <td class="px-6 py-4 text-slate-600">爆震感測器工作頻率高達 15kHz+，ESP32 等 MCU 的 ADC 採樣率與精度不足。建議改用 NI DAQ 或 Measurement Computing 等工業級模組。</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="bg-red-50 border border-red-200 p-5 rounded-xl flex flex-col md:flex-row items-start md:items-center gap-4">
+                <div class="bg-red-100 p-3 rounded-full text-red-600 shrink-0">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                </div>
+                <div>
+                    <h4 class="text-red-800 font-bold mb-1">硬派解法 (Mitigation)</h4>
+                    <p class="text-sm text-red-700">若非得選此方案，強烈建議在電路上加裝 <strong>隔離放大器 (Isolation Amplifier，例如 Texas Instruments INA128)</strong>，確保兩套系統在電氣上達到完全隔離。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final Strategic Conclusion -->
+        <section class="mt-12 bg-slate-900 text-white rounded-3xl p-8 md:p-10 shadow-2xl relative overflow-hidden border border-slate-800">
+            <!-- Background Decorative Elements -->
+            <div class="absolute top-0 right-0 -mt-16 -mr-16 w-64 h-64 bg-blue-500 opacity-20 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-0 left-0 -mb-16 -ml-16 w-64 h-64 bg-purple-500 opacity-20 rounded-full blur-3xl"></div>
+            
+            <div class="relative z-10">
+                <div class="flex flex-col md:flex-row items-center justify-between border-b border-slate-700 pb-6 mb-8 gap-6">
+                    <h2 class="text-2xl md:text-3xl font-black flex items-center gap-3">
+                        <svg class="w-8 h-8 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+                        架構師總體建議與部署策略
+                    </h2>
+                    
+                    <div class="flex items-center gap-2 bg-slate-800 px-4 py-2 rounded-lg border border-slate-700 shadow-inner">
+                        <span class="text-sm text-slate-400 font-medium mr-2">優先順序：</span>
+                        <span class="font-bold text-emerald-400">方案一</span>
+                        <svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                        <span class="font-bold text-purple-400">方案四</span>
+                        <svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                        <span class="font-bold text-amber-400">方案二</span>
+                        <svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                        <span class="font-bold text-red-400 text-opacity-50">方案三</span>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Stage 1 -->
+                    <div class="bg-slate-800/50 p-6 rounded-2xl border border-slate-700/50 backdrop-blur-sm relative">
+                        <div class="absolute -top-4 left-6 bg-purple-600 text-white px-3 py-1 rounded-full text-xs font-bold tracking-wider shadow-lg">STAGE 1 / 快速打平</div>
+                        <h3 class="text-xl font-bold text-white mb-3 mt-2">第一階段：敏捷上線</h3>
+                        <p class="text-slate-300 text-sm leading-relaxed mb-4">
+                            先導入 <strong>「方案四：PWA + Vision LLM」</strong>。開發週期極短，預期在 2~3 週內即可上線。讓現場產線作業員先行使用，快速累積歷史數據並建立對新系統的信心，同時驗證管控邏輯。
+                        </p>
+                        <div class="flex items-center gap-2 text-purple-400 text-sm font-medium">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            預期時程：2-3 週內上線
+                        </div>
+                    </div>
+
+                    <!-- Stage 2 -->
+                    <div class="bg-gradient-to-br from-slate-800/80 to-blue-900/40 p-6 rounded-2xl border border-blue-500/30 backdrop-blur-sm relative shadow-[0_0_30px_rgba(59,130,246,0.15)]">
+                        <div class="absolute -top-4 left-6 bg-blue-500 text-white px-3 py-1 rounded-full text-xs font-bold tracking-wider shadow-lg shadow-blue-500/30">STAGE 2 / 終極目標</div>
+                        <h3 class="text-xl font-bold text-white mb-3 mt-2">第二階段：全自動化</h3>
+                        <p class="text-blue-100 text-sm leading-relaxed mb-4">
+                            在第一階段穩定後，採購 Capture Card 與小型 Edge Server (如 Intel NUC 或 NVIDIA Jetson 等工業電腦)，全面實施 <strong>「方案一：數位影像攔截」</strong>，徹底達成零人工介入的全自動管控與數據採集。
+                        </p>
+                        <div class="flex items-center gap-2 text-blue-300 text-sm font-medium">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                            預期效益：100% 自動化與零誤差
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    
+    <footer class="mt-12 text-center text-slate-400 text-sm pb-8">
+        <p>© 2026 數位轉型架構評估專案 | 內部機密文件，請勿外流。</p>
+    </footer>
+
+</body>
+</html>
