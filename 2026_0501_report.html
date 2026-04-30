@@ -71,7 +71,7 @@
                 <h3 class="text-2xl font-bold text-yellow-800">
                     <i class="fas fa-video mr-2 text-yellow-600"></i>方案一：數位影像攔截 (Digital Video Interception)
                 </h3>
-                <span class="bg-yellow-500 text-white px-3 py-1 rounded-full text-sm font-bold shadow-sm">🌟 架構師首選</span>
+                <span class="bg-yellow-500 text-white px-3 py-1 rounded-full text-sm font-bold shadow-sm">🌟 首選</span>
             </div>
             <div class="p-6">
                 <p class="mb-4 text-gray-700">這是目前科技大廠處理舊機台最受歡迎的做法。不碰舊電腦的系統，僅「攔截」其顯示的數位畫面。</p>
@@ -252,13 +252,13 @@
 
         <!-- Summary Section -->
         <section class="bg-gray-100 rounded-xl p-8 border border-gray-300">
-            <h2 class="text-2xl font-bold mb-4 text-gray-800"><i class="fas fa-lightbulb text-yellow-500 mr-2"></i>架構師總結與建議</h2>
+            <h2 class="text-2xl font-bold mb-4 text-gray-800"><i class="fas fa-lightbulb text-yellow-500 mr-2"></i>總結與建議</h2>
             <div class="space-y-4 text-gray-700">
                 <p>
-                    如果這是一個高產能、要求全自動化且預算合理的產線，強烈建議採用 <strong><span class="text-yellow-600 font-bold">方案一 (數位影像攔截)</span></strong>。使用 FastAPI 作為邊緣節點，處理完 OCR 和 OpenCV 曲線運算後，將乾淨的 Payload 丟給新 Web 系統，架構最優雅且最穩定。
+                    '這個方案，保證影像不會受環境光，螢幕彎曲影響:' <strong><span class="text-yellow-600 font-bold">方案一 (數位影像攔截)</span></strong>。若使用方案二，需先經過評估和測試，確保不會受環境光，反射，螢幕取率，造成系統判斷失誤。
                 </p>
                 <p>
-                    若團隊對硬體與微控制器有深入研究（具備電路改裝能力），<strong><span class="text-gray-800 font-bold">方案三 (IoT DAQ 攔截)</span></strong> 則是最具技術深度與護城河的做法，能徹底掌握底層數據，為未來的預測性維護鋪路。
+                    若團隊對硬體與微控制器有深入研究（具備電路改裝能力），<strong><span class="text-gray-800 font-bold">方案三 (IoT DAQ 攔截)</span></strong> 則是最具技術的做法，同時也具風險，阻抗匹配問題並聯分流會改變訊號源的負載阻抗，可能影響舊系統的量測值，造成兩套系統數據不一致。
                 </p>
             </div>
         </section>
