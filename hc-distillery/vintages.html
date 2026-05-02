@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>年度新樽 — 恆器製酒 HC Distillery</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  .vintage-section {
+    padding: 100px 56px;
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .vintage-section:nth-child(even) {
+    direction: rtl;
+  }
+  .vintage-section:nth-child(even) .vintage-content {
+    direction: ltr;
+  }
+  .vintage-img-placeholder {
+    aspect-ratio: 4/5;
+    background: rgba(201,169,110,0.05);
+    border: 1px solid rgba(201,169,110,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    color: #5a4f44;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+  .vintage-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 42px;
+    font-weight: 300;
+    color: #e8dcc8;
+    margin-bottom: 24px;
+  }
+  .vintage-status {
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: #c9a96e;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .vintage-specs {
+    margin-top: 40px;
+    padding-top: 30px;
+    border-top: 1px solid rgba(201,169,110,0.1);
+    font-size: 13px;
+    line-height: 2;
+    color: #6a5f52;
+  }
+
+  /* Premium Image Effects removed - now using global style in style.css */
+</style>
+</head>
+<body>
+
+<nav class="nav" id="mainNav">
+  <a href="index.html" class="nav-logo">恆器製酒 HC Distillery</a>
+  <ul class="nav-links">
+    <li><a href="products.html" data-i18n="nav-collection">Collection</a></li>
+    <li><a href="about.html" data-i18n="nav-heritage">Heritage</a></li>
+    <li><a href="vintages.html" data-i18n="nav-cellars">Cellars</a></li>
+    <li><a href="contact.html" data-i18n="nav-contact">Contact</a></li>
+    <li class="lang-switcher">
+      <button class="lang-btn" onclick="setLanguage('en')">EN</button>
+      <button class="lang-btn" onclick="setLanguage('zh')">繁中</button>
+    </li>
+  </ul>
+  <button class="nav-toggle" id="navToggle" aria-label="Menu">
+    <span class="hamburger"></span>
+  </button>
+</nav>
+
+<header class="page-header">
+  <div class="section-tag" data-i18n="nav-cellars">Vintages</div>
+  <h1 class="section-title" data-i18n="nav-cellars">年度 新樽系列</h1>
+</header>
+
+<!-- Rabbit Vintage -->
+<section class="vintage-section reveal">
+  <div class="premium-img-container" style="aspect-ratio: 4/5;">
+    <img src="assets/vintage-rabbit.jpg" alt="Rabbit Vintage">
+    <div class="premium-img-inner-border"></div>
+  </div>
+  <div class="vintage-content">
+    <div class="vintage-status">Limited Edition</div>
+    <h2 class="vintage-title" data-i18n="vintages-rabbit-title">癸卯年 兔新樽</h2>
+    <p class="heritage-body" data-i18n="vintages-rabbit-body"></p>
+    <p class="heritage-body" style="margin-top: 20px; color: #c9a96e;" data-i18n="vintages-rabbit-limit"></p>
+  </div>
+</section>
+
+<!-- Dragon Vintage -->
+<section class="vintage-section reveal" style="background: #080605;">
+  <div class="premium-img-container" style="aspect-ratio: 4/5;">
+    <img src="assets/vintage-dragon.jpg" alt="Dragon Vintage">
+    <div class="premium-img-inner-border"></div>
+  </div>
+  <div class="vintage-content">
+    <div class="vintage-status" data-i18n="vintages-dragon-status">即將推出 · 2023 深冬</div>
+    <h2 class="vintage-title" data-i18n="vintages-dragon-title">甲辰年 龍新樽</h2>
+    <div style="margin-bottom: 30px;">
+      <h3 style="font-size: 11px; letter-spacing: 3px; color: #c9a96e; margin-bottom: 10px; text-transform: uppercase;" data-i18n="vintages-dragon-desc-title">風味描述</h3>
+      <p class="heritage-body" data-i18n="vintages-dragon-desc-body"></p>
+      <p class="heritage-body" style="margin-top: 10px; font-style: italic;" data-i18n="vintages-dragon-finish"></p>
+    </div>
+    <div class="vintage-specs" data-i18n="vintages-dragon-specs"></div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-logo">恆器製酒 HC Distillery</div>
+  <div class="footer-bottom">
+    <span>© 2026 HC Distillery | 
+      <a href="https://line.me/R/ti/p/@866txktt?from=page&searchId=866txktt" target="_blank" style="color: inherit; text-decoration: none;">LINE</a> | 
+      <a href="https://www.facebook.com/HCWine/?ref=page_internal" target="_blank" style="color: inherit; text-decoration: none;">FB</a>
+    </span>
+    <span data-i18n="footer-privacy">Privacy · Terms</span>
+  </div>
+</footer>
+
+<div class="legal-warning">
+  <span data-i18n="warning-text">禁止酒駕 🔞 未滿 18 歲禁止飲酒</span>
+</div>
+
+<script src="i18n.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
