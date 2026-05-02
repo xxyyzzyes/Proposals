@@ -22,6 +22,17 @@
     line-height: 1.8;
     color: #b0a090;
   }
+  @media (max-width: 768px) {
+    section {
+      padding: 60px 24px !important;
+    }
+    .page-header {
+      padding: 140px 24px 60px !important;
+    }
+    .heritage-title {
+      font-size: 32px;
+    }
+  }
 </style>
 </head>
 <body>
@@ -54,7 +65,7 @@
 
 <!-- Philosophy Section -->
 <section style="padding: 100px 56px; max-width: 1200px; margin: 0 auto;">
-  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 80px;">
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 400px), 1fr)); gap: 80px;">
     <!-- Meaning -->
     <div class="reveal">
       <div class="premium-img-container" style="aspect-ratio: 16/9; margin-bottom: 40px;">

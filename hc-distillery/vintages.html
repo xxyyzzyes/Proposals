@@ -56,6 +56,24 @@
     color: #6a5f52;
   }
 
+  @media (max-width: 768px) {
+    .vintage-section {
+      grid-template-columns: 1fr !important;
+      gap: 40px;
+      padding: 60px 24px;
+      direction: ltr !important; /* 手機版統一從左到右，避免左右交替造成混亂 */
+    }
+    .vintage-section:nth-child(even) .vintage-content {
+      direction: ltr !important;
+    }
+    .premium-img-container {
+      aspect-ratio: 3/4 !important; /* 手機版改用更修長的比例 */
+      width: 100%;
+    }
+    .vintage-title {
+      font-size: 32px;
+    }
+  }
   /* Premium Image Effects removed - now using global style in style.css */
 </style>
 </head>
