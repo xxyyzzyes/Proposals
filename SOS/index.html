@@ -2323,6 +2323,115 @@
     opacity: 0.95;
   }
 
+  /* ─── ACTS OF KINDNESS TIMELINE UPGRADE (方案 A) ─── */
+  .particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--brand); /* #d0331c */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: particle-fly 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    pointer-events: none;
+  }
+  @keyframes particle-fly {
+    0%   { transform: translate(-50%,-50%) rotate(var(--angle)) translateX(0)   scale(1);   opacity: 1; }
+    100% { transform: translate(-50%,-50%) rotate(var(--angle)) translateX(var(--dist)) scale(0); opacity: 0; }
+  }
+
+  .timeline-item-line {
+    position: absolute;
+    top: 1.2rem;
+    bottom: -2.2rem;
+    left: -2rem;
+    width: 2px;
+    background: var(--brand);
+    transform-origin: top;
+    transform: scaleY(0) translateX(4px);
+    transition: transform 0.4s ease-out;
+    z-index: 1;
+  }
+  .timeline-item.is-visible .timeline-item-line {
+    transform: scaleY(1) translateX(4px);
+  }
+  .timeline-item:last-child .timeline-item-line {
+    display: none;
+  }
+
+  .timeline-item .timeline-marker {
+    transform: translateX(-4px) scale(0);
+  }
+  .timeline-item.is-visible .timeline-marker {
+    animation: marker-bounce 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  @keyframes marker-bounce {
+    0%   { transform: translateX(-4px) scale(0); }
+    60%  { transform: translateX(-4px) scale(1.4); }
+    100% { transform: translateX(-4px) scale(1); }
+  }
+
+  .timeline-item .timeline-card {
+    opacity: 0;
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease-out;
+  }
+  .timeline-col.col-left .timeline-card {
+    transform: translateX(30px);
+  }
+  .timeline-col.col-right .timeline-card {
+    transform: translateX(-30px);
+  }
+  .timeline-item.is-visible .timeline-card {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .timeline-item .timeline-badge {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+  .timeline-item.is-visible .timeline-badge {
+    animation: badge-bounce 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  }
+  @keyframes badge-bounce {
+    0%   { transform: scale(0.6); opacity: 0; }
+    70%  { transform: scale(1.05); opacity: 1; }
+    100% { transform: scale(1); opacity: 1; }
+  }
+
+  /* Title Kinetic Typography */
+  .kinetic-char {
+    opacity: 0;
+    transform: translateY(20px);
+    display: inline-block;
+    transition: opacity 0.5s ease-out, transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .kindness-header.visible .kinetic-char {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Column Title Slide-in */
+  .timeline-col.col-left .col-title {
+    opacity: 0;
+    transform: translateX(-40px);
+    transition: opacity 0.6s ease-out 0.2s, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.2s;
+  }
+  .timeline-col.col-left.visible .col-title {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  .timeline-col.col-right .col-title {
+    opacity: 0;
+    transform: translateX(40px);
+    transition: opacity 0.6s ease-out 0.2s, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.2s;
+  }
+  .timeline-col.col-right.visible .col-title {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
 </style>
 </head>
 
@@ -2411,7 +2520,7 @@
   <div class="custom-container">
     <div class="kindness-header scroll-reveal">
       <span class="kindness-tag">Acts of Kindness</span>
-      <h2 class="kindness-headline">寶藏女孩</h2>
+      <h2 class="kindness-headline">她們的善，從不缺席</h2>
     </div>
     
     <div class="timeline-grid">
@@ -3110,6 +3219,106 @@
   window.addEventListener('DOMContentLoaded',()=>{
     renderPosts('dee');
     renderPosts('xia');
+  });
+
+  // ─── ACTS OF KINDNESS TIMELINE UPGRADE (方案 A) ───
+  window.addEventListener('DOMContentLoaded', () => {
+    // 1. Title Kinetic Typography
+    const kindnessHeadline = document.querySelector('.kindness-headline');
+    if (kindnessHeadline) {
+      const text = kindnessHeadline.textContent.trim();
+      kindnessHeadline.innerHTML = text.split('').map((char, i) => {
+        if (char === ' ') return ' ';
+        return `<span class="kinetic-char" style="transition-delay: ${i * 0.05}s">${char}</span>`;
+      }).join('');
+    }
+
+    // 2. Remove static line and dynamically insert line segments inside timeline items
+    document.querySelectorAll('.timeline-line').forEach(line => line.remove());
+    document.querySelectorAll('.timeline-item').forEach(item => {
+      const line = document.createElement('div');
+      line.className = 'timeline-item-line';
+      item.appendChild(line);
+    });
+
+    // 3. Spawning particles function
+    function spawnParticles(dotEl) {
+      const count = 6;
+      for (let i = 0; i < count; i++) {
+        const p = document.createElement('span');
+        p.className = 'particle';
+        const angle = (360 / count) * i;
+        const dist = 18 + Math.random() * 10;
+        p.style.setProperty('--angle', angle + 'deg');
+        p.style.setProperty('--dist', dist + 'px');
+        p.style.animationDelay = (i * 0.04) + 's';
+        dotEl.appendChild(p);
+        setTimeout(() => p.remove(), 800);
+      }
+    }
+
+    // 4. Timeline Intersection Observer
+    const timelineObserver = new IntersectionObserver((entries, observer) => {
+      const leftItems = [];
+      const rightItems = [];
+
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const item = entry.target;
+          if (item.classList.contains('is-visible')) return;
+
+          const col = item.closest('.timeline-col');
+          if (col) {
+            if (col.classList.contains('col-left')) {
+              leftItems.push(item);
+            } else {
+              rightItems.push(item);
+            }
+          }
+          observer.unobserve(item);
+        }
+      });
+
+      const sortFn = (a, b) => a.getBoundingClientRect().top - b.getBoundingClientRect().top;
+      leftItems.sort(sortFn);
+      rightItems.sort(sortFn);
+
+      const triggerItem = (item, index) => {
+        const staggerDelay = index * 0.12;
+        item.classList.add('is-visible');
+
+        const marker = item.querySelector('.timeline-marker');
+        const line = item.querySelector('.timeline-item-line');
+        const card = item.querySelector('.timeline-card');
+        const badge = item.querySelector('.timeline-badge');
+
+        if (marker) {
+          marker.style.animationDelay = `${staggerDelay}s`;
+          setTimeout(() => {
+            spawnParticles(marker);
+          }, staggerDelay * 1000);
+        }
+        if (line) {
+          line.style.transitionDelay = `${staggerDelay + 0.5}s`;
+        }
+        if (card) {
+          card.style.transitionDelay = `${staggerDelay + 0.7}s`;
+          setTimeout(() => {
+            card.style.transitionDelay = '';
+          }, (staggerDelay + 1.2) * 1000);
+        }
+        if (badge) {
+          badge.style.animationDelay = `${staggerDelay + 0.8}s`;
+        }
+      };
+
+      leftItems.forEach((item, index) => triggerItem(item, index));
+      rightItems.forEach((item, index) => triggerItem(item, index));
+    }, { threshold: 0.25 });
+
+    document.querySelectorAll('.timeline-item').forEach(item => {
+      timelineObserver.observe(item);
+    });
   });
 </script>
 </body>
