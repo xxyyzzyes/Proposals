@@ -2411,10 +2411,7 @@
         </div>
       </div>
 
-      <svg class="mouse-icon scroll-reveal" id="scroll-to-portraits" width="23" height="37" viewBox="0 0 23 37" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="1.5" y="1.5" width="20" height="34" rx="10" stroke="white" stroke-opacity="0.4" stroke-width="2"/>
-        <circle cx="11.5" cy="11.5" r="3.5" fill="var(--brand-light)"/>
-      </svg>
+
     </div>
   </div>
 </section>
@@ -2622,7 +2619,7 @@
           <!-- Dynamic Ponytail -->
           <path d="M87,55 Q75,65 65,75" stroke="white" stroke-width="3.5" stroke-linecap="round" fill="none" id="anim-ponytail"/>
           <circle cx="100" cy="55" r="15" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="3" id="anim-head"/>
-          <line x1="87" y1="52" x2="113" y2="52" stroke="var(--brand)" stroke-width="4" stroke-linecap="round" id="anim-headband"/>
+          <line x1="87" y1="52" x2="113" y2="52" stroke="white" stroke-width="4" stroke-linecap="round" id="anim-headband"/>
           <line x1="100" y1="85" x2="140" y2="85" stroke="white" stroke-width="4" stroke-linecap="round" id="anim-arm-r"/>
           <line x1="100" y1="85" x2="60" y2="85" stroke="white" stroke-width="4" stroke-linecap="round" id="anim-arm-l"/>
           <line x1="100" y1="130" x2="120" y2="175" stroke="white" stroke-width="4" stroke-linecap="round" id="anim-leg-r"/>
@@ -2701,7 +2698,7 @@
           <path d="M100,80 Q75,105 60,140 Q85,120 100,125" fill="rgba(255,255,255,0.15)" stroke="white" stroke-width="2.5" stroke-linecap="round" id="anim-xia-cape"/>
           <line x1="100" y1="85" x2="140" y2="85" stroke="white" stroke-width="4" stroke-linecap="round" id="anim-xia-arm-r"/>
           <!-- Sword -->
-          <line x1="140" y1="85" x2="175" y2="85" stroke="#f6f6f6" stroke-width="3" stroke-linecap="round" id="anim-xia-sword"/>
+          <line x1="140" y1="85" x2="175" y2="85" stroke="white" stroke-width="3" stroke-linecap="round" id="anim-xia-sword"/>
           <line x1="100" y1="85" x2="60" y2="85" stroke="white" stroke-width="4" stroke-linecap="round" id="anim-xia-arm-l"/>
           <line x1="100" y1="130" x2="120" y2="175" stroke="white" stroke-width="4" stroke-linecap="round" id="anim-xia-leg-r"/>
           <line x1="100" y1="130" x2="80" y2="175" stroke="white" stroke-width="4" stroke-linecap="round" id="anim-xia-leg-l"/>
@@ -2846,8 +2843,7 @@
     mobToggle.addEventListener('click', () => floatingNav.classList.toggle('mobile-menu-active'));
   }
   function toggleMobileMenu() { floatingNav.classList.remove('mobile-menu-active'); }
-  const scrollIcon = document.getElementById('scroll-to-portraits');
-  if (scrollIcon) scrollIcon.addEventListener('click', () => document.getElementById('acts-of-kindness').scrollIntoView({ behavior: 'smooth' }));
+
 
   // ─── HASH ROUTER FOR SUBPAGES ───
   function handleHashChange() {
