@@ -1,0 +1,3119 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#d0331c">
+<meta name="description" content="S.O.S 徐氏姊妹 × 經典殿堂 — 100% 娛樂金句與懷舊互動數位展演館">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="SOS 經典殿堂">
+<link rel="manifest" href="manifest.json">
+<title>S·O·S 徐氏姊妹 × 娛樂百分百 數位互動展演館</title>
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+<style>
+  /* ─── JETONBANK DESIGN SYSTEM (AUTHENTIC WARM PALETTE) ─── */
+  :root {
+    --bg: #ffffff;
+    --surface: #f6f6f6;
+    --surface-hover: #ffe8e5;
+    --brand: #d0331c;
+    --brand-light: #f73b20;
+    --brand-hero: #f3624e;
+    --brand-dark: #c71a02;
+    --text: #1a1a1a;
+    --text-muted: rgba(10, 10, 10, 0.55);
+    --text-on-brand: #fcfdff;
+    --border: rgba(0, 0, 0, 0.08);
+    --radius-card: 1.25rem;
+    --radius-btn: 2.8125rem;
+    --glass-nav: rgba(255, 255, 255, 0.87);
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+  }
+
+  body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    overflow-x: hidden;
+    line-height: 1.6;
+  }
+
+  /* Light section alternation like JetonBank */
+  .section-light {
+    background: #f9f9f9;
+  }
+
+  /* ─── SCROLL REVEAL ANIMATION (BASE) ─── */
+  .scroll-reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .scroll-reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ─── JETONBANK MULTI-ANIMATION SYSTEM ─── */
+
+  /* 1. Slide from LEFT */
+  .reveal-left {
+    opacity: 0;
+    transform: translateX(-60px);
+    transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .reveal-left.visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  /* 2. Slide from RIGHT */
+  .reveal-right {
+    opacity: 0;
+    transform: translateX(60px);
+    transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .reveal-right.visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  /* 3. Scale UP from slightly smaller */
+  .reveal-scale {
+    opacity: 0;
+    transform: scale(0.88);
+    transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .reveal-scale.visible {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  /* 4. Stagger children (parent class) — children animate with delay */
+  .stagger-parent .stagger-child {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .stagger-parent.visible .stagger-child:nth-child(1) { transition-delay: 0s; opacity: 1; transform: translateY(0); }
+  .stagger-parent.visible .stagger-child:nth-child(2) { transition-delay: 0.1s; opacity: 1; transform: translateY(0); }
+  .stagger-parent.visible .stagger-child:nth-child(3) { transition-delay: 0.2s; opacity: 1; transform: translateY(0); }
+  .stagger-parent.visible .stagger-child:nth-child(4) { transition-delay: 0.3s; opacity: 1; transform: translateY(0); }
+  .stagger-parent.visible .stagger-child:nth-child(5) { transition-delay: 0.4s; opacity: 1; transform: translateY(0); }
+  .stagger-parent.visible .stagger-child:nth-child(6) { transition-delay: 0.5s; opacity: 1; transform: translateY(0); }
+
+  /* 5. Text clip reveal (JetonBank headline style) */
+  .reveal-text {
+    overflow: hidden;
+    display: block;
+  }
+  .reveal-text-inner {
+    display: inline-block;
+    transform: translateY(110%);
+    transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .reveal-text.visible .reveal-text-inner {
+    transform: translateY(0);
+  }
+
+  /* 6. Number Counter (static, JS animates) */
+  .counter-num {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 800;
+    color: var(--brand);
+    line-height: 1;
+  }
+  .counter-label {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-top: 0.4rem;
+    display: block;
+  }
+
+  /* Stats bar (JetonBank info strip style, for between sections) */
+  .stats-strip {
+    background: #fff0ee;
+    border: 1px solid rgba(208,51,28,0.12);
+    border-radius: 1rem;
+    padding: 2.5rem 3rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 2rem;
+    margin: 5rem 0;
+    flex-wrap: wrap;
+  }
+  .stats-item {
+    text-align: center;
+  }
+  .stats-divider {
+    width: 1px;
+    height: 4rem;
+    background: rgba(208,51,28,0.2);
+  }
+  @media (max-width: 768px) {
+    .stats-strip {
+      padding: 2rem;
+      gap: 1.5rem;
+    }
+    .stats-divider { display: none; }
+  }
+
+  /* 7. 3D Card Tilt (applied via JS on mousemove) */
+  .tilt-card {
+    transform-style: preserve-3d;
+    transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
+    transition: transform 0.1s ease-out;
+  }
+  .tilt-card-shine {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(255,255,255,0.12) 0%, transparent 60%);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .tilt-card:hover .tilt-card-shine {
+    opacity: 1;
+  }
+
+  /* Horizontal line separator (JetonBank uses these between sections) */
+  .section-line {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(208,51,28,0.2), transparent);
+    margin: 0;
+  }
+
+  /* ─── GLITCH SHAKE EFFECT ─── */
+  @keyframes shake {
+    0%, 100% { transform: translate(0, 0); }
+    10% { transform: translate(-4px, 4px) rotate(-0.5deg); }
+    30% { transform: translate(4px, -4px) rotate(0.5deg); }
+    50% { transform: translate(-4px, -4px) rotate(0.2deg); }
+    70% { transform: translate(4px, 4px) rotate(-0.2deg); }
+    90% { transform: translate(-2px, 2px); }
+  }
+  .shake-active {
+    animation: shake 0.4s infinite;
+  }
+
+  /* ─── TYPOGRAPHY UTILITIES ─── */
+  .section-tag {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--brand);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 1rem;
+    display: inline-block;
+  }
+
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 800;
+    line-height: 1.2;
+    color: var(--text);
+    margin-bottom: 1.5rem;
+  }
+
+  /* ─── JETONBANK CAPSULE BUTTONS ─── */
+  .bzGHEL {
+    border-radius: var(--radius-btn);
+    cursor: pointer;
+    padding: 0.2rem 1.69rem;
+    padding-right: 0.31rem;
+    display: inline-flex;
+    align-items: center;
+    font-size: 1rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background-color 0.3s, border-color 0.3s;
+    height: 3.375rem;
+  }
+
+  .bzGHEL span, .bzGHEL .icon-container {
+    display: inline-block;
+  }
+
+  /* Hover Double Slide Anim */
+  .bzGHEL:hover span {
+    animation: slide-up-out-in-text 0.5s forwards ease-in-out;
+  }
+  .bzGHEL:hover .icon-container {
+    animation: slide-up-out-in-icon 0.5s forwards ease-in-out;
+  }
+
+  @keyframes slide-up-out-in-text {
+    0% { transform: translateY(0); opacity: 1; }
+    49% { transform: translateY(-150%); opacity: 0; }
+    50% { transform: translateY(150%); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+  }
+  @keyframes slide-up-out-in-icon {
+    0% { transform: translateY(0); opacity: 1; }
+    49% { transform: translateY(-150%); opacity: 0; }
+    50% { transform: translateY(150%); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+  }
+
+  .bzGHEL .icon-container {
+    margin-left: 1.69rem;
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s;
+  }
+
+  .bzGHEL.white {
+    background: #f6f6f6;
+    color: var(--brand);
+  }
+  .bzGHEL.white .icon-container {
+    background: var(--brand);
+  }
+  .bzGHEL.white .icon-container path {
+    stroke: #f6f6f6;
+  }
+
+  .bzGHEL.blue {
+    background: var(--brand);
+    color: white;
+  }
+  .bzGHEL.blue .icon-container {
+    background: #fffffc;
+  }
+  .bzGHEL.blue .icon-container path {
+    stroke: var(--brand-dark);
+  }
+
+  .bzGHEL.darkblue {
+    background: var(--brand-dark);
+    color: white;
+  }
+  .bzGHEL.darkblue .icon-container {
+    background: rgba(255, 255, 255, 0.16);
+  }
+  .bzGHEL.darkblue .icon-container path {
+    stroke: white;
+  }
+
+  /* On-hero hero button (hero bg is coral, so use white button) */
+  .bzGHEL.hero-white {
+    background: #f6f6f6;
+    color: var(--brand-dark);
+  }
+  .bzGHEL.hero-white .icon-container {
+    background: var(--brand-dark);
+  }
+  .bzGHEL.hero-white .icon-container path {
+    stroke: white;
+  }
+
+  .bzGHEL.outline {
+    background: transparent;
+    color: var(--brand);
+    border: 1px solid rgba(208, 51, 28, 0.35);
+  }
+  .bzGHEL.outline .icon-container {
+    background: rgba(208, 51, 28, 0.1);
+  }
+  .bzGHEL.outline .icon-container path {
+    stroke: var(--brand);
+  }
+  .bzGHEL.outline:hover {
+    background: var(--surface-hover);
+    border-color: var(--brand);
+  }
+
+  /* ─── NAVIGATION BAR (FLOATING WHITE GLASS ISLAND — JETONBANK EXACT) ─── */
+  .jExEwY {
+    position: fixed;
+    z-index: 1000;
+    transition: top 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    top: -10rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: fit-content;
+    max-width: calc(100% - 3rem);
+  }
+  .jExEwY.menu-show {
+    top: 2rem;
+  }
+  .jExEwY.menu-hide {
+    top: -10rem;
+  }
+
+  header {
+    background: rgba(255, 255, 255, 0.1);
+    height: 4.5625rem;
+    border-radius: 100px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0px 8px 32px rgba(0, 0, 0, 0.15), inset 0px 1px 0px rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 0.5rem;
+    overflow: hidden;
+  }
+
+  /* Logo — dark red on white nav, exact JetonBank approach */
+  .logo {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #ffffff;
+    text-decoration: none;
+    letter-spacing: -0.05em;
+    transition: opacity 0.3s;
+  }
+  .logo:hover {
+    opacity: 0.85;
+  }
+
+  .menu-container {
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
+
+  header ul {
+    display: flex;
+    list-style: none;
+    height: 100%;
+  }
+
+  header ul > li {
+    border-right: 0.0625rem solid rgba(255, 255, 255, 0.15);
+    display: flex;
+    align-items: center;
+  }
+  header ul > li:last-child {
+    border-right: 0;
+  }
+
+  header ul > li a {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.125rem;
+    font-weight: 500;
+    text-decoration: none;
+    height: 4.5625rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 1.88rem;
+    padding-right: 1.88rem;
+    transition: background-color 0.25s, color 0.25s;
+  }
+  header ul > li a:hover {
+    background: rgba(255, 255, 255, 0.12);
+    color: #ffffff;
+  }
+
+  header ul > li a .sub-text {
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.6);
+    font-weight: 500;
+    line-height: 1.3125rem;
+  }
+
+  header .buttons {
+    margin-left: 3.06rem;
+    display: flex;
+    align-items: center;
+    gap: 0.88rem;
+  }
+
+  header .buttons a {
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 2rem;
+    height: 2.5rem;
+    line-height: 2.5rem;
+    display: inline-block;
+    padding: 0 1.5rem;
+    text-decoration: none;
+    transition: all 0.3s;
+  }
+
+  header .buttons .btn-login {
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.05);
+  }
+  header .buttons .btn-login:hover {
+    background: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.5);
+  }
+  header .buttons .btn-create {
+    background: #ffffff;
+    color: var(--brand-dark);
+    border: 1px solid #ffffff;
+  }
+  header .buttons .btn-create:hover {
+    background: rgba(255, 255, 255, 0.9);
+    color: var(--brand-dark);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  .mobile-menu-container {
+    display: none;
+  }
+
+  /* Mobile menu panel — JetonBank warm pink #ffe8e5 tint */
+  .mobile-menu-content {
+    display: none;
+    position: absolute;
+    width: 100%;
+    border-radius: 0rem 0rem 0.5rem 0.5rem;
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-top: none;
+    box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.2);
+    padding: 2.5rem;
+    max-height: calc(100vh - 5rem);
+    overflow-y: scroll;
+  }
+  .mobile-menu-content h3 {
+    color: rgba(255, 255, 255, 0.7);
+    font-family: 'Syne', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 400;
+    opacity: 0.8;
+    margin-bottom: 1rem;
+  }
+  .mobile-menu-content h3.mt-2 {
+    margin-top: 2rem;
+  }
+  .mobile-menu-content ul {
+    list-style: none;
+  }
+  .mobile-menu-content ul li a {
+    color: #ffffff;
+    font-size: 1.25rem;
+    font-weight: 500;
+    text-decoration: none;
+    line-height: 2.5;
+    display: block;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    transition: color 0.3s;
+  }
+  .mobile-menu-content ul li a:hover {
+    color: rgba(255, 255, 255, 0.8);
+  }
+  .mobile-menu-content .buttons {
+    display: flex;
+    gap: 0.94rem;
+    margin-top: 2.6rem;
+  }
+  .mobile-menu-content .buttons a {
+    text-align: center;
+    width: 50%;
+    border-radius: 2rem;
+    padding: 0.75rem 0;
+    text-decoration: none;
+    font-weight: 500;
+    display: block;
+    font-size: 1rem;
+    transition: all 0.3s;
+  }
+  .mobile-menu-content .buttons .btn-login {
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+  }
+  .mobile-menu-content .buttons .btn-login:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+  .mobile-menu-content .buttons .btn-create {
+    background: #ffffff;
+    color: var(--brand-dark);
+  }
+  .mobile-menu-content .buttons .btn-create:hover {
+    background: rgba(255, 255, 255, 0.9);
+  }
+
+  @media (max-width: 900px) {
+    .jExEwY {
+      width: fit-content;
+      max-width: calc(100% - 2rem);
+      top: 1rem;
+    }
+    .jExEwY.menu-show { top: 1rem; }
+    header {
+      height: 3.5rem;
+      padding: 0 0.5rem;
+    }
+    header ul > li a {
+      height: 3.5rem;
+      padding-left: 1rem;
+      padding-right: 1rem;
+      font-size: 0.95rem;
+    }
+    header ul > li a .sub-text {
+      font-size: 0.72rem;
+      line-height: 1.2;
+    }
+    .mobile-menu-container, .mobile-menu-content {
+      display: none !important;
+    }
+  }
+
+  /* ─── GRID LAYOUT & CONTAINERS ─── */
+  .custom-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .section-container {
+    padding: 8rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .grid-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+  @media (max-width: 900px) {
+    .grid-layout {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+  }
+
+  /* ─── HERO SECTION (JETONBANK AUTHENTIC — CORAL #f3624e BG, WHITE TEXT) ─── */
+  .jcSPJV {
+    position: relative;
+    background: #f3624e;
+    overflow: hidden;
+    padding-top: 2.31rem;
+    padding-bottom: 2rem;
+  }
+
+  /* JetonBank hero has a bg video; we replicate with animated mesh */
+  .hero-flow-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+      radial-gradient(ellipse at 20% 50%, rgba(255,120,90,0.35) 0%, transparent 55%),
+      radial-gradient(ellipse at 80% 20%, rgba(200,30,0,0.2) 0%, transparent 50%);
+    animation: flow-gradient 18s infinite alternate ease-in-out;
+    z-index: 0;
+    pointer-events: none;
+  }
+  @keyframes flow-gradient {
+    0% { opacity: 0.8; transform: scale(1); }
+    100% { opacity: 1; transform: scale(1.08); }
+  }
+
+  .jcSPJV .top {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+  }
+
+  /* JetonBank hero h1: 8rem, white, light weight */
+  .jcSPJV h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(3.5rem, 10vw, 8rem);
+    font-weight: 800;
+    line-height: 1.0;
+    color: #ffffff;
+    letter-spacing: -0.02em;
+    margin-top: 9.75rem;
+    margin-bottom: 2rem;
+  }
+  .jcSPJV h1 span {
+    color: rgba(255,255,255,0.85);
+  }
+
+  .jcSPJV .desc {
+    font-size: 1.25rem;
+    color: #ffffff;
+    font-weight: 400;
+    max-width: 700px;
+    margin: 0 auto 2.56rem auto;
+    line-height: 1.6875rem;
+  }
+
+  .jcSPJV .actions {
+    display: flex;
+    justify-content: center;
+    gap: 1.25rem;
+    margin-bottom: 2.56rem;
+  }
+  @media (max-width: 600px) {
+    .jcSPJV .actions {
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+    .jcSPJV .actions a {
+      width: 13.3125rem;
+      white-space: nowrap;
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  /* JetonBank Awards widget — translucent brand red over coral bg */
+  .awards-container {
+    height: 7.5rem;
+    margin-top: 5.13rem;
+    border-radius: 3.75rem;
+    background: rgba(208, 51, 28, 0.64);
+    backdrop-filter: blur(7.75px);
+    -webkit-backdrop-filter: blur(7.75px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 4.79rem;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .awards-icon-wrapper {
+    width: 7.5rem;
+    height: 7.5rem;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .awards-icon {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    animation: rotating 10s linear infinite;
+  }
+
+  .marquee-wrapper {
+    overflow: hidden;
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .marquee-content {
+    display: flex;
+    gap: 3rem;
+    animation: marquee-scroll 25s linear infinite;
+    white-space: nowrap;
+  }
+  .marquee-item {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-shrink: 0;
+  }
+  .marquee-item::before {
+    content: '✦';
+    color: rgba(255,255,255,0.6);
+  }
+
+  @keyframes marquee-scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  .mouse-icon {
+    width: 1.4375rem;
+    height: 2.6875rem;
+    opacity: 0.4;
+    margin: 5.5rem auto 0 auto;
+    cursor: pointer;
+    transition: opacity 0.3s, transform 0.3s;
+    display: block;
+  }
+  .mouse-icon:hover {
+    opacity: 0.7;
+    transform: translateY(4px);
+  }
+
+  /* ─── PORTRAITS (LIGHT SURFACE, JETONBANK CARD STYLE) ─── */
+  .intro-block {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .intro-block p {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+  }
+
+  /* ─── CLASSIC QUOTES SECTION (JETONBANK VERTICAL SCROLL STYLE) ─── */
+  .quotes-section {
+    background: #f3624e;
+    overflow: hidden;
+    padding: 0;
+    position: relative;
+  }
+
+  .quotes-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 700px;
+    align-items: stretch;
+    gap: 2rem;
+  }
+  @media (max-width: 900px) {
+    .quotes-layout {
+      min-height: auto;
+      gap: 1rem;
+    }
+  }
+
+  /* Right column — vertical ticker */
+  .quotes-ticker-wrap {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: stretch;
+    /* Gradient fade top and bottom — JetonBank exact effect */
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(0,0,0,0.4) 12%,
+      black 30%,
+      black 70%,
+      rgba(0,0,0,0.4) 88%,
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(0,0,0,0.4) 12%,
+      black 30%,
+      black 70%,
+      rgba(0,0,0,0.4) 88%,
+      transparent 100%
+    );
+  }
+  @media (max-width: 900px) {
+    .quotes-ticker-wrap {
+      height: 400px;
+    }
+  }
+
+  .quotes-ticker {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem 0;
+    width: 100%;
+  }
+  .quotes-ticker.ticker-left {
+    animation: ticker-scroll-reverse 26s linear infinite;
+  }
+  .quotes-ticker.ticker-right {
+    animation: ticker-scroll 22s linear infinite;
+  }
+  .quotes-ticker:hover {
+    animation-play-state: paused;
+  }
+
+  @keyframes ticker-scroll {
+    0%   { transform: translateY(0); }
+    100% { transform: translateY(-50%); }
+  }
+
+  @keyframes ticker-scroll-reverse {
+    0%   { transform: translateY(-50%); }
+    100% { transform: translateY(0); }
+  }
+
+  .ticker-quote {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(1.45rem, 2.4vw, 2.1rem);
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1.15;
+    padding: 1.4rem 2rem;
+    text-align: center;
+    white-space: normal;
+    transition: color 0.3s, transform 0.3s;
+    cursor: default;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+  }
+  .ticker-quote:hover {
+    color: #ffffff;
+    transform: translateX(8px);
+  }
+  @media (max-width: 900px) {
+    .ticker-quote {
+      padding: 1.2rem 0.5rem;
+      font-size: 1.35rem;
+      line-height: 1.15;
+    }
+  }
+
+
+
+  .premium-cell {
+    background: #f6f6f6;
+    border: 1px solid rgba(0,0,0,0.07);
+    border-radius: var(--radius-card);
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 0.95;
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    cursor: pointer;
+  }
+  .premium-cell:hover {
+    transform: translateY(-8px);
+    border-color: rgba(208, 51, 28, 0.4);
+    box-shadow: 0 15px 35px rgba(208, 51, 28, 0.15);
+  }
+
+  .svg-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .premium-cell:hover .svg-container {
+    transform: scale(1.04);
+  }
+
+  .portrait-svg {
+    width: 90%;
+    height: 90%;
+  }
+  /* Restyle portrait SVG strokes for light background */
+  .portrait-svg g {
+    stroke: var(--brand-dark);
+  }
+
+  /* Subtle glows for cards */
+  .cell-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    height: 60%;
+    background: radial-gradient(circle, rgba(208, 51, 28, 0.07) 0%, transparent 60%);
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.5s;
+  }
+  .premium-cell:hover .cell-glow {
+    opacity: 1;
+  }
+
+  /* Premium light glass speech bubble */
+  .speech-bubble {
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translate(-50%, 15px);
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(208, 51, 28, 0.25);
+    color: var(--brand-dark);
+    padding: 0.6rem 1rem;
+    border-radius: 0.75rem;
+    font-weight: 600;
+    font-size: 0.85rem;
+    z-index: 10;
+    pointer-events: none;
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    max-width: 90%;
+    width: max-content;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(208, 51, 28, 0.15);
+  }
+  .speech-bubble.show {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+
+  /* ─── FITNESS特訓 (COACH DEE — JETONBANK WARM CARD) ─── */
+  .fitness-card {
+    background: #f6f6f6;
+    border: 1px solid rgba(0,0,0,0.07);
+    border-radius: var(--radius-card);
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 4px 20px rgba(208,51,28,0.08);
+  }
+
+  .skeleton-container {
+    width: 100%;
+    max-width: 320px;
+    height: 320px;
+    background: #fff0ee;
+    border-radius: 1rem;
+    border: 1px solid rgba(208,51,28,0.12);
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 2.5rem;
+  }
+  .skeleton-svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .fitness-controls {
+    width: 100%;
+    text-align: center;
+  }
+  .fitness-label {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  /* Warm red slider */
+  .fitness-slider {
+    width: 100%;
+    appearance: none;
+    -webkit-appearance: none;
+    height: 6px;
+    background: rgba(208,51,28,0.15);
+    outline: none;
+    border-radius: 3px;
+    margin: 1.5rem 0;
+  }
+  .fitness-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 1.5rem;
+    height: 1.5rem;
+    background: var(--brand);
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(208, 51, 28, 0.4);
+    transition: transform 0.15s;
+  }
+  .fitness-slider::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
+  }
+
+  .fitness-bubble {
+    background: #fff0ee;
+    border: 1px solid rgba(208, 51, 28, 0.25);
+    padding: 1.25rem 2rem;
+    border-radius: 1rem;
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--brand-dark);
+    text-align: center;
+    line-height: 1.5;
+    position: relative;
+    max-width: 100%;
+    margin-top: 2rem;
+    box-shadow: 0 4px 15px rgba(208,51,28,0.1);
+    transition: transform 0.3s;
+  }
+  .fitness-bubble::before {
+    content: '“';
+    font-size: 3rem;
+    color: rgba(247, 59, 32, 0.2);
+    position: absolute;
+    top: -0.5rem;
+    left: 0.75rem;
+    line-height: 1;
+  }
+
+  /* ─── 仙女修煉手冊 (JETONBANK WARM FLIP CARDS) ─── */
+  .fairy-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 4rem;
+  }
+
+  .fairy-card-container {
+    perspective: 1000px;
+    aspect-ratio: 0.82;
+  }
+  .fairy-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+    transform-style: preserve-3d;
+    cursor: pointer;
+  }
+  .fairy-card-container.flipped .fairy-card-inner {
+    transform: rotateY(180deg);
+  }
+
+  .fairy-card-front, .fairy-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    border-radius: var(--radius-card);
+    border: 1px solid rgba(0,0,0,0.08);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+
+  .fairy-card-front {
+    background: #f6f6f6;
+    z-index: 2;
+  }
+  .fairy-card-front:hover {
+    border-color: rgba(208, 51, 28, 0.3);
+    box-shadow: 0 10px 30px rgba(208, 51, 28, 0.12);
+  }
+
+  .fairy-card-back {
+    background: linear-gradient(135deg, var(--brand) 0%, var(--brand-dark) 100%);
+    transform: rotateY(180deg);
+    border-color: rgba(208, 51, 28, 0.3);
+  }
+
+  .fairy-icon-box {
+    background: rgba(208, 51, 28, 0.08);
+    border: 1px solid rgba(208, 51, 28, 0.15);
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    transition: transform 0.3s;
+  }
+  .fairy-icon-box svg {
+    stroke: var(--brand);
+  }
+  .fairy-card-front:hover .fairy-icon-box {
+    transform: scale(1.1) rotate(5deg);
+  }
+
+  .fairy-rule-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--brand);
+    letter-spacing: 0.05em;
+  }
+
+  .fairy-rule-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 800;
+    line-height: 1.25;
+    margin-top: 1rem;
+    color: var(--text);
+  }
+
+  .fairy-hint-tag {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    align-self: flex-end;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+  .fairy-hint-tag::after {
+    content: '→';
+    transition: transform 0.3s;
+  }
+  .fairy-card-front:hover .fairy-hint-tag::after {
+    transform: translateX(4px);
+  }
+
+  .fairy-back-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    text-align: center;
+  }
+  .fairy-back-quote {
+    font-size: 1.25rem;
+    font-weight: 700;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+    color: white;
+  }
+  .fairy-back-desc {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.85);
+  }
+
+  /* ─── JUKEBOX (JETONBANK WARM CARD CONSOLE) ─── */
+  .jukebox-console {
+    background: #f6f6f6;
+    border: 1px solid rgba(0,0,0,0.07);
+    border-radius: var(--radius-card);
+    padding: 3rem;
+    box-shadow: 0 4px 24px rgba(208,51,28,0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .jukebox-screen {
+    background: #fff0ee;
+    border: 1px solid rgba(208,51,28,0.12);
+    padding: 2.5rem;
+    border-radius: 1rem;
+    height: 12rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .jukebox-lyrics {
+    font-size: 1.25rem;
+    font-weight: 500;
+    line-height: 1.6;
+    z-index: 2;
+    color: var(--brand-dark);
+  }
+
+  .jukebox-lyrics-sub {
+    font-size: 0.85rem;
+    color: var(--brand);
+    margin-top: 0.8rem;
+    font-weight: 700;
+    z-index: 2;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .jukebox-waveform {
+    display: flex;
+    gap: 4px;
+    height: 1.5rem;
+    align-items: flex-end;
+    margin-top: 1.2rem;
+    z-index: 2;
+  }
+  .wave-bar {
+    width: 3px;
+    height: 4px;
+    background: var(--brand);
+    border-radius: 1px;
+    animation: wave-motion 0.8s infinite alternate ease-in-out;
+  }
+  @keyframes wave-motion {
+    0% { height: 4px; }
+    100% { height: 24px; }
+  }
+
+  .jukebox-controls {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+  @media (max-width: 600px) {
+    .jukebox-controls {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .jukebox-btn {
+    background: white;
+    border: 1px solid rgba(0,0,0,0.08);
+    color: var(--text);
+    border-radius: var(--radius-btn);
+    padding: 0.8rem 1rem;
+    font-weight: 500;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-align: center;
+  }
+  .jukebox-btn:hover {
+    background: #ffe8e5;
+    border-color: rgba(208,51,28,0.3);
+    color: var(--brand-dark);
+  }
+  .jukebox-btn.active {
+    background: var(--brand);
+    color: white;
+    border-color: var(--brand);
+    box-shadow: 0 4px 15px rgba(208, 51, 28, 0.3);
+  }
+
+  .interactive-lyric {
+    display: inline-block;
+    color: var(--brand);
+    border-bottom: 1px dashed var(--brand);
+    cursor: pointer;
+    padding: 0 0.2rem;
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .interactive-lyric:hover {
+    color: var(--brand-dark);
+    border-bottom-color: var(--brand-dark);
+  }
+
+  /* ─── 留言貼紙牆 (FAN LEDGER — JETONBANK WARM GRID BOARD) ─── */
+  .sticker-wall-container {
+    border: 1px solid rgba(0,0,0,0.07);
+    border-radius: var(--radius-card);
+    background: #fff8f7;
+    height: 550px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: inset 0 4px 20px rgba(208,51,28,0.05);
+    background-image: radial-gradient(rgba(208,51,28,0.06) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+
+  /* Warm paper-style draggable cards */
+  .sticker {
+    position: absolute;
+    padding: 1.25rem;
+    border-radius: 0.75rem;
+    border: 1px solid rgba(208, 51, 28, 0.12);
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    font-weight: 400;
+    font-size: 0.9rem;
+    color: var(--text);
+    width: 240px;
+    cursor: grab;
+    z-index: 10;
+    transform: rotate(var(--rot, 0deg));
+    user-select: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    box-shadow: 0 4px 16px rgba(208, 51, 28, 0.1);
+    transition: box-shadow 0.15s, border-color 0.15s;
+  }
+  .sticker:active {
+    cursor: grabbing;
+    z-index: 100 !important;
+    border-color: var(--brand);
+    box-shadow: 0 10px 30px rgba(208, 51, 28, 0.2);
+  }
+
+  .sticker-author {
+    font-size: 0.75rem;
+    color: var(--brand);
+    border-top: 1px solid rgba(208, 51, 28, 0.1);
+    padding-top: 0.6rem;
+    display: flex;
+    justify-content: space-between;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  /* Warm JetonBank accent colors */
+  .sticker-classic { border-left: 3px solid var(--brand); }
+  .sticker-pink { border-left: 3px solid #e91e8c; }
+  .sticker-cyan { border-left: 3px solid #0097a7; }
+  .sticker-lime { border-left: 3px solid #689f38; }
+  .sticker-orange { border-left: 3px solid #e65100; }
+
+  /* Creator panel */
+  .creator-panel {
+    background: #f6f6f6;
+    border: 1px solid rgba(0,0,0,0.07);
+    border-radius: var(--radius-card);
+    padding: 2.5rem;
+    box-shadow: 0 4px 20px rgba(208,51,28,0.06);
+  }
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+  .form-group label {
+    display: block;
+    font-weight: 700;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--brand);
+    margin-bottom: 0.5rem;
+  }
+  .form-input, .form-select, .form-textarea {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 1px solid rgba(0,0,0,0.1);
+    background: #ffffff;
+    color: var(--text);
+    border-radius: 0.5rem;
+    font-family: inherit;
+    font-weight: 400;
+    outline: none;
+    transition: all 0.3s;
+  }
+  .form-input:focus, .form-select:focus, .form-textarea:focus {
+    border-color: var(--brand);
+    box-shadow: 0 0 0 3px rgba(208,51,28,0.1);
+  }
+  .form-textarea {
+    resize: none;
+    height: 90px;
+  }
+
+  .btn-submit {
+    background: var(--brand);
+    color: white;
+    border: 0;
+    border-radius: var(--radius-btn);
+    padding: 1rem;
+    width: 100%;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.15s;
+    box-shadow: 0 4px 15px rgba(208, 51, 28, 0.3);
+  }
+  .btn-submit:hover {
+    background: var(--brand-dark);
+  }
+  .btn-submit:active {
+    transform: scale(0.98);
+  }
+
+  /* ─── FOOTER (JETONBANK CORE REPLICA) ─── */
+  .footer-container {
+    position: relative;
+    margin-top: 0;
+    padding-bottom: 0;
+  }
+
+  .footer-inner {
+    color: white;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 0;
+    border-radius: 0;
+    background: #0f0f0f;
+    padding: 5rem 3.5rem 2rem 3.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 -10px 40px rgba(0,0,0,0.5);
+  }
+
+  /* Trigger Jeton Overlap Motion - Disabled */
+  .footer-container.footer-animate .footer-inner {
+    transform: none;
+  }
+
+  .footer-inner-flex {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 3rem;
+  }
+
+  .footer-menu-group {
+    display: flex;
+    gap: 5.37rem;
+    flex-wrap: wrap;
+  }
+  @media (max-width: 768px) {
+    .footer-menu-group {
+      gap: 3rem;
+    }
+  }
+
+  .footer-menu .title {
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 700;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .footer-menu ul {
+    list-style: none;
+  }
+
+  .footer-menu ul li a {
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 0.95rem;
+    text-decoration: none;
+    line-height: 2.2;
+    transition: color 0.2s;
+  }
+  .footer-menu ul li a:hover {
+    color: white;
+    text-decoration: underline;
+  }
+
+  .footer-address {
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .footer-address a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+  }
+  .footer-address a:hover {
+    text-decoration: underline;
+  }
+
+  /* ─── SOS SOCIAL LIST ─── */
+  .sos-social-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+  .sos-social-list li a {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 0.2s, transform 0.2s;
+  }
+  .sos-social-list li a:hover {
+    color: #ffffff;
+    text-decoration: none;
+    transform: translateX(4px);
+  }
+  .sos-social-icon {
+    width: 2rem;
+    height: 2rem;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.25s, transform 0.25s;
+  }
+  .sos-social-list li a:hover .sos-social-icon {
+    background: var(--brand);
+    transform: scale(1.08);
+  }
+  .sos-social-icon svg {
+    width: 1rem;
+    height: 1rem;
+    fill: #ffffff;
+  }
+
+  .footer-desc {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.8rem;
+    line-height: 1.6;
+    margin-top: 6.58rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    padding-top: 2rem;
+  }
+  .copyright {
+    text-align: center;
+    margin-top: 2.5rem;
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  .footer-logo-watermark {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 14rem;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.03;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .footer-logo-watermark span {
+    font-family: 'Syne', sans-serif;
+    font-size: 18vw;
+    font-weight: 800;
+    line-height: 0.7;
+    color: white;
+  }
+
+  @media (max-width: 768px) {
+    .footer-container {
+      margin-top: 0;
+    }
+    .footer-inner {
+      padding-top: 4rem;
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+
+  /* ─── TOAST NOTIFICATION ─── */
+  .toast {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: rgba(255, 255, 255, 0.97);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(208, 51, 28, 0.3);
+    color: var(--brand-dark);
+    padding: 0.8rem 1.5rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 20px rgba(208, 51, 28, 0.2);
+    z-index: 8000;
+    transform: translateY(100px);
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .toast.show {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  /* ─── SCREEN BITE JAW EFFECT ─── */
+  .bite-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9000;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    pointer-events: none;
+    display: none;
+  }
+  .bite-jaw {
+    height: 50vh;
+    background: var(--brand);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .bite-jaw.top {
+    transform: translateY(-100%);
+    background-image: linear-gradient(45deg, #f3624e 25%, transparent 25%),
+                      linear-gradient(-45deg, #f3624e 25%, transparent 25%);
+    background-size: 40px 100px;
+    background-position: bottom;
+    background-repeat: repeat-x;
+  }
+  .bite-jaw.bottom {
+    transform: translateY(100%);
+    background-image: linear-gradient(45deg, transparent 75%, #f3624e 75%),
+                      linear-gradient(-45deg, transparent 75%, #f3624e 75%);
+    background-size: 40px 100px;
+    background-position: top;
+    background-repeat: repeat-x;
+  }
+  .bite-overlay.active {
+    display: flex;
+  }
+  .bite-overlay.active .bite-jaw.top {
+    transform: translateY(0);
+  }
+  .bite-overlay.active .bite-jaw.bottom {
+    transform: translateY(0);
+  }
+
+  /* ─── PWA BANNER ─── */
+  #pwa-banner {
+    position: fixed;
+    bottom: 2rem;
+    left: 2rem;
+    background: rgba(255, 255, 255, 0.97);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(208, 51, 28, 0.2);
+    border-radius: var(--radius-card);
+    padding: 1.5rem;
+    max-width: 400px;
+    z-index: 5000;
+    transform: translateY(150px);
+    opacity: 0;
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 8px 30px rgba(208, 51, 28, 0.15);
+  }
+  #pwa-banner.show {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  .pwa-text {
+    font-size: 0.95rem;
+    font-weight: 500;
+    margin-bottom: 1.2rem;
+    color: var(--text);
+  }
+  .pwa-actions {
+    display: flex;
+    gap: 0.8rem;
+    justify-content: flex-end;
+  }
+  .btn-pwa-install {
+    background: var(--brand);
+    color: white;
+    border: 0;
+    padding: 0.5rem 1.2rem;
+    border-radius: var(--radius-btn);
+    font-weight: 500;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  .btn-pwa-install:hover {
+    background: var(--brand-dark);
+  }
+  .btn-pwa-dismiss {
+    background: #f6f6f6;
+    border: 1px solid rgba(0,0,0,0.08);
+    color: var(--text);
+    padding: 0.5rem 1.2rem;
+    border-radius: var(--radius-btn);
+    font-weight: 500;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  .btn-pwa-dismiss:hover {
+    background: #ffe8e5;
+    color: var(--brand);
+  }
+
+  /* ════════════════════════════════════════════════════════
+     2026 COMMUNITY BOARD DESIGN SYSTEM
+     Magnetic Cursor · Liquid Glass · Bento Grid · Masonry
+  ════════════════════════════════════════════════════════ */
+
+  /* ─── MAGNETIC CURSOR ─── */
+  .mag-cursor {
+    width: 12px; height: 12px;
+    background: var(--brand);
+    border-radius: 50%;
+    position: fixed;
+    top: 0; left: 0;
+    pointer-events: none;
+    z-index: 99999;
+    transition: width 0.3s cubic-bezier(0.16,1,0.3,1), height 0.3s cubic-bezier(0.16,1,0.3,1), background 0.3s;
+    mix-blend-mode: multiply;
+    will-change: transform;
+  }
+  .mag-cursor.hovered {
+    width: 44px; height: 44px;
+    background: rgba(208,51,28,0.12);
+    border: 1.5px solid var(--brand);
+  }
+
+  /* ─── TEACHER DEE SECTION ─── */
+  .teacher-dee-section {
+    background: var(--brand-hero);
+    padding: 0 0 5rem 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .teacher-dee-section::before {
+    content: '';
+    position: absolute;
+    top: -40%;
+    right: -15%;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(255,255,255,0.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .community-section-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    padding-top: 5rem;
+    padding-bottom: 3rem;
+  }
+  @media (max-width: 900px) {
+    .community-section-header { grid-template-columns: 1fr; gap: 2rem; }
+  }
+
+  .community-tag {
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: rgba(255,255,255,0.6);
+    display: block;
+    margin-bottom: 1rem;
+  }
+  .community-headline {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 800;
+    color: #fff;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+  }
+  .community-desc {
+    font-size: 1.05rem;
+    color: rgba(255,255,255,0.78);
+    line-height: 1.7;
+    max-width: 480px;
+  }
+
+  /* Auto-play fitness animation card */
+  .fitness-anim-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .fitness-anim-card {
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,0.22);
+    border-radius: 2rem;
+    padding: 2.5rem;
+    text-align: center;
+    max-width: 300px;
+    width: 100%;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.25), 0 20px 60px rgba(0,0,0,0.12);
+  }
+  .fitness-anim-svg {
+    width: 160px;
+    height: 160px;
+    display: block;
+    margin: 0 auto;
+    transition: all 0.4s cubic-bezier(0.16,1,0.3,1);
+  }
+  .fitness-anim-quote {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: rgba(255,255,255,0.88);
+    margin-top: 1.5rem;
+    line-height: 1.55;
+    min-height: 3em;
+    transition: opacity 0.35s;
+  }
+
+  /* ─── BENTO PILL TAG FILTER ROW ─── */
+  .tag-filter-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-bottom: 2rem;
+  }
+  .tag-pill {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 600;
+    padding: 0.5rem 1.1rem;
+    border-radius: 2rem;
+    border: 1.5px solid rgba(255,255,255,0.28);
+    background: rgba(255,255,255,0.09);
+    color: rgba(255,255,255,0.82);
+    cursor: pointer;
+    transition: all 0.22s cubic-bezier(0.16,1,0.3,1);
+    position: relative;
+    overflow: hidden;
+    will-change: transform;
+  }
+  .tag-pill:hover {
+    background: rgba(255,255,255,0.2);
+    border-color: rgba(255,255,255,0.55);
+    transform: translateY(-3px) scale(1.04);
+    color: #fff;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+  }
+  .tag-pill.active {
+    background: #fff;
+    color: var(--brand-dark);
+    border-color: #fff;
+    font-weight: 700;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 14px rgba(0,0,0,0.14);
+  }
+
+  /* ─── LIQUID GLASS POST FORM ─── */
+  .post-form-wrap { margin-bottom: 2.5rem; }
+  .glass-form {
+    background: rgba(255,255,255,0.11);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255,255,255,0.22);
+    border-radius: 1.5rem;
+    padding: 1.8rem;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.28);
+  }
+  .xia-form { background: rgba(255,255,255,0.09); }
+  .post-form-top {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 0.8rem;
+    margin-bottom: 0.8rem;
+  }
+  @media (max-width: 600px) { .post-form-top { grid-template-columns: 1fr; } }
+
+  .glass-input, .glass-select, .glass-textarea {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    background: rgba(255,255,255,0.13);
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 0.75rem;
+    padding: 0.8rem 1rem;
+    color: #fff;
+    outline: none;
+    transition: border-color 0.25s, background 0.25s, box-shadow 0.25s;
+    width: 100%;
+  }
+  .glass-input::placeholder, .glass-textarea::placeholder {
+    color: rgba(255,255,255,0.42);
+  }
+  .glass-input:focus, .glass-select:focus, .glass-textarea:focus {
+    border-color: rgba(255,255,255,0.65);
+    background: rgba(255,255,255,0.2);
+    box-shadow: 0 0 0 3px rgba(255,255,255,0.1);
+  }
+  .glass-select option { background: var(--brand-dark); color: white; }
+  .glass-textarea {
+    resize: vertical;
+    min-height: 100px;
+    margin-bottom: 1rem;
+    display: block;
+  }
+  .post-submit-btn {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    padding: 0.85rem 2rem;
+    border-radius: 2rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.16,1,0.3,1);
+    letter-spacing: 0.02em;
+  }
+  .dee-submit {
+    background: #fff;
+    color: var(--brand-dark);
+  }
+  .dee-submit:hover {
+    background: rgba(255,255,255,0.9);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.18);
+  }
+  .xia-submit {
+    background: rgba(255,255,255,0.88);
+    color: var(--brand-dark);
+  }
+  .xia-submit:hover {
+    background: #fff;
+    transform: translateY(-3px);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.15);
+  }
+
+  /* ─── MASONRY POST WALL ─── */
+  .posts-masonry {
+    columns: 3;
+    column-gap: 1.2rem;
+    margin-top: 0.5rem;
+  }
+  @media (max-width: 1100px) { .posts-masonry { columns: 2; } }
+  @media (max-width: 600px)  { .posts-masonry { columns: 1; } }
+
+  .post-card {
+    break-inside: avoid;
+    background: rgba(255,255,255,0.12);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 1.1rem;
+    padding: 1.3rem 1.4rem;
+    margin-bottom: 1.2rem;
+    transition: transform 0.3s cubic-bezier(0.16,1,0.3,1), box-shadow 0.3s;
+    animation: card-pop-in 0.55s cubic-bezier(0.16,1,0.3,1) both;
+  }
+  .post-card:hover {
+    transform: translateY(-5px) scale(1.01);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.18);
+  }
+  @keyframes card-pop-in {
+    from { opacity:0; transform: translateY(22px) scale(0.96); }
+    to   { opacity:1; transform: translateY(0) scale(1); }
+  }
+  .post-tag-badge {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 0.25rem 0.7rem;
+    border-radius: 1rem;
+    background: rgba(255,255,255,0.18);
+    color: #fff;
+    margin-bottom: 0.8rem;
+    letter-spacing: 0.04em;
+  }
+  .post-content {
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.9);
+    line-height: 1.65;
+    margin-bottom: 0.9rem;
+  }
+  .post-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.77rem;
+    color: rgba(255,255,255,0.45);
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 0.7rem;
+  }
+  .post-author { font-weight: 600; color: rgba(255,255,255,0.72); }
+
+  /* ─── XIA NU SECTION ─── */
+  .xia-nu-section {
+    background: var(--brand-hero);
+    padding: 5rem 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .xia-nu-section::before {
+    content: '';
+    position: absolute;
+    bottom: -30%;
+    left: -10%;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .xia-nu-header { margin-bottom: 3rem; }
+
+  /* ─── XIA NU CREED FLIP CARDS ─── */
+  .xia-creed-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.2rem;
+    margin-bottom: 1rem;
+  }
+  @media (max-width: 1100px) { .xia-creed-grid { grid-template-columns: repeat(2,1fr); } }
+  @media (max-width: 600px)  { .xia-creed-grid { grid-template-columns: 1fr; } }
+
+  .xia-creed-card {
+    height: 268px;
+    perspective: 1000px;
+    cursor: pointer;
+  }
+  .xia-card-inner {
+    width: 100%; height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.72s cubic-bezier(0.16,1,0.3,1);
+  }
+  .xia-creed-card.flipped .xia-card-inner {
+    transform: rotateY(180deg);
+  }
+  .xia-card-front, .xia-card-back {
+    position: absolute;
+    inset: 0;
+    border-radius: 1.25rem;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1.8rem 1.5rem;
+    text-align: center;
+  }
+  .xia-card-front {
+    background: rgba(255,255,255,0.12);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border: 1px solid rgba(255,255,255,0.24);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.28), 0 8px 24px rgba(0,0,0,0.08);
+    transition: transform 0.25s;
+  }
+  .xia-creed-card:not(.flipped):hover .xia-card-front {
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.35), 0 20px 50px rgba(0,0,0,0.16);
+  }
+  .xia-card-back {
+    background: #fff;
+    transform: rotateY(180deg);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+  }
+  .xia-rule-num {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: rgba(255,255,255,0.45);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 0.8rem;
+  }
+  .xia-icon-wrap {
+    width: 54px; height: 54px;
+    background: rgba(255,255,255,0.14);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+  .xia-card-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 0.8rem;
+  }
+  .xia-flip-hint {
+    font-size: 0.7rem;
+    color: rgba(255,255,255,0.4);
+    letter-spacing: 0.06em;
+  }
+  .xia-back-quote {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: var(--brand-dark);
+    margin-bottom: 0.8rem;
+    line-height: 1.3;
+  }
+  .xia-back-desc {
+    font-size: 0.84rem;
+    color: var(--text-muted);
+    line-height: 1.62;
+  }
+
+  /* ─── KINETIC TYPOGRAPHY HERO MARQUEE ─── */
+  .hero-kinetic-title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    overflow: hidden;
+    margin-top: 10rem;
+    margin-bottom: 2rem;
+    user-select: none;
+  }
+  .kinetic-row {
+    display: flex;
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 0.15rem 0;
+  }
+  .kinetic-track {
+    display: flex;
+    width: 200vw; /* 2 items of 100vw each */
+    will-change: transform;
+  }
+  .kinetic-item {
+    width: 100vw;
+    text-align: center;
+    flex-shrink: 0;
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(3.5rem, 10vw, 8rem);
+    font-weight: 800;
+    text-transform: uppercase;
+    color: #ffffff;
+    letter-spacing: -0.02em;
+    line-height: 1.0;
+  }
+  .kinetic-item span {
+    color: rgba(255, 255, 255, 0.85);
+  }
+  .row-left .kinetic-track {
+    animation: scroll-left 20s linear infinite;
+  }
+  .row-right .kinetic-track {
+    animation: scroll-right 20s linear infinite;
+  }
+  @keyframes scroll-left {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100vw); }
+  }
+  @keyframes scroll-right {
+    0% { transform: translateX(-100vw); }
+    100% { transform: translateX(0); }
+  }
+  /* ─── ACTS OF KINDNESS SECTION (善行時間軸) ─── */
+  .kindness-section {
+    background: #fff0ee;
+    padding: 6rem 0;
+    position: relative;
+  }
+  .kindness-header {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 4rem auto;
+  }
+  .kindness-tag {
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--brand);
+    display: block;
+    margin-bottom: 0.8rem;
+  }
+  .kindness-headline {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 800;
+    color: var(--brand-dark);
+    line-height: 1.2;
+    margin-bottom: 1.2rem;
+    letter-spacing: -0.02em;
+  }
+  .kindness-desc {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.05rem;
+    color: rgba(0, 0, 0, 0.65);
+    line-height: 1.6;
+  }
+  
+  .timeline-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    position: relative;
+  }
+  
+  .timeline-col {
+    position: relative;
+  }
+  
+  .col-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--brand-dark);
+    margin-bottom: 2.5rem;
+    text-align: center;
+    border-bottom: 2px solid rgba(208, 51, 28, 0.1);
+    padding-bottom: 0.8rem;
+  }
+  
+  .timeline-track-wrapper {
+    position: relative;
+    padding-left: 2rem;
+  }
+  
+  .timeline-line {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 4px;
+    width: 2px;
+    background: var(--brand);
+  }
+  
+  .timeline-items {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+  
+  .timeline-item {
+    position: relative;
+  }
+  
+  .timeline-marker {
+    position: absolute;
+    left: -2rem;
+    top: 1.2rem;
+    width: 10px;
+    height: 10px;
+    background: var(--brand);
+    border-radius: 50%;
+    transform: translateX(-4px); /* aligns dot to center of 2px line */
+    z-index: 2;
+  }
+  
+  .timeline-card {
+    background: #ffffff;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    box-shadow: 0 4px 12px rgba(208, 51, 28, 0.04);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s;
+    border: 1px solid rgba(208, 51, 28, 0.06);
+  }
+  .timeline-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(208, 51, 28, 0.08);
+  }
+  
+  .timeline-badge {
+    display: inline-block;
+    background: var(--brand);
+    color: #ffffff;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 0.25rem 0.8rem;
+    border-radius: 2rem;
+    margin-bottom: 0.8rem;
+  }
+  
+  .timeline-content {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    color: #333333;
+    line-height: 1.6;
+    margin: 0;
+  }
+  
+  @media (max-width: 768px) {
+    .timeline-grid {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+    .col-title {
+      margin-bottom: 1.5rem;
+    }
+  }
+  
+  /* ─── TAB ROUTER VISIBILITY ─── */
+  .tab-content {
+    display: none !important;
+  }
+  .tab-content.tab-active {
+    display: block !important;
+  }
+  /* Active Nav Link Styling */
+  header ul > li a.active {
+    background: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    font-weight: 700;
+  }
+  header ul > li a.active .sub-text {
+    color: #ffffff;
+    opacity: 0.95;
+  }
+
+</style>
+</head>
+
+<body>
+
+<!-- Giant Bite Overlay -->
+<div class="bite-overlay" id="bite-overlay">
+  <div class="bite-jaw top"></div>
+  <div class="bite-jaw bottom"></div>
+</div>
+
+<!-- Floating Navigation Bar -->
+<div class="jExEwY" id="floating-nav">
+  <header>
+    <nav class="menu-container" aria-label="Main navigation">
+      <ul>
+        <li><a href="#hero">SOS Home<span class="sub-text">主頁</span></a></li>
+        <li><a href="#teacher-dee">徐老師<span class="sub-text">Teacher Dee</span></a></li>
+        <li><a href="#xia-nu">俠女傳奇<span class="sub-text">Xia Nu Legend</span></a></li>
+      </ul>
+    </nav>
+  </header>
+</div>
+
+<!-- Home Tab Content Group -->
+<div id="home-tab" class="tab-content tab-active">
+
+<!-- Hero Section -->
+<section class="jcSPJV" id="hero">
+  <div class="hero-flow-bg"></div>
+  <div class="custom-container">
+    <div class="top">
+      <!-- Kinetic Typography Marquee Title (5 Rows Centered Scrolling) -->
+      <div class="hero-kinetic-title scroll-reveal">
+        <!-- Row 1: THE -->
+        <div class="kinetic-row row-left">
+          <div class="kinetic-track">
+            <div class="kinetic-item">THE</div>
+            <div class="kinetic-item">THE</div>
+          </div>
+        </div>
+        
+        <!-- Row 2: MEMORIAL -->
+        <div class="kinetic-row row-right">
+          <div class="kinetic-track">
+            <div class="kinetic-item">MEMORIAL</div>
+            <div class="kinetic-item">MEMORIAL</div>
+          </div>
+        </div>
+        
+        <!-- Row 3: FOR -->
+        <div class="kinetic-row row-left">
+          <div class="kinetic-track">
+            <div class="kinetic-item">FOR</div>
+            <div class="kinetic-item">FOR</div>
+          </div>
+        </div>
+
+        <!-- Row 4: ALL S.O.S -->
+        <div class="kinetic-row row-right">
+          <div class="kinetic-track">
+            <div class="kinetic-item">ALL <span>S.O.S</span></div>
+            <div class="kinetic-item">ALL <span>S.O.S</span></div>
+          </div>
+        </div>
+
+        <!-- Row 5: FANS -->
+        <div class="kinetic-row row-left">
+          <div class="kinetic-track">
+            <div class="kinetic-item">FANS</div>
+            <div class="kinetic-item">FANS</div>
+          </div>
+        </div>
+      </div>
+
+      <svg class="mouse-icon scroll-reveal" id="scroll-to-portraits" width="23" height="37" viewBox="0 0 23 37" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="1.5" y="1.5" width="20" height="34" rx="10" stroke="white" stroke-opacity="0.4" stroke-width="2"/>
+        <circle cx="11.5" cy="11.5" r="3.5" fill="var(--brand-light)"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- Acts of Kindness Section (Double Column Timeline) -->
+<section class="kindness-section" id="acts-of-kindness">
+  <div class="custom-container">
+    <div class="kindness-header scroll-reveal">
+      <span class="kindness-tag">Acts of Kindness</span>
+      <h2 class="kindness-headline">寶藏女孩</h2>
+    </div>
+    
+    <div class="timeline-grid">
+      <!-- Left Column (Big S) -->
+      <div class="timeline-col col-left scroll-reveal">
+        <h3 class="col-title">大S · 徐熙媛</h3>
+        <div class="timeline-track-wrapper">
+          <div class="timeline-line"></div>
+          <div class="timeline-items">
+            <!-- Item 1 -->
+            <div class="timeline-item">
+              <div class="timeline-marker"></div>
+              <div class="timeline-card">
+                <span class="timeline-badge">2008年</span>
+                <p class="timeline-content">四川汶川地震，大小S姐妹透過台灣紅十字會向災區捐款 91 萬元人民幣</p>
+              </div>
+            </div>
+            <!-- Item 2 -->
+            <div class="timeline-item">
+              <div class="timeline-marker"></div>
+              <div class="timeline-card">
+                <span class="timeline-badge">2009年</span>
+                <p class="timeline-content">擔任美棉環保大使，每售出一件作品即捐部分收益給中華環境保護基金會</p>
+              </div>
+            </div>
+            <!-- Item 3 -->
+            <div class="timeline-item">
+              <div class="timeline-marker"></div>
+              <div class="timeline-card">
+                <span class="timeline-badge">2020年</span>
+                <p class="timeline-content">疫情期間在日本掃購 1 萬個口罩捐贈武漢，說「希望孩子懂人道主義精神」</p>
+              </div>
+            </div>
+            <!-- Item 4 -->
+            <div class="timeline-item">
+              <div class="timeline-marker"></div>
+              <div class="timeline-card">
+                <span class="timeline-badge">2021年</span>
+                <p class="timeline-content">馬來西亞醫療物資吃緊，好友賈永婕發起呼吸器募款，大S不問細節立即捐款 100 萬台幣並堅持匿名——當時她正身陷離婚官司壓力</p>
+              </div>
+            </div>
+            <!-- Item 5 -->
+            <div class="timeline-item">
+              <div class="timeline-marker"></div>
+              <div class="timeline-card">
+                <span class="timeline-badge">私人善行</span>
+                <p class="timeline-content">一名大陸單親媽媽私訊求助，女兒罹患白血病，大S二話不說捐出 30 萬人民幣（約 133 萬台幣），對方說「只有她理我」</p>
+              </div>
+            </div>
+            <!-- Item 6 -->
+            <div class="timeline-item">
+              <div class="timeline-marker"></div>
+              <div class="timeline-card">
+                <span class="timeline-badge">私人善行</span>
+                <p class="timeline-content">陝西大學生因家變繳不起學費，大S捐助 2 萬人民幣（約 8.8 萬台幣），12 年後對方仍感念在心</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Right Column (Little S) -->
+      <div class="timeline-col col-right scroll-reveal">
+        <h3 class="col-title">小S · 徐熙娣</h3>
+        <div class="timeline-track-wrapper">
+          <div class="timeline-line"></div>
+          <div class="timeline-items">
+            <!-- Item 1 -->
+            <div class="timeline-item">
+              <div class="timeline-marker"></div>
+              <div class="timeline-card">
+                <span class="timeline-badge">長期行善</span>
+                <p class="timeline-content">在世界展望協會認養 30 位兒童，每月固定約 10 萬台幣；與大S在慈濟聯名帳戶固定捐 50 萬台幣，幫助弱勢婦童就醫，年捐超過 200 萬台幣</p>
+              </div>
+            </div>
+            <!-- Item 2 -->
+            <div class="timeline-item">
+              <div class="timeline-marker"></div>
+              <div class="timeline-card">
+                <span class="timeline-badge">2015年</span>
+                <p class="timeline-content">擔任家扶基金會兒童保護大使；生日許願每年捐 100 萬給受虐兒童；八仙塵爆後以姐妹倆名義合捐 100 萬給燙傷傷患</p>
+              </div>
+            </div>
+            <!-- Item 3 -->
+            <div class="timeline-item">
+              <div class="timeline-marker"></div>
+              <div class="timeline-card">
+                <span class="timeline-badge">2020年</span>
+                <p class="timeline-content">擔任心路基金會年度愛心大使，疫情衝擊導致基金會缺口達 4000 萬元，小S當場豪氣捐出 100 萬元</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Classic Quotes Section (JetonBank vertical scroll style) -->
+<section class="quotes-section" id="portraits-section">
+  <div class="quotes-layout custom-container">
+    <!-- Left Column: Ticker with half of the quotes (Reverse scrolling) -->
+    <div class="quotes-ticker-wrap reveal-left" aria-label="經典金句滾動展示左">
+      <div class="quotes-ticker ticker-left" id="quotes-ticker-left">
+        <div class="ticker-quote">我是仙女下凡，仙女是不需要大便的！</div>
+        <div class="ticker-quote">我是一匹狼，出去就是要咬人的！</div>
+        <div class="ticker-quote">肚子收緊！屁股夾緊！提臀！</div>
+        <div class="ticker-quote">任何人都不准摸我的頭髮！</div>
+        <div class="ticker-quote">我的心跟著你，搖呀搖呀搖！</div>
+        <!-- Duplicate set for seamless loop -->
+        <div class="ticker-quote" aria-hidden="true">我是仙女下凡，仙女是不需要大便的！</div>
+        <div class="ticker-quote" aria-hidden="true">我是一匹狼，出去就是要咬人的！</div>
+        <div class="ticker-quote" aria-hidden="true">肚子收緊！屁股夾緊！提臀！</div>
+        <div class="ticker-quote" aria-hidden="true">任何人都不准摸我的頭髮！</div>
+        <div class="ticker-quote" aria-hidden="true">我的心跟著你，搖呀搖呀搖！</div>
+      </div>
+    </div>
+
+    <!-- Right Column: Ticker with other half of the quotes (Normal scrolling) -->
+    <div class="quotes-ticker-wrap reveal-right" aria-label="經典金句滾動展示右">
+      <div class="quotes-ticker ticker-right" id="quotes-ticker-right">
+        <div class="ticker-quote">你想死啊？！真的假的？！</div>
+        <div class="ticker-quote">徐老師一出馬，便知有沒有！</div>
+        <div class="ticker-quote">我要白得像日光燈一樣！</div>
+        <div class="ticker-quote">誰說世上沒有醜女人，only 懶女人？</div>
+        <div class="ticker-quote">只要毒不死，老娘也敢吃！</div>
+        <!-- Duplicate set for seamless loop -->
+        <div class="ticker-quote" aria-hidden="true">你想死啊？！真的假的？！</div>
+        <div class="ticker-quote" aria-hidden="true">徐老師一出馬，便知有沒有！</div>
+        <div class="ticker-quote" aria-hidden="true">我要白得像日光燈一樣！</div>
+        <div class="ticker-quote" aria-hidden="true">誰說世上沒有醜女人，only 懶女人？</div>
+        <div class="ticker-quote" aria-hidden="true">只要毒不死，老娘也敢吃！</div>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- 徐老師專區 (小S · Teacher Dee Community) -->
+<!-- ═══════════════════════════════════════ -->
+<section class="teacher-dee-section tab-content" id="teacher-dee">
+  <!-- Section Header -->
+  <div class="community-section-header custom-container">
+    <div class="reveal-left">
+      <span class="community-tag">Teacher Dee · 小S</span>
+      <h2 class="community-headline">徐老師專區</h2>
+      <p class="community-desc">動起來！屁股夾緊！跟著小S的生活頻道，分享你的健身日記、乾杯時刻與人生哲學！</p>
+    </div>
+    <!-- Auto-playing fitness animation -->
+    <div class="fitness-anim-wrap reveal-right">
+      <div class="fitness-anim-card">
+        <svg class="fitness-anim-svg" id="anim-skeleton" viewBox="0 0 200 200">
+          <line x1="100" y1="80" x2="100" y2="130" stroke="white" stroke-width="5" stroke-linecap="round" id="anim-torso"/>
+          <circle cx="100" cy="55" r="15" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="3" id="anim-head"/>
+          <line x1="87" y1="52" x2="113" y2="52" stroke="var(--brand)" stroke-width="4" stroke-linecap="round" id="anim-headband"/>
+          <line x1="100" y1="85" x2="140" y2="85" stroke="white" stroke-width="4" stroke-linecap="round" id="anim-arm-r"/>
+          <line x1="100" y1="85" x2="60" y2="85" stroke="white" stroke-width="4" stroke-linecap="round" id="anim-arm-l"/>
+          <line x1="100" y1="130" x2="120" y2="175" stroke="white" stroke-width="4" stroke-linecap="round" id="anim-leg-r"/>
+          <line x1="100" y1="130" x2="80" y2="175" stroke="white" stroke-width="4" stroke-linecap="round" id="anim-leg-l"/>
+        </svg>
+        <div class="fitness-anim-quote" id="anim-quote">「跟著徐老師動！吃！動！預備開始！」</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tag Filter Row -->
+  <div class="custom-container">
+    <div class="tag-filter-row" id="dee-tag-row">
+      <button class="tag-pill active" data-tag="all" onclick="filterPosts('dee','all',this)">全部</button>
+      <button class="tag-pill" data-tag="動起來" onclick="filterPosts('dee','動起來',this)">🏋️ 動起來</button>
+      <button class="tag-pill" data-tag="乾杯時刻" onclick="filterPosts('dee','乾杯時刻',this)">🍷 乾杯時刻</button>
+      <button class="tag-pill" data-tag="吃好的" onclick="filterPosts('dee','吃好的',this)">🍽️ 吃好的</button>
+      <button class="tag-pill" data-tag="我有話說" onclick="filterPosts('dee','我有話說',this)">💬 我有話說</button>
+      <button class="tag-pill" data-tag="時髦態度" onclick="filterPosts('dee','時髦態度',this)">💃 時髦態度</button>
+      <button class="tag-pill" data-tag="放過自己" onclick="filterPosts('dee','放過自己',this)">🌊 放過自己</button>
+    </div>
+
+    <!-- Post Form (Liquid Glass) -->
+    <div class="post-form-wrap scroll-reveal">
+      <div class="post-form glass-form">
+        <div class="post-form-top">
+          <input type="text" class="glass-input" id="dee-author" placeholder="你的暱稱（例：小S腦殘粉）" maxlength="16">
+          <select class="glass-select" id="dee-tag">
+            <option value="動起來">🏋️ 動起來</option>
+            <option value="乾杯時刻">🍷 乾杯時刻</option>
+            <option value="吃好的">🍽️ 吃好的</option>
+            <option value="我有話說">💬 我有話說</option>
+            <option value="時髦態度">💃 時髦態度</option>
+            <option value="放過自己">🌊 放過自己</option>
+          </select>
+        </div>
+        <textarea class="glass-textarea" id="dee-content" placeholder="分享你的故事、心情、金句，或任何跟小S有關的一切... (限150字)" maxlength="150"></textarea>
+        <button class="post-submit-btn dee-submit" onclick="submitPost('dee')">發布到徐老師專區 ✦</button>
+      </div>
+    </div>
+
+    <!-- Posts Masonry Wall -->
+    <div class="posts-masonry" id="dee-posts"></div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- 俠女傳奇 (大S · Xia Nu Community)       -->
+<!-- ═══════════════════════════════════════ -->
+<section class="xia-nu-section tab-content" id="xia-nu">
+  <!-- Section Header -->
+  <div class="custom-container xia-nu-header">
+    <div class="reveal-left" style="max-width:600px">
+      <span class="community-tag">Xia Nu Legend · 大S</span>
+      <h2 class="community-headline">俠女傳奇</h2>
+      <p class="community-desc">仙女下凡，俠女出征。翻閱大S的俠女信條，並在下方留下屬於你的仙女故事！</p>
+    </div>
+  </div>
+
+  <!-- 俠女信條 4 Cards (方案B) -->
+  <div class="custom-container">
+    <div class="xia-creed-grid stagger-parent" id="fairy-grid">
+      <!-- Card 1 -->
+      <div class="xia-creed-card stagger-child" onclick="flipCard(this)">
+        <div class="xia-card-inner">
+          <div class="xia-card-front">
+            <span class="xia-rule-num">CREED 01</span>
+            <div class="xia-icon-wrap">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+            </div>
+            <h3 class="xia-card-title">仙女免大便律例</h3>
+            <span class="xia-flip-hint">翻閱信條 ↗</span>
+          </div>
+          <div class="xia-card-back">
+            <div class="xia-back-quote">「仙女是不大便的！」</div>
+            <p class="xia-back-desc">真正的仙女不會讓人看到自己世俗的一面，永遠維持不可逼視的神秘美感。</p>
+          </div>
+        </div>
+      </div>
+      <!-- Card 2 -->
+      <div class="xia-creed-card stagger-child" onclick="flipCard(this)">
+        <div class="xia-card-inner">
+          <div class="xia-card-front">
+            <span class="xia-rule-num">CREED 02</span>
+            <div class="xia-icon-wrap">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <h3 class="xia-card-title">魔髮神聖天條</h3>
+            <span class="xia-flip-hint">翻閱信條 ↗</span>
+          </div>
+          <div class="xia-card-back">
+            <div class="xia-back-quote">「任何人都不准摸我的頭髮！」</div>
+            <p class="xia-back-desc">大S的秀髮是禁區。男友摟肩可以，碰到頭髮絕對不行！必須維持完美順滑！</p>
+          </div>
+        </div>
+      </div>
+      <!-- Card 3 -->
+      <div class="xia-creed-card stagger-child" onclick="flipCard(this)">
+        <div class="xia-card-inner">
+          <div class="xia-card-front">
+            <span class="xia-rule-num">CREED 03</span>
+            <div class="xia-icon-wrap">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+            </div>
+            <h3 class="xia-card-title">極致美白規約</h3>
+            <span class="xia-flip-hint">翻閱信條 ↗</span>
+          </div>
+          <div class="xia-card-back">
+            <div class="xia-back-quote">「我要白得像日光燈一樣！」</div>
+            <p class="xia-back-desc">防曬抹得像藝妓。只要能白，就算是毒藥，只要毒不死，老娘也敢吃！</p>
+          </div>
+        </div>
+      </div>
+      <!-- Card 4 -->
+      <div class="xia-creed-card stagger-child" onclick="flipCard(this)">
+        <div class="xia-card-inner">
+          <div class="xia-card-front">
+            <span class="xia-rule-num">CREED 04</span>
+            <div class="xia-icon-wrap">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><path d="M12 2L2 22h20L12 2z"/></svg>
+            </div>
+            <h3 class="xia-card-title">霸氣俠女法則</h3>
+            <span class="xia-flip-hint">翻閱信條 ↗</span>
+          </div>
+          <div class="xia-card-back">
+            <div class="xia-back-quote">「我是一匹狼，出去就要咬人！」</div>
+            <p class="xia-back-desc">骨子裡是家裡的頂樑柱。對家人極致寵愛，對外隨時展現強悍戰鬥力！</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tag Filter Row -->
+    <div class="tag-filter-row" id="xia-tag-row" style="margin-top:3rem">
+      <button class="tag-pill active" data-tag="all" onclick="filterPosts('xia','all',this)">全部</button>
+      <button class="tag-pill" data-tag="俠女出征" onclick="filterPosts('xia','俠女出征',this)">⚔️ 俠女出征</button>
+      <button class="tag-pill" data-tag="美容聖典" onclick="filterPosts('xia','美容聖典',this)">🧴 美容聖典</button>
+      <button class="tag-pill" data-tag="美白狂魔" onclick="filterPosts('xia','美白狂魔',this)">🌸 美白狂魔</button>
+      <button class="tag-pill" data-tag="仙女日記" onclick="filterPosts('xia','仙女日記',this)">📖 仙女日記</button>
+      <button class="tag-pill" data-tag="不爽就說" onclick="filterPosts('xia','不爽就說',this)">👊 不爽就說</button>
+      <button class="tag-pill" data-tag="戲劇回顧" onclick="filterPosts('xia','戲劇回顧',this)">🎭 戲劇回顧</button>
+    </div>
+
+    <!-- Post Form -->
+    <div class="post-form-wrap scroll-reveal">
+      <div class="post-form glass-form xia-form">
+        <div class="post-form-top">
+          <input type="text" class="glass-input" id="xia-author" placeholder="你的暱稱（例：大S忠實粉絲）" maxlength="16">
+          <select class="glass-select" id="xia-tag">
+            <option value="俠女出征">⚔️ 俠女出征</option>
+            <option value="美容聖典">🧴 美容聖典</option>
+            <option value="美白狂魔">🌸 美白狂魔</option>
+            <option value="仙女日記">📖 仙女日記</option>
+            <option value="不爽就說">👊 不爽就說</option>
+            <option value="戲劇回顧">🎭 戲劇回顧</option>
+          </select>
+        </div>
+        <textarea class="glass-textarea" id="xia-content" placeholder="分享你的俠女故事、美容秘訣、大S金句，或對世界的宣言... (限150字)" maxlength="150"></textarea>
+        <button class="post-submit-btn xia-submit" onclick="submitPost('xia')">發布到俠女傳奇 ✦</button>
+      </div>
+    </div>
+
+    <!-- Posts Masonry Wall -->
+    <div class="posts-masonry" id="xia-posts"></div>
+  </div>
+</section>
+
+
+<div class="footer-container" id="footer-section">
+  <div class="footer-inner">
+    <div class="footer-inner-flex">
+      <div>
+        <a href="#" class="logo" style="color: white; margin-bottom: 2rem; display: block;">S·O·S</a>
+      </div>
+      <div class="footer-menu-group">
+        <div class="footer-menu">
+          <div class="title">金曲回顧</div>
+          <ul>
+            <li><a href="#jukebox">十分鐘的戀愛</a></li>
+            <li><a href="#jukebox">變態少女想人記</a></li>
+            <li><a href="#jukebox">愛不持久</a></li>
+            <li><a href="#jukebox">姐妹情深</a></li>
+          </ul>
+        </div>
+        <div class="footer-menu">
+          <div class="title">展演分類</div>
+          <ul>
+            <li><a href="#hero">肖像特寫</a></li>
+            <li><a href="#teacher-dee">徐老師體操</a></li>
+            <li><a href="#xia-nu">大S美白手冊</a></li>
+            <li><a href="#teacher-dee">經典留言牆</a></li>
+          </ul>
+        </div>
+        <div class="footer-menu">
+          <div class="title">sos訊息</div>
+          <ul class="sos-social-list">
+            <li>
+              <a href="https://www.facebook.com/barbie.hsu.official" target="_blank" rel="noopener noreferrer">
+                <span class="sos-social-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                </span>
+                <span>大S Facebook</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.instagram.com/hsushiyuan/" target="_blank" rel="noopener noreferrer">
+                <span class="sos-social-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+                </span>
+                <span>大S Instagram</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.facebook.com/DeeHsuOfficial" target="_blank" rel="noopener noreferrer">
+                <span class="sos-social-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                </span>
+                <span>小S Facebook</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.instagram.com/elephantdee/" target="_blank" rel="noopener noreferrer">
+                <span class="sos-social-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+                </span>
+                <span>小S Instagram</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer-desc">
+      <p class="copyright">Copyright, SOS Fans Club 2026. All rights reserved.</p>
+    </div>
+  </div>
+  
+  <div class="footer-logo-watermark">
+    <span>S·O·S</span>
+  </div>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<!-- PWA Install Banner -->
+<div id="pwa-banner">
+  <p class="pwa-text">✦ 將「SOS 經典展演館」加到手機主畫面以利隨時欣賞？</p>
+  <div class="pwa-actions">
+    <button class="btn-pwa-install" id="pwa-install-btn">立即安裝</button>
+    <button class="btn-pwa-dismiss" onclick="document.getElementById('pwa-banner').classList.remove('show')">稍後</button>
+  </div>
+</div>
+
+<!-- Scripts -->
+<script>
+  // ─── NAV SCROLL CONTROLLER ───
+  let lastScrollTop = 0;
+  const floatingNav = document.getElementById('floating-nav');
+  floatingNav.classList.add('menu-show');
+  window.addEventListener('scroll', () => {
+    let s = window.pageYOffset || document.documentElement.scrollTop;
+    if (s > lastScrollTop && s > 150) {
+      floatingNav.classList.remove('menu-show');
+      floatingNav.classList.add('menu-hide');
+    } else {
+      floatingNav.classList.remove('menu-hide');
+      floatingNav.classList.add('menu-show');
+    }
+    lastScrollTop = s <= 0 ? 0 : s;
+  });
+  const mobToggle = document.getElementById('mobile-menu-toggle');
+  if (mobToggle) {
+    mobToggle.addEventListener('click', () => floatingNav.classList.toggle('mobile-menu-active'));
+  }
+  function toggleMobileMenu() { floatingNav.classList.remove('mobile-menu-active'); }
+  const scrollIcon = document.getElementById('scroll-to-portraits');
+  if (scrollIcon) scrollIcon.addEventListener('click', () => document.getElementById('acts-of-kindness').scrollIntoView({ behavior: 'smooth' }));
+
+  // ─── HASH ROUTER FOR SUBPAGES ───
+  function handleHashChange() {
+    const hash = window.location.hash || '#hero';
+    
+    // Hide all tabs
+    document.querySelectorAll('.tab-content').forEach(el => {
+      el.classList.remove('tab-active');
+    });
+    
+    // De-activate all nav links
+    document.querySelectorAll('#floating-nav ul li a').forEach(a => {
+      a.classList.remove('active');
+    });
+    
+    // Show selected tab and activate its link
+    if (hash === '#teacher-dee') {
+      const tab = document.getElementById('teacher-dee');
+      if (tab) tab.classList.add('tab-active');
+      const navLink = document.querySelector('#floating-nav ul li a[href="#teacher-dee"]');
+      if (navLink) navLink.classList.add('active');
+    } else if (hash === '#xia-nu') {
+      const tab = document.getElementById('xia-nu');
+      if (tab) tab.classList.add('tab-active');
+      const navLink = document.querySelector('#floating-nav ul li a[href="#xia-nu"]');
+      if (navLink) navLink.classList.add('active');
+    } else {
+      // Default to home tab
+      const tab = document.getElementById('home-tab');
+      if (tab) tab.classList.add('tab-active');
+      const navLink = document.querySelector('#floating-nav ul li a[href="#hero"]');
+      if (navLink) navLink.classList.add('active');
+      
+      // If deep linking to a specific section on the home page
+      if (hash && hash !== '#hero' && hash !== '#home-tab') {
+        const targetElement = document.querySelector(hash);
+        if (targetElement) {
+          setTimeout(() => {
+            targetElement.scrollIntoView({ behavior: 'smooth' });
+          }, 50);
+          return;
+        }
+      }
+    }
+    
+    // Scroll to top on transition
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }
+
+  window.addEventListener('hashchange', handleHashChange);
+  window.addEventListener('DOMContentLoaded', handleHashChange);
+  if (document.readyState === 'complete' || document.readyState === 'interactive') {
+    handleHashChange();
+  }
+
+  // ─── SCROLL REVEAL OBSERVER ───
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObserver.unobserve(e.target); } });
+  }, { threshold: 0.12, rootMargin: '0px 0px -50px 0px' });
+  document.querySelectorAll('.scroll-reveal,.reveal-left,.reveal-right,.reveal-scale,.reveal-text,.stagger-parent').forEach(el => revealObserver.observe(el));
+
+  // ─── COUNTER ANIMATION ───
+  const counterObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.querySelectorAll('.counter-num').forEach(n => {
+          const t = parseInt(n.dataset.target), d = t > 1000 ? 1800 : 1200, step = t / (d/16);
+          let c = 0;
+          const timer = setInterval(() => { c = Math.min(c+step,t); n.textContent = Math.floor(c).toLocaleString(); if(c>=t){n.textContent=t.toLocaleString();clearInterval(timer);} }, 16);
+        });
+        counterObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.3 });
+  const ss = document.getElementById('stats-strip');
+  if (ss) counterObs.observe(ss);
+
+  // ─── PARALLAX HERO ───
+  const heroBg = document.querySelector('.hero-flow-bg');
+  if (heroBg) window.addEventListener('scroll', () => {
+    const h = document.querySelector('.jcSPJV');
+    if (h && window.pageYOffset < h.offsetHeight) heroBg.style.transform = `translateY(${window.pageYOffset*0.3}px)`;
+  }, { passive: true });
+
+  // ─── RIPPLE EFFECT ───
+  document.addEventListener('click', function(e) {
+    const btn = e.target.closest('.bzGHEL,.post-submit-btn,.tag-pill');
+    if (!btn) return;
+    const r = document.createElement('span'), rect = btn.getBoundingClientRect(), sz = Math.max(rect.width,rect.height);
+    r.style.cssText = `position:absolute;width:${sz}px;height:${sz}px;left:${e.clientX-rect.left-sz/2}px;top:${e.clientY-rect.top-sz/2}px;background:rgba(255,255,255,0.25);border-radius:50%;transform:scale(0);animation:ripple-x 0.5s cubic-bezier(0.16,1,0.3,1) forwards;pointer-events:none;`;
+    btn.style.position='relative'; btn.style.overflow='hidden';
+    btn.appendChild(r); setTimeout(()=>r.remove(),500);
+  });
+  const rs = document.createElement('style'); rs.textContent='@keyframes ripple-x{to{transform:scale(2.5);opacity:0}}'; document.head.appendChild(rs);
+
+  // ─── MAGNETIC CURSOR ───
+  const cur = document.createElement('div'); cur.className='mag-cursor'; document.body.appendChild(cur);
+  let mx=0,my=0,cx=0,cy=0;
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
+  (function animCur(){cx+=(mx-cx)*0.18;cy+=(my-cy)*0.18;cur.style.transform=`translate(${cx-6}px,${cy-6}px)`;requestAnimationFrame(animCur);})();
+  document.querySelectorAll('a,button,.tag-pill,.xia-creed-card,.bzGHEL').forEach(el=>{
+    el.addEventListener('mouseenter',()=>cur.classList.add('hovered'));
+    el.addEventListener('mouseleave',()=>cur.classList.remove('hovered'));
+  });
+
+  // ─── FLIP CARD (Xia Nu Creed Cards) ───
+  function flipCard(el) { el.classList.toggle('flipped'); }
+
+  // ─── 3D TILT on Xia Creed Cards ───
+  document.querySelectorAll('.xia-creed-card').forEach(card => {
+    card.addEventListener('mousemove', e => {
+      if (card.classList.contains('flipped')) return;
+      const r = card.getBoundingClientRect(), x=e.clientX-r.left, y=e.clientY-r.top, cx=r.width/2, cy=r.height/2;
+      card.querySelector('.xia-card-inner').style.transform=`perspective(800px) rotateX(${((y-cy)/cy)*-6}deg) rotateY(${((x-cx)/cx)*6}deg)`;
+    });
+    card.addEventListener('mouseleave',()=>{ if(!card.classList.contains('flipped')) card.querySelector('.xia-card-inner').style.transform=''; });
+  });
+
+  // ─── AUTO PLAY FITNESS ANIMATION ───
+  const poses=[
+    {torso:[100,80,100,130],armR:[100,85,140,85],armL:[100,85,60,85],legR:[100,130,120,175],legL:[100,130,80,175],head:[100,55],q:'「跟著徐老師動！吃！動！預備開始！」'},
+    {torso:[100,80,105,130],armR:[100,85,135,55],armL:[100,85,65,115],legR:[105,130,122,175],legL:[105,130,88,175],head:[95,55],q:'「左右扭腰！把腰內肉給我通通扭碎！」'},
+    {torso:[100,110,100,145],armR:[100,115,140,115],armL:[100,115,60,115],legR:[100,145,135,175],legL:[100,145,65,175],head:[100,85],q:'「跨步深蹲！大腿跟地面要平行！」'},
+    {torso:[100,80,90,130],armR:[100,85,135,120],armL:[100,85,75,45],legR:[90,130,130,170],legL:[90,130,75,175],head:[105,52],q:'「屁股夾緊！不然會下垂到膝蓋！」'},
+    {torso:[100,70,100,120],armR:[100,75,140,35],armL:[100,75,60,35],legR:[100,120,140,165],legL:[100,120,60,165],head:[100,45],q:'「跳起來！誰說世上沒有醜女人只有懶女人！」'}
+  ];
+  let pIdx=0;
+  function runAnim(){
+    const p=poses[pIdx%poses.length];
+    const t=document.getElementById('anim-torso'),h=document.getElementById('anim-head');
+    const ar=document.getElementById('anim-arm-r'),al=document.getElementById('anim-arm-l');
+    const lr=document.getElementById('anim-leg-r'),ll=document.getElementById('anim-leg-l');
+    const hb=document.getElementById('anim-headband');
+    const q=document.getElementById('anim-quote');
+    if(!t)return;
+    t.setAttribute('x1',p.torso[0]);t.setAttribute('y1',p.torso[1]);t.setAttribute('x2',p.torso[2]);t.setAttribute('y2',p.torso[3]);
+    ar.setAttribute('x1',p.armR[0]);ar.setAttribute('y1',p.armR[1]);ar.setAttribute('x2',p.armR[2]);ar.setAttribute('y2',p.armR[3]);
+    al.setAttribute('x1',p.armL[0]);al.setAttribute('y1',p.armL[1]);al.setAttribute('x2',p.armL[2]);al.setAttribute('y2',p.armL[3]);
+    lr.setAttribute('x1',p.legR[0]);lr.setAttribute('y1',p.legR[1]);lr.setAttribute('x2',p.legR[2]);lr.setAttribute('y2',p.legR[3]);
+    ll.setAttribute('x1',p.legL[0]);ll.setAttribute('y1',p.legL[1]);ll.setAttribute('x2',p.legL[2]);ll.setAttribute('y2',p.legL[3]);
+    h.setAttribute('cx',p.head[0]);h.setAttribute('cy',p.head[1]);
+    if(hb){
+      hb.setAttribute('x1',p.head[0]-13);hb.setAttribute('y1',p.head[1]-3);
+      hb.setAttribute('x2',p.head[0]+13);hb.setAttribute('y2',p.head[1]-3);
+    }
+    if(q){q.style.opacity=0;setTimeout(()=>{q.textContent=p.q;q.style.opacity=1;},200);}
+    pIdx++;
+  }
+  runAnim(); setInterval(runAnim,1800);
+
+  // ─── SEED POST DATA ───
+  const deeSeed=[
+    {id:'d1',author:'健身狂熱者',tag:'動起來',content:'今天跟著徐老師練了一個小時的提臀！屁股夾緊真的很有感！大腿現在根本走不動路 哈哈哈',time:'2026/06/01'},
+    {id:'d2',author:'小S粉絲團',tag:'乾杯時刻',content:'週五下班必備！冰鎮的台啤配上徐老師的金句，這就是我的小確幸人生 🍺 乾！',time:'2026/06/02'},
+    {id:'d3',author:'美食探險家',tag:'吃好的',content:'去了小S推薦的燒肉店，果然不錯！吃好吃的東西、喝點酒，這是她說的小確幸，我完全認同！',time:'2026/06/03'},
+    {id:'d4',author:'真性情粉絲',tag:'我有話說',content:'小S說「活得relax最重要，不需要在意別人的眼光」，這句話我存在心裡好幾年了，謝謝她。',time:'2026/06/04'},
+    {id:'d5',author:'時尚觀察員',tag:'時髦態度',content:'小S的穿搭從來不追主流，就是「只有我可以這樣」的霸氣。跟她學了很多敢穿敢配！',time:'2026/06/05'},
+    {id:'d6',author:'自在生活家',tag:'放過自己',content:'最近壓力很大，反覆聽了小S說的「不要搞砸人生，其他都可以接受」，真的很有用。放過自己吧。',time:'2026/06/06'}
+  ];
+  const xiaSeed=[
+    {id:'x1',author:'俠女學徒',tag:'俠女出征',content:'昨天在路上看到有人亂丟垃圾還嗆路人，立馬上前制止！想到大S說的仗義執言，我就是要當俠女！',time:'2026/06/01'},
+    {id:'x2',author:'保養研究所',tag:'美容聖典',content:'照大S的說法：保濕是萬能的！每天早晚用溫水洗臉加厚敷，三個月後朋友都問我換了什麼保養品 ✨',time:'2026/06/02'},
+    {id:'x3',author:'美白追求者',tag:'美白狂魔',content:'大S的美白哲學：維他命C + 防曬 + 珍珠粉。我已經照做半年了，確實白了一個色號！日光燈目標中🌟',time:'2026/06/03'},
+    {id:'x4',author:'深夜書寫人',tag:'仙女日記',content:'大S說仙女是不能讓人看到世俗那面的。我決定今天起，維持神秘感，只讓人看到我最好的一面。',time:'2026/06/04'},
+    {id:'x5',author:'正義女聲',tag:'不爽就說',content:'公司又有人用「剩女」來貶低我，今天終於站出來反嗆了。感謝大S的精神！不爽就說，仗義執言！',time:'2026/06/05'},
+    {id:'x6',author:'流星花園迷',tag:'戲劇回顧',content:'重看了流星花園杉菜，大S的詮釋真的無可取代。那種倔強又溫柔的勁兒，二十年後還是那麼有感染力。',time:'2026/06/06'}
+  ];
+
+  // ─── LOCALSTORAGE POST SYSTEM ───
+  function getPosts(board){
+    const seed=board==='dee'?deeSeed:xiaSeed;
+    const stored=localStorage.getItem(`sos-${board}-posts`);
+    if(!stored)return seed;
+    try{const u=JSON.parse(stored);return[...u,...seed];}catch{return seed;}
+  }
+  function savePosts(board,posts){
+    const seedIds=(board==='dee'?deeSeed:xiaSeed).map(p=>p.id);
+    localStorage.setItem(`sos-${board}-posts`,JSON.stringify(posts.filter(p=>!seedIds.includes(p.id))));
+  }
+  function escHtml(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+  function renderPosts(board,tag='all'){
+    const posts=getPosts(board), el=document.getElementById(`${board}-posts`);
+    if(!el)return;
+    const filtered=tag==='all'?posts:posts.filter(p=>p.tag===tag);
+    if(!filtered.length){el.innerHTML='<p style="color:rgba(255,255,255,0.5);text-align:center;padding:2rem">這個分類還沒有文章，來發第一篇吧！</p>';return;}
+    el.innerHTML=filtered.map((p,i)=>`<div class="post-card" style="animation-delay:${i*0.05}s"><div class="post-tag-badge">${escHtml(p.tag)}</div><div class="post-content">${escHtml(p.content)}</div><div class="post-meta"><span class="post-author">✦ ${escHtml(p.author)}</span><span>${p.time}</span></div></div>`).join('');
+  }
+  function submitPost(board){
+    const a=document.getElementById(`${board}-author`).value.trim();
+    const c=document.getElementById(`${board}-content`).value.trim();
+    const tag=document.getElementById(`${board}-tag`).value;
+    if(!a||!c){showToast('✦ 請填寫暱稱與內容後再發布！');return;}
+    const now=new Date();
+    const dateStr=`${now.getFullYear()}/${String(now.getMonth()+1).padStart(2,'0')}/${String(now.getDate()).padStart(2,'0')}`;
+    const newPost={id:`u-${Date.now()}`,author:a,tag,content:c,time:dateStr};
+    savePosts(board,[newPost,...getPosts(board)]);
+    document.getElementById(`${board}-author`).value='';
+    document.getElementById(`${board}-content`).value='';
+    const row=document.getElementById(`${board}-tag-row`);
+    if(row){row.querySelectorAll('.tag-pill').forEach(p=>p.classList.remove('active'));const all=row.querySelector('[data-tag="all"]');if(all)all.classList.add('active');}
+    renderPosts(board,'all');
+    // Particle burst
+    for(let i=0;i<18;i++){
+      const p=document.createElement('div');
+      p.style.cssText='position:fixed;pointer-events:none;z-index:9999;border-radius:50%;';
+      p.style.backgroundColor=['#fff','rgba(255,255,255,0.7)','rgba(255,255,255,0.4)'][i%3];
+      p.style.left=p.style.top='50%';
+      const sz=Math.random()*8+4; p.style.width=p.style.height=sz+'px';
+      const ang=Math.random()*Math.PI*2, dist=Math.random()*140+60;
+      p.animate([{transform:'translate(-50%,-50%) scale(1)',opacity:1},{transform:`translate(calc(-50% + ${Math.cos(ang)*dist}px),calc(-50% + ${Math.sin(ang)*dist}px)) scale(0)`,opacity:0}],{duration:600,easing:'cubic-bezier(0.1,0.8,0.3,1)',fill:'forwards'});
+      document.body.appendChild(p); setTimeout(()=>p.remove(),600);
+    }
+    showToast(`✦ 已發布到${board==='dee'?'徐老師專區':'俠女傳奇'}！`);
+  }
+  function filterPosts(board,tag,btn){
+    const row=document.getElementById(`${board}-tag-row`);
+    if(row)row.querySelectorAll('.tag-pill').forEach(p=>p.classList.remove('active'));
+    if(btn)btn.classList.add('active');
+    renderPosts(board,tag);
+  }
+
+  // ─── TOAST ───
+  let toastTimer;
+  function showToast(msg){
+    let t=document.getElementById('toast');
+    if(!t){t=document.createElement('div');t.id='toast';t.className='toast';document.body.appendChild(t);}
+    t.textContent=msg; t.classList.add('show');
+    clearTimeout(toastTimer); toastTimer=setTimeout(()=>t.classList.remove('show'),2500);
+  }
+
+  // ─── FOOTER ANIMATION ───
+  const footerSection=document.getElementById('footer-section');
+  if(footerSection){
+    new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{if(e.isIntersecting)footerSection.classList.add('footer-animate');else footerSection.classList.remove('footer-animate');});
+    },{threshold:0.05}).observe(footerSection);
+  }
+
+  // ─── PWA ───
+  let deferredPrompt;
+  window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredPrompt=e;setTimeout(()=>{document.getElementById('pwa-banner').classList.add('show');},4000);});
+  const pwaBtn=document.getElementById('pwa-install-btn');
+  if(pwaBtn)pwaBtn.addEventListener('click',async()=>{if(deferredPrompt){deferredPrompt.prompt();const{outcome}=await deferredPrompt.userChoice;deferredPrompt=null;document.getElementById('pwa-banner').classList.remove('show');if(outcome==='accepted')showToast('✦ 成功安裝！感謝支持！');}});
+  if('serviceWorker' in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
+
+  // ─── INIT ───
+  window.addEventListener('DOMContentLoaded',()=>{
+    renderPosts('dee');
+    renderPosts('xia');
+  });
+</script>
+</body>
+</html>
