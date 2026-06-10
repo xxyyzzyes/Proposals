@@ -1,8 +1,10 @@
-const CACHE_NAME = 'sos-memorial-v2';
+const CACHE_NAME = 'sos-memorial-v3';
 const urlsToCache = [
   './',
   './index.html',
-  './manifest.json'
+  './manifest.json',
+  './icon-192.png',
+  './icon-512.png'
 ];
 
 self.addEventListener('install', event => {
@@ -22,11 +24,39 @@ self.addEventListener('activate', event => {
 });
 
 self.addEventListener('fetch', event => {
-  event.respondWith(
-    caches.match(event.request).then(response =>
-      response || fetch(event.request).catch(() =>
-        caches.match('./index.html')
-      )
-    )
-  );
+  const url = new URL(event.request.url);
+  // Check if it's a page navigation or resource request for index.html / manifest
+  const isHtmlOrManifest = 
+    event.request.mode === 'navigate' ||
+    url.pathname.endsWith('/') || 
+    url.pathname.endsWith('/index.html') || 
+    url.pathname.endsWith('/manifest.json');
+
+  if (isHtmlOrManifest) {
+    // Network-First strategy for pages/manifest to ensure they get updates immediately
+    event.respondWith(
+      fetch(event.request)
+        .then(response => {
+          if (response.status === 200) {
+            const responseClone = response.clone();
+            caches.open(CACHE_NAME).then(cache => cache.put(event.request, responseClone));
+          }
+          return response;
+        })
+        .catch(() => caches.match(event.request) || caches.match('./index.html'))
+    );
+  } else {
+    // Cache-First strategy for assets like icons
+    event.respondWith(
+      caches.match(event.request).then(response => {
+        return response || fetch(event.request).then(netResponse => {
+          if (netResponse.status === 200) {
+            const responseClone = netResponse.clone();
+            caches.open(CACHE_NAME).then(cache => cache.put(event.request, responseClone));
+          }
+          return netResponse;
+        });
+      })
+    );
+  }
 });

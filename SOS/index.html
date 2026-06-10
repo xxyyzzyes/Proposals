@@ -2675,12 +2675,26 @@
       <div class="fitness-anim-card">
         <svg class="fitness-anim-svg" id="anim-skeleton" viewBox="0 0 200 200">
           <line x1="100" y1="80" x2="100" y2="130" stroke="white" stroke-width="5" stroke-linecap="round" id="anim-torso"/>
+          <!-- Dynamic Ponytail -->
+          <path d="M87,55 Q75,65 65,75" stroke="white" stroke-width="3.5" stroke-linecap="round" fill="none" id="anim-ponytail"/>
           <circle cx="100" cy="55" r="15" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="3" id="anim-head"/>
           <line x1="87" y1="52" x2="113" y2="52" stroke="var(--brand)" stroke-width="4" stroke-linecap="round" id="anim-headband"/>
           <line x1="100" y1="85" x2="140" y2="85" stroke="white" stroke-width="4" stroke-linecap="round" id="anim-arm-r"/>
           <line x1="100" y1="85" x2="60" y2="85" stroke="white" stroke-width="4" stroke-linecap="round" id="anim-arm-l"/>
           <line x1="100" y1="130" x2="120" y2="175" stroke="white" stroke-width="4" stroke-linecap="round" id="anim-leg-r"/>
           <line x1="100" y1="130" x2="80" y2="175" stroke="white" stroke-width="4" stroke-linecap="round" id="anim-leg-l"/>
+          <!-- Left Dumbbell -->
+          <g id="anim-db-l">
+            <line x1="0" y1="0" x2="0" y2="0" stroke="white" stroke-width="3.5" stroke-linecap="round" id="anim-db-line-l"/>
+            <circle cx="0" cy="0" r="4.5" fill="white" id="anim-db-c1-l"/>
+            <circle cx="0" cy="0" r="4.5" fill="white" id="anim-db-c2-l"/>
+          </g>
+          <!-- Right Dumbbell -->
+          <g id="anim-db-r">
+            <line x1="0" y1="0" x2="0" y2="0" stroke="white" stroke-width="3.5" stroke-linecap="round" id="anim-db-line-r"/>
+            <circle cx="0" cy="0" r="4.5" fill="white" id="anim-db-c1-r"/>
+            <circle cx="0" cy="0" r="4.5" fill="white" id="anim-db-c2-r"/>
+          </g>
         </svg>
         <div class="fitness-anim-quote" id="anim-quote">「跟著徐老師動！吃！動！預備開始！」</div>
       </div>
@@ -2725,11 +2739,31 @@
 <!-- ═══════════════════════════════════════ -->
 <section class="xia-nu-section tab-content" id="xia-nu">
   <!-- Section Header -->
-  <div class="custom-container xia-nu-header">
-    <div class="reveal-left" style="max-width:600px">
+  <div class="community-section-header custom-container xia-nu-header">
+    <div class="reveal-left">
       <span class="community-tag">Xia Nu Legend · 大S</span>
       <h2 class="community-headline">俠女傳奇</h2>
       <p class="community-desc">仙女下凡，俠女出征。翻閱大S的俠女信條，並在下方留下屬於你的仙女故事！</p>
+    </div>
+    <!-- Auto-playing swordsman animation -->
+    <div class="fitness-anim-wrap reveal-right">
+      <div class="fitness-anim-card">
+        <svg class="fitness-anim-svg" id="anim-swordsman" viewBox="0 0 200 200">
+          <line x1="100" y1="80" x2="100" y2="130" stroke="white" stroke-width="5" stroke-linecap="round" id="anim-xia-torso"/>
+          <!-- Conical hat (斗笠) -->
+          <polygon points="65,52 100,28 135,52" fill="rgba(255,255,255,0.25)" stroke="white" stroke-width="2.5" stroke-linejoin="round" id="anim-xia-hat"/>
+          <circle cx="100" cy="58" r="12" fill="rgba(255,255,255,0.15)" stroke="white" stroke-width="2.5" id="anim-xia-head"/>
+          <!-- Cape (披風) -->
+          <path d="M100,80 Q75,105 60,140 Q85,120 100,125" fill="rgba(255,255,255,0.15)" stroke="white" stroke-width="2.5" stroke-linecap="round" id="anim-xia-cape"/>
+          <line x1="100" y1="85" x2="140" y2="85" stroke="white" stroke-width="4" stroke-linecap="round" id="anim-xia-arm-r"/>
+          <!-- Sword -->
+          <line x1="140" y1="85" x2="175" y2="85" stroke="#f6f6f6" stroke-width="3" stroke-linecap="round" id="anim-xia-sword"/>
+          <line x1="100" y1="85" x2="60" y2="85" stroke="white" stroke-width="4" stroke-linecap="round" id="anim-xia-arm-l"/>
+          <line x1="100" y1="130" x2="120" y2="175" stroke="white" stroke-width="4" stroke-linecap="round" id="anim-xia-leg-r"/>
+          <line x1="100" y1="130" x2="80" y2="175" stroke="white" stroke-width="4" stroke-linecap="round" id="anim-xia-leg-l"/>
+        </svg>
+        <div class="fitness-anim-quote" id="anim-xia-quote">「仙女下凡，俠女出征！」</div>
+      </div>
     </div>
   </div>
 
@@ -3052,13 +3086,29 @@
     card.addEventListener('mouseleave',()=>{ if(!card.classList.contains('flipped')) card.querySelector('.xia-card-inner').style.transform=''; });
   });
 
-  // ─── AUTO PLAY FITNESS ANIMATION ───
+  // ─── AUTO PLAY FITNESS & SWORDSMAN ANIMATIONS ───
+  function drawDumbbell(handX, handY, elbowX, elbowY, lineEl, c1El, c2El) {
+    let dx = handX - elbowX;
+    let dy = handY - elbowY;
+    let len = Math.sqrt(dx * dx + dy * dy) || 1;
+    let px = -dy / len;
+    let py = dx / len;
+    let x1 = handX + px * 6;
+    let y1 = handY + py * 6;
+    let x2 = handX - px * 6;
+    let y2 = handY - py * 6;
+    lineEl.setAttribute('x1', x1); lineEl.setAttribute('y1', y1);
+    lineEl.setAttribute('x2', x2); lineEl.setAttribute('y2', y2);
+    c1El.setAttribute('cx', x1); c1El.setAttribute('cy', y1);
+    c2El.setAttribute('cx', x2); c2El.setAttribute('cy', y2);
+  }
+
   const poses=[
-    {torso:[100,80,100,130],armR:[100,85,140,85],armL:[100,85,60,85],legR:[100,130,120,175],legL:[100,130,80,175],head:[100,55],q:'「跟著徐老師動！吃！動！預備開始！」'},
-    {torso:[100,80,105,130],armR:[100,85,135,55],armL:[100,85,65,115],legR:[105,130,122,175],legL:[105,130,88,175],head:[95,55],q:'「左右扭腰！把腰內肉給我通通扭碎！」'},
-    {torso:[100,110,100,145],armR:[100,115,140,115],armL:[100,115,60,115],legR:[100,145,135,175],legL:[100,145,65,175],head:[100,85],q:'「跨步深蹲！大腿跟地面要平行！」'},
-    {torso:[100,80,90,130],armR:[100,85,135,120],armL:[100,85,75,45],legR:[90,130,130,170],legL:[90,130,75,175],head:[105,52],q:'「屁股夾緊！不然會下垂到膝蓋！」'},
-    {torso:[100,70,100,120],armR:[100,75,140,35],armL:[100,75,60,35],legR:[100,120,140,165],legL:[100,120,60,165],head:[100,45],q:'「跳起來！誰說世上沒有醜女人只有懶女人！」'}
+    {torso:[100,80,100,130],armR:[100,85,140,85],armL:[100,85,60,85],legR:[100,130,120,175],legL:[100,130,80,175],head:[100,55],q:'「跟著徐老師動！吃！動！預備開始！」',ponytailOffset:0},
+    {torso:[100,80,105,130],armR:[100,85,135,55],armL:[100,85,65,115],legR:[105,130,122,175],legL:[105,130,88,175],head:[95,55],q:'「左右扭腰！把腰內肉給我通通扭碎！」',ponytailOffset:8},
+    {torso:[100,110,100,145],armR:[100,115,140,115],armL:[100,115,60,115],legR:[100,145,135,175],legL:[100,145,65,175],head:[100,85],q:'「跨步深蹲！大腿跟地面要平行！」',ponytailOffset:0},
+    {torso:[100,80,90,130],armR:[100,85,135,120],armL:[100,85,75,45],legR:[90,130,130,170],legL:[90,130,75,175],head:[105,52],q:'「屁股夾緊！不然會下垂到膝蓋！」',ponytailOffset:-8},
+    {torso:[100,70,100,120],armR:[100,75,140,35],armL:[100,75,60,35],legR:[100,120,140,165],legL:[100,120,60,165],head:[100,45],q:'「跳起來！誰說世上沒有醜女人只有懶女人！」',ponytailOffset:-12}
   ];
   let pIdx=0;
   function runAnim(){
@@ -3066,8 +3116,10 @@
     const t=document.getElementById('anim-torso'),h=document.getElementById('anim-head');
     const ar=document.getElementById('anim-arm-r'),al=document.getElementById('anim-arm-l');
     const lr=document.getElementById('anim-leg-r'),ll=document.getElementById('anim-leg-l');
-    const hb=document.getElementById('anim-headband');
+    const hb=document.getElementById('anim-headband'),pt=document.getElementById('anim-ponytail');
     const q=document.getElementById('anim-quote');
+    const dbl=document.getElementById('anim-db-line-l'),dbc1l=document.getElementById('anim-db-c1-l'),dbc2l=document.getElementById('anim-db-c2-l');
+    const dbr=document.getElementById('anim-db-line-r'),dbc1r=document.getElementById('anim-db-c1-r'),dbc2r=document.getElementById('anim-db-c2-r');
     if(!t)return;
     t.setAttribute('x1',p.torso[0]);t.setAttribute('y1',p.torso[1]);t.setAttribute('x2',p.torso[2]);t.setAttribute('y2',p.torso[3]);
     ar.setAttribute('x1',p.armR[0]);ar.setAttribute('y1',p.armR[1]);ar.setAttribute('x2',p.armR[2]);ar.setAttribute('y2',p.armR[3]);
@@ -3079,10 +3131,78 @@
       hb.setAttribute('x1',p.head[0]-13);hb.setAttribute('y1',p.head[1]-3);
       hb.setAttribute('x2',p.head[0]+13);hb.setAttribute('y2',p.head[1]-3);
     }
+    if(pt){
+      pt.setAttribute('d', `M ${p.head[0] - 13} ${p.head[1]} Q ${p.head[0] - 25 + p.ponytailOffset} ${p.head[1] + 10} ${p.head[0] - 35 + p.ponytailOffset} ${p.head[1] + 20}`);
+    }
+    if(dbl && dbc1l && dbc2l){
+      drawDumbbell(p.armL[2],p.armL[3],p.armL[0],p.armL[1],dbl,dbc1l,dbc2l);
+    }
+    if(dbr && dbc1r && dbc2r){
+      drawDumbbell(p.armR[2],p.armR[3],p.armR[0],p.armR[1],dbr,dbc1r,dbc2r);
+    }
     if(q){q.style.opacity=0;setTimeout(()=>{q.textContent=p.q;q.style.opacity=1;},200);}
     pIdx++;
   }
   runAnim(); setInterval(runAnim,1800);
+
+  const swordsmanPoses = [
+    {
+      torso: [100, 80, 100, 130], head: [100, 58], hat: [65, 52, 100, 28, 135, 52],
+      cape: "M100,80 Q80,105 70,140 Q90,120 100,125",
+      armR: [100, 85, 120, 115], sword: [120, 115, 140, 145], armL: [100, 85, 70, 75],
+      legR: [100, 130, 120, 175], legL: [100, 130, 80, 175],
+      q: "「仙女是不大便的！隨時維持最高神祕感。」"
+    },
+    {
+      torso: [100, 85, 95, 130], head: [102, 62], hat: [67, 56, 102, 32, 137, 56],
+      cape: "M100,85 Q65,100 45,110 Q70,115 95,125",
+      armR: [100, 90, 140, 90], sword: [140, 90, 185, 90], armL: [100, 90, 75, 120],
+      legR: [95, 130, 135, 175], legL: [95, 130, 65, 175],
+      q: "「我是一匹狼，出去就是要咬人！」"
+    },
+    {
+      torso: [100, 80, 105, 130], head: [98, 56], hat: [63, 50, 98, 26, 133, 50],
+      cape: "M100,80 Q85,110 90,145 Q95,120 105,125",
+      armR: [100, 85, 135, 60], sword: [135, 60, 165, 30], armL: [100, 85, 65, 95],
+      legR: [105, 130, 125, 175], legL: [105, 130, 85, 175],
+      q: "「任何人都不准摸我的頭髮！這是天條！」"
+    },
+    {
+      torso: [100, 90, 100, 135], head: [100, 68], hat: [65, 62, 100, 38, 135, 62],
+      cape: "M100,90 Q80,105 75,142 Q90,120 100,130",
+      armR: [100, 95, 125, 65], sword: [125, 65, 75, 65], armL: [100, 95, 70, 115],
+      legR: [100, 135, 140, 175], legL: [100, 135, 60, 175],
+      q: "「我要白得像日光燈一樣！只要毒不死就吃！」"
+    }
+  ];
+  let xIdx = 0;
+  function runXiaAnim() {
+    const xt = document.getElementById('anim-xia-torso'), xh = document.getElementById('anim-xia-head');
+    const xhat = document.getElementById('anim-xia-hat'), xcape = document.getElementById('anim-xia-cape');
+    const xar = document.getElementById('anim-xia-arm-r'), xsw = document.getElementById('anim-xia-sword');
+    const xal = document.getElementById('anim-xia-arm-l'), xlr = document.getElementById('anim-xia-leg-r'), xll = document.getElementById('anim-xia-leg-l');
+    const xq = document.getElementById('anim-xia-quote');
+    if (!xt) return;
+    const p = swordsmanPoses[xIdx % swordsmanPoses.length];
+    xt.setAttribute('x1', p.torso[0]); xt.setAttribute('y1', p.torso[1]); xt.setAttribute('x2', p.torso[2]); xt.setAttribute('y2', p.torso[3]);
+    xh.setAttribute('cx', p.head[0]); xh.setAttribute('cy', p.head[1]);
+    xhat.setAttribute('points', `${p.hat[0]},${p.hat[1]} ${p.hat[2]},${p.hat[3]} ${p.hat[4]},${p.hat[5]}`);
+    xcape.setAttribute('d', p.cape);
+    xar.setAttribute('x1', p.armR[0]); xar.setAttribute('y1', p.armR[1]); xar.setAttribute('x2', p.armR[2]); xar.setAttribute('y2', p.armR[3]);
+    xsw.setAttribute('x1', p.sword[0]); xsw.setAttribute('y1', p.sword[1]); xsw.setAttribute('x2', p.sword[2]); xsw.setAttribute('y2', p.sword[3]);
+    xal.setAttribute('x1', p.armL[0]); xal.setAttribute('y1', p.armL[1]); xal.setAttribute('x2', p.armL[2]); xal.setAttribute('y2', p.armL[3]);
+    xlr.setAttribute('x1', p.legR[0]); xlr.setAttribute('y1', p.legR[1]); xlr.setAttribute('x2', p.legR[2]); xlr.setAttribute('y2', p.legR[3]);
+    xll.setAttribute('x1', p.legL[0]); xll.setAttribute('y1', p.legL[1]); xll.setAttribute('x2', p.legL[2]); xll.setAttribute('y2', p.legL[3]);
+    if (xq) {
+      xq.style.opacity = 0;
+      setTimeout(() => {
+        xq.textContent = p.q;
+        xq.style.opacity = 1;
+      }, 200);
+    }
+    xIdx++;
+  }
+  runXiaAnim(); setInterval(runXiaAnim, 1800);
 
   // ─── SEED POST DATA ───
   const deeSeed=[
