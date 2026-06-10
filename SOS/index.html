@@ -1742,7 +1742,7 @@
   /* ─── TEACHER DEE SECTION ─── */
   .teacher-dee-section {
     background: var(--brand-hero);
-    padding: 0 0 5rem 0;
+    padding: 5rem 0;
     position: relative;
     overflow: hidden;
   }
@@ -2017,103 +2017,7 @@
     background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
     pointer-events: none;
   }
-  .xia-nu-header { margin-bottom: 3rem; }
 
-  /* ─── XIA NU CREED FLIP CARDS ─── */
-  .xia-creed-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1.2rem;
-    margin-bottom: 1rem;
-  }
-  @media (max-width: 1100px) { .xia-creed-grid { grid-template-columns: repeat(2,1fr); } }
-  @media (max-width: 600px)  { .xia-creed-grid { grid-template-columns: 1fr; } }
-
-  .xia-creed-card {
-    height: 268px;
-    perspective: 1000px;
-    cursor: pointer;
-  }
-  .xia-card-inner {
-    width: 100%; height: 100%;
-    position: relative;
-    transform-style: preserve-3d;
-    transition: transform 0.72s cubic-bezier(0.16,1,0.3,1);
-  }
-  .xia-creed-card.flipped .xia-card-inner {
-    transform: rotateY(180deg);
-  }
-  .xia-card-front, .xia-card-back {
-    position: absolute;
-    inset: 0;
-    border-radius: 1.25rem;
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 1.8rem 1.5rem;
-    text-align: center;
-  }
-  .xia-card-front {
-    background: rgba(255,255,255,0.12);
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
-    border: 1px solid rgba(255,255,255,0.24);
-    box-shadow: inset 0 1px 0 rgba(255,255,255,0.28), 0 8px 24px rgba(0,0,0,0.08);
-    transition: transform 0.25s;
-  }
-  .xia-creed-card:not(.flipped):hover .xia-card-front {
-    box-shadow: inset 0 1px 0 rgba(255,255,255,0.35), 0 20px 50px rgba(0,0,0,0.16);
-  }
-  .xia-card-back {
-    background: #fff;
-    transform: rotateY(180deg);
-    box-shadow: 0 12px 40px rgba(0,0,0,0.12);
-  }
-  .xia-rule-num {
-    font-size: 0.7rem;
-    font-weight: 700;
-    color: rgba(255,255,255,0.45);
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    margin-bottom: 0.8rem;
-  }
-  .xia-icon-wrap {
-    width: 54px; height: 54px;
-    background: rgba(255,255,255,0.14);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 1rem;
-  }
-  .xia-card-title {
-    font-family: 'Syne', sans-serif;
-    font-size: 1.05rem;
-    font-weight: 800;
-    color: #fff;
-    margin-bottom: 0.8rem;
-  }
-  .xia-flip-hint {
-    font-size: 0.7rem;
-    color: rgba(255,255,255,0.4);
-    letter-spacing: 0.06em;
-  }
-  .xia-back-quote {
-    font-family: 'Syne', sans-serif;
-    font-size: 1.05rem;
-    font-weight: 800;
-    color: var(--brand-dark);
-    margin-bottom: 0.8rem;
-    line-height: 1.3;
-  }
-  .xia-back-desc {
-    font-size: 0.84rem;
-    color: var(--text-muted);
-    line-height: 1.62;
-  }
 
   /* ─── KINETIC TYPOGRAPHY HERO MARQUEE ─── */
   .hero-kinetic-title {
@@ -2739,11 +2643,11 @@
 <!-- ═══════════════════════════════════════ -->
 <section class="xia-nu-section tab-content" id="xia-nu">
   <!-- Section Header -->
-  <div class="community-section-header custom-container xia-nu-header">
+  <div class="community-section-header custom-container">
     <div class="reveal-left">
       <span class="community-tag">Xia Nu Legend · 大S</span>
       <h2 class="community-headline">俠女傳奇</h2>
-      <p class="community-desc">仙女下凡，俠女出征。翻閱大S的俠女信條，並在下方留下屬於你的仙女故事！</p>
+      <p class="community-desc">仙女下凡，俠女出征。在下方留下屬於你的仙女故事！</p>
     </div>
     <!-- Auto-playing swordsman animation -->
     <div class="fitness-anim-wrap reveal-right">
@@ -2767,81 +2671,9 @@
     </div>
   </div>
 
-  <!-- 俠女信條 4 Cards (方案B) -->
   <div class="custom-container">
-    <div class="xia-creed-grid stagger-parent" id="fairy-grid">
-      <!-- Card 1 -->
-      <div class="xia-creed-card stagger-child" onclick="flipCard(this)">
-        <div class="xia-card-inner">
-          <div class="xia-card-front">
-            <span class="xia-rule-num">CREED 01</span>
-            <div class="xia-icon-wrap">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-            </div>
-            <h3 class="xia-card-title">仙女免大便律例</h3>
-            <span class="xia-flip-hint">翻閱信條 ↗</span>
-          </div>
-          <div class="xia-card-back">
-            <div class="xia-back-quote">「仙女是不大便的！」</div>
-            <p class="xia-back-desc">真正的仙女不會讓人看到自己世俗的一面，永遠維持不可逼視的神秘美感。</p>
-          </div>
-        </div>
-      </div>
-      <!-- Card 2 -->
-      <div class="xia-creed-card stagger-child" onclick="flipCard(this)">
-        <div class="xia-card-inner">
-          <div class="xia-card-front">
-            <span class="xia-rule-num">CREED 02</span>
-            <div class="xia-icon-wrap">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-            </div>
-            <h3 class="xia-card-title">魔髮神聖天條</h3>
-            <span class="xia-flip-hint">翻閱信條 ↗</span>
-          </div>
-          <div class="xia-card-back">
-            <div class="xia-back-quote">「任何人都不准摸我的頭髮！」</div>
-            <p class="xia-back-desc">大S的秀髮是禁區。男友摟肩可以，碰到頭髮絕對不行！必須維持完美順滑！</p>
-          </div>
-        </div>
-      </div>
-      <!-- Card 3 -->
-      <div class="xia-creed-card stagger-child" onclick="flipCard(this)">
-        <div class="xia-card-inner">
-          <div class="xia-card-front">
-            <span class="xia-rule-num">CREED 03</span>
-            <div class="xia-icon-wrap">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
-            </div>
-            <h3 class="xia-card-title">極致美白規約</h3>
-            <span class="xia-flip-hint">翻閱信條 ↗</span>
-          </div>
-          <div class="xia-card-back">
-            <div class="xia-back-quote">「我要白得像日光燈一樣！」</div>
-            <p class="xia-back-desc">防曬抹得像藝妓。只要能白，就算是毒藥，只要毒不死，老娘也敢吃！</p>
-          </div>
-        </div>
-      </div>
-      <!-- Card 4 -->
-      <div class="xia-creed-card stagger-child" onclick="flipCard(this)">
-        <div class="xia-card-inner">
-          <div class="xia-card-front">
-            <span class="xia-rule-num">CREED 04</span>
-            <div class="xia-icon-wrap">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><path d="M12 2L2 22h20L12 2z"/></svg>
-            </div>
-            <h3 class="xia-card-title">霸氣俠女法則</h3>
-            <span class="xia-flip-hint">翻閱信條 ↗</span>
-          </div>
-          <div class="xia-card-back">
-            <div class="xia-back-quote">「我是一匹狼，出去就要咬人！」</div>
-            <p class="xia-back-desc">骨子裡是家裡的頂樑柱。對家人極致寵愛，對外隨時展現強悍戰鬥力！</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Tag Filter Row -->
-    <div class="tag-filter-row" id="xia-tag-row" style="margin-top:3rem">
+<!-- Tag Filter Row -->
+    <div class="tag-filter-row" id="xia-tag-row">
       <button class="tag-pill active" data-tag="all" onclick="filterPosts('xia','all',this)">全部</button>
       <button class="tag-pill" data-tag="俠女出征" onclick="filterPosts('xia','俠女出征',this)">⚔️ 俠女出征</button>
       <button class="tag-pill" data-tag="美容聖典" onclick="filterPosts('xia','美容聖典',this)">🧴 美容聖典</button>
@@ -3073,18 +2905,7 @@
 
 
 
-  // ─── FLIP CARD (Xia Nu Creed Cards) ───
-  function flipCard(el) { el.classList.toggle('flipped'); }
 
-  // ─── 3D TILT on Xia Creed Cards ───
-  document.querySelectorAll('.xia-creed-card').forEach(card => {
-    card.addEventListener('mousemove', e => {
-      if (card.classList.contains('flipped')) return;
-      const r = card.getBoundingClientRect(), x=e.clientX-r.left, y=e.clientY-r.top, cx=r.width/2, cy=r.height/2;
-      card.querySelector('.xia-card-inner').style.transform=`perspective(800px) rotateX(${((y-cy)/cy)*-6}deg) rotateY(${((x-cx)/cx)*6}deg)`;
-    });
-    card.addEventListener('mouseleave',()=>{ if(!card.classList.contains('flipped')) card.querySelector('.xia-card-inner').style.transform=''; });
-  });
 
   // ─── AUTO PLAY FITNESS & SWORDSMAN ANIMATIONS ───
   function drawDumbbell(handX, handY, elbowX, elbowY, lineEl, c1El, c2El) {
