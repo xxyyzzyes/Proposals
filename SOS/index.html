@@ -1737,24 +1737,7 @@
      Magnetic Cursor · Liquid Glass · Bento Grid · Masonry
   ════════════════════════════════════════════════════════ */
 
-  /* ─── MAGNETIC CURSOR ─── */
-  .mag-cursor {
-    width: 12px; height: 12px;
-    background: var(--brand);
-    border-radius: 50%;
-    position: fixed;
-    top: 0; left: 0;
-    pointer-events: none;
-    z-index: 99999;
-    transition: width 0.3s cubic-bezier(0.16,1,0.3,1), height 0.3s cubic-bezier(0.16,1,0.3,1), background 0.3s;
-    mix-blend-mode: multiply;
-    will-change: transform;
-  }
-  .mag-cursor.hovered {
-    width: 44px; height: 44px;
-    background: rgba(208,51,28,0.12);
-    border: 1.5px solid var(--brand);
-  }
+
 
   /* ─── TEACHER DEE SECTION ─── */
   .teacher-dee-section {
@@ -2945,15 +2928,7 @@
   });
   const rs = document.createElement('style'); rs.textContent='@keyframes ripple-x{to{transform:scale(2.5);opacity:0}}'; document.head.appendChild(rs);
 
-  // ─── MAGNETIC CURSOR ───
-  const cur = document.createElement('div'); cur.className='mag-cursor'; document.body.appendChild(cur);
-  let mx=0,my=0,cx=0,cy=0;
-  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
-  (function animCur(){cx+=(mx-cx)*0.18;cy+=(my-cy)*0.18;cur.style.transform=`translate(${cx-6}px,${cy-6}px)`;requestAnimationFrame(animCur);})();
-  document.querySelectorAll('a,button,.tag-pill,.xia-creed-card,.bzGHEL').forEach(el=>{
-    el.addEventListener('mouseenter',()=>cur.classList.add('hovered'));
-    el.addEventListener('mouseleave',()=>cur.classList.remove('hovered'));
-  });
+
 
   // ─── FLIP CARD (Xia Nu Creed Cards) ───
   function flipCard(el) { el.classList.toggle('flipped'); }
