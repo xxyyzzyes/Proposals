@@ -2612,7 +2612,7 @@
       <div class="post-form glass-form">
         <div class="post-form-top">
           <input type="text" class="glass-input" id="dee-author" placeholder="你的暱稱（例：小S腦殘粉）" maxlength="16">
-          <select class="glass-select" id="dee-tag">
+          <select class="glass-select" id="dee-tag" onchange="updatePlaceholder('dee', this.value)">
             <option value="動起來">🏋️ 動起來</option>
             <option value="乾杯時刻">🍷 乾杯時刻</option>
             <option value="吃好的">🍽️ 吃好的</option>
@@ -2625,9 +2625,6 @@
         <button class="post-submit-btn dee-submit" onclick="submitPost('dee')">發布到徐老師專區 ✦</button>
       </div>
     </div>
-
-    <!-- Posts Masonry Wall -->
-    <div class="posts-masonry" id="dee-posts"></div>
   </div>
 </section>
 
@@ -2733,7 +2730,7 @@
       <div class="post-form glass-form xia-form">
         <div class="post-form-top">
           <input type="text" class="glass-input" id="xia-author" placeholder="你的暱稱（例：大S忠實粉絲）" maxlength="16">
-          <select class="glass-select" id="xia-tag">
+          <select class="glass-select" id="xia-tag" onchange="updatePlaceholder('xia', this.value)">
             <option value="俠女出征">⚔️ 俠女出征</option>
             <option value="美容聖典">🧴 美容聖典</option>
             <option value="美白狂魔">🌸 美白狂魔</option>
@@ -2746,9 +2743,6 @@
         <button class="post-submit-btn xia-submit" onclick="submitPost('xia')">發布到俠女傳奇 ✦</button>
       </div>
     </div>
-
-    <!-- Posts Masonry Wall -->
-    <div class="posts-masonry" id="xia-posts"></div>
   </div>
 </section>
 
@@ -3023,6 +3017,33 @@
     {id:'x5',author:'正義女聲',tag:'不爽就說',content:'公司又有人用「剩女」來貶低我，今天終於站出來反嗆了。感謝大S的精神！不爽就說，仗義執言！',time:'2026/06/05'},
     {id:'x6',author:'流星花園迷',tag:'戲劇回顧',content:'重看了流星花園杉菜，大S的詮釋真的無可取代。那種倔強又溫柔的勁兒，二十年後還是那麼有感染力。',time:'2026/06/06'}
   ];
+  
+  // ─── PLACEHOLDER DICTIONARIES ───
+  const deePlaceholders = {
+    'all': '分享你的故事、心情、金句，或任何跟小S有關的一切... (限150字)',
+    '動起來': '今天跟著徐老師練了一個小時的提臀！屁股夾緊真的很有感！大腿現在根本走不動路 哈哈哈',
+    '乾杯時刻': '週五下班必備！冰鎮的台啤配上徐老師的金句，這就是我的小確幸人生 🍺 乾！',
+    '吃好的': '去了小S推薦的燒肉店，果然不錯！吃好吃的東西、喝點酒，這是她說的小確幸，我完全認同！',
+    '我有話說': '小S說「活得relax最重要，不需要在意別人的眼光」，這句話我存在心裡好幾年了，謝謝她。',
+    '時髦態度': '小S的穿搭從來不追主流，就是「只有我可以這樣」的霸氣。跟她學了很多敢穿敢配！',
+    '放過自己': '最近壓力很大，反覆聽了小S說的「不要搞砸人生，其他都可以接受」，真的很有用。放過自己吧。'
+  };
+  const xiaPlaceholders = {
+    'all': '分享你的俠女故事、美容秘訣、大S金句，或對世界的宣言... (限150字)',
+    '俠女出征': '昨天在路上看到有人亂丟垃圾還嗆路人，立馬上前制止！想到大S說的仗義執言，我就是要當俠女！',
+    '美容聖典': '照大S的說法：保濕是萬能的！每天早晚用溫水洗臉加厚敷，三個月後朋友都問我換了什麼保養品 ✨',
+    '美白狂魔': '大S的美白哲學：維他命C + 防曬 + 珍珠粉。我已經照做半年了，確實白了一個色號！日光燈目標中🌟',
+    '仙女日記': '大S說仙女是不能讓人看到世俗那面的。我決定今天起，維持神秘感，只讓人看到我最好的一面。',
+    '不爽就說': '公司又有人用「剩女」來貶低我，今天終於站出來反嗆了。感謝大S的精神！不爽就說，仗義執言！',
+    '戲劇回顧': '重看了流星花園杉菜，大S的詮釋真的無可取代。那種倔強又溫柔的勁兒，二十年後還是那麼有感染力。'
+  };
+
+  function updatePlaceholder(board, tag) {
+    const phs = board === 'dee' ? deePlaceholders : xiaPlaceholders;
+    const txt = document.getElementById(`${board}-content`);
+    if (txt) txt.placeholder = phs[tag] || phs['all'];
+  }
+  window.updatePlaceholder = updatePlaceholder;
 
   // ─── LOCALSTORAGE POST SYSTEM ───
   function getPosts(board){
@@ -3056,6 +3077,8 @@
     document.getElementById(`${board}-content`).value='';
     const row=document.getElementById(`${board}-tag-row`);
     if(row){row.querySelectorAll('.tag-pill').forEach(p=>p.classList.remove('active'));const all=row.querySelector('[data-tag="all"]');if(all)all.classList.add('active');}
+    
+    updatePlaceholder(board, 'all');
     renderPosts(board,'all');
     // Particle burst
     for(let i=0;i<18;i++){
@@ -3074,6 +3097,13 @@
     const row=document.getElementById(`${board}-tag-row`);
     if(row)row.querySelectorAll('.tag-pill').forEach(p=>p.classList.remove('active'));
     if(btn)btn.classList.add('active');
+    
+    const select = document.getElementById(`${board}-tag`);
+    if (select && tag !== 'all') {
+      select.value = tag;
+    }
+    
+    updatePlaceholder(board, tag);
     renderPosts(board,tag);
   }
 
