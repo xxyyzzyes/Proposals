@@ -572,13 +572,13 @@
     }
     header ul > li a {
       height: 3.5rem;
-      padding-left: 1rem;
-      padding-right: 1rem;
-      font-size: 0.95rem;
+      padding-left: 0.9rem;
+      padding-right: 0.9rem;
+      font-size: 0.9rem;
+      white-space: nowrap;
     }
     header ul > li a .sub-text {
-      font-size: 0.72rem;
-      line-height: 1.2;
+      display: none;
     }
     .mobile-menu-container, .mobile-menu-content {
       display: none !important;
@@ -2153,20 +2153,20 @@
   }
   .kinetic-track {
     display: flex;
-    width: 200vw; /* 2 items of 100vw each */
+    width: max-content;
     will-change: transform;
   }
   .kinetic-item {
-    width: 100vw;
     text-align: center;
     flex-shrink: 0;
     font-family: 'Syne', sans-serif;
-    font-size: clamp(3.5rem, 10vw, 8rem);
+    font-size: clamp(2.2rem, 8.5vw, 8rem);
     font-weight: 800;
     text-transform: uppercase;
     color: #ffffff;
     letter-spacing: -0.02em;
     line-height: 1.0;
+    padding: 0 8vw;
   }
   .kinetic-item span {
     color: rgba(255, 255, 255, 0.85);
@@ -2179,10 +2179,10 @@
   }
   @keyframes scroll-left {
     0% { transform: translateX(0); }
-    100% { transform: translateX(-100vw); }
+    100% { transform: translateX(-50%); }
   }
   @keyframes scroll-right {
-    0% { transform: translateX(-100vw); }
+    0% { transform: translateX(-50%); }
     100% { transform: translateX(0); }
   }
   /* ─── ACTS OF KINDNESS SECTION (善行時間軸) ─── */
@@ -2356,7 +2356,7 @@
   <header>
     <nav class="menu-container" aria-label="Main navigation">
       <ul>
-        <li><a href="#hero">SOS Home<span class="sub-text">主頁</span></a></li>
+        <li><a href="#hero">主頁<span class="sub-text">SOS Home</span></a></li>
         <li><a href="#teacher-dee">徐老師<span class="sub-text">Teacher Dee</span></a></li>
         <li><a href="#xia-nu">俠女傳奇<span class="sub-text">Xia Nu Legend</span></a></li>
       </ul>

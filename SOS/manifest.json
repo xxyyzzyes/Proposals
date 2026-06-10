@@ -2,7 +2,7 @@
   "name": "S·O·S 數位互動展演館",
   "short_name": "SOS 展演館",
   "description": "徐氏姊妹與娛樂百分百數位互動展演空間",
-  "start_url": "/",
+  "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#0a0a0a",
   "theme_color": "#d0331c",
