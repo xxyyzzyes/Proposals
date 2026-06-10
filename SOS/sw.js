@@ -1,4 +1,4 @@
-const CACHE_NAME = 'sos-memorial-v1';
+const CACHE_NAME = 'sos-memorial-v2';
 const urlsToCache = [
   './',
   './index.html',
