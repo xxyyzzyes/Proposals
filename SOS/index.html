@@ -17,22 +17,56 @@
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
 
 <style>
-  /* ─── JETONBANK DESIGN SYSTEM (AUTHENTIC WARM PALETTE) ─── */
+  /* ─── S.O.S MEMORIAL DESIGN SYSTEM (AUTHENTIC WARM PALETTE) ─── */
   :root {
-    --bg: #ffffff;
-    --surface: #f6f6f6;
-    --surface-hover: #ffe8e5;
-    --brand: #d0331c;
-    --brand-light: #f73b20;
-    --brand-hero: #f3624e;
-    --brand-dark: #c71a02;
-    --text: #1a1a1a;
-    --text-muted: rgba(10, 10, 10, 0.55);
-    --text-on-brand: #fcfdff;
-    --border: rgba(0, 0, 0, 0.08);
-    --radius-card: 1.25rem;
-    --radius-btn: 2.8125rem;
-    --glass-nav: rgba(255, 255, 255, 0.87);
+    /* 主品牌色 */
+    --color-brand:        #F3624E;   /* 主珊瑚紅 */
+    --color-brand-light:  #F77E6C;   /* 亮版（hover 狀態） */
+    --color-brand-pale:   #FFF0EE;   /* 極淡底色（卡片背景） */
+    --color-brand-dark:   #D64F3B;   /* 深版（active 狀態） */
+
+    /* 中性色 */
+    --color-bg:           #ffffff;   /* 頁面背景 */
+    --color-ink:          #111111;   /* 最深，主標題用 */
+    --color-ink-secondary: #3D3D3D;  /* 次標題 */
+    --color-ink-muted:    rgba(17,17,17, 0.5);  /* 說明文字 */
+    --color-surface:      #F7F7F7;   /* 卡片底色 */
+    --color-surface-2:    #EFEFEF;   /* 次層底色 */
+    --color-border:       rgba(0,0,0, 0.08);
+
+    /* 導航欄與頁尾專屬變數 */
+    --color-footer-bg:    #0f0f0f;
+
+    /* 排版 */
+    --font-display: 'Syne', sans-serif;
+    --font-body:    'DM Sans', sans-serif;
+
+    /* 圓角系統 */
+    --radius-sm:   0.5rem;
+    --radius-md:   1rem;
+    --radius-lg:   1.5rem;
+    --radius-pill: 100px;
+
+    /* 間距節奏 */
+    --section-gap:   8rem;
+    --container-max: 1200px;
+    --container-pad: 2rem;
+  }
+
+  /* 深色模式 */
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-bg:            #121212;
+      --color-ink:           #F5F5F5;
+      --color-ink-secondary: #C8C8C8;
+      --color-ink-muted:     rgba(245,245,245, 0.5);
+      --color-surface:       #1C1C1C;
+      --color-surface-2:     #252525;
+      --color-border:        rgba(255,255,255, 0.1);
+      --color-brand-pale:    rgba(243, 98, 78, 0.15);
+      
+      --color-footer-bg:    #080808;
+    }
   }
 
   * {
@@ -47,16 +81,16 @@
   }
 
   body {
-    background-color: var(--bg);
-    color: var(--text);
-    font-family: 'DM Sans', sans-serif;
+    background-color: var(--color-bg);
+    color: var(--color-ink);
+    font-family: var(--font-body);
     overflow-x: hidden;
     line-height: 1.6;
   }
 
-  /* Light section alternation like JetonBank */
+  /* Light section alternation like S.O.S MEMORIAL */
   .section-light {
-    background: #f9f9f9;
+    background: var(--color-surface-2);
   }
 
   /* ─── SCROLL REVEAL ANIMATION (BASE) ─── */
@@ -70,7 +104,7 @@
     transform: translateY(0);
   }
 
-  /* ─── JETONBANK MULTI-ANIMATION SYSTEM ─── */
+  /* ─── S.O.S MEMORIAL MULTI-ANIMATION SYSTEM ─── */
 
   /* 1. Slide from LEFT */
   .reveal-left {
@@ -118,7 +152,7 @@
   .stagger-parent.visible .stagger-child:nth-child(5) { transition-delay: 0.4s; opacity: 1; transform: translateY(0); }
   .stagger-parent.visible .stagger-child:nth-child(6) { transition-delay: 0.5s; opacity: 1; transform: translateY(0); }
 
-  /* 5. Text clip reveal (JetonBank headline style) */
+  /* 5. Text clip reveal (S.O.S MEMORIAL headline style) */
   .reveal-text {
     overflow: hidden;
     display: block;
@@ -134,32 +168,38 @@
 
   /* 6. Number Counter (static, JS animates) */
   .counter-num {
-    font-family: 'Syne', sans-serif;
+    font-family: var(--font-display);
     font-size: clamp(2.5rem, 5vw, 4rem);
     font-weight: 800;
-    color: var(--brand);
+    color: var(--color-brand);
     line-height: 1;
+    margin-bottom: 0.5rem;
+    font-variant-numeric: tabular-nums;
   }
   .counter-label {
     font-size: 0.9rem;
-    color: var(--text-muted);
+    color: var(--color-ink-muted);
     margin-top: 0.4rem;
     display: block;
   }
 
-  /* Stats bar (JetonBank info strip style, for between sections) */
+  /* Stats bar (S.O.S MEMORIAL info strip style, for between sections) */
   .stats-strip {
-    background: #fff0ee;
-    border: 1px solid rgba(208,51,28,0.12);
-    border-radius: 1rem;
-    padding: 2.5rem 3rem;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    gap: 2rem;
-    margin: 5rem 0;
-    flex-wrap: wrap;
+    position: relative;
+    background: var(--color-brand-pale);
+    padding: 3rem 0;
+    overflow: hidden;
   }
+  .stats-strip::before, .stats-strip::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--color-brand), transparent);
+  }
+  .stats-strip::before { top: 0; }
+  .stats-strip::after { bottom: 0; }
   .stats-item {
     text-align: center;
   }
@@ -170,9 +210,21 @@
   }
   @media (max-width: 768px) {
     .stats-strip {
-      padding: 2rem;
-      gap: 1.5rem;
-    }
+    position: relative;
+    background: var(--color-brand-pale);
+    padding: 3rem 0;
+    overflow: hidden;
+  }
+  .stats-strip::before, .stats-strip::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--color-brand), transparent);
+  }
+  .stats-strip::before { top: 0; }
+  .stats-strip::after { bottom: 0; }
     .stats-divider { display: none; }
   }
 
@@ -195,7 +247,7 @@
     opacity: 1;
   }
 
-  /* Horizontal line separator (JetonBank uses these between sections) */
+  /* Horizontal line separator (S.O.S MEMORIAL uses these between sections) */
   .section-line {
     height: 1px;
     background: linear-gradient(90deg, transparent, rgba(208,51,28,0.2), transparent);
@@ -219,25 +271,23 @@
   .section-tag {
     font-size: 0.85rem;
     font-weight: 700;
-    color: var(--brand);
-    text-transform: uppercase;
+    color: var(--color-brand);
+    
     letter-spacing: 0.15em;
     margin-bottom: 1rem;
     display: inline-block;
   }
 
   .section-title {
-    font-family: 'Syne', sans-serif;
+    font-family: var(--font-display);
     font-size: clamp(2rem, 4vw, 3rem);
     font-weight: 800;
     line-height: 1.2;
-    color: var(--text);
-    margin-bottom: 1.5rem;
   }
 
-  /* ─── JETONBANK CAPSULE BUTTONS ─── */
-  .bzGHEL {
-    border-radius: var(--radius-btn);
+  /* ─── S.O.S MEMORIAL CAPSULE BUTTONS ─── */
+  .btn-capsule {
+    border-radius: var(--radius-pill);
     cursor: pointer;
     padding: 0.2rem 1.69rem;
     padding-right: 0.31rem;
@@ -250,15 +300,15 @@
     height: 3.375rem;
   }
 
-  .bzGHEL span, .bzGHEL .icon-container {
+  .btn-capsule span, .btn-capsule .icon-container {
     display: inline-block;
   }
 
   /* Hover Double Slide Anim */
-  .bzGHEL:hover span {
+  .btn-capsule:hover span {
     animation: slide-up-out-in-text 0.5s forwards ease-in-out;
   }
-  .bzGHEL:hover .icon-container {
+  .btn-capsule:hover .icon-container {
     animation: slide-up-out-in-icon 0.5s forwards ease-in-out;
   }
 
@@ -275,7 +325,7 @@
     100% { transform: translateY(0); opacity: 1; }
   }
 
-  .bzGHEL .icon-container {
+  .btn-capsule .icon-container {
     margin-left: 1.69rem;
     width: 2.75rem;
     height: 2.75rem;
@@ -286,103 +336,108 @@
     transition: transform 0.3s;
   }
 
-  .bzGHEL.white {
+  .btn-capsule.white {
     background: #f6f6f6;
-    color: var(--brand);
+    color: var(--color-brand);
   }
-  .bzGHEL.white .icon-container {
-    background: var(--brand);
+  .btn-capsule.white .icon-container {
+    background: var(--color-brand);
   }
-  .bzGHEL.white .icon-container path {
+  .btn-capsule.white .icon-container path {
     stroke: #f6f6f6;
   }
 
-  .bzGHEL.blue {
-    background: var(--brand);
+  .btn-capsule.blue {
+    background: var(--color-brand);
     color: white;
   }
-  .bzGHEL.blue .icon-container {
+  .btn-capsule.blue .icon-container {
     background: #fffffc;
   }
-  .bzGHEL.blue .icon-container path {
-    stroke: var(--brand-dark);
+  .btn-capsule.blue .icon-container path {
+    stroke: var(--color-brand-dark);
   }
 
-  .bzGHEL.darkblue {
-    background: var(--brand-dark);
+  .btn-capsule.darkblue {
+    background: var(--color-brand-dark);
     color: white;
   }
-  .bzGHEL.darkblue .icon-container {
+  .btn-capsule.darkblue .icon-container {
     background: rgba(255, 255, 255, 0.16);
   }
-  .bzGHEL.darkblue .icon-container path {
+  .btn-capsule.darkblue .icon-container path {
     stroke: white;
   }
 
   /* On-hero hero button (hero bg is coral, so use white button) */
-  .bzGHEL.hero-white {
+  .btn-capsule.hero-white {
     background: #f6f6f6;
-    color: var(--brand-dark);
+    color: var(--color-brand-dark);
   }
-  .bzGHEL.hero-white .icon-container {
-    background: var(--brand-dark);
+  .btn-capsule.hero-white .icon-container {
+    background: var(--color-brand-dark);
   }
-  .bzGHEL.hero-white .icon-container path {
+  .btn-capsule.hero-white .icon-container path {
     stroke: white;
   }
 
-  .bzGHEL.outline {
+  .btn-capsule.outline {
     background: transparent;
-    color: var(--brand);
+    color: var(--color-brand);
     border: 1px solid rgba(208, 51, 28, 0.35);
   }
-  .bzGHEL.outline .icon-container {
+  .btn-capsule.outline .icon-container {
     background: rgba(208, 51, 28, 0.1);
   }
-  .bzGHEL.outline .icon-container path {
-    stroke: var(--brand);
+  .btn-capsule.outline .icon-container path {
+    stroke: var(--color-brand);
   }
-  .bzGHEL.outline:hover {
-    background: var(--surface-hover);
-    border-color: var(--brand);
+  .btn-capsule.outline:hover {
+    background: var(--color-brand-pale);
+    border-color: var(--color-brand);
   }
 
-  /* ─── NAVIGATION BAR (FLOATING WHITE GLASS ISLAND — JETONBANK EXACT) ─── */
-  .jExEwY {
+  /* ─── NAVIGATION BAR (FLOATING WHITE GLASS ISLAND — S.O.S MEMORIAL EXACT) ─── */
+  .nav-floating {
     position: fixed;
-    z-index: 1000;
-    transition: top 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-    top: -10rem;
+    top: 2rem;
     left: 50%;
     transform: translateX(-50%);
-    width: fit-content;
-    max-width: calc(100% - 3rem);
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.20);
+    border-radius: var(--radius-pill);
+    height: 3.75rem;
+    transition: top 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                opacity 0.3s ease;
   }
-  .jExEwY.menu-show {
+  .nav-floating.menu-show {
     top: 2rem;
   }
-  .jExEwY.menu-hide {
+  .nav-floating.menu-hide {
     top: -10rem;
   }
 
   header {
-    background: rgba(255, 255, 255, 0.1);
-    height: 4.5625rem;
-    border-radius: 100px;
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    box-shadow: 0px 8px 32px rgba(0, 0, 0, 0.15), inset 0px 1px 0px rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    background: transparent;
+    height: 100%;
+    border-radius: var(--radius-pill);
+    border: none;
+    box-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0 0.5rem;
+    padding: 0 1.5rem;
     overflow: hidden;
   }
 
-  /* Logo — dark red on white nav, exact JetonBank approach */
+  /* Logo — dark red on white nav, exact S.O.S MEMORIAL approach */
   .logo {
-    font-family: 'Syne', sans-serif;
+    font-family: var(--font-display);
     font-size: 1.8rem;
     font-weight: 800;
     color: #ffffff;
@@ -471,12 +526,12 @@
   }
   header .buttons .btn-create {
     background: #ffffff;
-    color: var(--brand-dark);
+    color: var(--color-brand-dark);
     border: 1px solid #ffffff;
   }
   header .buttons .btn-create:hover {
     background: rgba(255, 255, 255, 0.9);
-    color: var(--brand-dark);
+    color: var(--color-brand-dark);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   }
 
@@ -484,7 +539,7 @@
     display: none;
   }
 
-  /* Mobile menu panel — JetonBank warm pink #ffe8e5 tint */
+  /* Mobile menu panel — S.O.S MEMORIAL warm pink #ffe8e5 tint */
   .mobile-menu-content {
     display: none;
     position: absolute;
@@ -502,7 +557,7 @@
   }
   .mobile-menu-content h3 {
     color: rgba(255, 255, 255, 0.7);
-    font-family: 'Syne', sans-serif;
+    font-family: var(--font-display);
     font-size: 1.1rem;
     font-weight: 400;
     opacity: 0.8;
@@ -553,20 +608,35 @@
   }
   .mobile-menu-content .buttons .btn-create {
     background: #ffffff;
-    color: var(--brand-dark);
+    color: var(--color-brand-dark);
   }
   .mobile-menu-content .buttons .btn-create:hover {
     background: rgba(255, 255, 255, 0.9);
   }
 
   @media (max-width: 900px) {
-    .jExEwY {
-      width: fit-content;
-      max-width: calc(100% - 2rem);
-      top: 1rem;
-    }
-    .jExEwY.menu-show { top: 1rem; }
+    .nav-floating {
+    position: fixed;
+    top: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.20);
+    border-radius: var(--radius-pill);
+    height: 3.75rem;
+    transition: top 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                opacity 0.3s ease;
+  }
+    .nav-floating.menu-show { top: 1rem; }
     header {
+      background: transparent;
+      border: none;
+      box-shadow: none;
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
       height: 3.5rem;
       padding: 0 0.5rem;
     }
@@ -594,7 +664,7 @@
 
   .section-container {
     padding: 8rem 0;
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1px solid var(--color-border);
   }
 
   .grid-layout {
@@ -610,8 +680,8 @@
     }
   }
 
-  /* ─── HERO SECTION (JETONBANK AUTHENTIC — CORAL #f3624e BG, WHITE TEXT) ─── */
-  .jcSPJV {
+  /* ─── HERO SECTION (S.O.S MEMORIAL AUTHENTIC — CORAL #f3624e BG, WHITE TEXT) ─── */
+  .hero-section {
     position: relative;
     background: #f3624e;
     overflow: hidden;
@@ -619,47 +689,43 @@
     padding-bottom: 2rem;
   }
 
-  /* JetonBank hero has a bg video; we replicate with animated mesh */
+  /* S.O.S MEMORIAL hero has a bg video; we replicate with animated mesh */
   .hero-flow-bg {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background:
-      radial-gradient(ellipse at 20% 50%, rgba(255,120,90,0.35) 0%, transparent 55%),
-      radial-gradient(ellipse at 80% 20%, rgba(200,30,0,0.2) 0%, transparent 50%);
-    animation: flow-gradient 18s infinite alternate ease-in-out;
+    background-color: var(--color-brand);
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
     z-index: 0;
     pointer-events: none;
   }
-  @keyframes flow-gradient {
-    0% { opacity: 0.8; transform: scale(1); }
+  
     100% { opacity: 1; transform: scale(1.08); }
   }
 
-  .jcSPJV .top {
+  .hero-section .top {
     position: relative;
     z-index: 1;
     text-align: center;
   }
 
-  /* JetonBank hero h1: 8rem, white, light weight */
-  .jcSPJV h1 {
-    font-family: 'Syne', sans-serif;
-    font-size: clamp(3.5rem, 10vw, 8rem);
+  /* S.O.S MEMORIAL hero h1: 8rem, white, light weight */
+  .hero-section h1 {
+    font-family: var(--font-display);
+    font-size: clamp(3.5rem, 9vw, 7.5rem);
     font-weight: 800;
-    line-height: 1.0;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
     color: #ffffff;
-    letter-spacing: -0.02em;
-    margin-top: 9.75rem;
     margin-bottom: 2rem;
   }
-  .jcSPJV h1 span {
+  .hero-section h1 span {
     color: rgba(255,255,255,0.85);
   }
 
-  .jcSPJV .desc {
+  .hero-section .desc {
     font-size: 1.25rem;
     color: #ffffff;
     font-weight: 400;
@@ -668,19 +734,19 @@
     line-height: 1.6875rem;
   }
 
-  .jcSPJV .actions {
+  .hero-section .actions {
     display: flex;
     justify-content: center;
     gap: 1.25rem;
     margin-bottom: 2.56rem;
   }
   @media (max-width: 600px) {
-    .jcSPJV .actions {
+    .hero-section .actions {
       flex-direction: column;
       align-items: center;
       gap: 1rem;
     }
-    .jcSPJV .actions a {
+    .hero-section .actions a {
       width: 13.3125rem;
       white-space: nowrap;
       display: flex;
@@ -688,7 +754,7 @@
     }
   }
 
-  /* JetonBank Awards widget — translucent brand red over coral bg */
+  /* S.O.S MEMORIAL Awards widget — translucent brand red over coral bg */
   .awards-container {
     height: 7.5rem;
     margin-top: 5.13rem;
@@ -736,7 +802,7 @@
     white-space: nowrap;
   }
   .marquee-item {
-    font-family: 'Syne', sans-serif;
+    font-family: var(--font-display);
     font-weight: 700;
     font-size: 1rem;
     color: white;
@@ -769,7 +835,7 @@
     transform: translateY(4px);
   }
 
-  /* ─── PORTRAITS (LIGHT SURFACE, JETONBANK CARD STYLE) ─── */
+  /* ─── PORTRAITS (LIGHT SURFACE, S.O.S MEMORIAL CARD STYLE) ─── */
   .intro-block {
     display: flex;
     flex-direction: column;
@@ -777,11 +843,11 @@
   }
   .intro-block p {
     font-size: 1.1rem;
-    color: var(--text-muted);
+    color: var(--color-ink-muted);
     margin-bottom: 2rem;
   }
 
-  /* ─── CLASSIC QUOTES SECTION (JETONBANK VERTICAL SCROLL STYLE) ─── */
+  /* ─── CLASSIC QUOTES SECTION (S.O.S MEMORIAL VERTICAL SCROLL STYLE) ─── */
   .quotes-section {
     background: #f3624e;
     overflow: hidden;
@@ -792,14 +858,17 @@
   .quotes-layout {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    height: 420px;
+    height: 320px;
     align-items: stretch;
     gap: 2rem;
   }
   @media (max-width: 900px) {
     .quotes-layout {
-      min-height: auto;
-      gap: 1rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      height: 320px;
+      align-items: stretch;
+      gap: 2rem;
     }
   }
 
@@ -809,7 +878,8 @@
     overflow: hidden;
     display: flex;
     align-items: stretch;
-    /* Gradient fade top and bottom — JetonBank exact effect */
+    height: 320px;
+    /* Gradient fade top and bottom — S.O.S MEMORIAL exact effect */
     -webkit-mask-image: linear-gradient(
       to bottom,
       transparent 0%,
@@ -831,7 +901,7 @@
   }
   @media (max-width: 900px) {
     .quotes-ticker-wrap {
-      height: 400px;
+      height: 320px;
     }
   }
 
@@ -862,7 +932,7 @@
   }
 
   .ticker-quote {
-    font-family: 'Syne', sans-serif;
+    font-family: var(--font-display);
     font-size: clamp(1.45rem, 2.4vw, 2.1rem);
     font-weight: 800;
     color: #ffffff;
@@ -874,7 +944,7 @@
     cursor: default;
     border-bottom: 1px solid rgba(255,255,255,0.08);
     letter-spacing: -0.02em;
-    text-transform: uppercase;
+    
   }
   .ticker-quote:hover {
     color: #ffffff;
@@ -893,7 +963,7 @@
   .premium-cell {
     background: #f6f6f6;
     border: 1px solid rgba(0,0,0,0.07);
-    border-radius: var(--radius-card);
+    border-radius: var(--radius-lg);
     position: relative;
     overflow: hidden;
     aspect-ratio: 0.95;
@@ -924,7 +994,7 @@
   }
   /* Restyle portrait SVG strokes for light background */
   .portrait-svg g {
-    stroke: var(--brand-dark);
+    stroke: var(--color-brand-dark);
   }
 
   /* Subtle glows for cards */
@@ -955,7 +1025,7 @@
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     border: 1px solid rgba(208, 51, 28, 0.25);
-    color: var(--brand-dark);
+    color: var(--color-brand-dark);
     padding: 0.6rem 1rem;
     border-radius: 0.75rem;
     font-weight: 600;
@@ -974,11 +1044,11 @@
     transform: translate(-50%, 0);
   }
 
-  /* ─── FITNESS特訓 (COACH DEE — JETONBANK WARM CARD) ─── */
+  /* ─── FITNESS特訓 (COACH DEE — S.O.S MEMORIAL WARM CARD) ─── */
   .fitness-card {
     background: #f6f6f6;
     border: 1px solid rgba(0,0,0,0.07);
-    border-radius: var(--radius-card);
+    border-radius: var(--radius-lg);
     padding: 3rem;
     display: flex;
     flex-direction: column;
@@ -1009,7 +1079,7 @@
   .fitness-label {
     font-size: 0.95rem;
     font-weight: 500;
-    color: var(--text-muted);
+    color: var(--color-ink-muted);
     margin-bottom: 1rem;
     display: block;
   }
@@ -1029,7 +1099,7 @@
     -webkit-appearance: none;
     width: 1.5rem;
     height: 1.5rem;
-    background: var(--brand);
+    background: var(--color-brand);
     border-radius: 50%;
     cursor: pointer;
     box-shadow: 0 0 10px rgba(208, 51, 28, 0.4);
@@ -1046,7 +1116,7 @@
     border-radius: 1rem;
     font-weight: 700;
     font-size: 1.2rem;
-    color: var(--brand-dark);
+    color: var(--color-brand-dark);
     text-align: center;
     line-height: 1.5;
     position: relative;
@@ -1065,7 +1135,7 @@
     line-height: 1;
   }
 
-  /* ─── 仙女修煉手冊 (JETONBANK WARM FLIP CARDS) ─── */
+  /* ─── 仙女修煉手冊 (S.O.S MEMORIAL WARM FLIP CARDS) ─── */
   .fairy-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -1095,7 +1165,7 @@
     height: 100%;
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
-    border-radius: var(--radius-card);
+    border-radius: var(--radius-lg);
     border: 1px solid rgba(0,0,0,0.08);
     padding: 2rem;
     display: flex;
@@ -1114,7 +1184,7 @@
   }
 
   .fairy-card-back {
-    background: linear-gradient(135deg, var(--brand) 0%, var(--brand-dark) 100%);
+    background: linear-gradient(135deg, var(--color-brand) 0%, var(--color-brand-dark) 100%);
     transform: rotateY(180deg);
     border-color: rgba(208, 51, 28, 0.3);
   }
@@ -1132,32 +1202,32 @@
     transition: transform 0.3s;
   }
   .fairy-icon-box svg {
-    stroke: var(--brand);
+    stroke: var(--color-brand);
   }
   .fairy-card-front:hover .fairy-icon-box {
     transform: scale(1.1) rotate(5deg);
   }
 
   .fairy-rule-num {
-    font-family: 'Syne', sans-serif;
+    font-family: var(--font-display);
     font-size: 0.9rem;
     font-weight: 700;
-    color: var(--brand);
+    color: var(--color-brand);
     letter-spacing: 0.05em;
   }
 
   .fairy-rule-title {
-    font-family: 'Syne', sans-serif;
+    font-family: var(--font-display);
     font-size: 1.5rem;
     font-weight: 800;
     line-height: 1.25;
     margin-top: 1rem;
-    color: var(--text);
+    color: var(--color-ink);
   }
 
   .fairy-hint-tag {
     font-size: 0.8rem;
-    color: var(--text-muted);
+    color: var(--color-ink-muted);
     align-self: flex-end;
     display: flex;
     align-items: center;
@@ -1191,11 +1261,11 @@
     color: rgba(255, 255, 255, 0.85);
   }
 
-  /* ─── JUKEBOX (JETONBANK WARM CARD CONSOLE) ─── */
+  /* ─── JUKEBOX (S.O.S MEMORIAL WARM CARD CONSOLE) ─── */
   .jukebox-console {
     background: #f6f6f6;
     border: 1px solid rgba(0,0,0,0.07);
-    border-radius: var(--radius-card);
+    border-radius: var(--radius-lg);
     padding: 3rem;
     box-shadow: 0 4px 24px rgba(208,51,28,0.08);
     display: flex;
@@ -1223,16 +1293,16 @@
     font-weight: 500;
     line-height: 1.6;
     z-index: 2;
-    color: var(--brand-dark);
+    color: var(--color-brand-dark);
   }
 
   .jukebox-lyrics-sub {
     font-size: 0.85rem;
-    color: var(--brand);
+    color: var(--color-brand);
     margin-top: 0.8rem;
     font-weight: 700;
     z-index: 2;
-    text-transform: uppercase;
+    
     letter-spacing: 0.1em;
   }
 
@@ -1247,7 +1317,7 @@
   .wave-bar {
     width: 3px;
     height: 4px;
-    background: var(--brand);
+    background: var(--color-brand);
     border-radius: 1px;
     animation: wave-motion 0.8s infinite alternate ease-in-out;
   }
@@ -1270,8 +1340,8 @@
   .jukebox-btn {
     background: white;
     border: 1px solid rgba(0,0,0,0.08);
-    color: var(--text);
-    border-radius: var(--radius-btn);
+    color: var(--color-ink);
+    border-radius: var(--radius-pill);
     padding: 0.8rem 1rem;
     font-weight: 500;
     font-size: 0.95rem;
@@ -1282,32 +1352,32 @@
   .jukebox-btn:hover {
     background: #ffe8e5;
     border-color: rgba(208,51,28,0.3);
-    color: var(--brand-dark);
+    color: var(--color-brand-dark);
   }
   .jukebox-btn.active {
-    background: var(--brand);
+    background: var(--color-brand);
     color: white;
-    border-color: var(--brand);
+    border-color: var(--color-brand);
     box-shadow: 0 4px 15px rgba(208, 51, 28, 0.3);
   }
 
   .interactive-lyric {
     display: inline-block;
-    color: var(--brand);
-    border-bottom: 1px dashed var(--brand);
+    color: var(--color-brand);
+    border-bottom: 1px dashed var(--color-brand);
     cursor: pointer;
     padding: 0 0.2rem;
     transition: color 0.15s, border-color 0.15s;
   }
   .interactive-lyric:hover {
-    color: var(--brand-dark);
-    border-bottom-color: var(--brand-dark);
+    color: var(--color-brand-dark);
+    border-bottom-color: var(--color-brand-dark);
   }
 
-  /* ─── 留言貼紙牆 (FAN LEDGER — JETONBANK WARM GRID BOARD) ─── */
+  /* ─── 留言貼紙牆 (FAN LEDGER — S.O.S MEMORIAL WARM GRID BOARD) ─── */
   .sticker-wall-container {
     border: 1px solid rgba(0,0,0,0.07);
-    border-radius: var(--radius-card);
+    border-radius: var(--radius-lg);
     background: #fff8f7;
     height: 550px;
     position: relative;
@@ -1328,7 +1398,7 @@
     -webkit-backdrop-filter: blur(10px);
     font-weight: 400;
     font-size: 0.9rem;
-    color: var(--text);
+    color: var(--color-ink);
     width: 240px;
     cursor: grab;
     z-index: 10;
@@ -1343,24 +1413,24 @@
   .sticker:active {
     cursor: grabbing;
     z-index: 100 !important;
-    border-color: var(--brand);
+    border-color: var(--color-brand);
     box-shadow: 0 10px 30px rgba(208, 51, 28, 0.2);
   }
 
   .sticker-author {
     font-size: 0.75rem;
-    color: var(--brand);
+    color: var(--color-brand);
     border-top: 1px solid rgba(208, 51, 28, 0.1);
     padding-top: 0.6rem;
     display: flex;
     justify-content: space-between;
     font-weight: 700;
-    text-transform: uppercase;
+    
     letter-spacing: 0.05em;
   }
 
-  /* Warm JetonBank accent colors */
-  .sticker-classic { border-left: 3px solid var(--brand); }
+  /* Warm S.O.S MEMORIAL accent colors */
+  .sticker-classic { border-left: 3px solid var(--color-brand); }
   .sticker-pink { border-left: 3px solid #e91e8c; }
   .sticker-cyan { border-left: 3px solid #0097a7; }
   .sticker-lime { border-left: 3px solid #689f38; }
@@ -1370,7 +1440,7 @@
   .creator-panel {
     background: #f6f6f6;
     border: 1px solid rgba(0,0,0,0.07);
-    border-radius: var(--radius-card);
+    border-radius: var(--radius-lg);
     padding: 2.5rem;
     box-shadow: 0 4px 20px rgba(208,51,28,0.06);
   }
@@ -1381,9 +1451,9 @@
     display: block;
     font-weight: 700;
     font-size: 0.8rem;
-    text-transform: uppercase;
+    
     letter-spacing: 0.1em;
-    color: var(--brand);
+    color: var(--color-brand);
     margin-bottom: 0.5rem;
   }
   .form-input, .form-select, .form-textarea {
@@ -1391,7 +1461,7 @@
     padding: 0.8rem 1rem;
     border: 1px solid rgba(0,0,0,0.1);
     background: #ffffff;
-    color: var(--text);
+    color: var(--color-ink);
     border-radius: 0.5rem;
     font-family: inherit;
     font-weight: 400;
@@ -1399,7 +1469,7 @@
     transition: all 0.3s;
   }
   .form-input:focus, .form-select:focus, .form-textarea:focus {
-    border-color: var(--brand);
+    border-color: var(--color-brand);
     box-shadow: 0 0 0 3px rgba(208,51,28,0.1);
   }
   .form-textarea {
@@ -1408,10 +1478,10 @@
   }
 
   .btn-submit {
-    background: var(--brand);
+    background: var(--color-brand);
     color: white;
     border: 0;
-    border-radius: var(--radius-btn);
+    border-radius: var(--radius-pill);
     padding: 1rem;
     width: 100%;
     font-weight: 700;
@@ -1421,13 +1491,13 @@
     box-shadow: 0 4px 15px rgba(208, 51, 28, 0.3);
   }
   .btn-submit:hover {
-    background: var(--brand-dark);
+    background: var(--color-brand-dark);
   }
   .btn-submit:active {
     transform: scale(0.98);
   }
 
-  /* ─── FOOTER (JETONBANK CORE REPLICA) ─── */
+  /* ─── FOOTER (S.O.S MEMORIAL CORE REPLICA) ─── */
   .footer-container {
     position: relative;
     margin-top: 0;
@@ -1440,7 +1510,7 @@
     z-index: 1;
     margin-bottom: 0;
     border-radius: 0;
-    background: #0f0f0f;
+    background: var(--color-footer-bg);
     padding: 5rem 3.5rem 2rem 3.5rem;
     border-top: 1px solid rgba(255, 255, 255, 0.08);
     box-shadow: 0 -10px 40px rgba(0,0,0,0.5);
@@ -1474,7 +1544,7 @@
     font-weight: 700;
     font-size: 1rem;
     margin-bottom: 1rem;
-    text-transform: uppercase;
+    
     letter-spacing: 0.05em;
   }
 
@@ -1543,7 +1613,7 @@
     transition: background-color 0.25s, transform 0.25s;
   }
   .sos-social-list li a:hover .sos-social-icon {
-    background: var(--brand);
+    background: var(--color-brand);
     transform: scale(1.08);
   }
   .sos-social-icon svg {
@@ -1581,7 +1651,7 @@
     overflow: hidden;
   }
   .footer-logo-watermark span {
-    font-family: 'Syne', sans-serif;
+    font-family: var(--font-display);
     font-size: 18vw;
     font-weight: 800;
     line-height: 0.7;
@@ -1608,7 +1678,7 @@
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     border: 1px solid rgba(208, 51, 28, 0.3);
-    color: var(--brand-dark);
+    color: var(--color-brand-dark);
     padding: 0.8rem 1.5rem;
     font-weight: 600;
     font-size: 0.9rem;
@@ -1637,7 +1707,7 @@
   }
   .bite-jaw {
     height: 50vh;
-    background: var(--brand);
+    background: var(--color-brand);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1678,7 +1748,7 @@
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border: 1px solid rgba(208, 51, 28, 0.2);
-    border-radius: var(--radius-card);
+    border-radius: var(--radius-lg);
     padding: 1.5rem;
     max-width: 400px;
     z-index: 5000;
@@ -1695,7 +1765,7 @@
     font-size: 0.95rem;
     font-weight: 500;
     margin-bottom: 1.2rem;
-    color: var(--text);
+    color: var(--color-ink);
   }
   .pwa-actions {
     display: flex;
@@ -1703,25 +1773,25 @@
     justify-content: flex-end;
   }
   .btn-pwa-install {
-    background: var(--brand);
+    background: var(--color-brand);
     color: white;
     border: 0;
     padding: 0.5rem 1.2rem;
-    border-radius: var(--radius-btn);
+    border-radius: var(--radius-pill);
     font-weight: 500;
     font-size: 0.85rem;
     cursor: pointer;
     transition: background-color 0.2s;
   }
   .btn-pwa-install:hover {
-    background: var(--brand-dark);
+    background: var(--color-brand-dark);
   }
   .btn-pwa-dismiss {
     background: #f6f6f6;
     border: 1px solid rgba(0,0,0,0.08);
-    color: var(--text);
+    color: var(--color-ink);
     padding: 0.5rem 1.2rem;
-    border-radius: var(--radius-btn);
+    border-radius: var(--radius-pill);
     font-weight: 500;
     font-size: 0.85rem;
     cursor: pointer;
@@ -1729,7 +1799,7 @@
   }
   .btn-pwa-dismiss:hover {
     background: #ffe8e5;
-    color: var(--brand);
+    color: var(--color-brand);
   }
 
   /* ════════════════════════════════════════════════════════
@@ -1741,8 +1811,8 @@
 
   /* ─── TEACHER DEE SECTION ─── */
   .teacher-dee-section {
-    background: var(--brand-hero);
-    padding: 5rem 0;
+    background: var(--color-brand);
+    padding: 5rem 0 8rem 0;
     position: relative;
     overflow: hidden;
   }
@@ -1760,31 +1830,34 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 4rem;
-    align-items: center;
+    align-items: start;
     padding-top: 5rem;
     padding-bottom: 3rem;
   }
   @media (max-width: 900px) {
-    .community-section-header { grid-template-columns: 1fr; gap: 2rem; }
+    .community-section-header { 
+      grid-template-columns: 1fr; 
+      gap: 2rem; 
+      align-items: center;
+    }
   }
 
   .community-tag {
     font-size: 0.78rem;
     font-weight: 700;
-    text-transform: uppercase;
+    
     letter-spacing: 0.18em;
     color: rgba(255,255,255,0.6);
     display: block;
     margin-bottom: 1rem;
   }
   .community-headline {
-    font-family: 'Syne', sans-serif;
-    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-family: var(--font-display);
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
     font-weight: 800;
-    color: #fff;
-    line-height: 1.1;
+    letter-spacing: -0.01em;
     margin-bottom: 1rem;
-    letter-spacing: -0.02em;
+    color: #ffffff;
   }
   .community-desc {
     font-size: 1.05rem;
@@ -1796,8 +1869,13 @@
   /* Auto-play fitness animation card */
   .fitness-anim-wrap {
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
+  }
+  @media (max-width: 900px) {
+    .fitness-anim-wrap {
+      justify-content: center;
+    }
   }
   .fitness-anim-card {
     background: rgba(255,255,255,0.1);
@@ -1819,7 +1897,7 @@
     transition: all 0.4s cubic-bezier(0.16,1,0.3,1);
   }
   .fitness-anim-quote {
-    font-family: 'Syne', sans-serif;
+    font-family: var(--font-display);
     font-size: 0.88rem;
     font-weight: 700;
     color: rgba(255,255,255,0.88);
@@ -1837,7 +1915,7 @@
     margin-bottom: 2rem;
   }
   .tag-pill {
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--font-body);
     font-size: 0.88rem;
     font-weight: 600;
     padding: 0.5rem 1.1rem;
@@ -1860,7 +1938,7 @@
   }
   .tag-pill.active {
     background: #fff;
-    color: var(--brand-dark);
+    color: var(--color-brand-dark);
     border-color: #fff;
     font-weight: 700;
     transform: translateY(-1px);
@@ -1879,16 +1957,10 @@
     box-shadow: 0 8px 40px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.28);
   }
   .xia-form { background: rgba(255,255,255,0.09); }
-  .post-form-top {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 0.8rem;
-    margin-bottom: 0.8rem;
-  }
-  @media (max-width: 600px) { .post-form-top { grid-template-columns: 1fr; } }
+
 
   .glass-input, .glass-select, .glass-textarea {
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--font-body);
     font-size: 0.95rem;
     background: rgba(255,255,255,0.13);
     border: 1px solid rgba(255,255,255,0.25);
@@ -1907,7 +1979,7 @@
     background: rgba(255,255,255,0.2);
     box-shadow: 0 0 0 3px rgba(255,255,255,0.1);
   }
-  .glass-select option { background: var(--brand-dark); color: white; }
+  .glass-select option { background: var(--color-brand-dark); color: white; }
   .glass-textarea {
     resize: vertical;
     min-height: 100px;
@@ -1915,7 +1987,7 @@
     display: block;
   }
   .post-submit-btn {
-    font-family: 'Syne', sans-serif;
+    font-family: var(--font-display);
     font-weight: 700;
     font-size: 0.95rem;
     padding: 0.85rem 2rem;
@@ -1927,7 +1999,7 @@
   }
   .dee-submit {
     background: #fff;
-    color: var(--brand-dark);
+    color: var(--color-brand-dark);
   }
   .dee-submit:hover {
     background: rgba(255,255,255,0.9);
@@ -1936,7 +2008,7 @@
   }
   .xia-submit {
     background: rgba(255,255,255,0.88);
-    color: var(--brand-dark);
+    color: var(--color-brand-dark);
   }
   .xia-submit:hover {
     background: #fff;
@@ -2003,8 +2075,8 @@
 
   /* ─── XIA NU SECTION ─── */
   .xia-nu-section {
-    background: var(--brand-hero);
-    padding: 5rem 0;
+    background: var(--color-brand);
+    padding: 5rem 0 8rem 0;
     position: relative;
     overflow: hidden;
   }
@@ -2046,10 +2118,10 @@
   .kinetic-item {
     text-align: center;
     flex-shrink: 0;
-    font-family: 'Syne', sans-serif;
+    font-family: var(--font-display);
     font-size: clamp(2.2rem, 8.5vw, 8rem);
     font-weight: 800;
-    text-transform: uppercase;
+    
     color: #ffffff;
     letter-spacing: -0.02em;
     line-height: 1.0;
@@ -2086,23 +2158,22 @@
   .kindness-tag {
     font-size: 0.8rem;
     font-weight: 700;
-    text-transform: uppercase;
+    
     letter-spacing: 0.18em;
-    color: var(--brand);
+    color: var(--color-brand);
     display: block;
     margin-bottom: 0.8rem;
   }
   .kindness-headline {
-    font-family: 'Syne', sans-serif;
-    font-size: clamp(2rem, 4vw, 3rem);
-    font-weight: 800;
-    color: var(--brand-dark);
-    line-height: 1.2;
-    margin-bottom: 1.2rem;
-    letter-spacing: -0.02em;
-  }
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      font-weight: 800;
+      color: var(--color-ink);
+      letter-spacing: -0.01em;
+      margin-bottom: 0.5rem;
+    }
   .kindness-desc {
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--font-body);
     font-size: 1.05rem;
     color: rgba(0, 0, 0, 0.65);
     line-height: 1.6;
@@ -2120,10 +2191,10 @@
   }
   
   .col-title {
-    font-family: 'Syne', sans-serif;
+    font-family: var(--font-display);
     font-size: 1.5rem;
     font-weight: 800;
-    color: var(--brand-dark);
+    color: var(--color-brand-dark);
     margin-bottom: 2.5rem;
     text-align: center;
     border-bottom: 2px solid rgba(208, 51, 28, 0.1);
@@ -2141,7 +2212,7 @@
     bottom: 0;
     left: 4px;
     width: 2px;
-    background: var(--brand);
+    background: var(--color-brand);
   }
   
   .timeline-items {
@@ -2160,7 +2231,7 @@
     top: 1.2rem;
     width: 10px;
     height: 10px;
-    background: var(--brand);
+    background: var(--color-brand);
     border-radius: 50%;
     transform: translateX(-4px); /* aligns dot to center of 2px line */
     z-index: 2;
@@ -2181,9 +2252,9 @@
   
   .timeline-badge {
     display: inline-block;
-    background: var(--brand);
+    background: var(--color-brand);
     color: #ffffff;
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--font-body);
     font-size: 0.8rem;
     font-weight: 700;
     padding: 0.25rem 0.8rem;
@@ -2192,7 +2263,7 @@
   }
   
   .timeline-content {
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--font-body);
     font-size: 0.95rem;
     color: #333333;
     line-height: 1.6;
@@ -2233,7 +2304,7 @@
     width: 4px;
     height: 4px;
     border-radius: 50%;
-    background: var(--brand); /* #d0331c */
+    background: var(--color-brand); /* #d0331c */
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -2251,7 +2322,7 @@
     bottom: -2.2rem;
     left: -2rem;
     width: 2px;
-    background: var(--brand);
+    background: var(--color-brand);
     transform-origin: top;
     transform: scaleY(0);
     transition: transform 0.4s ease-out;
@@ -2336,6 +2407,20 @@
     transform: translateX(0);
   }
 
+
+
+  /* ─── REDUCED MOTION SUPPORT ─── */
+  @media (prefers-reduced-motion: reduce) {
+    *, ::before, ::after {
+      animation-delay: -1ms !important;
+      animation-duration: 1ms !important;
+      animation-iteration-count: 1 !important;
+      background-attachment: initial !important;
+      scroll-behavior: auto !important;
+      transition-duration: 0s !important;
+      transition-delay: 0s !important;
+    }
+  }
 </style>
 </head>
 
@@ -2348,7 +2433,7 @@
 </div>
 
 <!-- Floating Navigation Bar -->
-<div class="jExEwY" id="floating-nav">
+<div class="nav-floating" id="floating-nav">
   <header>
     <nav class="menu-container" aria-label="Main navigation">
       <ul>
@@ -2364,7 +2449,7 @@
 <div id="home-tab" class="tab-content tab-active">
 
 <!-- Hero Section -->
-<section class="jcSPJV" id="hero">
+<section class="hero-section" id="hero">
   <div class="hero-flow-bg"></div>
   <div class="custom-container">
     <div class="top">
@@ -2560,40 +2645,44 @@
   </div>
 </section>
 
-<!-- Classic Quotes Section (JetonBank vertical scroll style) -->
+<!-- Classic Quotes Section (S.O.S MEMORIAL vertical scroll style) -->
 <section class="quotes-section" id="portraits-section">
   <div class="quotes-layout custom-container">
     <!-- Left Column: Ticker with half of the quotes (Reverse scrolling) -->
     <div class="quotes-ticker-wrap reveal-left" aria-label="經典金句滾動展示左">
       <div class="quotes-ticker ticker-left" id="quotes-ticker-left">
-        <div class="ticker-quote">即使分手很痛苦，但我還是會用理智來面對我的人生跟感情。</div>
-        <div class="ticker-quote">我的感情轟轟烈烈，可是我結束得斬釘截鐵。</div>
-        <div class="ticker-quote">有些人認識好多年卻覺得陌生，有些人一見面就像認識了幾輩子，這叫緣分。</div>
-        <div class="ticker-quote">女人最美的時候，是她知道自己要什麼的時候。</div>
-        <div class="ticker-quote">在感情中勇敢爭取的人，無論結果，都閃閃發亮！</div>
+        <div class="ticker-quote">即使分手很痛苦，但我還是會用理智來面對我的人生跟感情。 ✦</div>
+        <div class="ticker-quote">我的感情轟轟烈烈，可是我結束得斬釘截鐵。 ✦</div>
+        <div class="ticker-quote">有些人認識好多年卻覺得陌生，有些人一見面就像認識了幾輩子，這叫緣分。 ✦</div>
+        <div class="ticker-quote">女人最美的時候，是她知道自己要什麼的時候。 ✦</div>
+        <div class="ticker-quote">在感情中勇敢爭取的人，無論結果，都閃閃發亮！ ✦</div>
+        <div class="ticker-quote">碰到任何困難我都可以走下去，反正不管遇到什麼事情大不了就死，我覺得死後的世界是非常美的。 ✦</div>
         <!-- Duplicate set for seamless loop -->
-        <div class="ticker-quote" aria-hidden="true">即使分手很痛苦，但我還是會用理智來面對我的人生跟感情。</div>
-        <div class="ticker-quote" aria-hidden="true">我的感情轟轟烈烈，可是我結束得斬釘截鐵。</div>
-        <div class="ticker-quote" aria-hidden="true">有些人認識好多年卻覺得陌生，有些人一見面就像認識了幾輩子，這叫緣分。</div>
-        <div class="ticker-quote" aria-hidden="true">女人最美的時候，是她知道自己要什麼的時候。</div>
-        <div class="ticker-quote" aria-hidden="true">在感情中勇敢爭取的人，無論結果，都閃閃發亮！</div>
+        <div class="ticker-quote" aria-hidden="true">即使分手很痛苦，但我還是會用理智來面對我的人生跟感情。 ✦</div>
+        <div class="ticker-quote" aria-hidden="true">我的感情轟轟烈烈，可是我結束得斬釘截鐵。 ✦</div>
+        <div class="ticker-quote" aria-hidden="true">有些人認識好多年卻覺得陌生，有些人一見面就像認識了幾輩子，這叫緣分。 ✦</div>
+        <div class="ticker-quote" aria-hidden="true">女人最美的時候，是她知道自己要什麼的時候。 ✦</div>
+        <div class="ticker-quote" aria-hidden="true">在感情中勇敢爭取的人，無論結果，都閃閃發亮！ ✦</div>
+        <div class="ticker-quote" aria-hidden="true">碰到任何困難我都可以走下去，反正不管遇到什麼事情大不了就死，我覺得死後的世界是非常美的。 ✦</div>
       </div>
     </div>
 
     <!-- Right Column: Ticker with other half of the quotes (Normal scrolling) -->
     <div class="quotes-ticker-wrap reveal-right" aria-label="經典金句滾動展示右">
       <div class="quotes-ticker ticker-right" id="quotes-ticker-right">
-        <div class="ticker-quote">所有發生的一切都無法預知，所以我一直抱著很隨性的心情看待人生。</div>
-        <div class="ticker-quote">碰到任何困難我都可以走下去，反正不管遇到什麼事情大不了就死，我覺得死後的世界是非常美的。</div>
-        <div class="ticker-quote">獨立不只是養活自己，而是有自己的想法。</div>
-        <div class="ticker-quote">沒人在乎你的豐功偉業，但有可能記住你對他說過的一句貼心的話，做過的一件溫柔的事。</div>
-        <div class="ticker-quote">抱怨不是壞事，但要找對人抱怨！剛剛跟大S抱怨了一下今天很累，現在整個人精神又來了！</div>
+        <div class="ticker-quote">所有發生的一切都無法預知，所以我一直抱著很隨性的心情看待人生。 ✦</div>
+        <div class="ticker-quote">獨立不只是養活自己，而是有自己的想法。 ✦</div>
+        <div class="ticker-quote">沒人在乎你的豐功偉業，但有可能記住你對他說過的一句貼心的話，做過的一件溫柔的事。 ✦</div>
+        <div class="ticker-quote">抱怨不是壞事，但要找對人抱怨！剛剛跟大S抱怨了一下今天很累，現在整個人精神又來了！ ✦</div>
+        <div class="ticker-quote">我這輩子最驕傲的事，不是演了什麼戲、主持了什麼節目，而是做了徐熙媛的妹妹。 ✦</div>
+        <div class="ticker-quote">媽，雖然我姊不在了，但是我還在。 ✦</div>
         <!-- Duplicate set for seamless loop -->
-        <div class="ticker-quote" aria-hidden="true">所有發生的一切都無法預知，所以我一直抱著很隨性的心情看待人生。</div>
-        <div class="ticker-quote" aria-hidden="true">碰到任何困難我都可以走下去，反正不管遇到什麼事情大不了就死，我覺得死後的世界是非常美的。</div>
-        <div class="ticker-quote" aria-hidden="true">獨立不只是養活自己，而是有自己的想法。</div>
-        <div class="ticker-quote" aria-hidden="true">沒人在乎你的豐功偉業，但有可能記住你對他說過的一句貼心的話，做過的一件溫柔的事。</div>
-        <div class="ticker-quote" aria-hidden="true">抱怨不是壞事，但要找對人抱怨！剛剛跟大S抱怨了一下今天很累，現在整個人精神又來了！</div>
+        <div class="ticker-quote" aria-hidden="true">所有發生的一切都無法預知，所以我一直抱著很隨性的心情看待人生。 ✦</div>
+        <div class="ticker-quote" aria-hidden="true">獨立不只是養活自己，而是有自己的想法。 ✦</div>
+        <div class="ticker-quote" aria-hidden="true">沒人在乎你的豐功偉業，但有可能記住你對他說過的一句貼心的話，做過的一件溫柔的事。 ✦</div>
+        <div class="ticker-quote" aria-hidden="true">抱怨不是壞事，但要找對人抱怨！剛剛跟大S抱怨了一下今天很累，現在整個人精神又來了！ ✦</div>
+        <div class="ticker-quote" aria-hidden="true">我這輩子最驕傲的事，不是演了什麼戲、主持了什麼節目，而是做了徐熙媛的妹妹。 ✦</div>
+        <div class="ticker-quote" aria-hidden="true">媽，雖然我姊不在了，但是我還在。 ✦</div>
       </div>
     </div>
   </div>
@@ -2657,18 +2746,8 @@
     <!-- Post Form (Liquid Glass) -->
     <div class="post-form-wrap scroll-reveal">
       <div class="post-form glass-form">
-        <div class="post-form-top">
-          <input type="text" class="glass-input" id="dee-author" placeholder="你的暱稱（例：小S腦殘粉）" maxlength="16">
-          <select class="glass-select" id="dee-tag" onchange="updatePlaceholder('dee', this.value)">
-            <option value="動起來">🏋️ 動起來</option>
-            <option value="乾杯時刻">🍷 乾杯時刻</option>
-            <option value="吃好的">🍽️ 吃好的</option>
-            <option value="我有話說">💬 我有話說</option>
-            <option value="時髦態度">💃 時髦態度</option>
-            <option value="放過自己">🌊 放過自己</option>
-          </select>
-        </div>
-        <textarea class="glass-textarea" id="dee-content" placeholder="分享你的故事、心情、金句，或任何跟小S有關的一切... (限150字)" maxlength="150"></textarea>
+
+        <textarea class="glass-textarea" id="dee-content" placeholder="分享你的故事、心情..." maxlength="150"></textarea>
         <button class="post-submit-btn dee-submit" onclick="submitPost('dee')">發布到徐老師專區 ✦</button>
       </div>
     </div>
@@ -2684,7 +2763,7 @@
     <div class="reveal-left">
       <span class="community-tag">Xia Nu Legend · 大S</span>
       <h2 class="community-headline">俠女傳奇</h2>
-      <p class="community-desc">仙女下凡，俠女出征。在下方留下屬於你的仙女故事！</p>
+      <p class="community-desc">仙女下凡。在下方留下屬於你的仙女故事！</p>
     </div>
     <!-- Auto-playing swordsman animation -->
     <div class="fitness-anim-wrap reveal-right">
@@ -2703,7 +2782,7 @@
           <line x1="100" y1="130" x2="120" y2="175" stroke="white" stroke-width="4" stroke-linecap="round" id="anim-xia-leg-r"/>
           <line x1="100" y1="130" x2="80" y2="175" stroke="white" stroke-width="4" stroke-linecap="round" id="anim-xia-leg-l"/>
         </svg>
-        <div class="fitness-anim-quote" id="anim-xia-quote">「仙女下凡，俠女出征！」</div>
+        <div class="fitness-anim-quote" id="anim-xia-quote">「仙女下凡」</div>
       </div>
     </div>
   </div>
@@ -2723,18 +2802,8 @@
     <!-- Post Form -->
     <div class="post-form-wrap scroll-reveal">
       <div class="post-form glass-form xia-form">
-        <div class="post-form-top">
-          <input type="text" class="glass-input" id="xia-author" placeholder="你的暱稱（例：大S忠實粉絲）" maxlength="16">
-          <select class="glass-select" id="xia-tag" onchange="updatePlaceholder('xia', this.value)">
-            <option value="俠女出征">⚔️ 俠女出征</option>
-            <option value="美容聖典">🧴 美容聖典</option>
-            <option value="美白狂魔">🌸 美白狂魔</option>
-            <option value="仙女日記">📖 仙女日記</option>
-            <option value="不爽就說">👊 不爽就說</option>
-            <option value="戲劇回顧">🎭 戲劇回顧</option>
-          </select>
-        </div>
-        <textarea class="glass-textarea" id="xia-content" placeholder="分享你的俠女故事、美容秘訣、大S金句，或對世界的宣言... (限150字)" maxlength="150"></textarea>
+
+        <textarea class="glass-textarea" id="xia-content" placeholder="分享你的俠女故事... " maxlength="150"></textarea>
         <button class="post-submit-btn xia-submit" onclick="submitPost('xia')">發布到俠女傳奇 ✦</button>
       </div>
     </div>
@@ -2905,32 +2974,50 @@
   }, { threshold: 0.12, rootMargin: '0px 0px -50px 0px' });
   document.querySelectorAll('.scroll-reveal,.reveal-left,.reveal-right,.reveal-scale,.reveal-text,.stagger-parent').forEach(el => revealObserver.observe(el));
 
-  // ─── COUNTER ANIMATION ───
+  // ─── COUNTER ANIMATION (requestAnimationFrame) ───
   const counterObs = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.querySelectorAll('.counter-num').forEach(n => {
-          const t = parseInt(n.dataset.target), d = t > 1000 ? 1800 : 1200, step = t / (d/16);
-          let c = 0;
-          const timer = setInterval(() => { c = Math.min(c+step,t); n.textContent = Math.floor(c).toLocaleString(); if(c>=t){n.textContent=t.toLocaleString();clearInterval(timer);} }, 16);
-        });
-        counterObs.unobserve(e.target);
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        const n = entry.target;
+        if(n.dataset.done) return;
+        n.dataset.done = '1';
+        
+        const target = parseInt(n.dataset.target) || 0;
+        const duration = target > 1000 ? 1800 : 1200;
+        const startTime = performance.now();
+        
+        function update(now) {
+          const elapsed = now - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+          // Ease-out quad
+          const ease = progress * (2 - progress);
+          const current = Math.floor(ease * target);
+          n.textContent = current.toLocaleString();
+          if (progress < 1) {
+            requestAnimationFrame(update);
+          } else {
+            n.textContent = target.toLocaleString();
+          }
+        }
+        requestAnimationFrame(update);
+        counterObs.unobserve(n);
       }
     });
   }, { threshold: 0.3 });
+  document.querySelectorAll('.counter-num').forEach(el => counterObs.observe(el));
+
   const ss = document.getElementById('stats-strip');
-  if (ss) counterObs.observe(ss);
 
   // ─── PARALLAX HERO ───
   const heroBg = document.querySelector('.hero-flow-bg');
   if (heroBg) window.addEventListener('scroll', () => {
-    const h = document.querySelector('.jcSPJV');
+    const h = document.querySelector('.hero-section');
     if (h && window.pageYOffset < h.offsetHeight) heroBg.style.transform = `translateY(${window.pageYOffset*0.3}px)`;
   }, { passive: true });
 
   // ─── RIPPLE EFFECT ───
   document.addEventListener('click', function(e) {
-    const btn = e.target.closest('.bzGHEL,.post-submit-btn,.tag-pill');
+    const btn = e.target.closest('.btn-capsule,.post-submit-btn,.tag-pill');
     if (!btn) return;
     const r = document.createElement('span'), rect = btn.getBoundingClientRect(), sz = Math.max(rect.width,rect.height);
     r.style.cssText = `position:absolute;width:${sz}px;height:${sz}px;left:${e.clientX-rect.left-sz/2}px;top:${e.clientY-rect.top-sz/2}px;background:rgba(255,255,255,0.25);border-radius:50%;transform:scale(0);animation:ripple-x 0.5s cubic-bezier(0.16,1,0.3,1) forwards;pointer-events:none;`;
@@ -3061,27 +3148,10 @@
   }
   runXiaAnim(); setInterval(runXiaAnim, 1800);
 
-  // ─── SEED POST DATA ───
-  const deeSeed=[
-    {id:'d1',author:'健身狂熱者',tag:'動起來',content:'今天跟著徐老師練了一個小時的提臀！屁股夾緊真的很有感！大腿現在根本走不動路 哈哈哈',time:'2026/06/01'},
-    {id:'d2',author:'小S粉絲團',tag:'乾杯時刻',content:'週五下班必備！冰鎮的台啤配上徐老師的金句，這就是我的小確幸人生 🍺 乾！',time:'2026/06/02'},
-    {id:'d3',author:'美食探險家',tag:'吃好的',content:'去了小S推薦的燒肉店，果然不錯！吃好吃的東西、喝點酒，這是她說的小確幸，我完全認同！',time:'2026/06/03'},
-    {id:'d4',author:'真性情粉絲',tag:'我有話說',content:'小S說「活得relax最重要，不需要在意別人的眼光」，這句話我存在心裡好幾年了，謝謝她。',time:'2026/06/04'},
-    {id:'d5',author:'時尚觀察員',tag:'時髦態度',content:'小S的穿搭從來不追主流，就是「只有我可以這樣」的霸氣。跟她學了很多敢穿敢配！',time:'2026/06/05'},
-    {id:'d6',author:'自在生活家',tag:'放過自己',content:'最近壓力很大，反覆聽了小S說的「不要搞砸人生，其他都可以接受」，真的很有用。放過自己吧。',time:'2026/06/06'}
-  ];
-  const xiaSeed=[
-    {id:'x1',author:'俠女學徒',tag:'俠女出征',content:'昨天在路上看到有人亂丟垃圾還嗆路人，立馬上前制止！想到大S說的仗義執言，我就是要當俠女！',time:'2026/06/01'},
-    {id:'x2',author:'保養研究所',tag:'美容聖典',content:'照大S的說法：保濕是萬能的！每天早晚用溫水洗臉加厚敷，三個月後朋友都問我換了什麼保養品 ✨',time:'2026/06/02'},
-    {id:'x3',author:'美白追求者',tag:'美白狂魔',content:'大S的美白哲學：維他命C + 防曬 + 珍珠粉。我已經照做半年了，確實白了一個色號！日光燈目標中🌟',time:'2026/06/03'},
-    {id:'x4',author:'深夜書寫人',tag:'仙女日記',content:'大S說仙女是不能讓人看到世俗那面的。我決定今天起，維持神秘感，只讓人看到我最好的一面。',time:'2026/06/04'},
-    {id:'x5',author:'正義女聲',tag:'不爽就說',content:'公司又有人用「剩女」來貶低我，今天終於站出來反嗆了。感謝大S的精神！不爽就說，仗義執言！',time:'2026/06/05'},
-    {id:'x6',author:'流星花園迷',tag:'戲劇回顧',content:'重看了流星花園杉菜，大S的詮釋真的無可取代。那種倔強又溫柔的勁兒，二十年後還是那麼有感染力。',time:'2026/06/06'}
-  ];
-  
+
   // ─── PLACEHOLDER DICTIONARIES ───
   const deePlaceholders = {
-    'all': '分享你的故事、心情、金句，或任何跟小S有關的一切... (限150字)',
+    'all': '分享你的故事、心情... ',
     '動起來': '今天跟著徐老師練了一個小時的提臀！屁股夾緊真的很有感！大腿現在根本走不動路 哈哈哈',
     '乾杯時刻': '週五下班必備！冰鎮的台啤配上徐老師的金句，這就是我的小確幸人生 🍺 乾！',
     '吃好的': '去了小S推薦的燒肉店，果然不錯！吃好吃的東西、喝點酒，這是她說的小確幸，我完全認同！',
@@ -3090,7 +3160,7 @@
     '放過自己': '最近壓力很大，反覆聽了小S說的「不要搞砸人生，其他都可以接受」，真的很有用。放過自己吧。'
   };
   const xiaPlaceholders = {
-    'all': '分享你的俠女故事、美容秘訣、大S金句，或對世界的宣言... (限150字)',
+    'all': '分享你的俠女故事... ',
     '俠女出征': '昨天在路上看到有人亂丟垃圾還嗆路人，立馬上前制止！想到大S說的仗義執言，我就是要當俠女！',
     '美容聖典': '照大S的說法：保濕是萬能的！每天早晚用溫水洗臉加厚敷，三個月後朋友都問我換了什麼保養品 ✨',
     '美白狂魔': '大S的美白哲學：維他命C + 防曬 + 珍珠粉。我已經照做半年了，確實白了一個色號！日光燈目標中🌟',
@@ -3108,14 +3178,12 @@
 
   // ─── LOCALSTORAGE POST SYSTEM ───
   function getPosts(board){
-    const seed=board==='dee'?deeSeed:xiaSeed;
     const stored=localStorage.getItem(`sos-${board}-posts`);
-    if(!stored)return seed;
-    try{const u=JSON.parse(stored);return[...u,...seed];}catch{return seed;}
+    if(!stored)return [];
+    try{return JSON.parse(stored);}catch{return [];}
   }
   function savePosts(board,posts){
-    const seedIds=(board==='dee'?deeSeed:xiaSeed).map(p=>p.id);
-    localStorage.setItem(`sos-${board}-posts`,JSON.stringify(posts.filter(p=>!seedIds.includes(p.id))));
+    localStorage.setItem(`sos-${board}-posts`,JSON.stringify(posts));
   }
   function escHtml(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
   function renderPosts(board,tag='all'){
@@ -3123,21 +3191,38 @@
     if(!el)return;
     const filtered=tag==='all'?posts:posts.filter(p=>p.tag===tag);
     if(!filtered.length){el.innerHTML='<p style="color:rgba(255,255,255,0.5);text-align:center;padding:2rem">這個分類還沒有文章，來發第一篇吧！</p>';return;}
-    el.innerHTML=filtered.map((p,i)=>`<div class="post-card" style="animation-delay:${i*0.05}s"><div class="post-tag-badge">${escHtml(p.tag)}</div><div class="post-content">${escHtml(p.content)}</div><div class="post-meta"><span class="post-author">✦ ${escHtml(p.author)}</span><span>${p.time}</span></div></div>`).join('');
+    el.innerHTML=filtered.map((p,i)=>`<div class="post-card" style="animation-delay:${i*0.05}s"><div class="post-tag-badge">${escHtml(p.tag)}</div><div class="post-content">${escHtml(p.content)}</div><div class="post-meta" style="justify-content: flex-end;"><span>${p.time}</span></div></div>`).join('');
   }
   function submitPost(board){
-    const a=document.getElementById(`${board}-author`).value.trim();
     const c=document.getElementById(`${board}-content`).value.trim();
-    const tag=document.getElementById(`${board}-tag`).value;
-    if(!a||!c){showToast('✦ 請填寫暱稱與內容後再發布！');return;}
+    if(!c){showToast('✦ 請填寫內容後再發布！');return;}
+    
+    // Get active tag filter pill from the tag row
+    const row=document.getElementById(`${board}-tag-row`);
+    let tag = 'all';
+    if (row) {
+      const activePill = row.querySelector('.tag-pill.active');
+      if (activePill) {
+        tag = activePill.getAttribute('data-tag');
+      }
+    }
+    // Default to first tag category if currently filtering by "all"
+    if (tag === 'all') {
+      tag = board === 'dee' ? '動起來' : '俠女出征';
+    }
+
     const now=new Date();
     const dateStr=`${now.getFullYear()}/${String(now.getMonth()+1).padStart(2,'0')}/${String(now.getDate()).padStart(2,'0')}`;
-    const newPost={id:`u-${Date.now()}`,author:a,tag,content:c,time:dateStr};
+    const newPost={id:`u-${Date.now()}`,tag,content:c,time:dateStr};
     savePosts(board,[newPost,...getPosts(board)]);
-    document.getElementById(`${board}-author`).value='';
+    
     document.getElementById(`${board}-content`).value='';
-    const row=document.getElementById(`${board}-tag-row`);
-    if(row){row.querySelectorAll('.tag-pill').forEach(p=>p.classList.remove('active'));const all=row.querySelector('[data-tag="all"]');if(all)all.classList.add('active');}
+    
+    if(row){
+      row.querySelectorAll('.tag-pill').forEach(p=>p.classList.remove('active'));
+      const all=row.querySelector('[data-tag="all"]');
+      if(all)all.classList.add('active');
+    }
     
     updatePlaceholder(board, 'all');
     renderPosts(board,'all');
@@ -3158,12 +3243,6 @@
     const row=document.getElementById(`${board}-tag-row`);
     if(row)row.querySelectorAll('.tag-pill').forEach(p=>p.classList.remove('active'));
     if(btn)btn.classList.add('active');
-    
-    const select = document.getElementById(`${board}-tag`);
-    if (select && tag !== 'all') {
-      select.value = tag;
-    }
-    
     updatePlaceholder(board, tag);
     renderPosts(board,tag);
   }
@@ -3297,6 +3376,8 @@
       timelineObserver.observe(item);
     });
   });
+
+
 </script>
 </body>
 </html>
