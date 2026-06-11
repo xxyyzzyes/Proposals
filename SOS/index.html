@@ -2698,7 +2698,7 @@
     <div class="reveal-left">
       <span class="community-tag">Teacher Dee · 小S</span>
       <h2 class="community-headline">徐老師專區</h2>
-      <p class="community-desc">動起來！屁股夾緊！跟著小S的生活頻道，分享你的健身日記、乾杯時刻與人生哲學！</p>
+      <p class="community-desc">小S的生活頻道</p>
     </div>
     <!-- Auto-playing fitness animation -->
     <div class="fitness-anim-wrap reveal-right">
@@ -2737,10 +2737,8 @@
       <button class="tag-pill active" data-tag="all" onclick="filterPosts('dee','all',this)">全部</button>
       <button class="tag-pill" data-tag="動起來" onclick="filterPosts('dee','動起來',this)">🏋️ 動起來</button>
       <button class="tag-pill" data-tag="乾杯時刻" onclick="filterPosts('dee','乾杯時刻',this)">🍷 乾杯時刻</button>
-      <button class="tag-pill" data-tag="吃好的" onclick="filterPosts('dee','吃好的',this)">🍽️ 吃好的</button>
+      <button class="tag-pill" data-tag="美食分享" onclick="filterPosts('dee','美食分享',this)">🍽️ 美食分享</button>
       <button class="tag-pill" data-tag="我有話說" onclick="filterPosts('dee','我有話說',this)">💬 我有話說</button>
-      <button class="tag-pill" data-tag="時髦態度" onclick="filterPosts('dee','時髦態度',this)">💃 時髦態度</button>
-      <button class="tag-pill" data-tag="放過自己" onclick="filterPosts('dee','放過自己',this)">🌊 放過自己</button>
     </div>
 
     <!-- Post Form (Liquid Glass) -->
@@ -2763,7 +2761,7 @@
     <div class="reveal-left">
       <span class="community-tag">Xia Nu Legend · 大S</span>
       <h2 class="community-headline">俠女傳奇</h2>
-      <p class="community-desc">仙女下凡。在下方留下屬於你的仙女故事！</p>
+      <p class="community-desc">留下屬於你的俠女故事</p>
     </div>
     <!-- Auto-playing swordsman animation -->
     <div class="fitness-anim-wrap reveal-right">
@@ -2791,10 +2789,8 @@
 <!-- Tag Filter Row -->
     <div class="tag-filter-row" id="xia-tag-row">
       <button class="tag-pill active" data-tag="all" onclick="filterPosts('xia','all',this)">全部</button>
-      <button class="tag-pill" data-tag="俠女出征" onclick="filterPosts('xia','俠女出征',this)">⚔️ 俠女出征</button>
+      <button class="tag-pill" data-tag="俠女故事" onclick="filterPosts('xia','俠女故事',this)">⚔️ 俠女故事</button>
       <button class="tag-pill" data-tag="美容聖典" onclick="filterPosts('xia','美容聖典',this)">🧴 美容聖典</button>
-      <button class="tag-pill" data-tag="美白狂魔" onclick="filterPosts('xia','美白狂魔',this)">🌸 美白狂魔</button>
-      <button class="tag-pill" data-tag="仙女日記" onclick="filterPosts('xia','仙女日記',this)">📖 仙女日記</button>
       <button class="tag-pill" data-tag="不爽就說" onclick="filterPosts('xia','不爽就說',this)">👊 不爽就說</button>
       <button class="tag-pill" data-tag="戲劇回顧" onclick="filterPosts('xia','戲劇回顧',this)">🎭 戲劇回顧</button>
     </div>
@@ -3152,21 +3148,17 @@
   // ─── PLACEHOLDER DICTIONARIES ───
   const deePlaceholders = {
     'all': '分享你的故事、心情... ',
-    '動起來': '今天跟著徐老師練了一個小時的提臀！屁股夾緊真的很有感！大腿現在根本走不動路 哈哈哈',
-    '乾杯時刻': '週五下班必備！冰鎮的台啤配上徐老師的金句，這就是我的小確幸人生 🍺 乾！',
-    '吃好的': '去了小S推薦的燒肉店，果然不錯！吃好吃的東西、喝點酒，這是她說的小確幸，我完全認同！',
-    '我有話說': '小S說「活得relax最重要，不需要在意別人的眼光」，這句話我存在心裡好幾年了，謝謝她。',
-    '時髦態度': '小S的穿搭從來不追主流，就是「只有我可以這樣」的霸氣。跟她學了很多敢穿敢配！',
-    '放過自己': '最近壓力很大，反覆聽了小S說的「不要搞砸人生，其他都可以接受」，真的很有用。放過自己吧。'
+    '動起來': '「不管什麼年紀，漂亮是必須的。減肥也沒有藉口，你能把自己吃肥就一定能瘦下來。」運動強身',
+    '乾杯時刻': '「有沒有喝酒是重點嗎？」分享好酒',
+    '美食分享': '「這道菜是有生命的！ 牠（它）在我的嘴巴裡奔跑、在跳舞！」分享美食',
+    '我有話說': '「我自己的人生，我想怎樣就怎樣。我要過的是徐熙娣的人生。」隨便閒聊',
   };
   const xiaPlaceholders = {
     'all': '分享你的俠女故事... ',
-    '俠女出征': '昨天在路上看到有人亂丟垃圾還嗆路人，立馬上前制止！想到大S說的仗義執言，我就是要當俠女！',
-    '美容聖典': '照大S的說法：保濕是萬能的！每天早晚用溫水洗臉加厚敷，三個月後朋友都問我換了什麼保養品 ✨',
-    '美白狂魔': '大S的美白哲學：維他命C + 防曬 + 珍珠粉。我已經照做半年了，確實白了一個色號！日光燈目標中🌟',
-    '仙女日記': '大S說仙女是不能讓人看到世俗那面的。我決定今天起，維持神秘感，只讓人看到我最好的一面。',
-    '不爽就說': '公司又有人用「剩女」來貶低我，今天終於站出來反嗆了。感謝大S的精神！不爽就說，仗義執言！',
-    '戲劇回顧': '重看了流星花園杉菜，大S的詮釋真的無可取代。那種倔強又溫柔的勁兒，二十年後還是那麼有感染力。'
+    '俠女故事': '「我從小就有一種莫名其妙的正義感。看到路邊有人打老婆、打小孩，甚至虐待動物，我的身體會比腦袋先動，直接衝過去大喊：『你在幹什麼！』」俠女故事',
+    '美容聖典': '「只要聽到別人說什麼東西吃了會變美，哪怕是毒藥，只要毒不死我，我都願意吞下去！」美容技巧',
+    '不爽就說': '「不舒服的關係，我一秒鐘都不要！我的感情世界裡沒有灰色地帶，愛就是愛，不愛了就分開，我絕不回頭。」有話直說',
+    '戲劇回顧': '「流星花園」「戰神」「泡沫之夏」「轉角遇到愛」大s戲劇作品'
   };
 
   function updatePlaceholder(board, tag) {
@@ -3208,7 +3200,7 @@
     }
     // Default to first tag category if currently filtering by "all"
     if (tag === 'all') {
-      tag = board === 'dee' ? '動起來' : '俠女出征';
+      tag = board === 'dee' ? '動起來' : '俠女故事';
     }
 
     const now=new Date();
