@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>奈鍵科技 — MES 系統整合 × 工業 AI 導入</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+  :root {
+    --bg: #0a0e1a;
+    --bg2: #0f1420;
+    --bg3: #141824;
+    --card: #161c2e;
+    --card2: #1a2235;
+    --border: rgba(255,255,255,0.07);
+    --border2: rgba(255,255,255,0.12);
+    --accent: #3b82f6;
+    --accent2: #60a5fa;
+    --accent3: #93c5fd;
+    --teal: #14b8a6;
+    --teal2: #2dd4bf;
+    --amber: #f59e0b;
+    --green: #10b981;
+    --text1: #f1f5f9;
+    --text2: #94a3b8;
+    --text3: #64748b;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', 'Noto Sans TC', sans-serif;
+    background: var(--bg);
+    color: var(--text1);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── Grid bg ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(59,130,246,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(59,130,246,0.03) 1px, transparent 1px);
+    background-size: 48px 48px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── Glow orbs ── */
+  .orb {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(80px);
+    pointer-events: none;
+    z-index: 0;
+    animation: orbFloat 12s ease-in-out infinite;
+  }
+  .orb1 { width: 500px; height: 500px; background: rgba(59,130,246,0.08); top: -120px; right: -100px; animation-delay: 0s; }
+  .orb2 { width: 400px; height: 400px; background: rgba(20,184,166,0.07); bottom: 100px; left: -80px; animation-delay: -6s; }
+
+  @keyframes orbFloat {
+    0%,100% { transform: translate(0,0) scale(1); }
+    50% { transform: translate(20px,30px) scale(1.05); }
+  }
+
+  /* ── Wrapper ── */
+  .wrap { position: relative; z-index: 1; max-width: 900px; margin: 0 auto; padding: 0 24px 80px; }
+
+  /* ── Hero ── */
+  .hero {
+    padding: 80px 0 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeUp .8s ease forwards .1s;
+  }
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--accent2);
+    font-weight: 500;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 28px;
+    height: 1px;
+    background: var(--accent2);
+  }
+  .hero-name {
+    font-size: clamp(40px, 7vw, 68px);
+    font-weight: 700;
+    letter-spacing: -.02em;
+    line-height: 1.1;
+    background: linear-gradient(135deg, #f1f5f9 0%, #94a3b8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .hero-title {
+    font-size: 16px;
+    color: var(--text2);
+    font-weight: 400;
+    max-width: 480px;
+    line-height: 1.7;
+  }
+  .hero-title strong { color: var(--accent2); font-weight: 500; }
+
+  .hero-stats {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+    margin-top: 8px;
+  }
+  .stat {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .stat-num {
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--text1);
+    line-height: 1;
+  }
+  .stat-num span { font-size: 16px; color: var(--accent2); }
+  .stat-label { font-size: 12px; color: var(--text3); letter-spacing: .04em; }
+
+  .hero-contact {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 4px;
+  }
+  .contact-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    color: var(--text2);
+    background: var(--card);
+    border: 1px solid var(--border2);
+    border-radius: 999px;
+    padding: 5px 14px;
+    text-decoration: none;
+    transition: color .2s, border-color .2s, background .2s;
+    letter-spacing: .01em;
+  }
+  .contact-chip:hover {
+    color: var(--accent2);
+    border-color: rgba(59,130,246,0.4);
+    background: var(--card2);
+  }
+
+  .hero-divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, var(--accent) 0%, var(--teal) 50%, transparent 100%);
+    opacity: 0.3;
+    margin-top: 40px;
+  }
+
+  /* ── Sections ── */
+  .section { margin-top: 64px; }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity .6s ease, transform .6s ease;
+  }
+  .section-header.visible { opacity: 1; transform: translateY(0); }
+
+  .section-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+    box-shadow: 0 0 12px rgba(59,130,246,0.6);
+  }
+  .section-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--text3);
+  }
+  .section-line {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* ── Tagline ── */
+  .tagline-block {
+    background: var(--card);
+    border: 1px solid var(--border2);
+    border-left: 3px solid var(--accent);
+    border-radius: 12px;
+    padding: 20px 24px;
+    font-size: 15px;
+    color: var(--text1);
+    line-height: 1.8;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity .6s ease .1s, transform .6s ease .1s;
+  }
+  .tagline-block.visible { opacity: 1; transform: translateY(0); }
+  .tagline-block strong { color: var(--accent2); }
+
+  /* ── Case cards ── */
+  .case-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 14px;
+  }
+
+  .case-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+    cursor: default;
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity .5s ease, transform .5s ease, border-color .25s, background .25s;
+  }
+  .case-card.visible { opacity: 1; transform: translateY(0); }
+  .case-card:hover {
+    border-color: var(--border2);
+    background: var(--card2);
+  }
+  .case-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(59,130,246,0.05) 0%, transparent 60%);
+    opacity: 0;
+    transition: opacity .3s;
+  }
+  .case-card:hover::after { opacity: 1; }
+
+  .case-tag {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--accent2);
+    margin-bottom: 10px;
+  }
+  .case-title {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text1);
+    line-height: 1.5;
+    margin-bottom: 10px;
+  }
+  .case-result {
+    font-size: 12px;
+    color: var(--text2);
+    line-height: 1.6;
+  }
+  .case-num {
+    font-weight: 600;
+    color: var(--teal2);
+  }
+  .case-accent {
+    position: absolute;
+    top: 0; right: 0;
+    width: 60px; height: 60px;
+    background: radial-gradient(circle at top right, rgba(59,130,246,0.15), transparent 70%);
+    border-radius: 0 14px 0 0;
+  }
+
+  /* ── Services ── */
+  .service-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 12px;
+  }
+  .svc-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px 16px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity .5s ease, transform .5s ease, border-color .25s;
+  }
+  .svc-card.visible { opacity: 1; transform: translateY(0); }
+  .svc-card:hover { border-color: rgba(59,130,246,0.3); }
+
+  .svc-icon {
+    width: 36px; height: 36px;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  .svc-icon.blue { background: rgba(59,130,246,0.15); }
+  .svc-icon.teal { background: rgba(20,184,166,0.15); }
+  .svc-icon.amber { background: rgba(245,158,11,0.15); }
+  .svc-icon.green { background: rgba(16,185,129,0.15); }
+
+  .svc-title {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text1);
+    margin-bottom: 5px;
+  }
+  .svc-desc {
+    font-size: 11px;
+    color: var(--text3);
+    line-height: 1.6;
+  }
+
+  /* ── Background / Experience ── */
+  .exp-list { display: flex; flex-direction: column; gap: 10px; }
+  .exp-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    opacity: 0;
+    transform: translateX(-16px);
+    transition: opacity .5s ease, transform .5s ease;
+  }
+  .exp-row.visible { opacity: 1; transform: translateX(0); }
+  .exp-bullet {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+    margin-top: 7px;
+    box-shadow: 0 0 8px rgba(59,130,246,0.5);
+  }
+  .exp-text {
+    font-size: 13px;
+    color: var(--text2);
+    line-height: 1.7;
+  }
+  .exp-text strong { color: var(--text1); font-weight: 500; }
+
+  /* ── Tech pills ── */
+  .tech-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 16px;
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity .6s ease .2s, transform .6s ease .2s;
+  }
+  .tech-cloud.visible { opacity: 1; transform: translateY(0); }
+  .pill {
+    font-size: 11px;
+    font-weight: 500;
+    padding: 4px 12px;
+    border-radius: 999px;
+    border: 1px solid var(--border2);
+    color: var(--text2);
+    background: var(--card);
+    transition: border-color .2s, color .2s;
+  }
+  .pill:hover { border-color: rgba(59,130,246,0.5); color: var(--accent2); }
+
+  /* ── CTA footer ── */
+  .cta-bar {
+    margin-top: 64px;
+    background: var(--card);
+    border: 1px solid var(--border2);
+    border-radius: 16px;
+    padding: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity .6s ease, transform .6s ease;
+  }
+  .cta-bar.visible { opacity: 1; transform: translateY(0); }
+  .cta-text .h { font-size: 18px; font-weight: 500; color: var(--text1); margin-bottom: 6px; }
+  .cta-text .s { font-size: 13px; color: var(--text3); }
+  .cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    background: var(--accent);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: background .2s, transform .15s;
+    white-space: nowrap;
+  }
+  .cta-btn:hover { background: var(--accent2); transform: translateY(-1px); }
+  .cta-btn:active { transform: scale(.98); }
+
+  /* ── Print ── */
+  .print-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 9px 18px;
+    background: transparent;
+    color: var(--text3);
+    font-size: 12px;
+    border-radius: 8px;
+    border: 1px solid var(--border2);
+    cursor: pointer;
+    transition: color .2s, border-color .2s;
+  }
+  .print-btn:hover { color: var(--text1); border-color: var(--text2); }
+
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 600px) {
+    .hero { padding: 50px 0 40px; }
+    .hero-stats { gap: 20px; }
+    .cta-bar { flex-direction: column; align-items: flex-start; }
+  }
+
+  @media print {
+    body { background: #fff; color: #000; }
+    body::before, .orb { display: none; }
+    .print-btn, .cta-btn { display: none; }
+    .wrap { padding: 0 16px 40px; }
+    .hero { padding: 30px 0 20px; }
+    .case-card, .svc-card, .tagline-block, .exp-row,
+    .section-header, .tech-cloud, .cta-bar {
+      opacity: 1 !important;
+      transform: none !important;
+    }
+    :root {
+      --bg: #fff; --card: #f8fafc; --card2: #f1f5f9;
+      --text1: #0f172a; --text2: #475569; --text3: #94a3b8;
+      --border: #e2e8f0; --border2: #cbd5e1;
+      --accent: #2563eb; --accent2: #3b82f6; --teal2: #0d9488;
+    }
+    .contact-chip {
+      color: #475569 !important;
+      border-color: #cbd5e1 !important;
+      background: #f8fafc !important;
+    }
+    body::before { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="orb orb1"></div>
+<div class="orb orb2"></div>
+
+<div class="wrap">
+
+  <!-- ── Hero ── -->
+  <div class="hero">
+    <div class="hero-eyebrow">MES System Integrator · Industrial AI · Taoyuan, Taiwan</div>
+    <div class="hero-name">奈鍵科技</div>
+    <p class="hero-title">
+      幫製造業從「人工記錄」升級為<strong>數位可追溯</strong>——<br>
+      MES 系統建置 × AI 品質檢測 × 認證合規自動化
+    </p>
+    <div class="hero-contact">
+      <a href="tel:0933223993" class="contact-chip">📞 0933-223-993</a>
+      <a href="mailto:verj.vincent@gmail.com" class="contact-chip">✉ verj.vincent@gmail.com</a>
+      <span class="contact-chip">📍 桃園（台北亦可洽談）</span>
+    </div>
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-num">14<span>+</span></div>
+        <div class="stat-label">年製造業資訊化</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">5</div>
+        <div class="stat-label">產業別落地案例</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">35<span>%</span></div>
+        <div class="stat-label">良率提升實績</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">萬<span>人</span></div>
+        <div class="stat-label">規模 ERP/MES 運營</div>
+      </div>
+    </div>
+    <div style="display:flex;gap:10px;margin-top:4px;flex-wrap:wrap;">
+      <button class="cta-btn" onclick="window.print()">🖨 列印此頁</button>
+      <button class="print-btn" onclick="this.closest('body').style.background='#fff'">⬜ 淺色預覽</button>
+    </div>
+    <div class="hero-divider"></div>
+  </div>
+
+  <!-- ── Tagline ── -->
+  <div class="tagline-block scroll-reveal">
+    精通 <strong>MES × ERP × AI 視覺檢測</strong> 三位一體整合，從需求分析、系統開發到合規文件自動化一手包辦。
+    同時熟悉 <strong>表面處理製程</strong>（電鍍、熱處理），理解 NADCAP 特殊製程要求，能與工廠品管語言對話，而不只是 IT 工程師。
+    可協助客戶<strong>申請政府補助</strong>，讓數位轉型幾乎零自費。
+  </div>
+
+  <!-- ── Cases ── -->
+  <div class="section">
+    <div class="section-header scroll-reveal">
+      <div class="section-dot"></div>
+      <div class="section-label">實績案例</div>
+      <div class="section-line"></div>
+    </div>
+    <div class="case-grid">
+      <div class="case-card scroll-reveal" style="transition-delay:.05s">
+        <div class="case-accent"></div>
+        <div class="case-tag">化妝品製造</div>
+        <div class="case-title">GMP 合規 MES<br>PIF 文件自動生成</div>
+        <div class="case-result">工單製程全程追溯，自動輸出 PIF 9/12 合規文件，<span class="case-num">取代全手工記錄</span>，大幅縮短認證備審時間。</div>
+      </div>
+      <div class="case-card scroll-reveal" style="transition-delay:.1s">
+        <div class="case-accent"></div>
+        <div class="case-tag">鞋業 · 跨國四廠</div>
+        <div class="case-title">從零導入 MES + SAP<br>越南 × 印尼多廠整合</div>
+        <div class="case-result">SAP MM/PP/QM 模組導入，直接管理 IT 部門 9 人，<span class="case-num">服務數萬人規模 ERP/MES</span>。</div>
+      </div>
+      <div class="case-card scroll-reveal" style="transition-delay:.15s">
+        <div class="case-accent"></div>
+        <div class="case-tag">半導體封裝</div>
+        <div class="case-title">晶圓銅柱製程 MES<br>製程參數監控</div>
+        <div class="case-result">MES 整合機台參數，<span class="case-num">良率提升 35%</span>，協助工廠成為銅柱製程獨家供應商。</div>
+      </div>
+      <div class="case-card scroll-reveal" style="transition-delay:.2s">
+        <div class="case-accent"></div>
+        <div class="case-tag">工業 AI · Edge</div>
+        <div class="case-title">YOLO 視覺質檢系統<br>邊緣裝置部署</div>
+        <div class="case-result">輕量化模型部署於行動裝置，<span class="case-num">即時瑕疵檢測</span>，適用鞋機、金屬件等產線品管自動化。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Services ── -->
+  <div class="section">
+    <div class="section-header scroll-reveal">
+      <div class="section-dot" style="background:var(--teal);box-shadow:0 0 12px rgba(20,184,166,0.6)"></div>
+      <div class="section-label">服務項目</div>
+      <div class="section-line"></div>
+    </div>
+    <div class="service-grid">
+      <div class="svc-card scroll-reveal" style="transition-delay:.05s">
+        <div class="svc-icon blue">⚙️</div>
+        <div class="svc-title">MES 系統建置</div>
+        <div class="svc-desc">工單、製程、品管、追溯一體化，可對接 ERP / SAP</div>
+      </div>
+      <div class="svc-card scroll-reveal" style="transition-delay:.1s">
+        <div class="svc-icon teal">👁</div>
+        <div class="svc-title">AI 視覺質檢</div>
+        <div class="svc-desc">YOLO Edge AI 部署，適用產線即時瑕疵檢測</div>
+      </div>
+      <div class="svc-card scroll-reveal" style="transition-delay:.15s">
+        <div class="svc-icon amber">📋</div>
+        <div class="svc-title">認證合規系統</div>
+        <div class="svc-desc">AS9100 / NADCAP / GMP 合規文件自動化與追蹤</div>
+      </div>
+      <div class="svc-card scroll-reveal" style="transition-delay:.2s">
+        <div class="svc-icon green">💰</div>
+        <div class="svc-title">補助申請輔導</div>
+        <div class="svc-desc">協助申請政府數位轉型補助，降低導入自費成本</div>
+      </div>
+      <div class="svc-card scroll-reveal" style="transition-delay:.25s">
+        <div class="svc-icon blue">🏭</div>
+        <div class="svc-title">跨廠區整合</div>
+        <div class="svc-desc">多廠資料統一、遠端監控、異常即時通報</div>
+      </div>
+      <div class="svc-card scroll-reveal" style="transition-delay:.3s">
+        <div class="svc-icon teal">🔗</div>
+        <div class="svc-title">SAP 模組導入</div>
+        <div class="svc-desc">MM / PP / QM，具 SAP 官方大中華區受訓資歷</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Background ── -->
+  <div class="section">
+    <div class="section-header scroll-reveal">
+      <div class="section-dot" style="background:var(--amber);box-shadow:0 0 12px rgba(245,158,11,0.6)"></div>
+      <div class="section-label">核心背景</div>
+      <div class="section-line"></div>
+    </div>
+    <div class="exp-list">
+      <div class="exp-row scroll-reveal" style="transition-delay:.05s">
+        <div class="exp-bullet"></div>
+        <div class="exp-text"><strong>14 年製造業資訊化</strong>：半導體封裝、航太零件、鞋業、化妝品、化工，橫跨五大產業</div>
+      </div>
+      <div class="exp-row scroll-reveal" style="transition-delay:.1s">
+        <div class="exp-bullet"></div>
+        <div class="exp-text"><strong>表面處理製程工程師</strong>背景（電鍍、除膠、化學材料），理解 NADCAP 特殊製程稽核重點，能直接與品管對話</div>
+      </div>
+      <div class="exp-row scroll-reveal" style="transition-delay:.15s">
+        <div class="exp-bullet"></div>
+        <div class="exp-text"><strong>SAP 官方認證</strong>：上海大中華總部 + 印度邦加羅爾 QM 模組受訓，具跨國導入實戰經驗</div>
+      </div>
+      <div class="exp-row scroll-reveal" style="transition-delay:.2s">
+        <div class="exp-bullet"></div>
+        <div class="exp-text"><strong>景碩科技（PCB）</strong>：MES 整合機台參數，帶領團隊提升產量 16%、良品率 8%</div>
+      </div>
+      <div class="exp-row scroll-reveal" style="transition-delay:.25s">
+        <div class="exp-bullet"></div>
+        <div class="exp-text"><strong>全端 AI 開發能力</strong>：React / FastAPI / Docker / YOLO / Gemini AI / MySQL / PostgreSQL，系統從設計到部署一手包辦</div>
+      </div>
+    </div>
+    <div class="tech-cloud scroll-reveal">
+      <span class="pill">MES</span>
+      <span class="pill">ERP / SAP</span>
+      <span class="pill">AI Vision</span>
+      <span class="pill">YOLO</span>
+      <span class="pill">Edge AI</span>
+      <span class="pill">FastAPI</span>
+      <span class="pill">React.js</span>
+      <span class="pill">Docker</span>
+      <span class="pill">MySQL</span>
+      <span class="pill">PostgreSQL</span>
+      <span class="pill">Gemini AI</span>
+      <span class="pill">AS9100</span>
+      <span class="pill">NADCAP</span>
+      <span class="pill">GMP / PIF</span>
+      <span class="pill">PaddleOCR</span>
+    </div>
+  </div>
+
+  <!-- ── CTA ── -->
+  <div class="cta-bar scroll-reveal">
+    <div class="cta-text">
+      <div class="h">想了解如何導入或申請補助？</div>
+      <div class="s">來電或來信，我將於 24 小時內回覆。<br>
+        <a href="tel:0933223993" style="color:var(--accent2);text-decoration:none;">📞 0933-223-993</a>
+        &nbsp;·&nbsp;
+        <a href="mailto:verj.vincent@gmail.com" style="color:var(--accent2);text-decoration:none;">✉ verj.vincent@gmail.com</a>
+      </div>
+    </div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;">
+      <button class="cta-btn" onclick="window.print()">🖨 列印 / 儲存 PDF</button>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.scroll-reveal').forEach(el => io.observe(el));
+
+  document.querySelector('.print-btn').addEventListener('click', function() {
+    const dark = document.body.style.background === 'rgb(255, 255, 255)';
+    document.body.style.background = dark ? '' : '#fff';
+    this.textContent = dark ? '⬜ 淺色預覽' : '🌙 深色模式';
+  });
+</script>
+</body>
+</html>
