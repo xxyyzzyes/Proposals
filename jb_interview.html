@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>資訊暨資料治理主管 應聘專案簡報 ｜ 楊勝傑 Vincent Yang</title>
+  <title>清祿鞋業集團 資訊系統整合與資料治理專案 ｜ 楊勝傑 Vincent Yang</title>
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -731,73 +731,6 @@
       text-align: right;
     }
 
-    /* SLIDE 10: KPI DASHBOARD */
-    .kpi-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-      margin: 14px 0 20px 0;
-    }
-
-    .kpi-card {
-      background: rgba(14, 25, 45, 0.85);
-      border: 1px solid var(--border-subtle);
-      border-radius: 10px;
-      padding: 16px 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-      position: relative;
-    }
-
-    .kpi-title {
-      font-size: 13px;
-      color: var(--text-muted);
-    }
-
-    .kpi-body {
-      display: flex;
-      align-items: baseline;
-      gap: 10px;
-    }
-
-    .kpi-old {
-      font-size: 15px;
-      color: var(--text-dim);
-      text-decoration: line-through;
-      font-family: var(--font-mono);
-    }
-
-    .kpi-new {
-      font-size: 28px;
-      font-weight: 800;
-      color: var(--emerald-light);
-      font-family: var(--font-mono);
-    }
-
-    .kpi-rate {
-      position: absolute;
-      top: 16px;
-      right: 16px;
-      font-family: var(--font-mono);
-      font-size: 11px;
-      font-weight: 700;
-      padding: 2px 6px;
-      border-radius: 4px;
-    }
-
-    .kpi-up {
-      background: rgba(16, 185, 129, 0.15);
-      color: var(--emerald-light);
-      border: 1px solid rgba(16, 185, 129, 0.3);
-    }
-
-    .kpi-down {
-      background: rgba(56, 189, 248, 0.15);
-      color: var(--cyan);
-      border: 1px solid rgba(56, 189, 248, 0.3);
-    }
-
     .closing-strip {
       background: rgba(245, 158, 11, 0.08);
       border: 1px solid rgba(245, 158, 11, 0.25);
@@ -806,6 +739,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      margin-top: 14px;
     }
 
     .closing-goal {
@@ -833,11 +767,11 @@
   <!-- Header -->
   <header class="deck-header">
     <div class="brand-mark">
-      <span class="brand-badge">PROPOSAL</span>
-      <span class="brand-title">竣邦國際 ｜ <strong>資訊暨資料治理主管</strong> 應聘專案報告</span>
+      <span class="brand-badge">CASE STUDY</span>
+      <span class="brand-title">清祿鞋業集團 ｜ <strong>資訊系統整合與資料治理</strong> 專案匯報</span>
     </div>
     <div class="header-controls">
-      <span class="slide-counter" id="slideIndicator">01 / 10</span>
+      <span class="slide-counter" id="slideIndicator">01 / 09</span>
       <button class="nav-btn" onclick="prevSlide()" title="上一頁 (←)">‹</button>
       <button class="nav-btn" onclick="nextSlide()" title="下一頁 (→ / 空白鍵)">›</button>
       <button class="nav-btn" onclick="toggleFullScreen()" title="全螢幕 (F)">⛶</button>
@@ -858,20 +792,20 @@
           <span class="highlight">清祿鞋業 ERP (SAP MM/PP/QM) 與 MES 專案</span>
         </h1>
         <p class="cover-desc">
-          主資料標準化 ｜ 工廠 MES 條碼追溯 ｜ 舊流程停用 (Sunset)
+          物料主檔標準化 ｜ 工廠 MES 條碼追溯 ｜ 舊流程停用 (Sunset)
         </p>
 
         <div class="cover-meta">
           <div class="meta-box">
-            <span class="meta-label">報告人</span>
+            <span class="meta-label">專案報告人</span>
             <span class="meta-val">楊勝傑 Vincent Yang</span>
           </div>
           <div class="meta-box">
-            <span class="meta-label">應聘職位</span>
-            <span class="meta-val">資訊暨資料治理主管</span>
+            <span class="meta-label">曾任職位</span>
+            <span class="meta-val">集團資訊部主管 / 專案負責人</span>
           </div>
           <div class="meta-box">
-            <span class="meta-label">核心領域</span>
+            <span class="meta-label">核心範疇</span>
             <span class="meta-val">主資料治理・ERP / MES 整合・跨國協同</span>
           </div>
         </div>
@@ -1005,7 +939,7 @@
             <li><strong>系統自動取號</strong>，禁止人工手動輸入。</li>
             <li>杜絕各部門自行命名與非標準縮寫。</li>
             <li>依規格流水遞增，確保料號唯一性。</li>
-            <li>結合物料屬性管理（幅寬、克重、色號）。</li>
+            <li>結合材料屬性規格（幅寬、克重、色號）。</li>
           </ul>
         </div>
       </div>
@@ -1126,12 +1060,12 @@
           <div class="bom-raw">│   └── PK-BOX-0001 品牌鞋盒套組 <span class="qty">(1 set/雙)</span></div>
         </div>
 
-        <div style="display: flex; flex-direction: column; gap: 14px;">
+        <div style="flex: 1; display: flex; flex-direction: column; gap: 14px;">
           <div class="card card-accent-gold">
             <div class="card-title">四大製程工序 (Routing)</div>
             <ul class="bullet-list" style="font-size: 13px;">
-              <li><strong>裁斷 Cutting</strong>：裁片發料、捲布損耗率監控。</li>
-              <li><strong>針車 Stitching</strong>：人員條碼報工、鞋面包裝過帳。</li>
+              <li><strong>裁斷 Cutting</strong>：裁片發料、鞋面原料損耗率監控。</li>
+              <li><strong>針車 Stitching</strong>：人員條碼報工、鞋面組件過帳。</li>
               <li><strong>成型 Lasting</strong>：鞋面與大底貼合、機台溫壓參數。</li>
               <li><strong>包裝 Packing</strong>：成品全檢、裝箱自動回寫 SAP。</li>
             </ul>
@@ -1170,7 +1104,7 @@
           <div class="station-title">裁斷站 Cutting</div>
           <ul class="station-items">
             <li>掃描工單帶出 BOM</li>
-            <li>捲布批號條碼綁定</li>
+            <li>鞋面捲料批號綁定</li>
             <li>自動扣料計算損耗</li>
             <li>網布損耗警戒 ≤ 12%</li>
           </ul>
@@ -1225,7 +1159,7 @@
         <div style="display: flex; justify-content: space-between; align-items: center;">
           <div style="font-size: 14px;">
             <strong style="color: var(--gold);">原料履歷追溯效益：</strong>
-            成品鞋舌條碼一掃，<strong>3 分鐘內完整展開</strong>：捲布供應商、染缸批號、針車人員、成型機台與膠水批號（原紙本作業需耗時 2 天）。
+            成品鞋舌條碼一掃，<strong>3 分鐘內完整展開</strong>：鞋面捲料編號、供應商進料批號、針車報工人員、成型機台溫壓與膠水批號（原紙本作業需耗時 2 天）。
           </div>
           <span class="chip chip-gold">3分鐘全履歷反查</span>
         </div>
@@ -1353,7 +1287,7 @@
           <div class="card-title">駐廠推行實務</div>
           <ul class="bullet-list" style="font-size: 13px;">
             <li><strong>實機驗證</strong>：現場以實機操作 (Show me, don't tell me) 檢核操作熟悉度。</li>
-            <li><strong>雙語圖文 SOP</strong>：操作手冊轉為繁中/越文對照，標註介面步驟。</li>
+            <li><strong>雙語圖文 SOP</strong>：操作手冊採繁中/越文對照，標註介面步驟。</li>
             <li><strong>在地溝通</strong>：具備基礎越文會話，建立在地團隊信任感。</li>
           </ul>
         </div>
@@ -1380,108 +1314,14 @@
 
       <div class="card card-accent-gold" style="padding: 14px 18px;">
         <div style="font-size: 13px; line-height: 1.6; color: var(--text-main);">
-          <strong style="color: var(--gold);">三地協作實務呼應：</strong>
-          清祿集團營運涵蓋「台灣總部研發決策 ＋ 越南主力量產廠區」，與竣邦目前佈局（台灣總部、蘇州、越南廠）高度一致。具備海外跨廠網路架構、跨時區維運、在籍同仁溝通及資料傳輸法規管理實務。
-        </div>
-      </div>
-    </section>
-
-    <!-- ================= SLIDE 10 ================= -->
-    <section class="slide" id="slide-10">
-      <div class="slide-header">
-        <div>
-          <div class="slide-tag">PROJECT RESULTS & SUMMARY</div>
-          <h2 class="slide-title">核心效益成果 ＆ 到職目標對標</h2>
-        </div>
-        <div class="slide-subtitle">客觀量化成效 ｜ 契合竣邦 12 個月期待成果</div>
-      </div>
-
-      <div class="kpi-grid">
-        <div class="kpi-card">
-          <span class="kpi-rate kpi-up">+24%</span>
-          <span class="kpi-title">工廠帳料一致率</span>
-          <div class="kpi-body">
-            <span class="kpi-old">78%</span>
-            <span class="kpi-new">97%</span>
-          </div>
-        </div>
-
-        <div class="kpi-card">
-          <span class="kpi-rate kpi-down">-98%</span>
-          <span class="kpi-title">物料主檔重複率</span>
-          <div class="kpi-body">
-            <span class="kpi-old">17%</span>
-            <span class="kpi-new">0.3%</span>
-          </div>
-        </div>
-
-        <div class="kpi-card">
-          <span class="kpi-rate kpi-down">-99.9%</span>
-          <span class="kpi-title">品牌品質追溯耗時</span>
-          <div class="kpi-body">
-            <span class="kpi-old">2 天</span>
-            <span class="kpi-new">3 分鐘</span>
-          </div>
-        </div>
-
-        <div class="kpi-card">
-          <span class="kpi-rate kpi-up">+19%</span>
-          <span class="kpi-title">生產排程利用率</span>
-          <div class="kpi-body">
-            <span class="kpi-old">72%</span>
-            <span class="kpi-new">86%</span>
-          </div>
-        </div>
-
-        <div class="kpi-card">
-          <span class="kpi-rate kpi-down">-22%</span>
-          <span class="kpi-title">Mesh 網布裁切耗損率</span>
-          <div class="kpi-body">
-            <span class="kpi-old">15.2%</span>
-            <span class="kpi-new">11.8%</span>
-          </div>
-        </div>
-
-        <div class="kpi-card">
-          <span class="kpi-rate kpi-down">-58%</span>
-          <span class="kpi-title">月底財務結帳工作天數</span>
-          <div class="kpi-body">
-            <span class="kpi-old">12 天</span>
-            <span class="kpi-new">5 天</span>
-          </div>
-        </div>
-
-        <div class="kpi-card">
-          <span class="kpi-rate kpi-down">-75%</span>
-          <span class="kpi-title">急單排程評估反應時間</span>
-          <div class="kpi-body">
-            <span class="kpi-old">8 小時</span>
-            <span class="kpi-new">2 小時</span>
-          </div>
-        </div>
-
-        <div class="kpi-card">
-          <span class="kpi-rate kpi-down">-100%</span>
-          <span class="kpi-title">現場舊紙本表單停用</span>
-          <div class="kpi-body">
-            <span class="kpi-old">23 種</span>
-            <span class="kpi-new">0 種</span>
-          </div>
-        </div>
-
-        <div class="kpi-card">
-          <span class="kpi-rate kpi-down">0 缺失</span>
-          <span class="kpi-title">國際品牌客戶年度資安稽核</span>
-          <div class="kpi-body">
-            <span class="kpi-old">3 項缺失</span>
-            <span class="kpi-new">0 缺失</span>
-          </div>
+          <strong style="color: var(--gold);">三地協作實務經驗：</strong>
+          清祿集團營運涵蓋「台灣總部研發決策 ＋ 越南主力量產廠區 ＋ 印尼廠區」。專案過程中具備跨廠網路架構、跨時區維運、在籍同仁溝通及跨國資料傳輸法規管理實務。
         </div>
       </div>
 
       <div class="closing-strip">
         <div class="closing-goal">
-          <strong>到職目標契合：</strong> 建立主資料標準對照 ｜ 主要系統串接規範 ｜ 舊系統程序停用 ｜ 維持資安稽核零缺失
+          <strong>專案總結：</strong> 建立主資料標準 ｜ 落實系統與流程整合 ｜ 確保跨國資安與營運穩定
         </div>
         <div class="closing-contact">
           楊勝傑 Vincent Yang ｜ 0933-223-993 ｜ verj.vincent@gmail.com
@@ -1500,7 +1340,7 @@
   </footer>
 
   <script>
-    const totalSlides = 10;
+    const totalSlides = 9;
     let currentSlide = 1;
 
     const slideIndicator = document.getElementById('slideIndicator');
