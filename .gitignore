@@ -1,0 +1,5 @@
+# Ignore confidential personal documents and temporary scripts
+*.docx
+*.bak.*
+*.ass
+generate_filled_form.py
