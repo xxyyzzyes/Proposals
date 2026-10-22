@@ -229,10 +229,11 @@
     }
 
     .slide-title {
-      font-size: 30px;
+      font-size: 26px;
       font-weight: 700;
       color: var(--text-main);
       letter-spacing: -0.3px;
+      white-space: nowrap;
     }
 
     .slide-subtitle {
@@ -293,20 +294,24 @@
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 10px;
       font-size: 14px;
       color: var(--text-muted);
-      line-height: 1.5;
+      line-height: 1.6;
     }
 
     .bullet-list li {
-      display: flex;
-      align-items: flex-start;
-      gap: 8px;
+      position: relative;
+      padding-left: 16px;
+      display: block;
+      word-break: normal;
     }
 
     .bullet-list li::before {
       content: "•";
+      position: absolute;
+      left: 0;
+      top: 0;
       color: var(--gold);
       font-weight: bold;
     }
@@ -986,10 +991,10 @@
             供應商資料清理
           </div>
           <ul class="bullet-list">
-            <li><strong>整合前狀況</strong>：集團共 780 筆供應商，越南自建 340 筆，其中 87 筆重複。</li>
-            <li><strong>唯一識別碼</strong>：以統一編號 / 稅籍編號 (Tax ID) 作為全集團唯一主鍵。</li>
-            <li><strong>主檔架構</strong>：單一集團主檔 ＋ 跨廠區採購組織視圖。</li>
-            <li><strong>整頓效益</strong>：精簡為 <strong>523 筆</strong>，重複建檔率<strong>歸零 (0%)</strong>。</li>
+            <li><strong>整合前狀況</strong>：集團共 780 筆（越南自建 340 筆，含 87 筆跨廠重複、170 筆久未交易無效戶）。</li>
+            <li><strong>唯一檢查鍵</strong>：以統一編號 / 稅籍編號 (Tax ID) 作為全集團防重複唯一檢核主鍵。</li>
+            <li><strong>主檔架構</strong>：單一集團供應商主檔 ＋ 跨廠區採購組織視圖。</li>
+            <li><strong>整頓效益</strong>：合併重複並凍結無效戶，精簡為 <strong>523 筆有效主檔</strong>，重複率<strong>歸零 (0%)</strong>。</li>
           </ul>
         </div>
 
@@ -999,10 +1004,10 @@
             採購內控機制
           </div>
           <ul class="bullet-list">
-            <li><strong>進料管制</strong>：現場條碼點收，<strong>無採購單 (PO) 系統不允許入庫</strong>。</li>
-            <li><strong>三方比對</strong>：採購單 (PO) vs 實收數量 (GR) vs 發票金額 (IV) 自動核對。</li>
-            <li><strong>異常防呆</strong>：數量或金額差異超過 <strong>±3% 自動鎖單</strong>，須主管簽核。</li>
-            <li><strong>管理成效</strong>：越南廠帳料一致率提升至 <strong>97%</strong>，結帳天數縮短 7 天。</li>
+            <li><strong>進料管制</strong>：現場條碼點收，<strong>無有效採購單 (PO) 系統不允許入庫</strong>。</li>
+            <li><strong>三方核對</strong>：採購單 (PO) vs 實收數量 (GR) vs 發票金額 (IV) 自動核對勾稽。</li>
+            <li><strong>異常防呆</strong>：進料數量容差 > ±3% 或發票單價不符，<strong>系統自動鎖單凍結付款</strong>。</li>
+            <li><strong>管理成效</strong>：越南廠帳料一致率提升至 <strong>97%</strong>，結帳天數由 12 天縮短至 5 天。</li>
           </ul>
         </div>
       </div>
@@ -1012,7 +1017,7 @@
         <div class="flow-step-node">
           <div class="flow-step-code">PR</div>
           <div class="flow-step-title">採購請購</div>
-          <div style="font-size: 11px; color: var(--text-dim); margin-top: 2px;">工單用量自動驅動</div>
+          <div style="font-size: 11px; color: var(--text-dim); margin-top: 2px;">MRP 依訂單與 BOM 自動驅動</div>
         </div>
         <div class="flow-step-node">
           <div class="flow-step-code">PO</div>
@@ -1027,7 +1032,7 @@
         <div class="flow-step-node" style="border-color: var(--emerald-light);">
           <div class="flow-step-code" style="color: var(--emerald-light);">IV</div>
           <div class="flow-step-title">發票核對</div>
-          <div style="font-size: 11px; color: var(--emerald-light); margin-top: 2px;">系統自動勾稽核銷</div>
+          <div style="font-size: 11px; color: var(--emerald-light); margin-top: 2px;">單價核銷與三方勾稽</div>
         </div>
       </div>
     </section>
