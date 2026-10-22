@@ -591,18 +591,19 @@
     /* SLIDE 5: BOM TREE */
     .bom-layout {
       display: grid;
-      grid-template-columns: 1.3fr 1fr;
-      gap: 20px;
+      grid-template-columns: 1.35fr 1fr;
+      gap: 18px;
     }
 
     .bom-card {
       background: rgba(14, 25, 45, 0.85);
       border: 1px solid var(--border-subtle);
       border-radius: 10px;
-      padding: 16px 20px;
+      padding: 16px 18px;
       font-family: var(--font-mono);
-      font-size: 13px;
-      line-height: 1.65;
+      font-size: 12.5px;
+      line-height: 1.7;
+      white-space: nowrap;
     }
 
     .bom-fg { color: var(--gold-light); font-weight: 700; }
@@ -1044,47 +1045,47 @@
           <div class="slide-tag">SAP PP MODULE</div>
           <h2 class="slide-title">多階 BOM 展開 ＆ 生產排程管理</h2>
         </div>
-        <div class="slide-subtitle">原料用量標準化 ｜ 排程利用率 72% ➔ 86%</div>
+        <div class="slide-subtitle">多階平行排程 ｜ 尺碼分段用量 (Size Run) ｜ 急單 2hr 快速安插</div>
       </div>
 
       <div class="bom-layout">
         <div class="bom-card">
-          <div class="bom-fg">📦 成品 FG：慢跑鞋 Model-X / 黑色 / US 9.5</div>
+          <div class="bom-fg">📦 成品 FG：慢跑鞋 Model-X / 黑色 / US 9.5 (基準碼)</div>
           <div class="bom-sfg">├── 🔷 半成品 1 (SFG)：鞋面總成 Upper Assembly</div>
           <div class="bom-raw">│   ├── UP-MSH-0012 透氣網布 <span class="qty">(0.32 碼/雙)</span></div>
           <div class="bom-raw">│   ├── UP-SYN-0005 補強合成皮 <span class="qty">(0.18 碼/雙)</span></div>
           <div class="bom-raw">│   ├── UP-TPU-0003 熱貼膜 <span class="qty">(0.08 碼/雙)</span></div>
           <div class="bom-raw">│   └── AC-THD-0001 車縫線 <span class="qty">(12.5 米/雙)</span></div>
           <div class="bom-sfg">├── 🔷 半成品 2 (SFG)：大底總成 Outsole Assembly</div>
-          <div class="bom-raw">│   ├── BT-RBR-0003 橡膠大底 <span class="qty">(1 pcs/雙)</span></div>
-          <div class="bom-raw">│   └── MD-EVA-0008 EVA 中底 <span class="qty">(1 pcs/雙)</span></div>
+          <div class="bom-raw">│   ├── BT-RBR-0003 耐磨橡膠大底 <span class="qty">(1 pair/雙)</span></div>
+          <div class="bom-raw">│   └── MD-EVA-0008 超輕 EVA 中底 <span class="qty">(1 pair/雙)</span></div>
           <div class="bom-sfg">├── 🔷 組裝與耗材 Direct Materials</div>
-          <div class="bom-raw">│   ├── AD-PU-0007 貼底膠水 <span class="qty">(15 ml/雙)</span></div>
+          <div class="bom-raw">│   ├── AD-PU-0007 水性貼底膠水 <span class="qty">(15 ml/雙)</span></div>
           <div class="bom-raw">│   ├── IN-EVA-0002 支撐鞋墊 <span class="qty">(1 pair/雙)</span></div>
           <div class="bom-raw">│   └── PK-BOX-0001 品牌鞋盒套組 <span class="qty">(1 set/雙)</span></div>
         </div>
 
         <div style="flex: 1; display: flex; flex-direction: column; gap: 14px;">
-          <div class="card card-accent-gold">
-            <div class="card-title">四大製程工序 (Routing)</div>
+          <div class="card card-accent-gold" style="padding: 16px 18px;">
+            <div class="card-title">四大製程工序 ＆ 多階排程優勢</div>
             <ul class="bullet-list" style="font-size: 13px;">
-              <li><strong>裁斷 Cutting</strong>：裁片發料、鞋面原料損耗率監控。</li>
-              <li><strong>針車 Stitching</strong>：人員條碼報工、鞋面組件過帳。</li>
-              <li><strong>成型 Lasting</strong>：鞋面與大底貼合、機台溫壓參數。</li>
-              <li><strong>包裝 Packing</strong>：成品全檢、裝箱自動回寫 SAP。</li>
+              <li><strong>平行同步排程</strong>：針車車間車鞋面、大底廠同步壓底，兩廠獨立重疊生產。</li>
+              <li><strong>分階段精準備料</strong>：鞋面原料到齊即可裁斷針車，免等鞋盒或貼底膠水。</li>
+              <li><strong>急單齊套檢查</strong>：半成品獨立料號入庫，系統 2 小時完成半成品齊套計算。</li>
+              <li><strong>尺碼分段管理</strong>：依尺碼級放 (Size Run) 公式自動換算各碼數標準用量。</li>
             </ul>
           </div>
 
-          <div class="card card-accent-cyan">
-            <div class="card-title">排程效益指標</div>
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 6px;">
-              <div>
-                <div style="font-size: 11px; color: var(--text-muted);">產能利用率 Capacity</div>
-                <div style="font-size: 24px; font-weight: 700; color: var(--emerald-light); font-family: var(--font-mono);">72% ➔ 86%</div>
+          <div class="card card-accent-cyan" style="padding: 14px 18px;">
+            <div class="card-title" style="margin-bottom: 6px; font-size: 15px;">排程效益指標</div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 4px;">
+              <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-subtle); border-radius: 6px; padding: 8px 12px;">
+                <div style="font-size: 11px; color: var(--text-muted); margin-bottom: 2px;">產能利用率 Capacity</div>
+                <div style="font-size: 19px; font-weight: 700; color: var(--emerald-light); font-family: var(--font-mono); white-space: nowrap;">72% ➔ 86%</div>
               </div>
-              <div style="text-align: right;">
-                <div style="font-size: 11px; color: var(--text-muted);">急單排程反應時間</div>
-                <div style="font-size: 24px; font-weight: 700; color: var(--cyan); font-family: var(--font-mono);">8hr ➔ 2hr</div>
+              <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-subtle); border-radius: 6px; padding: 8px 12px;">
+                <div style="font-size: 11px; color: var(--text-muted); margin-bottom: 2px;">急單排程評估反應</div>
+                <div style="font-size: 19px; font-weight: 700; color: var(--cyan); font-family: var(--font-mono); white-space: nowrap;">8hr ➔ 2hr</div>
               </div>
             </div>
           </div>
