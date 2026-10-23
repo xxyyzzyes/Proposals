@@ -69,6 +69,29 @@ const PROPOSAL_I18N = {
     ],
     sec6Title: "利潤測算模型：典型 Drop 實測 (Financial Model)",
     sec6Intro: "以一位中頭部 OnlyFans 創作者（擁約 3,000–5,000 名活躍訂閱者）進行一檔 <strong>300 件限量「Collector 典藏套裝」</strong> 為例試算：",
+    sec6Kpis: [
+      {
+        tag: "✦ 經紀公司與創作者分潤 (70% 淨額)",
+        val: "$13,513.50",
+        unit: "USD",
+        desc: "<strong>純淨收入 · 零庫存風險（約 NT$ 432,000）</strong><br>零前期資金墊付 · 14 天預購款直接結算落袋",
+        isHero: true
+      },
+      {
+        tag: "單場 300 件限量預購總額",
+        val: "$26,400.00",
+        unit: "USD",
+        desc: "預購客單價 $88.00 USD<br>14 天限時金庫，高轉化專屬典藏套裝",
+        isHero: false
+      },
+      {
+        tag: "全案淨利潤空間 (Gross Margin)",
+        val: "73.1%",
+        unit: "($19,305 USD)",
+        desc: "扣除全部柔性開模、全球 DDP 完稅空運與合規金流後的超高利潤空間",
+        isHero: false
+      }
+    ],
     sec6TableHead: ["財務項目", "單件金額 (USD)", "300 件總額 (USD)", "佔營收比重"],
     sec6Rows: [
       ["<strong>預購零售定價</strong>", "<strong>$88.00</strong>", "<strong>$26,400.00</strong>", "<strong>100.0%</strong>"],
@@ -76,8 +99,8 @@ const PROPOSAL_I18N = {
       ["全球航空 DDP 物流與保險預估", "$7.19", "$2,157.00", "8.2%"],
       ["合規金流與平台處理費 (~4.5%)", "$3.96", "$1,188.00", "4.5%"],
       ["<strong>淨利潤空間 (Gross Profit)</strong>", "<strong>$64.35</strong>", "<strong>$19,305.00</strong>", "<strong>73.1%</strong>"],
-      ["<strong>經紀公司與創作者分潤 (70%)</strong>", "<strong>$45.04</strong>", "<strong>$13,513.50</strong>", "<strong>純淨收入，零庫存風險</strong>"],
-      ["RELIQ ARCHIVE 運營分潤 (30%)", "$19.31", "$5,791.50", "涵蓋打樣、網頁維護、QC 與客服"]
+      ["<strong>經紀公司與創作者分潤 (70%)</strong> <span class=\"share-badge\">70% 創作者分潤</span>", "<strong>$45.04</strong>", "<strong>$13,513.50</strong>", "<strong>純淨收入，零庫存風險</strong>"],
+      ["RELIQ ARCHIVE 運營分潤 (30%) <span class=\"share-badge purple\">30% 運營全包</span>", "$19.31", "$5,791.50", "涵蓋打樣、網頁維護、QC 與客服"]
     ],
     sec6Highlight: "✦ <strong>零資金墊付</strong>：所有製造成本由預購款中直接結算，經紀公司與創作者在預購結束後即可穩獲 <strong>$13,500+ USD（約 43 萬台幣）</strong> 純利潤，並深化了死忠粉絲的情感忠誠度。",
     sec7Title: "合規金流、跨境物流與隱私安全保障 (Compliance & Security)",
@@ -154,6 +177,29 @@ const PROPOSAL_I18N = {
     ],
     sec6Title: "06. Financial Model: 300-Unit Benchmark Drop",
     sec6Intro: "Financial projection based on a mid-to-top tier OnlyFans creator (3,000–5,000 active subscribers) launching a <strong>300-unit limited 'Collector Vault Set'</strong>:",
+    sec6Kpis: [
+      {
+        tag: "✦ Agency & Creator Share (70% Net)",
+        val: "$13,513.50",
+        unit: "USD",
+        desc: "<strong>Pure Profit · Zero Inventory Risk (~NT$432,000)</strong><br>Zero upfront capital · Direct payout upon vault closing",
+        isHero: true
+      },
+      {
+        tag: "300-Unit Benchmark Gross Revenue",
+        val: "$26,400.00",
+        unit: "USD",
+        desc: "Pre-order AOV $88.00 USD<br>14-Day Limited Drop · High-conversion signature set",
+        isHero: false
+      },
+      {
+        tag: "Overall Gross Margin",
+        val: "73.1%",
+        unit: "($19,305 USD)",
+        desc: "Net profit after tooling, DDP air cargo customs & compliant gateway fees",
+        isHero: false
+      }
+    ],
     sec6TableHead: ["Financial Metric", "Per Unit (USD)", "300-Unit Total (USD)", "% of Gross Revenue"],
     sec6Rows: [
       ["<strong>Pre-order Retail Price</strong>", "<strong>$88.00</strong>", "<strong>$26,400.00</strong>", "<strong>100.0%</strong>"],
@@ -161,8 +207,8 @@ const PROPOSAL_I18N = {
       ["Global Insured Air Cargo & DDP Customs", "$7.19", "$2,157.00", "8.2%"],
       ["Compliant Merchant & Processing Fee (~4.5%)", "$3.96", "$1,188.00", "4.5%"],
       ["<strong>Net Gross Margin (Gross Profit)</strong>", "<strong>$64.35</strong>", "<strong>$19,305.00</strong>", "<strong>73.1%</strong>"],
-      ["<strong>Agency & Creator Net Share (70%)</strong>", "<strong>$45.04</strong>", "<strong>$13,513.50</strong>", "<strong>Pure profit, 0 inventory liability</strong>"],
-      ["RELIQ ARCHIVE Operating Share (30%)", "$19.31", "$5,791.50", "Covers tooling, web ops, QC & support"]
+      ["<strong>Agency & Creator Net Share (70%)</strong> <span class=\"share-badge\">70% Creator Net</span>", "<strong>$45.04</strong>", "<strong>$13,513.50</strong>", "<strong>Pure profit, 0 inventory liability</strong>"],
+      ["RELIQ ARCHIVE Operating Share (30%) <span class=\"share-badge purple\">30% Turnkey Ops</span>", "$19.31", "$5,791.50", "Covers tooling, web ops, QC & support"]
     ],
     sec6Highlight: "✦ <strong>Zero Capital Advance</strong>: All manufacturing and logistics costs are deducted directly from customer pre-order proceeds. The agency and creator bank <strong>$13,500+ USD (~NT$430,000 / €12,500)</strong> in pure margin upon vault closure with zero stock left behind.",
     sec7Title: "07. Compliance, DDP Freight & Data Privacy",
@@ -303,6 +349,16 @@ function applyProposalLang(lang) {
   // Sec 6
   setText('propSec6Title', t.sec6Title);
   setHtml('propSec6Intro', t.sec6Intro);
+  const kpiGrid = document.getElementById('propSec6KpiGrid');
+  if (kpiGrid && t.sec6Kpis) {
+    kpiGrid.innerHTML = t.sec6Kpis.map(k => `
+      <div class="kpi-card ${k.isHero ? 'hero-kpi' : ''}">
+        <div class="kpi-tag">${k.tag}</div>
+        <div class="kpi-value">${k.val} <span>${k.unit}</span></div>
+        <div class="kpi-desc">${k.desc}</div>
+      </div>
+    `).join('');
+  }
   const sec6Head = document.getElementById('propSec6Head');
   if (sec6Head) {
     sec6Head.innerHTML = `<tr>${t.sec6TableHead.map(h => `<th>${h}</th>`).join('')}</tr>`;
@@ -310,10 +366,12 @@ function applyProposalLang(lang) {
   const sec6Body = document.getElementById('propSec6Body');
   if (sec6Body) {
     sec6Body.innerHTML = t.sec6Rows.map((r, i) => {
-      let trStyle = '';
-      if (i === 4) trStyle = 'style="background: rgba(142, 34, 54, 0.15);"';
-      if (i === 5) trStyle = 'style="border-top: 2px solid var(--accent-gold);"';
-      return `<tr ${trStyle}><td>${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td><td>${r[3]}</td></tr>`;
+      let trClass = '';
+      if (i === 0) trClass = 'class="tr-retail-header"';
+      if (i === 4) trClass = 'class="tr-gross-profit"';
+      if (i === 5) trClass = 'class="tr-agency-share"';
+      if (i === 6) trClass = 'class="tr-reliq-share"';
+      return `<tr ${trClass}><td>${r[0]}</td><td class="num-cell">${r[1]}</td><td class="num-cell">${r[2]}</td><td>${r[3]}</td></tr>`;
     }).join('');
   }
   setHtml('propSec6Highlight', t.sec6Highlight);
