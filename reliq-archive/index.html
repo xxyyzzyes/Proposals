@@ -39,6 +39,7 @@
         <ul class="nav-links">
           <li><a href="#collections" class="nav-link" id="navCollections">三大系列</a></li>
           <li><a href="#archive" class="nav-link" id="navArchive">典藏展陳</a></li>
+          <li><a href="#bespoke" class="nav-link" id="navBespoke">客製工坊</a></li>
           <li><a href="#process" class="nav-link" id="navProcess">合作流程</a></li>
           <li><a href="#agencies" class="nav-link" id="navAgencies">經紀方案</a></li>
           <li><a href="proposal.html" class="nav-link" id="navProposal" target="_blank">完整企劃書</a></li>
@@ -117,6 +118,18 @@
           <path d="M90 120C240 70 400 120 500 220C540 360 470 480 360 560C230 610 120 540 90 420C60 320 60 200 90 120Z" fill="url(#g2)"></path>
           <path d="M150 200C260 170 360 220 410 300C430 400 380 470 300 510C220 530 160 470 150 390C140 320 140 250 150 200Z" fill="url(#g3)"></path>
         </svg>
+
+        <!-- Floating High-Fashion Still-Life Composite on the Silk -->
+        <div class="hero-photo-badge" id="heroPhotoBadge">
+          <img src="assets/hero_campaign.jpg" alt="RELIQ Bespoke Creator Atelier Campaign">
+          <div class="hero-photo-caption">
+            <div>
+              <strong style="color: var(--accent-gold); font-family: var(--font-serif);" id="heroBadgeEdition">EDITION 01 · L'HEURE BLANCHE</strong>
+              <div class="muted" style="font-size: 0.72rem;" id="heroBadgeSub">100% Bespoke · MOQ 50 · Zero Inventory</div>
+            </div>
+            <span class="badge-rarity" style="font-size: 0.68rem;" id="heroBadgePill">HAUTE ATELIER</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -213,6 +226,169 @@
     </div>
   </section>
 
+  <!-- Interactive Bespoke Atelier Studio (#bespoke) -->
+  <section id="bespoke" class="wrap bespoke-section">
+    <div class="section-head">
+      <div>
+        <span class="bespoke-eyebrow" id="bespokeEyebrow">INTERACTIVE BESPOKE ATELIER</span>
+        <h2 class="section-title" id="bespokeTitle">Tailored to your creators. Down to the millimeter.</h2>
+        <p class="section-subtitle" id="bespokeSubtitle">所有產品均支援小量開模、自選專屬調香金字塔、客製黃銅雷雕與刺繡、以及 NFC 數位私密特權綁定。</p>
+      </div>
+      <div class="bespoke-badge-capsule" id="bespokeMoqBadge">MOQ 50 PIECES · ZERO INVENTORY</div>
+    </div>
+
+    <div class="bespoke-workbench">
+      <!-- Left: Interactive Controls Form -->
+      <div class="bespoke-controls-card">
+        <!-- 1. Creator Identity -->
+        <div class="bespoke-field">
+          <label class="bespoke-label" for="customCreatorInput">
+            <span class="bespoke-step-num">01</span>
+            <span id="lblCustomCreator">創作者名稱 / 專屬識別 (Creator Handle)</span>
+          </label>
+          <div class="bespoke-input-wrap">
+            <input type="text" id="customCreatorInput" class="bespoke-text-input" value="ÉLISE LAURENT" placeholder="e.g. @YourCreator / CHLOE NOIR" maxlength="28" oninput="updateBespokePreview()">
+          </div>
+          <span class="bespoke-hint" id="hintCustomCreator">即時預覽雷射深雕銘牌或真絲刺繡效果</span>
+        </div>
+
+        <!-- 2. Product Carrier -->
+        <div class="bespoke-field">
+          <label class="bespoke-label">
+            <span class="bespoke-step-num">02</span>
+            <span id="lblCustomCarrier">選擇客製工藝載體 (Bespoke Carrier)</span>
+          </label>
+          <div class="bespoke-pill-group">
+            <button class="bespoke-pill-btn active" data-carrier="brass" onclick="setBespokeCarrier('brass', this)">
+              <span class="carrier-icon">✦</span>
+              <span id="carrierBrass">香檳金黃銅銘牌</span>
+            </button>
+            <button class="bespoke-pill-btn" data-carrier="silk" onclick="setBespokeCarrier('silk', this)">
+              <span class="carrier-icon">✦</span>
+              <span id="carrierSilk">6A 桑蠶真絲法式刺繡</span>
+            </button>
+            <button class="bespoke-pill-btn" data-carrier="tin" onclick="setBespokeCarrier('tin', this)">
+              <span class="carrier-icon">✦</span>
+              <span id="carrierTin">霧面黑金金屬滑蓋</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- 3. Olfactory Scent Pyramid -->
+        <div class="bespoke-field">
+          <label class="bespoke-label">
+            <span class="bespoke-step-num">03</span>
+            <span id="lblCustomScent">專屬簽名調香金字塔 (Olfactory Signature)</span>
+          </label>
+          <div class="bespoke-scent-cards">
+            <div class="scent-choice active" data-scent="peach" onclick="setBespokeScent('peach', this)">
+              <div class="scent-choice-head">
+                <strong id="scent1Name">Peau Sucrée · 純欲白桃</strong>
+                <span class="scent-tag" id="scent1Tag">晨間微溫</span>
+              </div>
+              <p class="scent-choice-desc" id="scent1Desc">前調：晨間暖蒸氣、橙花 ｜ 中調：白桃果肉、開司米木 ｜ 後調：煙燻香草、黃葵子</p>
+            </div>
+            <div class="scent-choice" data-scent="vanilla" onclick="setBespokeScent('vanilla', this)">
+              <div class="scent-choice-head">
+                <strong id="scent2Name">Nuit Fumée · 煙燻波本</strong>
+                <span class="scent-tag" id="scent2Tag">微醺情調</span>
+              </div>
+              <p class="scent-choice-desc" id="scent2Desc">前調：苦橙葉、黑胡椒 ｜ 中調：浸泡波本香草、羊絨 ｜ 後調：乳木果油、白檀</p>
+            </div>
+            <div class="scent-choice" data-scent="tea" onclick="setBespokeScent('tea', this)">
+              <div class="scent-choice-head">
+                <strong id="scent3Name">Thé Noir · 午夜黑茶</strong>
+                <span class="scent-tag" id="scent3Tag">靜謐冷冽</span>
+              </div>
+              <p class="scent-choice-desc" id="scent3Desc">前調：佛手柑、小荳蔻 ｜ 中調：大吉嶺重焙黑茶、無花果 ｜ 後調：泥煤雪松、黑曜石冷香</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. Encrypted NFC Haptic Perk -->
+        <div class="bespoke-field">
+          <label class="bespoke-label">
+            <span class="bespoke-step-num">04</span>
+            <span id="lblCustomNfc">內嵌 NFC 解鎖私密特權 (Encrypted NFC Perk)</span>
+          </label>
+          <div class="bespoke-perk-options">
+            <label class="perk-radio active">
+              <input type="radio" name="nfcPerk" value="asmr" checked onchange="setBespokePerk('asmr')">
+              <span class="perk-indicator"></span>
+              <div>
+                <strong id="perkAsmrTitle">🎙️ 10 段專屬枕邊 ASMR 私語音頻</strong>
+                <p id="perkAsmrDesc">手機輕碰真絲枕套或織標，專屬加密串流播放創作者未公開晚安聲線</p>
+              </div>
+            </label>
+            <label class="perk-radio">
+              <input type="radio" name="nfcPerk" value="polaroids" onchange="setBespokePerk('polaroids')">
+              <span class="perk-indicator"></span>
+              <div>
+                <strong id="perkPolaroidTitle">📸 試衣間未公開拍立得私密寫真庫</strong>
+                <p id="perkPolaroidDesc">感應晶片直達創作者高解析私密自拍雲端相簿（具一次性防盜錄浮水印）</p>
+              </div>
+            </label>
+            <label class="perk-radio">
+              <input type="radio" name="nfcPerk" value="vip" onchange="setBespokePerk('vip')">
+              <span class="perk-indicator"></span>
+              <div>
+                <strong id="perkVipTitle">🔑 限量金庫私密社群專屬通行證</strong>
+                <p id="perkVipDesc">購買典藏套組之死忠粉絲專屬，直通創作者專屬私密 Telegram / Discord 頻道</p>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <button class="btn gold bespoke-apply-btn" onclick="applyBespokeToSampleRequest()" id="btnApplyBespoke">
+          ✦ 將此客製規格帶入打樣企劃預約
+        </button>
+      </div>
+
+      <!-- Right: Real-time Photorealistic 3D Live Render Display -->
+      <div class="bespoke-preview-pane">
+        <div class="bespoke-stage-card" id="bespokeStageCard">
+          <div class="stage-sheen"></div>
+          <div class="stage-header">
+            <span class="stage-serial" id="stageSerialTag">EDITION 001/100 · BESPOKE</span>
+            <span class="stage-status-dot"></span>
+          </div>
+
+          <!-- Dynamic Plate Rendering Area -->
+          <div class="bespoke-plate-container" id="bespokePlateContainer">
+            <div class="plate-metal-texture" id="plateTexture">
+              <div class="plate-screws"><span></span><span></span><span></span><span></span></div>
+              <div class="plate-monogram">RELIQ ARCHIVE</div>
+              <div class="plate-creator-name" id="previewCreatorName">ÉLISE LAURENT</div>
+              <div class="plate-edition-sub" id="previewCarrierSub">CNC BRUSHED CHAMPAGNE BRONZE · BESPOKE CRAFT</div>
+            </div>
+          </div>
+
+          <!-- Live Spec Matrix Pills -->
+          <div class="stage-spec-footer">
+            <div class="stage-spec-item">
+              <span class="spec-label" id="previewLblScent">專屬調香</span>
+              <strong class="spec-value" id="previewScentVal">Peau Sucrée · 純欲白桃</strong>
+            </div>
+            <div class="stage-spec-item">
+              <span class="spec-label" id="previewLblPerk">NFC 數位特權</span>
+              <strong class="spec-value" id="previewPerkVal">10 段 ASMR 私密語音</strong>
+            </div>
+            <div class="stage-spec-item">
+              <span class="spec-label" id="previewLblMoq">起訂門檻</span>
+              <strong class="spec-value" style="color: var(--accent-gold);">MOQ 50 件 (零庫存)</strong>
+            </div>
+          </div>
+        </div>
+
+        <!-- Guarantee Note Under Preview -->
+        <div class="bespoke-security-pill">
+          <span style="color: var(--accent-gold);">✦</span>
+          <span id="bespokeSecurityNote">創作者 3D 生物數據採最高機密離線加密存儲，出貨核可 30 天內依約銷毀模具或冷備份歸還經紀公司。</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Four-Step Process Section (#process) -->
   <section id="process" class="wrap process-section">
     <h2 class="section-title" id="processSectionTitle">From idea to doorstep in four moves.</h2>
@@ -273,6 +449,111 @@
             <li class="agency-item"><span class="agency-item-bullet">✦</span> <span id="agencyWe3">出貨前逐一照片/影片品檢，無瑕疵保證</span></li>
             <li class="agency-item"><span class="agency-item-bullet">✦</span> <span id="agencyWe4">純黑無印防護盒裝、DDP 跨境物流與全程售後客服</span></li>
           </ul>
+        </div>
+      </div>
+
+      <!-- Interactive Agency ROI Profit Calculator -->
+      <div class="agency-roi-container" id="agencyRoiCalculator">
+        <div class="roi-header">
+          <div>
+            <span class="roi-pill" id="roiPillBadge">LIVE PROFIT SIMULATOR</span>
+            <h3 class="roi-title" id="roiTitle">經紀公司收益試算儀：以真實數據看見無庫存利潤</h3>
+            <p class="roi-subhead" id="roiSubhead">拖動滑桿輸入創作者數據，即時獲知單次 14 天限時預購 Drop 之純淨收益（經紀方與創作者享 70% 淨利潤，成本由預購款結算，0 墊資）。</p>
+          </div>
+        </div>
+
+        <div class="roi-workbench-grid">
+          <!-- Left: Interactive Sliders & Tier Selection -->
+          <div class="roi-inputs-col">
+            <!-- Slider 1: Active Subscribers -->
+            <div class="roi-slider-group">
+              <div class="slider-label-row">
+                <span class="slider-title" id="lblRoiSubs">創作者活躍訂閱粉絲數 (Active Subscribers)</span>
+                <span class="slider-value-display" id="valRoiSubs">5,000 人</span>
+              </div>
+              <input type="range" id="sliderRoiSubs" min="1000" max="50000" step="500" value="5000" class="roi-slider" oninput="calculateAgencyRoi()">
+              <div class="slider-scale-row">
+                <span>1,000</span>
+                <span>10,000</span>
+                <span>25,000</span>
+                <span>50,000+</span>
+              </div>
+            </div>
+
+            <!-- Slider 2: Pre-order Conversion Rate -->
+            <div class="roi-slider-group">
+              <div class="slider-label-row">
+                <span class="slider-title" id="lblRoiConv">預購轉化率 (Pre-order Conversion Rate)</span>
+                <span class="slider-value-display" id="valRoiConv">4.0%</span>
+              </div>
+              <input type="range" id="sliderRoiConv" min="1.0" max="10.0" step="0.5" value="4.0" class="roi-slider" oninput="calculateAgencyRoi()">
+              <div class="slider-scale-row">
+                <span>1.0% (保守)</span>
+                <span>4.0% (業界均值)</span>
+                <span>7.0%</span>
+                <span>10.0% (頂流)</span>
+              </div>
+            </div>
+
+            <!-- Tier Select -->
+            <div class="roi-slider-group">
+              <div class="slider-label-row">
+                <span class="slider-title" id="lblRoiTier">預售產品組合定價 (Product Drop Tier)</span>
+              </div>
+              <div class="roi-tier-buttons">
+                <button class="roi-tier-btn" data-tier="single" onclick="setRoiTier('single', this)">
+                  <strong id="tierSingleTitle">輕奢單品</strong>
+                  <span class="tier-price">$42 USD</span>
+                  <small id="tierSingleDesc">固體香膏 / 盲盒皂</small>
+                </button>
+                <button class="roi-tier-btn active" data-tier="collector" onclick="setRoiTier('collector', this)">
+                  <span class="tier-recommended-badge" id="badgeRecommended">推薦</span>
+                  <strong id="tierCollectorTitle">典藏套裝</strong>
+                  <span class="tier-price">$88 USD</span>
+                  <small id="tierCollectorDesc">香膏+冷製皂+拍立得</small>
+                </button>
+                <button class="roi-tier-btn" data-tier="grand" onclick="setRoiTier('grand', this)">
+                  <strong id="tierGrandTitle">高定金庫</strong>
+                  <span class="tier-price">$198 USD</span>
+                  <small id="tierGrandDesc">T恤+語音枕+黃銅匣</small>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Live Profit Financial Readout Card -->
+          <div class="roi-results-col">
+            <div class="roi-profit-card">
+              <div class="roi-profit-header">
+                <span class="roi-profit-eyebrow" id="roiProfitEyebrow">ESTIMATED AGENCY & CREATOR NET RETURN</span>
+                <div class="roi-profit-big" id="roiProfitBig">$8,995.00</div>
+                <div class="roi-profit-currency" id="roiProfitCurrency">USD 淨分潤 (70% 純利) ≈ NT$ 288,000</div>
+              </div>
+
+              <div class="roi-breakdown-list">
+                <div class="roi-breakdown-row">
+                  <span class="muted" id="roiLblOrders">預計鎖定預購訂單量</span>
+                  <strong id="roiValOrders">200 件 (Units)</strong>
+                </div>
+                <div class="roi-breakdown-row">
+                  <span class="muted" id="roiLblRevenue">預計總營收 (Total Revenue)</span>
+                  <strong id="roiValRevenue">$17,600.00 USD</strong>
+                </div>
+                <div class="roi-breakdown-row">
+                  <span class="muted" id="roiLblCost">製造+DDP空運+合規手續費</span>
+                  <strong id="roiValCost" style="color: var(--text-muted);">$4,750.00 USD (全額由預購款結算)</strong>
+                </div>
+                <div class="roi-breakdown-row highlight">
+                  <span style="color: var(--accent-gold);" id="roiLblUpfront">經紀方前期資金墊付</span>
+                  <strong style="color: #68D391;" id="roiValUpfront">$0.00 USD (零庫存風險)</strong>
+                </div>
+              </div>
+
+              <button class="btn gold roi-cta-btn" onclick="openSampleModal()" id="btnLockRoi">
+                ✦ 鎖定此收益模型 · 索取打樣企劃
+              </button>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -460,6 +741,13 @@
         </div>
         <button class="modal-close-btn" onclick="closeCartModal()">✕</button>
       </div>
+
+      <!-- Agency Turnkey Demo Notice -->
+      <div class="cart-demo-notice" id="cartDemoNotice">
+        <span class="cart-demo-badge" id="cartDemoBadge">✦ AGENCY B2B LIVE DEMO</span>
+        <p id="cartDemoNoticeText">此為為您旗下創作者建置之<strong>粉絲端限時金庫結帳系統實機演示</strong>。串接 Stripe / CCBill 白名單合規通道與 DDP 全球跨境免稅空運，外盒純黑無痕，帳單顯示中性。</p>
+      </div>
+
       <div id="cartItemsList" style="max-height: 280px; overflow-y: auto; margin-bottom: 20px;">
         <!-- Injected via app.js -->
       </div>
@@ -480,9 +768,9 @@
       <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
       <span id="pwaNav1">三大系列</span>
     </a>
-    <a href="#archive" class="pwa-btn">
-      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><circle cx="12" cy="12" r="9"></circle><path d="M12 2v20"></path><path d="M2 12h20"></path></svg>
-      <span id="pwaNav2">典藏展陳</span>
+    <a href="#bespoke" class="pwa-btn">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+      <span id="pwaNavBespoke">客製工坊</span>
     </a>
     <a href="#agencies" class="pwa-btn">
       <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>

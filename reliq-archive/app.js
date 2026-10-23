@@ -14,9 +14,8 @@ const PRODUCTS = [
     gallery: [
       { labelZh: '01 · 典藏黑金滑蓋', labelEn: '01 · Obsidian Gold Case', image: 'assets/palette_solid_perfume.jpg' },
       { labelZh: '02 · 膏體微距特寫', labelEn: '02 · Organic Balm Texture', image: 'assets/angles/solid_perfume_macro.jpg' },
-      { labelZh: '03 · 五金銘牌工藝', labelEn: '03 · Engraved Hardware', image: 'assets/crafts/craft_brass_plaque.jpg' },
-      { labelZh: '04 · 調香原料萃取', labelEn: '04 · Botanical Extraction', image: 'assets/crafts/craft_fragrance_lab.jpg' },
-      { labelZh: '05 · 純黑無印包裝', labelEn: '05 · Discreet Packaging', image: 'assets/crafts/craft_discreet_box.jpg' }
+      { labelZh: '03 · 黑金外盒雷雕工藝', labelEn: '03 · Brushed Gold & Engraved Case', image: 'assets/angles/solid_perfume_case.jpg' },
+      { labelZh: '04 · 專屬絲絨滑蓋禮盒', labelEn: '04 · Bespoke Presentation Box', image: 'assets/angles/solid_perfume_box.jpg' }
     ],
     visualSpecs: [
       {
@@ -26,7 +25,7 @@ const PRODUCTS = [
         titleEn: 'Brushed Gold & Matte Black Sliding Case',
         descZh: '航太級鋁合金鍛造，表面啞光微砂防指紋處理，激光深雕 RELIQ 經典標識。',
         descEn: 'Aerospace-grade aluminum with matte anti-smudge treatment and laser-engraved RELIQ typography.',
-        image: 'assets/crafts/craft_brass_plaque.jpg'
+        image: 'assets/angles/solid_perfume_case.jpg'
       },
       {
         craftZh: 'CRAFT 02 · 基底成份',
@@ -35,7 +34,7 @@ const PRODUCTS = [
         titleEn: 'Organic Beeswax & Cold-Pressed Jojoba',
         descZh: '零酒精溫和配方，慢速溫熱散香，與體溫自然融合散發私密體香。',
         descEn: 'Zero alcohol skin-safe formula melting gently with body heat for intimate thermal diffusion.',
-        image: 'assets/crafts/craft_fragrance_lab.jpg'
+        image: 'assets/angles/solid_perfume_macro.jpg'
       },
       {
         craftZh: 'CRAFT 03 · 留香時效',
@@ -44,16 +43,16 @@ const PRODUCTS = [
         titleEn: '6 to 8 Hours Skin Longevity',
         descZh: '固態慢釋科技，隨身放口袋便攜補香，出汗後依然散發純欲體香。',
         descEn: 'Slow thermal skin diffusion that deepens as body temperature shifts.',
-        image: 'assets/angles/solid_perfume_macro.jpg'
+        image: 'assets/palette_solid_perfume.jpg'
       },
       {
-        craftZh: 'CRAFT 04 · 國際運送',
-        craftEn: 'CRAFT 04 · COMPLIANCE',
-        titleZh: '100% 避開航空液體禁運',
-        titleEn: '100% Compliant Air Cargo',
-        descZh: '完全符合全球航空與海關合規標準，純黑無痕包裝直達死忠粉絲。',
-        descEn: 'Solid formulation completely bypasses airline liquid bans with DDP insured global delivery.',
-        image: 'assets/crafts/craft_discreet_box.jpg'
+        craftZh: 'CRAFT 04 · 專屬包裝',
+        craftEn: 'CRAFT 04 · VAULT PRESENTATION',
+        titleZh: '純黑絲絨磁吸硬盒 · 避光防護',
+        titleEn: 'Discreet Velvet Rigid Presentation Box',
+        descZh: '專屬黑色抽屜禮盒，內襯天鵝絨定型槽，純黑無痕航空直達。',
+        descEn: 'Bespoke slide-out rigid vault lined with protective velvet for seamless discreet delivery.',
+        image: 'assets/angles/solid_perfume_box.jpg'
       }
     ],
     zh: {
@@ -98,8 +97,7 @@ const PRODUCTS = [
       { labelZh: '01 · 1:1 局部人體曲線', labelEn: '01 · 1:1 Bodyscape Mold', image: 'assets/palette_silhouette_soap.jpg' },
       { labelZh: '02 · 內封防水膠囊', labelEn: '02 · Sealed Secret Capsule', image: 'assets/angles/silhouette_soap_macro.jpg' },
       { labelZh: '03 · 3D 人體掃描數據', labelEn: '03 · 3D Scan Topology', image: 'assets/crafts/craft_scan_mold.jpg' },
-      { labelZh: '04 · 柔性加密晶片', labelEn: '04 · Cryptographic Chip', image: 'assets/crafts/craft_nfc_chip.jpg' },
-      { labelZh: '05 · 純黑瀝水陶盤', labelEn: '05 · Matte Black Ceramic Dish', image: 'assets/crafts/craft_discreet_box.jpg' }
+      { labelZh: '04 · 純黑極簡瀝水陶盤', labelEn: '04 · Matte Black Ceramic Dish', image: 'assets/angles/silhouette_soap_dish.jpg' }
     ],
     visualSpecs: [
       {
@@ -121,22 +119,22 @@ const PRODUCTS = [
         image: 'assets/angles/silhouette_soap_macro.jpg'
       },
       {
-        craftZh: 'CRAFT 03 · 數位互聯',
-        craftEn: 'CRAFT 03 · NFC HAPTICS',
+        craftZh: 'CRAFT 03 · 案頭陳列',
+        craftEn: 'CRAFT 03 · CERAMIC DISH',
+        titleZh: '專屬純黑消光瀝水陶盤',
+        titleEn: 'Minimalist Matte Ceramic Drainage Dish',
+        descZh: '粗陶高溫燒製啞光黑盤，透氣瀝水，擺放浴室如同微縮人體雕塑展陳。',
+        descEn: 'Artisanal matte black ceramic dish designed to elevate the soap into a bathroom sculpture.',
+        image: 'assets/angles/silhouette_soap_dish.jpg'
+      },
+      {
+        craftZh: 'CRAFT 04 · 數位互聯',
+        craftEn: 'CRAFT 04 · NFC HAPTICS',
         titleZh: '手機輕碰解鎖專屬影片',
         titleEn: 'Encrypted Private Access NFC',
         descZh: '內建防偽加密晶片，輕觸即可開啟創作者未公開私密寫真與獨家感謝聲線。',
         descEn: 'Encrypted NFC access key unlocking private collector videos.',
         image: 'assets/crafts/craft_nfc_chip.jpg'
-      },
-      {
-        craftZh: 'CRAFT 04 · 皂體配方',
-        craftEn: 'CRAFT 04 · SOAP FORMULA',
-        titleZh: '冷壓甜杏仁油與乳木果脂',
-        titleEn: 'Cold-Pressed Sweet Almond & Shea',
-        descZh: '英國進口植物甘油基底，泡沫綿密如絲緞，洗後肌膚水潤不緊繃。',
-        descEn: 'Natural botanical oils producing a rich, velvety lather that leaves skin hydrated.',
-        image: 'assets/crafts/craft_medical_lube.jpg'
       }
     ],
     zh: {
@@ -181,8 +179,7 @@ const PRODUCTS = [
       { labelZh: '01 · 典藏藥劑燭杯', labelEn: '01 · Apothecary Glass Vessel', image: 'assets/palette_massage_candle.jpg' },
       { labelZh: '02 · 42°C 親膚熔油池', labelEn: '02 · 42°C Warm Oil Pool', image: 'assets/angles/massage_candle_macro.jpg' },
       { labelZh: '03 · 溫熱傾倒按摩情境', labelEn: '03 · 42°C Pour Ambiance', image: 'assets/angles/massage_candle_context.jpg' },
-      { labelZh: '04 · 原木防塵滅燭蓋', labelEn: '04 · Solid Walnut Snuffer Lid', image: 'assets/angles/massage_candle_detail.jpg' },
-      { labelZh: '05 · 純黑消光禮盒', labelEn: '05 · Rigid Gift Box', image: 'assets/crafts/craft_discreet_box.jpg' }
+      { labelZh: '04 · 原木防塵滅燭蓋', labelEn: '04 · Solid Walnut Snuffer Lid', image: 'assets/angles/massage_candle_detail.jpg' }
     ],
     visualSpecs: [
       {
@@ -210,16 +207,16 @@ const PRODUCTS = [
         titleEn: 'Heavyweight Amber Apothecary Glass',
         descZh: '手工吹製耐熱厚底玻璃，附胡桃木防塵滅燭蓋，燃燒時長約 45 小時。',
         descEn: 'Hand-blown thermal amber glass with solid walnut timber snuffer lid.',
-        image: 'assets/crafts/craft_fragrance_lab.jpg'
+        image: 'assets/angles/massage_candle_detail.jpg'
       },
       {
-        craftZh: 'CRAFT 04 · 隱蔽包裝',
-        craftEn: 'CRAFT 04 · DISCREET LOGISTICS',
-        titleZh: '純黑無痕圓筒硬盒 · 避光防震',
-        titleEn: 'Discreet Black Tube Presentation Box',
-        descZh: '採用加厚防震紙管封存，外箱無敏感字樣，守護私密生活格調。',
-        descEn: 'Shockproof cylindrical rigid container with unbranded discreet shipping carton.',
-        image: 'assets/crafts/craft_discreet_box.jpg'
+        craftZh: 'CRAFT 04 · 情境陪伴',
+        craftEn: 'CRAFT 04 · INTIMATE AMBIANCE',
+        titleZh: '傾倒溫熱芳療與私密香氣陪伴',
+        titleEn: 'Sensual Warm Pouring Body Therapy',
+        descZh: '融化後的金色油池散發臥室私密體香，兼具視覺張力與親膚芳療。',
+        descEn: 'Warm melting pool transforms into rich sensory body oil for intimate night rituals.',
+        image: 'assets/angles/massage_candle_context.jpg'
       }
     ],
     zh: {
@@ -261,11 +258,10 @@ const PRODUCTS = [
     total: 200,
     image: 'assets/palette_sensual_lube.jpg',
     gallery: [
-      { labelZh: '01 · 典藏避光滴管瓶', labelEn: '01 · Obsidian UV Dropper Bottle', image: 'assets/palette_sensual_lube.jpg' },
+      { labelZh: '01 · 典藏避光瓶身', labelEn: '01 · Obsidian UV Dropper Bottle', image: 'assets/palette_sensual_lube.jpg' },
       { labelZh: '02 · 絲滑水滴微距', labelEn: '02 · Silky Droplet Macro', image: 'assets/angles/sensual_lube_macro.jpg' },
-      { labelZh: '03 · 醫療計生認證', labelEn: '03 · ISO Medical Compliance', image: 'assets/crafts/craft_medical_lube.jpg' },
-      { labelZh: '04 · 食用香草蜜桃調香', labelEn: '04 · Edible Grade Aroma', image: 'assets/crafts/craft_fragrance_lab.jpg' },
-      { labelZh: '05 · 純黑絲絨保護袋', labelEn: '05 · Black Velvet Pouch', image: 'assets/crafts/craft_discreet_box.jpg' }
+      { labelZh: '03 · 醫療無菌車間生產', labelEn: '03 · ISO Cleanroom Compliance', image: 'assets/crafts/craft_medical_lube.jpg' },
+      { labelZh: '04 · 調香原料萃取工藝', labelEn: '04 · Bespoke Scent Extraction', image: 'assets/crafts/craft_fragrance_lab.jpg' }
     ],
     visualSpecs: [
       {
@@ -302,7 +298,7 @@ const PRODUCTS = [
         titleEn: 'Matte Obsidian UV-Blocking Bottle',
         descZh: '防漏真空泵頭，阻隔紫外線保持配方活性，外觀如高級保養品般低調奢華。',
         descEn: 'UV-blocking matte container with leakproof pump, blending seamlessly into luxury vanity.',
-        image: 'assets/crafts/craft_discreet_box.jpg'
+        image: 'assets/palette_sensual_lube.jpg'
       }
     ],
     zh: {
@@ -347,8 +343,7 @@ const PRODUCTS = [
       { labelZh: '01 · 典藏果凍手托', labelEn: '01 · Platinum Palm Rest', image: 'assets/palette_desk_rest.jpg' },
       { labelZh: '02 · 膚感回彈特寫', labelEn: '02 · Soft Gel Rebound', image: 'assets/angles/desk_rest_macro.jpg' },
       { labelZh: '03 · 案頭機械鍵盤實景', labelEn: '03 · Desktop Setup Context', image: 'assets/angles/desk_rest_context.jpg' },
-      { labelZh: '04 · CNC 拉絲黃銅銘牌', labelEn: '04 · Brushed Brass Inlay', image: 'assets/crafts/craft_brass_plaque.jpg' },
-      { labelZh: '05 · 人體工學拓撲開模', labelEn: '05 · Ergonomic 3D Tooling', image: 'assets/crafts/craft_scan_mold.jpg' }
+      { labelZh: '04 · 人體工學拓撲開模', labelEn: '04 · Ergonomic 3D Tooling', image: 'assets/crafts/craft_scan_mold.jpg' }
     ],
     visualSpecs: [
       {
@@ -376,7 +371,7 @@ const PRODUCTS = [
         titleEn: 'CNC Brushed Champagne Brass Plaque',
         descZh: '中央手工鑲嵌「RELIQ ARCHIVE · ÉLISE LAURENT」金屬銘牌，激光深雕工藝。',
         descEn: 'Flush-mounted solid brushed brass plaque with precision laser-engraved typography.',
-        image: 'assets/crafts/craft_brass_plaque.jpg'
+        image: 'assets/palette_desk_rest.jpg'
       },
       {
         craftZh: 'CRAFT 04 · 案頭防滑',
@@ -512,8 +507,7 @@ const PRODUCTS = [
     gallery: [
       { labelZh: '01 · 夜幕桑蠶真絲眼罩', labelEn: '01 · Silk Sensory Blindfold', image: 'assets/palette_blindfold_mask.jpg' },
       { labelZh: '02 · 玫瑰金法文刺繡微距', labelEn: '02 · Embroidered Script Macro', image: 'assets/angles/blindfold_macro.jpg' },
-      { labelZh: '03 · 22mm 親膚真絲面料', labelEn: '03 · Dual 22mm Silk', image: 'assets/crafts/craft_silk_weave.jpg' },
-      { labelZh: '04 · 純黑便攜真絲束口袋', labelEn: '04 · Silk Drawstring Pouch', image: 'assets/crafts/craft_discreet_box.jpg' }
+      { labelZh: '03 · 22mm 親膚桑蠶真絲', labelEn: '03 · Dual 22mm Silk Weave', image: 'assets/crafts/craft_silk_weave.jpg' }
     ],
     visualSpecs: [
       {
@@ -544,13 +538,13 @@ const PRODUCTS = [
         image: 'assets/crafts/craft_silk_weave.jpg'
       },
       {
-        craftZh: 'CRAFT 04 · 便攜收納',
-        craftEn: 'CRAFT 04 · TRAVEL POUCH',
-        titleZh: '附贈同色系純黑消光便攜真絲束口袋',
-        titleEn: 'Matching Matte Black Drawstring Pouch',
-        descZh: '旅行出差隨身收納，外盒為無敏感字樣的純黑消光硬盒。',
-        descEn: 'Includes a pure silk drawstring pouch in an unmarked presentation gift box.',
-        image: 'assets/crafts/craft_discreet_box.jpg'
+        craftZh: 'CRAFT 04 · 極致包覆',
+        craftEn: 'CRAFT 04 · SENSORY CONTOUR',
+        titleZh: '寬版真絲彈力帶 · 零壓睡眠感',
+        titleEn: 'Silk-Wrapped Zero Tension Headband',
+        descZh: '全包覆真絲包裹彈力帶，長戴完全不壓迫眼球與髮根，帶來極致安全感。',
+        descEn: 'Pure silk contouring band providing tension-free deep darkness for skin and sleep.',
+        image: 'assets/palette_blindfold_mask.jpg'
       }
     ],
     zh: {
@@ -595,8 +589,7 @@ const PRODUCTS = [
       { labelZh: '01 · 典藏水洗黑', labelEn: '01 · Washed Charcoal Tee', image: 'assets/palette_sateen_tee.jpg' },
       { labelZh: '02 · 300g 雙股精梳棉', labelEn: '02 · Mercerized Cotton Macro', image: 'assets/angles/tee_macro.jpg' },
       { labelZh: '03 · 背部粉彩剪影輪廓', labelEn: '03 · Back Silhouette Art', image: 'assets/angles/tee_context.jpg' },
-      { labelZh: '04 · 隱密防偽 NFC 晶片', labelEn: '04 · NFC Selfie Access', image: 'assets/crafts/craft_nfc_chip.jpg' },
-      { labelZh: '05 · 純黑無痕消光禮盒', labelEn: '05 · Discreet Presentation Box', image: 'assets/crafts/craft_discreet_box.jpg' }
+      { labelZh: '04 · 下擺耐水洗 NFC 織嘜', labelEn: '04 · Woven NFC Key Label', image: 'assets/crafts/craft_nfc_chip.jpg' }
     ],
     visualSpecs: [
       {
@@ -676,10 +669,8 @@ const PRODUCTS = [
     image: 'assets/palette_canvas_tote.jpg',
     gallery: [
       { labelZh: '01 · 典藏水洗黑托特', labelEn: '01 · Washed Charcoal Tote', image: 'assets/palette_canvas_tote.jpg' },
-      { labelZh: '02 · 24oz 加密帆布與黃銅卯釘', labelEn: '02 · 24oz Canvas & Brass Rivet', image: 'assets/angles/tote_macro.jpg' },
-      { labelZh: '03 · 深酒紅真絲緞面內襯', labelEn: '03 · Burgundy Silk Lining', image: 'assets/angles/tote_context.jpg' },
-      { labelZh: '04 · 獨立限量編號黃銅銘牌', labelEn: '04 · Engraved Brass Plaque', image: 'assets/crafts/craft_brass_plaque.jpg' },
-      { labelZh: '05 · 純黑消光防護外盒', labelEn: '05 · Rigid Gift Box', image: 'assets/crafts/craft_discreet_box.jpg' }
+      { labelZh: '02 · 24oz 加密帆布與皮革提把', labelEn: '02 · 24oz Canvas & Leather Straps', image: 'assets/angles/tote_macro.jpg' },
+      { labelZh: '03 · 深酒紅真絲緞面內襯', labelEn: '03 · Burgundy Silk Lining', image: 'assets/angles/tote_context.jpg' }
     ],
     visualSpecs: [
       {
@@ -698,7 +689,7 @@ const PRODUCTS = [
         titleEn: 'Italian Veg-Tanned Leather & Brass Hardware',
         descZh: '經年使用泛出溫潤光澤，手感舒適不勒手，加厚黃銅卯釘雙重鉚合。',
         descEn: 'Supple full-grain vegetable-tanned leather straps secured with solid brass rivets.',
-        image: 'assets/crafts/craft_brass_plaque.jpg'
+        image: 'assets/angles/tote_macro.jpg'
       },
       {
         craftZh: 'CRAFT 03 · 內襯奢華',
@@ -710,13 +701,13 @@ const PRODUCTS = [
         image: 'assets/angles/tote_context.jpg'
       },
       {
-        craftZh: 'CRAFT 04 · 限量配額',
-        craftEn: 'CRAFT 04 · LIMITED SERIAL',
-        titleZh: '中央鑲嵌獨立編號黃銅銘牌',
-        titleEn: 'Laser-Engraved Numbered Brass Plaque',
-        descZh: '袋身手工鑲嵌「RELIQ ARCHIVE · EDITION 042/100」黃銅標牌，極具收藏價值。',
-        descEn: 'Flush-mounted brushed brass plaque stamped with individual edition serial number.',
-        image: 'assets/angles/tote_macro.jpg'
+        craftZh: 'CRAFT 04 · 立體剪裁',
+        craftEn: 'CRAFT 04 · TAILORED DRAPE',
+        titleZh: '出街微廓形立體硬挺包型',
+        titleEn: 'Structured Silhouette with 20L Volume',
+        descZh: '42x34x14cm 奢華容量，日常通勤與周末短旅皆能從容優雅兼備。',
+        descEn: 'Architectural silhouette holding shape whether empty or loaded with executive essentials.',
+        image: 'assets/palette_canvas_tote.jpg'
       }
     ],
     zh: {
@@ -761,8 +752,7 @@ const PRODUCTS = [
       { labelZh: '01 · 黑箔撲克與黃銅牌匣', labelEn: '01 · Foil Deck & Brass Vault', image: 'assets/palette_poker_deck.jpg' },
       { labelZh: '02 · 24K 香檳金燙印微距', labelEn: '02 · 24K Gold Foil Macro', image: 'assets/angles/poker_macro.jpg' },
       { labelZh: '03 · 絲絨桌面與滑蓋牌匣', labelEn: '03 · Casino Ambiance & Vault', image: 'assets/angles/poker_context.jpg' },
-      { labelZh: '04 · 獨立限量編號深雕', labelEn: '04 · Serial Engraving', image: 'assets/crafts/craft_brass_plaque.jpg' },
-      { labelZh: '05 · 純黑磁吸禮盒展陳', labelEn: '05 · Luxury Magnetic Box', image: 'assets/crafts/craft_discreet_box.jpg' }
+      { labelZh: '04 · 金屬黑箔燙金工藝', labelEn: '04 · Metallic Foil Craft', image: 'assets/crafts/craft_foil_emboss.jpg' }
     ],
     visualSpecs: [
       {
@@ -781,7 +771,7 @@ const PRODUCTS = [
         titleEn: 'Solid CNC-Milled Brushed Brass Vault',
         descZh: '拉絲拋光黃銅滑蓋匣，磁吸閉合清脆金屬聲，案頭上沉甸大器的黃金擺件。',
         descEn: 'Hefty 320g solid brass box with smooth magnetic slide and laser-engraved edition serial.',
-        image: 'assets/crafts/craft_brass_plaque.jpg'
+        image: 'assets/palette_poker_deck.jpg'
       },
       {
         craftZh: 'CRAFT 03 · 視覺藝術',
@@ -843,9 +833,7 @@ const PRODUCTS = [
     gallery: [
       { labelZh: '01 · 天然黑曜石美體石', labelEn: '01 · Obsidian Contour Stone', image: 'assets/palette_obsidian_stone.jpg' },
       { labelZh: '02 · 水磨鏡面微距反光', labelEn: '02 · Water Polish Mirror Macro', image: 'assets/angles/obsidian_macro.jpg' },
-      { labelZh: '03 · 100% 天然火山黑曜石', labelEn: '03 · Natural Volcanic Mineral', image: 'assets/crafts/craft_obsidian_polish.jpg' },
-      { labelZh: '04 · 香檳金黃銅徽標鑲嵌', labelEn: '04 · Brass Plaque Inlay', image: 'assets/crafts/craft_brass_plaque.jpg' },
-      { labelZh: '05 · 純黑消光磁吸硬盒', labelEn: '05 · Magnetic Presentation Box', image: 'assets/crafts/craft_discreet_box.jpg' }
+      { labelZh: '03 · 天然火山礦物打磨', labelEn: '03 · Natural Volcanic Mineral Polish', image: 'assets/crafts/craft_obsidian_polish.jpg' }
     ],
     visualSpecs: [
       {
@@ -873,16 +861,16 @@ const PRODUCTS = [
         titleEn: 'Triple-Radii Anatomical Contouring',
         descZh: '完美貼合下顎線、鎖骨與私密身體曲線，搭配體香精油使用帶來極致撫觸。',
         descEn: 'Flowing curves designed to glide over jawline, collarbones, and delicate contours.',
-        image: 'assets/crafts/craft_brass_plaque.jpg'
+        image: 'assets/palette_obsidian_stone.jpg'
       },
       {
-        craftZh: 'CRAFT 04 · 收藏配置',
-        craftEn: 'CRAFT 04 · PRESENTATION VAULT',
-        titleZh: '鑲嵌香檳金黃銅徽標 + 黑色天鵝絨收納袋',
-        titleEn: 'Inlaid Brass Logo & Velvet Pouch',
-        descZh: '中央鑲嵌「RELIQ · OBSIDIENNE」金屬標牌，附純黑硬殼消光磁吸禮盒。',
-        descEn: 'Flush-mounted champagne brass plaque; presentation box lined in black crushed velvet.',
-        image: 'assets/crafts/craft_discreet_box.jpg'
+        craftZh: 'CRAFT 04 · 觸感體溫',
+        craftEn: 'CRAFT 04 · COOLING TOUCH',
+        titleZh: '280g 沉甸手感 · 長效沁涼舒緩',
+        titleEn: '280g Heavy Tactile Heft',
+        descZh: '天然火山礦物具備極佳冷熱傳導特性，冰鎮或微溫撫觸均能喚醒深層感官。',
+        descEn: 'Dense volcanic mineral maintains soothing natural chill to relieve skin and muscle tension.',
+        image: 'assets/angles/obsidian_macro.jpg'
       }
     ],
     zh: {
@@ -1006,8 +994,67 @@ const I18N = {
     cartCheckoutBtn: "確認提交預購訂單",
     pwaNav1: "三大系列",
     pwaNav2: "典藏展陳",
+    pwaNavBespoke: "客製工坊",
     pwaNav3: "經紀方案",
     pwaNav4: "預購夾",
+    navBespoke: "客製工坊",
+    heroBadgeEdition: "EDITION 01 · L'HEURE BLANCHE",
+    heroBadgeSub: "100% 客製打樣 · MOQ 50 · 零庫存",
+    heroBadgePill: "HAUTE ATELIER",
+    bespokeEyebrow: "INTERACTIVE BESPOKE ATELIER · 互動客製工坊",
+    bespokeTitle: "為旗下創作者量身定制。細膩至每一毫米。",
+    bespokeSubtitle: "全品項支援小量開模、自選專屬調香金字塔、客製黃銅雷雕與刺繡、以及 NFC 數位私密特權綁定。",
+    bespokeMoqBadge: "起訂量 50 件 · 零庫存風險",
+    lblCustomCreator: "創作者名稱 / 專屬識別 (Creator Handle)",
+    hintCustomCreator: "即時預覽雷射深雕銘牌或真絲刺繡效果",
+    lblCustomCarrier: "選擇客製工藝載體 (Bespoke Carrier)",
+    carrierBrass: "香檳金黃銅銘牌",
+    carrierSilk: "6A 桑蠶真絲法式刺繡",
+    carrierTin: "霧面黑金金屬滑蓋",
+    lblCustomScent: "專屬簽名調香金字塔 (Olfactory Signature)",
+    scent1Name: "Peau Sucrée · 純欲白桃",
+    scent1Tag: "晨間微溫",
+    scent1Desc: "前調：晨間暖蒸氣、橙花 ｜ 中調：白桃果肉、開司米木 ｜ 後調：煙燻香草、黃葵子",
+    scent2Name: "Nuit Fumée · 煙燻波本",
+    scent2Tag: "微醺情調",
+    scent2Desc: "前調：苦橙葉、黑胡椒 ｜ 中調：浸泡波本香草、羊絨 ｜ 後調：乳木果油、白檀",
+    scent3Name: "Thé Noir · 午夜黑茶",
+    scent3Tag: "靜謐冷冽",
+    scent3Desc: "前調：佛手柑、小荳蔻 ｜ 中調：大吉嶺重焙黑茶、無花果 ｜ 後調：泥煤雪松、黑曜石冷香",
+    lblCustomNfc: "內嵌 NFC 解鎖私密特權 (Encrypted NFC Perk)",
+    perkAsmrTitle: "🎙️ 10 段專屬枕邊 ASMR 私語音頻",
+    perkAsmrDesc: "手機輕碰真絲枕套或織標，專屬加密串流播放創作者未公開晚安聲線",
+    perkPolaroidTitle: "📸 試衣間未公開拍立得私密寫真庫",
+    perkPolaroidDesc: "感應晶片直達創作者高解析私密自拍雲端相簿（具一次性防盜錄浮水印）",
+    perkVipTitle: "🔑 限量金庫私密社群專屬通行證",
+    perkVipDesc: "購買典藏套組之死忠粉絲專屬，直通創作者專屬私密 Telegram / Discord 頻道",
+    btnApplyBespoke: "✦ 將此客製規格帶入打樣企劃預約",
+    previewLblScent: "專屬調香",
+    previewLblPerk: "NFC 數位特權",
+    previewLblMoq: "起訂門檻",
+    bespokeSecurityNote: "創作者 3D 生物數據採最高機密離線加密存儲，出貨核可 30 天內依約銷毀模具或冷備份歸還經紀公司。",
+    roiPillBadge: "LIVE PROFIT SIMULATOR · 收益試算",
+    roiTitle: "經紀公司收益試算儀：以真實數據看見無庫存利潤",
+    roiSubhead: "拖動滑桿輸入創作者數據，即時獲知單次 14 天限時預購 Drop 之純淨收益（經紀方與創作者享 70% 淨利潤，成本由預購款結算，0 墊資）。",
+    lblRoiSubs: "創作者活躍訂閱粉絲數 (Active Subscribers)",
+    lblRoiConv: "預購轉化率 (Pre-order Conversion Rate)",
+    lblRoiTier: "預售產品組合定價 (Product Drop Tier)",
+    tierSingleTitle: "輕奢單品",
+    tierSingleDesc: "固體香膏 / 盲盒皂",
+    tierCollectorTitle: "典藏套裝",
+    tierCollectorDesc: "香膏+冷製皂+拍立得",
+    tierGrandTitle: "高定金庫",
+    tierGrandDesc: "T恤+語音枕+黃銅匣",
+    badgeRecommended: "推薦",
+    roiProfitEyebrow: "經紀公司與創作者預計純淨收益 (70% NET PROFIT)",
+    roiLblOrders: "預計鎖定預購訂單量",
+    roiLblRevenue: "預計總營收 (Total Revenue)",
+    roiLblCost: "製造+DDP空運+合規手續費",
+    roiLblUpfront: "經紀方前期資金墊付",
+    roiValUpfront: "$0.00 USD (零庫存風險)",
+    btnLockRoi: "✦ 鎖定此收益模型 · 索取打樣企劃",
+    cartDemoBadge: "✦ AGENCY B2B LIVE DEMO",
+    cartDemoNoticeText: "此為為您旗下創作者建置之<strong>粉絲端限時金庫結帳系統實機演示</strong>。串接 Stripe / CCBill 白名單合規通道與 DDP 全球跨境免稅空運，外盒純黑無痕，帳單顯示中性。",
     toastAdded: "✦ 已將作品加入您的私密預購夾",
     toastSubmitted: "✓ 預購訂單已提交！專屬加密憑證已發送至您的信箱。",
     toastSampleReq: "✓ 打樣企劃預約已送出！我們的樣品顧問將在 24 小時內與您聯繫。"
@@ -1016,6 +1063,7 @@ const I18N = {
     brandTagline: "HAUTE ATELIER · 2026",
     navCollections: "Collections",
     navArchive: "The Archive",
+    navBespoke: "Bespoke Atelier",
     navProcess: "Process",
     navAgencies: "For Agencies",
     navProposal: "Full Proposal",
@@ -1027,6 +1075,9 @@ const I18N = {
     heroDesc: "Limited-run physical artifacts for the creators your agency represents. Designed with them, made in small batches, shipped discreetly to their fans.",
     heroSampleBtn: "Request a Sample Plan",
     heroExploreBtn: "Explore Collections",
+    heroBadgeEdition: "EDITION 01 · L'HEURE BLANCHE",
+    heroBadgeSub: "100% Bespoke · MOQ 50 · Zero Inventory",
+    heroBadgePill: "HAUTE ATELIER",
     collectionsTitle: "Three collections, one standard of finish.",
     collectionsSubtitle: "Curated specifically for the creator economy: sensory consumables, shared 3D molds, and haptic keepsakes.",
     viewAllArchiveBtn: "View All 11 Objects",
@@ -1050,6 +1101,38 @@ const I18N = {
     tabRare: "Rare (2)",
     inspectBtnText: "Specifications",
     reserveBtnText: "Add to Vault Bag",
+    bespokeEyebrow: "INTERACTIVE BESPOKE ATELIER",
+    bespokeTitle: "Tailored to your creators. Down to the millimeter.",
+    bespokeSubtitle: "Every single object supports micro-tooling, custom olfactory pyramids, laser-engraved brass, cursive silk embroidery, and encrypted NFC digital access keys.",
+    bespokeMoqBadge: "MOQ 50 UNITS · ZERO INVENTORY",
+    lblCustomCreator: "Creator Name / Unique Identifier (Creator Handle)",
+    hintCustomCreator: "Real-time visual rendering of laser brass engraving or silk embroidery",
+    lblCustomCarrier: "Select Bespoke Product Carrier",
+    carrierBrass: "Brushed Champagne Brass",
+    carrierSilk: "6A Silk Cursive Embroidery",
+    carrierTin: "Matte Obsidian Sliding Tin",
+    lblCustomScent: "Signature Olfactory Pyramid",
+    scent1Name: "Peau Sucrée · White Peach Warmth",
+    scent1Tag: "Morning Steam",
+    scent1Desc: "Top: Morning Steam, Neroli · Heart: White Peach, Cashmere · Base: Smoked Vanilla, Ambrette",
+    scent2Name: "Nuit Fumée · Smoked Bourbon",
+    scent2Tag: "Intimate Ambiance",
+    scent2Desc: "Top: Petitgrain, Black Pepper · Heart: Bourbon Vanilla, Cashmere · Base: Shea Butter, Sandalwood",
+    scent3Name: "Thé Noir · Midnight Black Tea",
+    scent3Tag: "Cool Mineral",
+    scent3Desc: "Top: Bergamot, Cardamom · Heart: Dark Darjeeling Tea, Fig · Base: Peaty Cedarwood, Obsidian Scent",
+    lblCustomNfc: "Embedded NFC Encrypted Fan Perk",
+    perkAsmrTitle: "🎙️ 10 Private Bedtime ASMR Whisper Tracks",
+    perkAsmrDesc: "Tap smartphone to silk pillow or woven tag to stream encrypted unpublished bedtime whispers",
+    perkPolaroidTitle: "📸 Backstage Fitting Room Uncensored Polaroids",
+    perkPolaroidDesc: "Sensor chip directly accesses creator private high-res cloud gallery with dynamic anti-leak watermark",
+    perkVipTitle: "🔑 Collector Vault Private VIP Community Access",
+    perkVipDesc: "Exclusive gateway for top collectors directly connecting to creator private Telegram / Discord channel",
+    btnApplyBespoke: "✦ Apply Custom Specs to Sample Kit Request",
+    previewLblScent: "Bespoke Scent",
+    previewLblPerk: "NFC Access Perk",
+    previewLblMoq: "Batch Minimum",
+    bespokeSecurityNote: "All creator 3D anatomical data is stored on cold, encrypted offline servers. Molds are destroyed or returned after 30 days.",
     processSectionTitle: "From idea to doorstep in four moves.",
     step1Title: "Choose a theme",
     step1Desc: "Pick a collection and the olfactory, anatomical, or relic story behind it.",
@@ -1074,6 +1157,28 @@ const I18N = {
     agencyWe4: "Matte black unmarked packaging, DDP shipping, and concierge support",
     agencyGuaranteeText: "Everything is strictly pre-order: zero inventory risk and zero upfront capital for your agency. Transparent profit sharing on high-margin drops.",
     agencyCtaBtn: "Explore Agency Partnership",
+    roiPillBadge: "LIVE PROFIT SIMULATOR",
+    roiTitle: "Agency Profit Simulator: Quantifying Zero-Inventory Returns",
+    roiSubhead: "Drag the sliders to project net earnings from a single 14-day pre-order drop. Agencies receive 70% of gross margin; 0 capital advanced.",
+    lblRoiSubs: "Creator Active Subscribers",
+    lblRoiConv: "Pre-order Conversion Rate",
+    lblRoiTier: "Product Drop Tier",
+    tierSingleTitle: "Single Item",
+    tierSingleDesc: "Balm / Soap ($42)",
+    tierCollectorTitle: "Collector Set",
+    tierCollectorDesc: "Balm + Soap + Box ($88)",
+    tierGrandTitle: "Haute Vault",
+    tierGrandDesc: "Tee + Pillow + Vault ($198)",
+    badgeRecommended: "RECOMMENDED",
+    roiProfitEyebrow: "PROJECTED AGENCY & CREATOR NET MARGIN (70%)",
+    roiLblOrders: "Projected Pre-Order Units",
+    roiLblRevenue: "Total Gross Revenue",
+    roiLblCost: "Production + DDP Air Freight + Merchant Fees",
+    roiLblUpfront: "Agency Upfront Capital Required",
+    roiValUpfront: "$0.00 USD (Zero Inventory Risk)",
+    btnLockRoi: "✦ Lock in This ROI Model · Request Sample Kit",
+    cartDemoBadge: "✦ AGENCY B2B LIVE DEMO",
+    cartDemoNoticeText: "This is a <strong>live functional demonstration of the fans' vault checkout storefront</strong> built for your agency. Integrates Stripe & CCBill high-risk whitelisting, insured DDP global courier, and discreet unbranded billing.",
     contactTitle: "Start with one creator and one drop.",
     contactDesc: "Tell us who you represent and their audience aesthetic. We will return a tailored sampling and product proposal within 24 hours.",
     contactBtn: "Request a Sample Plan",
@@ -1098,6 +1203,7 @@ const I18N = {
     cartCheckoutBtn: "Confirm Confidential Pre-Order",
     pwaNav1: "Collections",
     pwaNav2: "The Archive",
+    pwaNavBespoke: "Bespoke",
     pwaNav3: "Agencies",
     pwaNav4: "Vault Bag",
     toastAdded: "✦ Added to your Private Vault Bag",
@@ -1123,6 +1229,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initCardTilt();
   initDossierKeyboard();
   initScrollReveals();
+  updateBespokePreview();
+  calculateAgencyRoi();
   setTimeout(() => {
     const activeTab = document.querySelector('.filter-tab.active');
     if (activeTab) updateFilterPill(activeTab);
@@ -1174,6 +1282,7 @@ function applyLanguage(lang) {
   setElemText('brandTagline', dict.brandTagline);
   setElemText('navCollections', dict.navCollections);
   setElemText('navArchive', dict.navArchive);
+  setElemText('navBespoke', dict.navBespoke);
   setElemText('navProcess', dict.navProcess);
   setElemText('navAgencies', dict.navAgencies);
   setElemText('navProposal', dict.navProposal);
@@ -1184,12 +1293,15 @@ function applyLanguage(lang) {
   setElemText('tickerNotice', dict.tickerNotice);
   setElemText('tickerClosesLabel', dict.tickerClosesLabel);
 
-  // Update Hero
+  // Update Hero & Hero Badge
   const heroTitleEl = document.getElementById('heroTitle');
   if (heroTitleEl) heroTitleEl.innerHTML = dict.heroTitle;
   setElemText('heroDesc', dict.heroDesc);
   setElemText('heroSampleBtn', dict.heroSampleBtn);
   setElemText('heroExploreBtn', dict.heroExploreBtn);
+  setElemText('heroBadgeEdition', dict.heroBadgeEdition);
+  setElemText('heroBadgeSub', dict.heroBadgeSub);
+  setElemText('heroBadgePill', dict.heroBadgePill);
 
   // Update Collections Bento
   setElemText('collectionsTitle', dict.collectionsTitle);
@@ -1215,6 +1327,40 @@ function applyLanguage(lang) {
   setElemText('tabCollector', dict.tabCollector);
   setElemText('tabEveryday', dict.tabEveryday);
   setElemText('tabRare', dict.tabRare);
+
+  // Update Bespoke Atelier
+  setElemText('bespokeEyebrow', dict.bespokeEyebrow);
+  setElemText('bespokeTitle', dict.bespokeTitle);
+  setElemText('bespokeSubtitle', dict.bespokeSubtitle);
+  setElemText('bespokeMoqBadge', dict.bespokeMoqBadge);
+  setElemText('lblCustomCreator', dict.lblCustomCreator);
+  setElemText('hintCustomCreator', dict.hintCustomCreator);
+  setElemText('lblCustomCarrier', dict.lblCustomCarrier);
+  setElemText('carrierBrass', dict.carrierBrass);
+  setElemText('carrierSilk', dict.carrierSilk);
+  setElemText('carrierTin', dict.carrierTin);
+  setElemText('lblCustomScent', dict.lblCustomScent);
+  setElemText('scent1Name', dict.scent1Name);
+  setElemText('scent1Tag', dict.scent1Tag);
+  setElemText('scent1Desc', dict.scent1Desc);
+  setElemText('scent2Name', dict.scent2Name);
+  setElemText('scent2Tag', dict.scent2Tag);
+  setElemText('scent2Desc', dict.scent2Desc);
+  setElemText('scent3Name', dict.scent3Name);
+  setElemText('scent3Tag', dict.scent3Tag);
+  setElemText('scent3Desc', dict.scent3Desc);
+  setElemText('lblCustomNfc', dict.lblCustomNfc);
+  setElemText('perkAsmrTitle', dict.perkAsmrTitle);
+  setElemText('perkAsmrDesc', dict.perkAsmrDesc);
+  setElemText('perkPolaroidTitle', dict.perkPolaroidTitle);
+  setElemText('perkPolaroidDesc', dict.perkPolaroidDesc);
+  setElemText('perkVipTitle', dict.perkVipTitle);
+  setElemText('perkVipDesc', dict.perkVipDesc);
+  setElemText('btnApplyBespoke', dict.btnApplyBespoke);
+  setElemText('previewLblScent', dict.previewLblScent);
+  setElemText('previewLblPerk', dict.previewLblPerk);
+  setElemText('previewLblMoq', dict.previewLblMoq);
+  setElemText('bespokeSecurityNote', dict.bespokeSecurityNote);
 
   // Update Process
   setElemText('processSectionTitle', dict.processSectionTitle);
@@ -1244,6 +1390,28 @@ function applyLanguage(lang) {
   setElemText('agencyGuaranteeText', dict.agencyGuaranteeText);
   setElemText('agencyCtaBtn', dict.agencyCtaBtn);
 
+  // Update ROI Simulator
+  setElemText('roiPillBadge', dict.roiPillBadge);
+  setElemText('roiTitle', dict.roiTitle);
+  setElemText('roiSubhead', dict.roiSubhead);
+  setElemText('lblRoiSubs', dict.lblRoiSubs);
+  setElemText('lblRoiConv', dict.lblRoiConv);
+  setElemText('lblRoiTier', dict.lblRoiTier);
+  setElemText('tierSingleTitle', dict.tierSingleTitle);
+  setElemText('tierSingleDesc', dict.tierSingleDesc);
+  setElemText('tierCollectorTitle', dict.tierCollectorTitle);
+  setElemText('tierCollectorDesc', dict.tierCollectorDesc);
+  setElemText('tierGrandTitle', dict.tierGrandTitle);
+  setElemText('tierGrandDesc', dict.tierGrandDesc);
+  setElemText('badgeRecommended', dict.badgeRecommended);
+  setElemText('roiProfitEyebrow', dict.roiProfitEyebrow);
+  setElemText('roiLblOrders', dict.roiLblOrders);
+  setElemText('roiLblRevenue', dict.roiLblRevenue);
+  setElemText('roiLblCost', dict.roiLblCost);
+  setElemText('roiLblUpfront', dict.roiLblUpfront);
+  setElemText('roiValUpfront', dict.roiValUpfront);
+  setElemText('btnLockRoi', dict.btnLockRoi);
+
   // Update Contact
   setElemText('contactTitle', dict.contactTitle);
   setElemText('contactDesc', dict.contactDesc);
@@ -1266,6 +1434,10 @@ function applyLanguage(lang) {
 
   setElemText('cartModalBadge', dict.cartModalBadge);
   setElemText('cartModalTitle', dict.cartModalTitle);
+  setElemText('cartDemoBadge', dict.cartDemoBadge);
+  const cartNoticeEl = document.getElementById('cartDemoNoticeText');
+  if (cartNoticeEl) cartNoticeEl.innerHTML = dict.cartDemoNoticeText;
+
   setElemText('cartTotalLabel', dict.cartTotalLabel);
   setElemText('cartTermsNote', dict.cartTermsNote);
   setElemText('cartCheckoutBtn', dict.cartCheckoutBtn);
@@ -1273,8 +1445,13 @@ function applyLanguage(lang) {
   // Update Mobile Bottom Bar
   setElemText('pwaNav1', dict.pwaNav1);
   setElemText('pwaNav2', dict.pwaNav2);
+  setElemText('pwaNavBespoke', dict.pwaNavBespoke);
   setElemText('pwaNav3', dict.pwaNav3);
   setElemText('pwaNav4', dict.pwaNav4);
+
+  // Refresh live preview & ROI calculations
+  updateBespokePreview();
+  calculateAgencyRoi();
 
   // Re-render Products
   renderProducts();
@@ -1304,10 +1481,10 @@ function renderProducts() {
     ? PRODUCTS
     : PRODUCTS.filter(p => p.category === currentCategory);
 
-  grid.innerHTML = filtered.map(item => {
+  grid.innerHTML = filtered.map((item, idx) => {
     const data = item[currentLang];
     return `
-      <article class="product-card" data-id="${item.id}">
+      <article class="product-card animate-enter" data-id="${item.id}" style="animation-delay: ${idx * 0.05}s;">
         <div class="product-media-wrap" onclick="inspectProduct('${item.id}')" style="cursor: pointer;">
           <img src="${item.image}" alt="${data.name}" class="product-img" loading="lazy">
           <div class="product-badge-bar">
@@ -1354,6 +1531,165 @@ function updateFilterPill(activeBtn) {
   if (!pill || !activeBtn) return;
   pill.style.transform = `translateX(${activeBtn.offsetLeft}px)`;
   pill.style.width = `${activeBtn.offsetWidth}px`;
+}
+
+// --------------------------------------------------------------------------
+// Interactive Bespoke Atelier Studio
+// --------------------------------------------------------------------------
+let currentBespokeCarrier = 'brass';
+let currentBespokeScent = 'peach';
+let currentBespokePerk = 'asmr';
+
+function updateBespokePreview() {
+  const input = document.getElementById('customCreatorInput');
+  const preview = document.getElementById('previewCreatorName');
+  const sub = document.getElementById('previewCarrierSub');
+  const texture = document.getElementById('plateTexture');
+  if (!preview) return;
+
+  const val = (input && input.value.trim()) ? input.value.trim().toUpperCase() : 'YOUR CREATOR';
+  preview.textContent = val;
+
+  if (texture && sub) {
+    texture.className = 'plate-metal-texture';
+    if (currentBespokeCarrier === 'silk') {
+      texture.classList.add('carrier-silk');
+      sub.textContent = currentLang === 'zh' ? '6A 桑蠶真絲法式花體刺繡 · 高定工藝' : '6A PURE MULBERRY SILK EMBROIDERY · HAUTE BESPOKE';
+    } else if (currentBespokeCarrier === 'tin') {
+      texture.classList.add('carrier-tin');
+      sub.textContent = currentLang === 'zh' ? '航太級鋁合金滑蓋雷射深雕 · 避水防痕' : 'OBSIDIAN MATTE LASER DEEP ENGRAVED TIN';
+    } else {
+      sub.textContent = currentLang === 'zh' ? 'CNC 鍛造拉絲香檳金黃銅銘牌 · 匠心鑲嵌' : 'CNC BRUSHED CHAMPAGNE BRONZE · BESPOKE CRAFT';
+    }
+  }
+
+  // Update preview spec footer labels
+  const scentValEl = document.getElementById('previewScentVal');
+  if (scentValEl) {
+    if (currentBespokeScent === 'vanilla') {
+      scentValEl.textContent = currentLang === 'zh' ? 'Nuit Fumée · 煙燻波本' : 'Nuit Fumée · Smoked Bourbon';
+    } else if (currentBespokeScent === 'tea') {
+      scentValEl.textContent = currentLang === 'zh' ? 'Thé Noir · 午夜黑茶' : 'Thé Noir · Midnight Black Tea';
+    } else {
+      scentValEl.textContent = currentLang === 'zh' ? 'Peau Sucrée · 純欲白桃' : 'Peau Sucrée · White Peach';
+    }
+  }
+
+  const perkValEl = document.getElementById('previewPerkVal');
+  if (perkValEl) {
+    if (currentBespokePerk === 'polaroids') {
+      perkValEl.textContent = currentLang === 'zh' ? '試衣間私密拍立得' : 'Fitting Room Polaroids';
+    } else if (currentBespokePerk === 'vip') {
+      perkValEl.textContent = currentLang === 'zh' ? 'VIP 金庫社群通行證' : 'VIP Community Pass';
+    } else {
+      perkValEl.textContent = currentLang === 'zh' ? '10 段 ASMR 私密語音' : '10 ASMR Whisper Tracks';
+    }
+  }
+}
+
+function setBespokeCarrier(carrier, btn) {
+  currentBespokeCarrier = carrier;
+  document.querySelectorAll('.bespoke-pill-btn').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  updateBespokePreview();
+}
+
+function setBespokeScent(scent, card) {
+  currentBespokeScent = scent;
+  document.querySelectorAll('.scent-choice').forEach(c => c.classList.remove('active'));
+  if (card) card.classList.add('active');
+  updateBespokePreview();
+}
+
+function setBespokePerk(perk) {
+  currentBespokePerk = perk;
+  document.querySelectorAll('.perk-radio').forEach(r => {
+    const input = r.querySelector('input');
+    r.classList.toggle('active', input && input.value === perk);
+  });
+  updateBespokePreview();
+}
+
+function applyBespokeToSampleRequest() {
+  const creatorInput = document.getElementById('customCreatorInput');
+  const creatorName = (creatorInput && creatorInput.value.trim()) ? creatorInput.value.trim() : 'ÉLISE LAURENT';
+
+  const modal = document.getElementById('sampleModal');
+  const noteArea = modal ? modal.querySelector('textarea') : null;
+  const agencyInput = modal ? modal.querySelector('input[type="text"]') : null;
+
+  if (agencyInput && !agencyInput.value) {
+    agencyInput.value = creatorName;
+  }
+
+  if (noteArea) {
+    const carrierName = currentBespokeCarrier === 'silk' ? '6A 真絲刺繡' : (currentBespokeCarrier === 'tin' ? '霧黑滑蓋雷雕' : '香檳金黃銅銘牌');
+    const scentName = currentBespokeScent === 'vanilla' ? '煙燻波本香草' : (currentBespokeScent === 'tea' ? '午夜黑茶' : '純欲白桃');
+    const perkName = currentBespokePerk === 'polaroids' ? '試衣間未公開拍立得' : (currentBespokePerk === 'vip' ? 'VIP金庫通行證' : '10段ASMR晚安語音');
+    noteArea.value = `【客製工坊指定企劃】創作者識別：${creatorName} ｜ 工藝載體：${carrierName} ｜ 專屬調香：${scentName} ｜ NFC 解鎖特權：${perkName}。請顧問以此規格寄送打樣企劃與材質樣品。`;
+  }
+
+  openSampleModal();
+}
+
+// --------------------------------------------------------------------------
+// Interactive Agency ROI Profit Calculator
+// --------------------------------------------------------------------------
+let currentRoiTier = 'collector';
+
+function setRoiTier(tier, btn) {
+  currentRoiTier = tier;
+  document.querySelectorAll('.roi-tier-btn').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  calculateAgencyRoi();
+}
+
+function calculateAgencyRoi() {
+  const subsEl = document.getElementById('sliderRoiSubs');
+  const convEl = document.getElementById('sliderRoiConv');
+  if (!subsEl || !convEl) return;
+
+  const subs = parseInt(subsEl.value, 10);
+  const conv = parseFloat(convEl.value);
+
+  const valSubs = document.getElementById('valRoiSubs');
+  const valConv = document.getElementById('valRoiConv');
+  if (valSubs) valSubs.textContent = `${subs.toLocaleString()} ${currentLang === 'zh' ? '人' : 'Subs'}`;
+  if (valConv) valConv.textContent = `${conv.toFixed(1)}%`;
+
+  let price = 88;
+  let unitCost = 23.65; // $12.50 manufacturing + $7.19 freight + ~$3.96 merchant
+  if (currentRoiTier === 'single') {
+    price = 42;
+    unitCost = 11.50; // $6.00 manufacturing + $4.00 freight + $1.50 merchant
+  } else if (currentRoiTier === 'grand') {
+    price = 198;
+    unitCost = 53.40; // $32.00 manufacturing + $12.50 freight + $8.90 merchant
+  }
+
+  const orders = Math.max(30, Math.round(subs * (conv / 100)));
+  const grossRevenue = orders * price;
+  const totalCost = Math.round(orders * unitCost);
+  const netMargin = grossRevenue - totalCost;
+  const agencyProfit = Math.round(netMargin * 0.70);
+
+  const profitEl = document.getElementById('roiProfitBig');
+  const currencyEl = document.getElementById('roiProfitCurrency');
+  const ordersEl = document.getElementById('roiValOrders');
+  const revEl = document.getElementById('roiValRevenue');
+  const costEl = document.getElementById('roiValCost');
+
+  if (profitEl) profitEl.textContent = `$${agencyProfit.toLocaleString()}.00`;
+  if (currencyEl) {
+    const twd = Math.round(agencyProfit * 32).toLocaleString();
+    const eur = Math.round(agencyProfit * 0.92).toLocaleString();
+    currencyEl.textContent = currentLang === 'zh'
+      ? `USD 經紀方純淨分潤 (70% 純利) ≈ NT$ ${twd} / € ${eur}`
+      : `USD Agency & Creator Net Margin (70%) ≈ € ${eur} / NT$ ${twd}`;
+  }
+  if (ordersEl) ordersEl.textContent = `${orders.toLocaleString()} ${currentLang === 'zh' ? '件 (Units)' : 'Units'}`;
+  if (revEl) revEl.textContent = `$${grossRevenue.toLocaleString()}.00 USD`;
+  if (costEl) costEl.textContent = `$${totalCost.toLocaleString()}.00 USD (${currentLang === 'zh' ? '全額由預購款結算，0墊資' : '100% funded from pre-orders'})`;
 }
 
 // --------------------------------------------------------------------------

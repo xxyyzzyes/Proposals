@@ -76,6 +76,37 @@
       align-items: center;
     }
 
+    /* Bilingual Pill Switcher */
+    .lang-switch {
+      display: inline-flex;
+      align-items: center;
+      background: rgba(42, 16, 27, 0.85);
+      border: 1px solid var(--border-rose);
+      border-radius: 999px;
+      padding: 3px;
+    }
+
+    .lang-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-family: var(--font-sans);
+      font-size: 0.76rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      padding: 5px 12px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .lang-btn.active {
+      background: var(--accent-gold);
+      color: var(--bg-canvas);
+      font-weight: 600;
+      box-shadow: 0 2px 8px rgba(196, 154, 108, 0.35);
+    }
+
     .btn {
       display: inline-flex;
       align-items: center;
@@ -328,14 +359,19 @@
         Reliq <span>ARCHIVE · 2026</span>
       </a>
       <div class="nav-actions">
-        <a href="index.html" class="btn btn-ghost">← 返回品牌官網</a>
-        <button onclick="window.print()" class="btn btn-gold">🖨️ 列印 / 另存為 PDF</button>
+        <!-- Bilingual Capsule Switcher -->
+        <div class="lang-switch" role="group" aria-label="Language Selector">
+          <button class="lang-btn active" id="propLangZh" title="切換至繁體中文">中文</button>
+          <button class="lang-btn" id="propLangEn" title="Switch to English">EN</button>
+        </div>
+        <a href="index.html" class="btn btn-ghost" id="propBackLink">← 返回品牌官網</a>
+        <button onclick="window.print()" class="btn btn-gold" id="propPrintBtn">🖨️ 列印 / 另存為 PDF</button>
       </div>
     </header>
 
     <!-- Header Meta -->
     <main>
-      <div class="doc-meta">
+      <div class="doc-meta" id="propDocMeta">
         <span>CONFIDENTIAL 內部策略企劃</span>
         <span>·</span>
         <span>RELIQ ARCHIVE 策劃團隊</span>
@@ -343,26 +379,26 @@
         <span>2026 年 10 月 23 日</span>
       </div>
 
-      <h1 class="doc-title">
+      <h1 class="doc-title" id="propDocTitle">
         創作者周邊一站式高定服務企劃書：<br>
         <em>實體化親密經濟與周邊產品策略</em>
       </h1>
 
-      <p class="doc-summary">
+      <p class="doc-summary" id="propDocSummary">
         為經紀公司（Agency）與頂級數位創作者（OnlyFans Creators）打造之無庫存、高客單價限量實體信物製造體系。由 RELIQ ARCHIVE 全程承接供應鏈對接、小量開模、柔性打樣、合規金流與隱蔽跨境物流，釋放粉絲對實體靈光（Aura）的極致消費力。
       </p>
 
       <!-- Table of Contents -->
       <nav class="toc-box">
-        <div class="toc-title">目錄索引 (Table of Contents)</div>
+        <div class="toc-title" id="propTocTitle">目錄索引 (Table of Contents)</div>
         <div class="toc-grid">
-          <a href="#sec1" class="toc-link"><span class="toc-num">01.</span> 一句話核心說明</a>
-          <a href="#sec2" class="toc-link"><span class="toc-num">02.</span> 為什麼現在做實體周邊</a>
-          <a href="#sec3" class="toc-link"><span class="toc-num">03.</span> 權責劃分矩陣（我們 vs 經紀方）</a>
-          <a href="#sec4" class="toc-link"><span class="toc-num">04.</span> 三層產品矩陣與製造成本</a>
-          <a href="#sec5" class="toc-link"><span class="toc-num">05.</span> 八步驟敏捷合作流程</a>
-          <a href="#sec6" class="toc-link"><span class="toc-num">06.</span> 利潤測算模型（典型 Drop 實測）</a>
-          <a href="#sec7" class="toc-link"><span class="toc-num">07.</span> 合規金流、物流與隱私保護</a>
+          <a href="#sec1" class="toc-link" id="propToc1"><span class="toc-num">01.</span> 一句話核心說明</a>
+          <a href="#sec2" class="toc-link" id="propToc2"><span class="toc-num">02.</span> 為什麼現在做實體周邊</a>
+          <a href="#sec3" class="toc-link" id="propToc3"><span class="toc-num">03.</span> 權責劃分矩陣（我們 vs 經紀方）</a>
+          <a href="#sec4" class="toc-link" id="propToc4"><span class="toc-num">04.</span> 三層產品矩陣與製造成本</a>
+          <a href="#sec5" class="toc-link" id="propToc5"><span class="toc-num">05.</span> 八步驟敏捷合作流程</a>
+          <a href="#sec6" class="toc-link" id="propToc6"><span class="toc-num">06.</span> 利潤測算模型（典型 Drop 實測）</a>
+          <a href="#sec7" class="toc-link" id="propToc7"><span class="toc-num">07.</span> 合規金流、物流與隱私保護</a>
         </div>
       </nav>
 
@@ -370,13 +406,13 @@
       <section id="sec1">
         <div class="sec-head">
           <span class="sec-num">01</span>
-          <h2 class="sec-title">一句話核心說明 (Executive Summary)</h2>
+          <h2 class="sec-title" id="propSec1Title">一句話核心說明 (Executive Summary)</h2>
         </div>
         <div class="highlight-card">
-          <p style="font-size: 1.15rem; color: #FFFFFF; font-weight: 400; line-height: 1.8;">
+          <p style="font-size: 1.15rem; color: #FFFFFF; font-weight: 400; line-height: 1.8;" id="propSec1Lead">
             <strong>經紀公司與創作者只要選款、核准視覺設計與調香；工廠對接、小量開模、實體打樣、品質檢驗、高奢預購網站建置、合規收款與出貨售後，全部由 RELIQ ARCHIVE 負責。</strong>
           </p>
-          <p style="margin-top: 12px; color: var(--text-nude);">
+          <p style="margin-top: 12px; color: var(--text-nude);" id="propSec1Sub">
             ✦ <strong>小量起訂（50–100 件）、嚴格預購制</strong>：經紀公司與創作者不需要壓任何庫存，零前期資金風險，全額按比例分潤。
           </p>
         </div>
@@ -386,15 +422,15 @@
       <section id="sec2">
         <div class="sec-head">
           <span class="sec-num">02</span>
-          <h2 class="sec-title">為什麼現在做實體周邊 (Market Timing)</h2>
+          <h2 class="sec-title" id="propSec2Title">為什麼現在做實體周邊 (Market Timing)</h2>
         </div>
-        <p>
+        <p id="propSec2P1">
           <strong>1. 創作者收入多元化迫在眉睫</strong>：OnlyFans 對創作者收入抽取 20%，且平台政策與審查具不確定性。頂級創作者紛紛將「實體限量信物、專屬調香、聯名高奢」視為平台以外第二、第三高毛利護城河。
         </p>
-        <p>
+        <p id="propSec2P2">
           <strong>2. 周邊賣法的典範轉移</strong>：2026 年的私密周邊早已脫離廉價印製 Logo 的馬克杯或 T-shirt 模式。業界一致數據指出：<strong>限量 Drop、限時金庫倒數、獨立編號（Numbered Edition）、簽名收藏卡、結合嗅覺與觸覺主題故事的信物（Relics）</strong>，其轉化率與客單價是傳統周邊的 4 至 8 倍。
         </p>
-        <p>
+        <p id="propSec2P3">
           <strong>3. 補足經紀公司的關鍵缺口</strong>：經紀團隊精於流量獲取、人設打造與粉絲運營，但極度缺乏能夠支援「超低起訂量（MOQ 50）、私密情調雕塑、7–15 天極速打樣、合規避開航空禁運」的柔性高奢製造供應鏈。這正是 RELIQ ARCHIVE 成立並專注的核心價值。
         </p>
       </section>
@@ -403,18 +439,18 @@
       <section id="sec3">
         <div class="sec-head">
           <span class="sec-num">03</span>
-          <h2 class="sec-title">權責劃分矩陣 (Responsibility Matrix)</h2>
+          <h2 class="sec-title" id="propSec3Title">權責劃分矩陣 (Responsibility Matrix)</h2>
         </div>
         <div class="table-container">
           <table>
-            <thead>
+            <thead id="propSec3Head">
               <tr>
                 <th style="width: 25%;">服務項目</th>
                 <th style="width: 40%;">RELIQ ARCHIVE (芮克檔案所) 負責</th>
                 <th style="width: 35%;">經紀公司／創作者 負責</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody id="propSec3Body">
               <tr>
                 <td><strong>選品與設計提案</strong></td>
                 <td>提供三層系列選品清單、香氛調性金字塔、3D 渲染圖與材質樣品</td>
@@ -454,13 +490,13 @@
       <section id="sec4">
         <div class="sec-head">
           <span class="sec-num">04</span>
-          <h2 class="sec-title">三層產品矩陣與製造成本 (Product Architecture)</h2>
+          <h2 class="sec-title" id="propSec4Title">三層產品矩陣與製造成本 (Product Architecture)</h2>
         </div>
-        <p>RELIQ ARCHIVE 精心規劃三層產品線，覆蓋「低門檻試水」、「高回購嗅覺消耗」與「頂級高客單價信物」：</p>
+        <p id="propSec4Intro">RELIQ ARCHIVE 精心規劃三層產品線，覆蓋「低門檻試水」、「高回購嗅覺消耗」與「頂級高客單價信物」：</p>
         
         <div class="table-container">
           <table>
-            <thead>
+            <thead id="propSec4Head">
               <tr>
                 <th>層級分類</th>
                 <th>產品名稱與工藝規格</th>
@@ -470,7 +506,7 @@
                 <th>生產交期</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody id="propSec4Body">
               <tr>
                 <td><span class="badge-tag">案頭寢居 · 觸感</span></td>
                 <td><strong>【枕畔耳語】Élise 粉彩輪廓畫真絲語音枕</strong><br><small style="color:var(--text-muted)">100% 6A 級 22mm 桑蠶絲、法式粉彩線條藝術、NFC 晶片解鎖 10 段私密 ASMR</small></td>
@@ -562,7 +598,7 @@
             </tbody>
           </table>
         </div>
-        <p style="font-size: 0.88rem; color: var(--accent-gold);">
+        <p style="font-size: 0.88rem; color: var(--accent-gold);" id="propSec4Note">
           * 註：上述工廠單價以 2026 年柔性製造供應鏈公開或實際協議報價為基準，正式專案依選材與訂購量以最終報價單為準。
         </p>
       </section>
@@ -571,11 +607,11 @@
       <section id="sec5">
         <div class="sec-head">
           <span class="sec-num">05</span>
-          <h2 class="sec-title">八步驟敏捷合作流程 (Operational Workflow)</h2>
+          <h2 class="sec-title" id="propSec5Title">八步驟敏捷合作流程 (Operational Workflow)</h2>
         </div>
         <div class="table-container">
           <table>
-            <thead>
+            <thead id="propSec5Head">
               <tr>
                 <th>步驟</th>
                 <th>階段內容</th>
@@ -583,7 +619,7 @@
                 <th>預估時程</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody id="propSec5Body">
               <tr>
                 <td><strong>Step 1</strong></td>
                 <td>選定主題風格與預計發行款式</td>
@@ -641,13 +677,13 @@
       <section id="sec6">
         <div class="sec-head">
           <span class="sec-num">06</span>
-          <h2 class="sec-title">利潤測算模型：典型 Drop 實測 (Financial Model)</h2>
+          <h2 class="sec-title" id="propSec6Title">利潤測算模型：典型 Drop 實測 (Financial Model)</h2>
         </div>
-        <p>以一位中頭部 OnlyFans 創作者（擁約 3,000–5,000 名活躍訂閱者）進行一檔 <strong>300 件限量「Collector 典藏套裝」</strong> 為例試算：</p>
+        <p id="propSec6Intro">以一位中頭部 OnlyFans 創作者（擁約 3,000–5,000 名活躍訂閱者）進行一檔 <strong>300 件限量「Collector 典藏套裝」</strong> 為例試算：</p>
 
         <div class="table-container">
           <table>
-            <thead>
+            <thead id="propSec6Head">
               <tr>
                 <th>財務項目</th>
                 <th>單件金額 (USD)</th>
@@ -655,7 +691,7 @@
                 <th>佔營收比重</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody id="propSec6Body">
               <tr>
                 <td><strong>預購零售定價</strong></td>
                 <td><strong>$88.00</strong></td>
@@ -701,7 +737,7 @@
             </tbody>
           </table>
         </div>
-        <div class="highlight-card">
+        <div class="highlight-card" id="propSec6Highlight">
           <p>✦ <strong>零資金墊付</strong>：所有製造成本由預購款中直接結算，經紀公司與創作者在預購結束後即可穩獲 <strong>$13,500+ USD（約 43 萬台幣）</strong> 純利潤，並深化了死忠粉絲的情感忠誠度。</p>
         </div>
       </section>
@@ -710,36 +746,37 @@
       <section id="sec7">
         <div class="sec-head">
           <span class="sec-num">07</span>
-          <h2 class="sec-title">合規金流、跨境物流與隱私安全保障 (Compliance & Security)</h2>
+          <h2 class="sec-title" id="propSec7Title">合規金流、跨境物流與隱私安全保障 (Compliance & Security)</h2>
         </div>
-        <p>
+        <p id="propSec7P1">
           <strong>1. 雙軌合規支付通道</strong>：串接 Stripe 與 CCBill 獨立合規商戶通道。針對成人周邊與高客單實體商品，建立獨立白名單架構，徹底規避一般電商常見的帳號凍結與退款風控。
         </p>
-        <p>
+        <p id="propSec7P2">
           <strong>2. DDP（完稅後交貨）全球免卡關空運</strong>：所有包裹採 DDP（Delivered Duty Paid）模式，預先清關並涵蓋當地關稅。粉絲收件時無須二次繳稅或面臨海關開箱申報風險。
         </p>
-        <p>
+        <p id="propSec7P3">
           <strong>3. 純黑無印消光防護外裝（Discreet Packaging）</strong>：所有商品外盒皆為無任何創作者標記、無敏感字樣的純黑消光硬盒。信用卡帳單顯示為中性的 <code>RLQ Archive Atelier</code>，保護粉絲最高個人隱私。
         </p>
-        <p>
+        <p id="propSec7P4">
           <strong>4. 人體工學與生物數據加密冷存儲與銷毀機制</strong>：針對人體曲線開模、掌托等客製人體數據，RELIQ ARCHIVE 採最高規格機密加密存儲。生產核可後 30 天內依經紀公司要求進行實體模具封存或數位檔案徹底銷毀，確保創作者生物數據安全無虞。
         </p>
       </section>
 
       <!-- Next Steps -->
       <section style="text-align: center; padding: 48px 0; border-top: 1px solid var(--border-plum);">
-        <h3 style="font-family: var(--font-display); font-size: 1.8rem; margin-bottom: 16px;">
+        <h3 style="font-family: var(--font-display); font-size: 1.8rem; margin-bottom: 16px;" id="propCtaTitle">
           準備好為您的創作者打造第一個專屬實體 Drop 了嗎？
         </h3>
-        <p style="margin-bottom: 28px;">
+        <p style="margin-bottom: 28px;" id="propCtaDesc">
           與 RELIQ ARCHIVE 樣品顧問聯絡，我們將在 24 小時內為您提供客製打樣提案。
         </p>
-        <a href="index.html#contact" class="btn btn-gold" style="min-height: 48px; padding: 0 36px; font-size: 1rem;">
+        <a href="index.html#contact" class="btn btn-gold" style="min-height: 48px; padding: 0 36px; font-size: 1rem;" id="propCtaBtn">
           立即預約打樣企劃洽詢
         </a>
       </section>
     </main>
   </div>
 
+  <script src="proposal.js?v=2026"></script>
 </body>
 </html>
