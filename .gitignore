@@ -3,3 +3,5 @@
 *.bak.*
 *.ass
 generate_filled_form.py
+.taste-skill/
+

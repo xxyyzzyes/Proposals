@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RELIQ ARCHIVE ｜ 商業企劃書：實體化親密經濟與周邊產品策略</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..600;1,6..96,400..600&family=Jost:wght@300;400;500;600&family=Noto+Serif+TC:wght@400;500;600&display=swap">
+
+  <style>
+    :root {
+      --bg-canvas: #1B0A12;
+      --bg-card: #2A101B;
+      --bg-crimson: #8E2236;
+      --text-nude: #F1D9D3;
+      --text-muted: #CDB0AC;
+      --accent-gold: #C49A6C;
+      --border-plum: #4A2230;
+      --border-rose: rgba(241, 217, 211, 0.16);
+      --font-display: 'Bodoni Moda', 'Noto Serif TC', serif;
+      --font-sans: 'Jost', system-ui, -apple-system, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--bg-canvas);
+      color: var(--text-nude);
+      font-family: var(--font-sans);
+      font-weight: 300;
+      line-height: 1.7;
+      padding: 0;
+      margin: 0;
+    }
+
+    .wrap {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 40px clamp(20px, 5vw, 60px);
+    }
+
+    /* Top Bar */
+    .top-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--border-plum);
+      margin-bottom: 48px;
+    }
+
+    .brand-logo {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 1.8rem;
+      color: var(--text-nude);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-logo span {
+      font-style: normal;
+      font-size: 0.85rem;
+      letter-spacing: 0.18em;
+      color: var(--accent-gold);
+      margin-left: 8px;
+      vertical-align: middle;
+    }
+
+    .nav-actions {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 40px;
+      padding: 0 22px;
+      border-radius: 999px;
+      font-size: 0.88rem;
+      font-weight: 500;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .btn-gold {
+      background: var(--text-nude);
+      color: var(--bg-canvas);
+      border: none;
+    }
+
+    .btn-gold:hover {
+      background: #FFFFFF;
+      transform: translateY(-2px);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--text-nude);
+      border: 1px solid var(--border-plum);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--accent-gold);
+      color: var(--accent-gold);
+    }
+
+    /* Proposal Header */
+    .doc-meta {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      color: var(--accent-gold);
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .doc-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+      line-height: 1.15;
+      font-weight: 500;
+      margin-bottom: 20px;
+      letter-spacing: -0.01em;
+    }
+
+    .doc-title em {
+      font-style: italic;
+      color: var(--accent-gold);
+    }
+
+    .doc-summary {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      max-width: 820px;
+      line-height: 1.65;
+      margin-bottom: 40px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid var(--border-rose);
+    }
+
+    /* TOC Box */
+    .toc-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-plum);
+      border-radius: 20px;
+      padding: 28px 36px;
+      margin-bottom: 56px;
+    }
+
+    .toc-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent-gold);
+      margin-bottom: 16px;
+    }
+
+    .toc-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 12px 24px;
+    }
+
+    .toc-link {
+      color: var(--text-nude);
+      text-decoration: none;
+      font-size: 0.92rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: color 0.2s ease;
+    }
+
+    .toc-link:hover {
+      color: var(--accent-gold);
+    }
+
+    .toc-num {
+      color: var(--accent-gold);
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 0.95rem;
+    }
+
+    /* Section Styles */
+    section {
+      margin-bottom: 64px;
+    }
+
+    .sec-head {
+      margin-bottom: 24px;
+    }
+
+    .sec-num {
+      font-family: var(--font-display);
+      font-style: italic;
+      color: var(--accent-gold);
+      font-size: 1.4rem;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .sec-title {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      color: var(--text-nude);
+    }
+
+    p {
+      margin-bottom: 16px;
+      color: var(--text-muted);
+      font-size: 1.02rem;
+    }
+
+    strong {
+      color: var(--text-nude);
+      font-weight: 500;
+    }
+
+    /* Highlight Cards */
+    .highlight-card {
+      background: linear-gradient(135deg, rgba(142, 34, 54, 0.35) 0%, rgba(42, 16, 27, 0.75) 100%);
+      border: 1px solid rgba(196, 154, 108, 0.35);
+      border-radius: 20px;
+      padding: 30px;
+      margin: 24px 0;
+    }
+
+    .highlight-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Tables */
+    .table-container {
+      overflow-x: auto;
+      margin: 24px 0 32px;
+      border-radius: 16px;
+      border: 1px solid var(--border-plum);
+      background: var(--bg-card);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.95rem;
+    }
+
+    th {
+      background: rgba(27, 10, 18, 0.85);
+      padding: 16px 20px;
+      font-weight: 500;
+      color: var(--accent-gold);
+      border-bottom: 1px solid var(--border-plum);
+      letter-spacing: 0.05em;
+      font-size: 0.86rem;
+      text-transform: uppercase;
+    }
+
+    td {
+      padding: 16px 20px;
+      border-bottom: 1px solid rgba(74, 34, 48, 0.5);
+      color: var(--text-nude);
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    tr:hover td {
+      background: rgba(241, 217, 211, 0.02);
+    }
+
+    .badge-tag {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      letter-spacing: 0.05em;
+      background: rgba(196, 154, 108, 0.15);
+      color: var(--accent-gold);
+      border: 1px solid rgba(196, 154, 108, 0.3);
+    }
+
+    .badge-tag.crimson {
+      background: rgba(142, 34, 54, 0.25);
+      color: #F88F9E;
+      border-color: rgba(142, 34, 54, 0.5);
+    }
+
+    /* Print media */
+    @media print {
+      body {
+        background: #FFFFFF !important;
+        color: #111111 !important;
+      }
+      .wrap { max-width: 100% !important; padding: 20px !important; }
+      .top-nav, .btn, .nav-actions { display: none !important; }
+      .doc-title, .sec-title, h1, h2, h3 { color: #000000 !important; }
+      p, td { color: #333333 !important; }
+      .toc-box, .highlight-card, .table-container, table {
+        background: #FAFAFA !important;
+        border-color: #DDDDDD !important;
+      }
+      th { background: #EEEEEE !important; color: #000000 !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="wrap">
+    <!-- Top Navigation -->
+    <header class="top-nav">
+      <a href="index.html" class="brand-logo">
+        Reliq <span>ARCHIVE · 2026</span>
+      </a>
+      <div class="nav-actions">
+        <a href="index.html" class="btn btn-ghost">← 返回品牌官網</a>
+        <button onclick="window.print()" class="btn btn-gold">🖨️ 列印 / 另存為 PDF</button>
+      </div>
+    </header>
+
+    <!-- Header Meta -->
+    <main>
+      <div class="doc-meta">
+        <span>CONFIDENTIAL 內部策略企劃</span>
+        <span>·</span>
+        <span>RELIQ ARCHIVE 策劃團隊</span>
+        <span>·</span>
+        <span>2026 年 10 月 23 日</span>
+      </div>
+
+      <h1 class="doc-title">
+        創作者周邊一站式高定服務企劃書：<br>
+        <em>實體化親密經濟與周邊產品策略</em>
+      </h1>
+
+      <p class="doc-summary">
+        為經紀公司（Agency）與頂級數位創作者（OnlyFans Creators）打造之無庫存、高客單價限量實體信物製造體系。由 RELIQ ARCHIVE 全程承接供應鏈對接、小量開模、柔性打樣、合規金流與隱蔽跨境物流，釋放粉絲對實體靈光（Aura）的極致消費力。
+      </p>
+
+      <!-- Table of Contents -->
+      <nav class="toc-box">
+        <div class="toc-title">目錄索引 (Table of Contents)</div>
+        <div class="toc-grid">
+          <a href="#sec1" class="toc-link"><span class="toc-num">01.</span> 一句話核心說明</a>
+          <a href="#sec2" class="toc-link"><span class="toc-num">02.</span> 為什麼現在做實體周邊</a>
+          <a href="#sec3" class="toc-link"><span class="toc-num">03.</span> 權責劃分矩陣（我們 vs 經紀方）</a>
+          <a href="#sec4" class="toc-link"><span class="toc-num">04.</span> 三層產品矩陣與製造成本</a>
+          <a href="#sec5" class="toc-link"><span class="toc-num">05.</span> 八步驟敏捷合作流程</a>
+          <a href="#sec6" class="toc-link"><span class="toc-num">06.</span> 利潤測算模型（典型 Drop 實測）</a>
+          <a href="#sec7" class="toc-link"><span class="toc-num">07.</span> 合規金流、物流與隱私保護</a>
+        </div>
+      </nav>
+
+      <!-- Section 1 -->
+      <section id="sec1">
+        <div class="sec-head">
+          <span class="sec-num">01</span>
+          <h2 class="sec-title">一句話核心說明 (Executive Summary)</h2>
+        </div>
+        <div class="highlight-card">
+          <p style="font-size: 1.15rem; color: #FFFFFF; font-weight: 400; line-height: 1.8;">
+            <strong>經紀公司與創作者只要選款、核准視覺設計與調香；工廠對接、小量開模、實體打樣、品質檢驗、高奢預購網站建置、合規收款與出貨售後，全部由 RELIQ ARCHIVE 負責。</strong>
+          </p>
+          <p style="margin-top: 12px; color: var(--text-nude);">
+            ✦ <strong>小量起訂（50–100 件）、嚴格預購制</strong>：經紀公司與創作者不需要壓任何庫存，零前期資金風險，全額按比例分潤。
+          </p>
+        </div>
+      </section>
+
+      <!-- Section 2 -->
+      <section id="sec2">
+        <div class="sec-head">
+          <span class="sec-num">02</span>
+          <h2 class="sec-title">為什麼現在做實體周邊 (Market Timing)</h2>
+        </div>
+        <p>
+          <strong>1. 創作者收入多元化迫在眉睫</strong>：OnlyFans 對創作者收入抽取 20%，且平台政策與審查具不確定性。頂級創作者紛紛將「實體限量信物、專屬調香、聯名高奢」視為平台以外第二、第三高毛利護城河。
+        </p>
+        <p>
+          <strong>2. 周邊賣法的典範轉移</strong>：2026 年的私密周邊早已脫離廉價印製 Logo 的馬克杯或 T-shirt 模式。業界一致數據指出：<strong>限量 Drop、限時金庫倒數、獨立編號（Numbered Edition）、簽名收藏卡、結合嗅覺與觸覺主題故事的信物（Relics）</strong>，其轉化率與客單價是傳統周邊的 4 至 8 倍。
+        </p>
+        <p>
+          <strong>3. 補足經紀公司的關鍵缺口</strong>：經紀團隊精於流量獲取、人設打造與粉絲運營，但極度缺乏能夠支援「超低起訂量（MOQ 50）、私密情調雕塑、7–15 天極速打樣、合規避開航空禁運」的柔性高奢製造供應鏈。這正是 RELIQ ARCHIVE 成立並專注的核心價值。
+        </p>
+      </section>
+
+      <!-- Section 3 -->
+      <section id="sec3">
+        <div class="sec-head">
+          <span class="sec-num">03</span>
+          <h2 class="sec-title">權責劃分矩陣 (Responsibility Matrix)</h2>
+        </div>
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th style="width: 25%;">服務項目</th>
+                <th style="width: 40%;">RELIQ ARCHIVE (芮克檔案所) 負責</th>
+                <th style="width: 35%;">經紀公司／創作者 負責</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>選品與設計提案</strong></td>
+                <td>提供三層系列選品清單、香氛調性金字塔、3D 渲染圖與材質樣品</td>
+                <td>選定主題款式、核准形象照與宣傳調性</td>
+              </tr>
+              <tr>
+                <td><strong>工廠對接與打樣</strong></td>
+                <td>柔性供應鏈開模、打樣製作、寄送實體樣品至經紀公司</td>
+                <td>親身確認樣品手感、氣味與細節體驗</td>
+              </tr>
+              <tr>
+                <td><strong>品質把關 (QC)</strong></td>
+                <td>出廠前 100% 逐件品檢，提供高清照片/影片確認，無瑕疵保證</td>
+                <td>—</td>
+              </tr>
+              <tr>
+                <td><strong>預購網站與收款</strong></td>
+                <td>建置獨立高奢品牌預購頁面，串接成人合規金流（Stripe / CCBill）</td>
+                <td>提供官方宣傳素材、於 OnlyFans 與社群曝光導流</td>
+              </tr>
+              <tr>
+                <td><strong>包裝、物流與客服</strong></td>
+                <td>純黑無印消光防護盒裝、DDP 跨境全球空運、處理退換貨與售後</td>
+                <td>在專屬編號收藏卡或拍立得上親筆簽名（如包含）</td>
+              </tr>
+              <tr>
+                <td><strong>法務與授權</strong></td>
+                <td>提供標準版權授權協議範本、隱私與無痕開票協議</td>
+                <td>取得創作者書面肖像與商品化授權</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Section 4 -->
+      <section id="sec4">
+        <div class="sec-head">
+          <span class="sec-num">04</span>
+          <h2 class="sec-title">三層產品矩陣與製造成本 (Product Architecture)</h2>
+        </div>
+        <p>RELIQ ARCHIVE 精心規劃三層產品線，覆蓋「低門檻試水」、「高回購嗅覺消耗」與「頂級高客單價信物」：</p>
+        
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>層級分類</th>
+                <th>產品名稱與工藝規格</th>
+                <th>起訂量 (MOQ)</th>
+                <th>工廠 FOB 成本 (USD)</th>
+                <th>預計建議售價</th>
+                <th>生產交期</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="badge-tag">案頭寢居 · 觸感</span></td>
+                <td><strong>【枕畔耳語】Élise 粉彩輪廓畫真絲語音枕</strong><br><small style="color:var(--text-muted)">100% 6A 級 22mm 桑蠶絲、法式粉彩線條藝術、NFC 晶片解鎖 10 段私密 ASMR</small></td>
+                <td>30–100 件</td>
+                <td>$12.0 – $22.0</td>
+                <td>$88 – $120</td>
+                <td>15–25 天</td>
+              </tr>
+              <tr>
+                <td><span class="badge-tag">案頭寢居 · 觸感</span></td>
+                <td><strong>【夜幕】L'Ombre de Soie 6A 重磅真絲微醺眼罩</strong><br><small style="color:var(--text-muted)">雙面 22mm 桑蠶絲、玫瑰金法文書寫刺繡「Ferme les yeux」、親膚微醺遮光</small></td>
+                <td>50–200 件</td>
+                <td>$4.5 – $8.0</td>
+                <td>$48 – $65</td>
+                <td>10–20 天</td>
+              </tr>
+              <tr>
+                <td><span class="badge-tag">高定穿搭 · 生活</span></td>
+                <td><strong>【私語微光】300g 重磅絲光棉微性感剪裁 T-shirt</strong><br><small style="color:var(--text-muted)">雙股精梳絲光棉、落肩微闊型剪裁、背部粉彩輪廓線條藝術、NFC 防偽織嘜解鎖專屬自拍</small></td>
+                <td>50–200 件</td>
+                <td>$7.0 – $12.0</td>
+                <td>$58 – $75</td>
+                <td>15–20 天</td>
+              </tr>
+              <tr>
+                <td><span class="badge-tag">高定穿搭 · 生活</span></td>
+                <td><strong>【微醺出走】24oz 植鞣皮革高定重磅帆布托特袋</strong><br><small style="color:var(--text-muted)">24oz 極密水洗純棉帆布、意大利黑植鞣牛皮提把、純銅手工撞釘、勃艮第紅真絲內襯與筆電夾層</small></td>
+                <td>30–100 件</td>
+                <td>$14.0 – $24.0</td>
+                <td>$78 – $110</td>
+                <td>18–25 天</td>
+              </tr>
+              <tr>
+                <td><span class="badge-tag crimson">典藏消耗 · 嗅覺</span></td>
+                <td><strong>【肌膚微溫】純欲體香固體香膏</strong><br><small style="color:var(--text-muted)">金屬滑蓋黑金盒，激光雕刻 RELIQ，零液體禁運</small></td>
+                <td>100–300 件</td>
+                <td>$4.5 – $7.5</td>
+                <td>$42 – $55</td>
+                <td>15–25 天</td>
+              </tr>
+              <tr>
+                <td><span class="badge-tag crimson">典藏消耗 · 嗅覺</span></td>
+                <td><strong>【凝形】1:1 局部造型盲盒冷製皂</strong><br><small style="color:var(--text-muted)">人體弧線雕刻冷製皂，封入防水盲盒膠囊解鎖私密影片</small></td>
+                <td>72–500 件</td>
+                <td>$1.5 – $3.5</td>
+                <td>$28 – $38</td>
+                <td>15–30 天</td>
+              </tr>
+              <tr>
+                <td><span class="badge-tag crimson">典藏消耗 · 嗅覺</span></td>
+                <td><strong>【溫焰】42°C 低溫滴蠟情調按摩香氛燭</strong><br><small style="color:var(--text-muted)">42°C 低熔點可接觸肌膚，天然大豆乳木果油，重磅琥珀避光杯</small></td>
+                <td>50–200 件</td>
+                <td>$3.8 – $6.0</td>
+                <td>$38 – $56</td>
+                <td>15–20 天</td>
+              </tr>
+              <tr>
+                <td><span class="badge-tag crimson">典藏消耗 · 嗅覺</span></td>
+                <td><strong>【靈露】創作者專屬調香私密潤滑液</strong><br><small style="color:var(--text-muted)">微量食用級香草蜜桃調香，醫療級長效水溶性凝露，純黑消光避光瓶</small></td>
+                <td>100–500 件</td>
+                <td>$1.2 – $2.8</td>
+                <td>$24 – $32</td>
+                <td>12–20 天</td>
+              </tr>
+              <tr>
+                <td><span class="badge-tag" style="background: rgba(196,154,108,0.3); color: #FFF;">案頭工藝 · 稀缺</span></td>
+                <td><strong>【暗湧】Élise 鉑金矽膠人體工學鍵盤手托</strong><br><small style="color:var(--text-muted)">真人數據超軟鉑金果凍矽膠、內嵌 CNC 拉絲香檳金黃銅銘牌</small></td>
+                <td>50–200 件</td>
+                <td>$7.5 – $13.0</td>
+                <td>$65 – $85</td>
+                <td>15–25 天</td>
+              </tr>
+              <tr>
+                <td><span class="badge-tag" style="background: rgba(196,154,108,0.3); color: #FFF;">限量金庫 · 稀缺</span></td>
+                <td><strong>【博弈】Jeu Privé 金屬黑箔高定撲克與黃銅匣</strong><br><small style="color:var(--text-muted)">54 張防水黑箔金邊卡牌、54 幅微醺時裝藝術大片、320g 實心黃銅磁吸滑蓋牌匣</small></td>
+                <td>50–200 件</td>
+                <td>$8.5 – $16.0</td>
+                <td>$68 – $95</td>
+                <td>15–25 天</td>
+              </tr>
+              <tr>
+                <td><span class="badge-tag" style="background: rgba(196,154,108,0.3); color: #FFF;">限量金庫 · 稀缺</span></td>
+                <td><strong>【冷冽】Obsidienne 天然黑曜石曲線美體導入石</strong><br><small style="color:var(--text-muted)">100% 天然火山黑曜石手工水磨、人體工學三道貼身曲線、香檳金黃銅徽標</small></td>
+                <td>30–100 件</td>
+                <td>$9.0 – $18.0</td>
+                <td>$75 – $110</td>
+                <td>20–30 天</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p style="font-size: 0.88rem; color: var(--accent-gold);">
+          * 註：上述工廠單價以 2026 年柔性製造供應鏈公開或實際協議報價為基準，正式專案依選材與訂購量以最終報價單為準。
+        </p>
+      </section>
+
+      <!-- Section 5 -->
+      <section id="sec5">
+        <div class="sec-head">
+          <span class="sec-num">05</span>
+          <h2 class="sec-title">八步驟敏捷合作流程 (Operational Workflow)</h2>
+        </div>
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>步驟</th>
+                <th>階段內容</th>
+                <th>負責方</th>
+                <th>預估時程</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Step 1</strong></td>
+                <td>選定主題風格與預計發行款式</td>
+                <td>雙方討論</td>
+                <td>3 – 5 天</td>
+              </tr>
+              <tr>
+                <td><strong>Step 2</strong></td>
+                <td>視覺設計稿確認、授權合約簽署</td>
+                <td>經紀公司 / 創作者</td>
+                <td>5 – 7 天</td>
+              </tr>
+              <tr>
+                <td><strong>Step 3</strong></td>
+                <td>工廠快速打樣、寄送實體樣品審查</td>
+                <td>RELIQ ARCHIVE</td>
+                <td>7 – 15 天</td>
+              </tr>
+              <tr>
+                <td><strong>Step 4</strong></td>
+                <td>樣品核准與反饋微調</td>
+                <td>經紀公司</td>
+                <td>3 天</td>
+              </tr>
+              <tr>
+                <td><strong>Step 5</strong></td>
+                <td>開放 14 天限時預購金庫（線上合規預售）</td>
+                <td>RELIQ (頁面) + 經紀方 (導流)</td>
+                <td>14 天</td>
+              </tr>
+              <tr>
+                <td><strong>Step 6</strong></td>
+                <td>預購結單，工廠依實際銷量批量下單生產</td>
+                <td>RELIQ ARCHIVE</td>
+                <td>10 – 25 天</td>
+              </tr>
+              <tr>
+                <td><strong>Step 7</strong></td>
+                <td>出貨前 100% 照片/影片品檢確認</td>
+                <td>RELIQ ARCHIVE</td>
+                <td>2 – 3 天</td>
+              </tr>
+              <tr>
+                <td><strong>Step 8</strong></td>
+                <td>純黑無印 DDP 物流直發全球粉絲與售後服務</td>
+                <td>RELIQ ARCHIVE</td>
+                <td>7 – 12 天交付</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Section 6 -->
+      <section id="sec6">
+        <div class="sec-head">
+          <span class="sec-num">06</span>
+          <h2 class="sec-title">利潤測算模型：典型 Drop 實測 (Financial Model)</h2>
+        </div>
+        <p>以一位中頭部 OnlyFans 創作者（擁約 3,000–5,000 名活躍訂閱者）進行一檔 <strong>300 件限量「Collector 典藏套裝」</strong> 為例試算：</p>
+
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>財務項目</th>
+                <th>單件金額 (USD)</th>
+                <th>300 件總額 (USD)</th>
+                <th>佔營收比重</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>預購零售定價</strong></td>
+                <td><strong>$88.00</strong></td>
+                <td><strong>$26,400.00</strong></td>
+                <td><strong>100.0%</strong></td>
+              </tr>
+              <tr>
+                <td>綜合製造成本 (香膏+皂+純黑禮盒包裝)</td>
+                <td>$12.50</td>
+                <td>$3,750.00</td>
+                <td>14.2%</td>
+              </tr>
+              <tr>
+                <td>全球航空 DDP 物流與保險預估</td>
+                <td>$7.19</td>
+                <td>$2,157.00</td>
+                <td>8.2%</td>
+              </tr>
+              <tr>
+                <td>合規金流與平台處理費 (~4.5%)</td>
+                <td>$3.96</td>
+                <td>$1,188.00</td>
+                <td>4.5%</td>
+              </tr>
+              <tr style="background: rgba(142, 34, 54, 0.15);">
+                <td><strong>淨利潤空間 (Gross Profit)</strong></td>
+                <td><strong>$64.35</strong></td>
+                <td><strong>$19,305.00</strong></td>
+                <td><strong>73.1%</strong></td>
+              </tr>
+              <tr style="border-top: 2px solid var(--accent-gold);">
+                <td><strong>經紀公司與創作者分潤 (70%)</strong></td>
+                <td><strong>$45.04</strong></td>
+                <td><strong>$13,513.50</strong></td>
+                <td><strong>純淨收入，零庫存風險</strong></td>
+              </tr>
+              <tr>
+                <td>RELIQ ARCHIVE 運營分潤 (30%)</td>
+                <td>$19.31</td>
+                <td>$5,791.50</td>
+                <td>涵蓋打樣、網頁維護、QC 與客服</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="highlight-card">
+          <p>✦ <strong>零資金墊付</strong>：所有製造成本由預購款中直接結算，經紀公司與創作者在預購結束後即可穩獲 <strong>$13,500+ USD（約 43 萬台幣）</strong> 純利潤，並深化了死忠粉絲的情感忠誠度。</p>
+        </div>
+      </section>
+
+      <!-- Section 7 -->
+      <section id="sec7">
+        <div class="sec-head">
+          <span class="sec-num">07</span>
+          <h2 class="sec-title">合規金流、跨境物流與隱私安全保障 (Compliance & Security)</h2>
+        </div>
+        <p>
+          <strong>1. 雙軌合規支付通道</strong>：串接 Stripe 與 CCBill 獨立合規商戶通道。針對成人周邊與高客單實體商品，建立獨立白名單架構，徹底規避一般電商常見的帳號凍結與退款風控。
+        </p>
+        <p>
+          <strong>2. DDP（完稅後交貨）全球免卡關空運</strong>：所有包裹採 DDP（Delivered Duty Paid）模式，預先清關並涵蓋當地關稅。粉絲收件時無須二次繳稅或面臨海關開箱申報風險。
+        </p>
+        <p>
+          <strong>3. 純黑無印消光防護外裝（Discreet Packaging）</strong>：所有商品外盒皆為無任何創作者標記、無敏感字樣的純黑消光硬盒。信用卡帳單顯示為中性的 <code>RLQ Archive Atelier</code>，保護粉絲最高個人隱私。
+        </p>
+        <p>
+          <strong>4. 人體工學與生物數據加密冷存儲與銷毀機制</strong>：針對人體曲線開模、掌托等客製人體數據，RELIQ ARCHIVE 採最高規格機密加密存儲。生產核可後 30 天內依經紀公司要求進行實體模具封存或數位檔案徹底銷毀，確保創作者生物數據安全無虞。
+        </p>
+      </section>
+
+      <!-- Next Steps -->
+      <section style="text-align: center; padding: 48px 0; border-top: 1px solid var(--border-plum);">
+        <h3 style="font-family: var(--font-display); font-size: 1.8rem; margin-bottom: 16px;">
+          準備好為您的創作者打造第一個專屬實體 Drop 了嗎？
+        </h3>
+        <p style="margin-bottom: 28px;">
+          與 RELIQ ARCHIVE 樣品顧問聯絡，我們將在 24 小時內為您提供客製打樣提案。
+        </p>
+        <a href="index.html#contact" class="btn btn-gold" style="min-height: 48px; padding: 0 36px; font-size: 1rem;">
+          立即預約打樣企劃洽詢
+        </a>
+      </section>
+    </main>
+  </div>
+
+</body>
+</html>
