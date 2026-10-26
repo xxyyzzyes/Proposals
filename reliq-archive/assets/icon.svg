@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
-  <rect width="512" height="512" fill="#070709"/>
-  <rect x="24" y="24" width="464" height="464" fill="none" stroke="#dfc08a" stroke-width="2" stroke-opacity="0.3"/>
-  <circle cx="256" cy="256" r="180" fill="none" stroke="#dfc08a" stroke-width="1.5" stroke-opacity="0.4"/>
-  <text x="256" y="275" font-family="'Italiana', 'Cinzel', serif" font-size="160" font-weight="300" fill="#dfc08a" text-anchor="middle" letter-spacing="4">B</text>
-  <text x="256" y="340" font-family="sans-serif" font-size="24" font-weight="600" fill="#a3a099" text-anchor="middle" letter-spacing="12">BRIDGELINE</text>
-  <text x="256" y="375" font-family="sans-serif" font-size="14" font-weight="400" fill="#dfc08a" text-anchor="middle" letter-spacing="6">L'ATELIER</text>
-</svg>
