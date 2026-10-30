@@ -159,6 +159,16 @@
       line-height: 1.6;
     }
 
+    code {
+      font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+      font-size: 0.85em;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: var(--accent-cyan);
+    }
+
     /* Combo Workflow Section */
     .combo-section {
       background: var(--card-bg);
@@ -260,6 +270,32 @@
         </div>
       </div>
 
+      <!-- 深度攻坚与多 Agent 协同 -->
+      <div class="card">
+        <div class="card-title">
+          <span class="icon">🚀</span>
+          <span>深度攻坚与多 Agent 协同</span>
+        </div>
+        <div class="item">
+          <div class="cmd-header">
+            <span class="cmd">/boost [任务描述]</span>
+            <span class="cmd-desc">呼叫子 Agent 深度推理与攻坚</span>
+          </div>
+          <p class="item-body">
+            面对高复杂度并发缺陷、死锁、竞态条件、隐蔽回归缺陷或深层跨文件重构，突破单轮对话限制，在后台自动生成并派发专业子 Agent 战队（如负责全域巡检与根因攻防的 <code>DeepInvestigator</code>、专注底层实现与严密约束的 <code>DeepCoder</code>）。通过 Supervisor Loop 多层级调度，让子 Agent 相互交叉验证、博弈校验并闭环输出高质量解决方案。
+          </p>
+        </div>
+        <div class="item">
+          <div class="cmd-header">
+            <span class="cmd">/teamwork [任务目标]</span>
+            <span class="cmd-desc">分布式自主 Agent 团队协作</span>
+          </div>
+          <p class="item-body">
+            当项目规模庞大、涉及多模块独立开发或大规模重构时，自动组建包含架构设计、全栈编码与测试审查等多角色的自主 Agent 团队。在平行的隔离工作区分头攻坚并自动合并成果，实现团队级人效扩展。
+          </p>
+        </div>
+      </div>
+
       <!-- 自主验证与除错技巧 -->
       <div class="card">
         <div class="card-title">
@@ -337,6 +373,32 @@
           </p>
         </div>
       </div>
+
+      <!-- 任务调度与会话维护 -->
+      <div class="card">
+        <div class="card-title">
+          <span class="icon">⚡</span>
+          <span>任务调度与会话维护</span>
+        </div>
+        <div class="item">
+          <div class="cmd-header">
+            <span class="cmd">/schedule [周期或定时]</span>
+            <span class="cmd-desc">定时与周期性后台自动化</span>
+          </div>
+          <p class="item-body">
+            设定单次定时唤醒（Timer）或基于 Cron 表达式的周期性巡检任务（如每日代码构建巡检、依赖更新扫描或定期生成总结报告）。任务在后台静默执行，并在完成或触发告警时主动通知。
+          </p>
+        </div>
+        <div class="item">
+          <div class="cmd-header">
+            <span class="cmd">/compact [保留重点]</span>
+            <span class="cmd-desc">智能压缩会话上下文</span>
+          </div>
+          <p class="item-body">
+            长时间长会话开发容易累积大量冗余 Log 与 Token。使用该指令触发系统级上下文提炼，将关键决策、架构共识与待办事项无损压缩固化，快速释放 Context 窗口并降低后续推理延迟。
+          </p>
+        </div>
+      </div>
     </div>
 
     <!-- 推荐的复合工作流 (Combo) -->
@@ -358,7 +420,7 @@
         <div class="pipe-arrow">→</div>
         <div class="pipe-step">
           <div class="pipe-cmd">/boost</div>
-          <div class="pipe-action">多Agent协作编写</div>
+          <div class="pipe-action">呼叫子Agent深度攻坚</div>
         </div>
         <div class="pipe-arrow">→</div>
         <div class="pipe-step">
